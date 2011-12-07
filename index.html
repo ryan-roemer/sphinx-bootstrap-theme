@@ -1,0 +1,179 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Bootstrap Theme Demo &mdash; My Project 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-scrollspy.js"></script>
+    <link rel="top" title="My Project 0.0.1 documentation" href="#" />
+    <link rel="next" title="Sphinx Bootstrap Theme" href="README.html" />
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch the local TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $refLinks: Array of A tags to include in new dropdown menu.
+   */
+  var patchLocalToc = function ($localSpan) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      $refLinks = $localSpan.find("> ul > li > ul > li > a.internal");
+
+    // Attach all internal links in order to the new list.
+    $refLinks.each(function (index, link) {
+      $tocList.append($("<li/>").append($(link)));
+    });
+
+    // Wipe out old list and patch in new one.
+    return $localSpan.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    $("span.globaltoc ul").attr('class', "dropdown-menu");
+    patchLocalToc($("span.localtoc"));
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+  </head>
+  <body>
+  
+  <div class="topbar" data-scrollspy="scrollspy" >
+    <div class="topbar-inner">
+      <div class="container">
+        
+        
+        
+
+        <a class="brand" href="#">Demo</a>
+
+        <ul class="nav">
+          
+            
+  <li class="dropdown" data-dropdown="dropdown">
+    <a href="#"
+       class="dropdown-toggle">Site</a>
+    <span class="globaltoc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Sphinx Bootstrap Theme</a></li>
+</ul>
+</span>
+  </li>
+            
+  <li class="dropdown" data-dropdown="dropdown">
+    <a href="#"
+       class="dropdown-toggle">Page</a>
+    <span class="localtoc"><ul>
+<li><a class="reference internal" href="#">Bootstrap Theme Demo</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</span>
+  </li>
+          
+          
+            
+  <li><a href="README.html"
+         title="next chapter">Sphinx Bootstrap Theme &raquo;</a></li>
+          
+          
+            
+  <li><a href="_sources/index.txt"
+         rel="nofollow">Source</a></li>
+          
+        </ul>
+        <ul class="nav secondary-nav">
+          
+            
+<form class="pull-left" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"><img 
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" 
+    alt="Fork me on GitHub"></a>
+
+<div class="container">
+   
+  <div class="section" id="bootstrap-theme-demo">
+<h1>Bootstrap Theme Demo<a class="headerlink" href="#bootstrap-theme-demo" title="Permalink to this headline">¶</a></h1>
+<p>This is a basic demo site for the <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme">Sphinx Bootstrap Theme</a> that provides a
+minimal working Sphinx site using the theme.</p>
+<p>Please see the <a class="reference internal" href="README.html"><em>Sphinx Bootstrap Theme</em></a> page (also linked below in the TOC) for full
+details and installation instructions.</p>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Sphinx Bootstrap Theme</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#sphinx-notes">Sphinx Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#bootstrap-notes">Bootstrap Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#licenses">Licenses</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+</div>
+
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>
+        &copy; Copyright 2011, Ryan Roemer.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

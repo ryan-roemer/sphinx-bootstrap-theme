@@ -1,0 +1,16 @@
+/*
+* bootstrap-sphinx.css
+* ~~~~~~~~~~~~~~~~~~~~
+*
+* Sphinx stylesheet -- Twitter Bootstrap theme.
+*/
+
+body {
+  padding: 5px;
+  padding-top: 42px;
+}
+
+div.documentwrapper {
+  float: left;
+  width: 100%;
+}

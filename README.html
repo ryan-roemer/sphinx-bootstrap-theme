@@ -1,0 +1,207 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sphinx Bootstrap Theme &mdash; My Project 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-scrollspy.js"></script>
+    <link rel="top" title="My Project 0.0.1 documentation" href="index.html" />
+    <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch the local TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $refLinks: Array of A tags to include in new dropdown menu.
+   */
+  var patchLocalToc = function ($localSpan) {
+    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
+      $refLinks = $localSpan.find("> ul > li > ul > li > a.internal");
+
+    // Attach all internal links in order to the new list.
+    $refLinks.each(function (index, link) {
+      $tocList.append($("<li/>").append($(link)));
+    });
+
+    // Wipe out old list and patch in new one.
+    return $localSpan.empty("ul").append($tocList);
+  };
+
+  $(document).ready(function () {
+    // Patch the global and local TOC's to be bootstrap-compliant.
+    $("span.globaltoc ul").attr('class', "dropdown-menu");
+    patchLocalToc($("span.localtoc"));
+
+    // Activate.
+    $('#topbar').dropdown();
+  });
+}());
+</script>
+
+  </head>
+  <body>
+  
+  <div class="topbar" data-scrollspy="scrollspy" >
+    <div class="topbar-inner">
+      <div class="container">
+        
+        
+        
+
+        <a class="brand" href="index.html">Demo</a>
+
+        <ul class="nav">
+          
+            
+  <li class="dropdown" data-dropdown="dropdown">
+    <a href="index.html"
+       class="dropdown-toggle">Site</a>
+    <span class="globaltoc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Sphinx Bootstrap Theme</a></li>
+</ul>
+</span>
+  </li>
+            
+  <li class="dropdown" data-dropdown="dropdown">
+    <a href="#"
+       class="dropdown-toggle">Page</a>
+    <span class="localtoc"><ul>
+<li><a class="reference internal" href="#">Sphinx Bootstrap Theme</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#sphinx-notes">Sphinx Notes</a></li>
+<li><a class="reference internal" href="#bootstrap-notes">Bootstrap Notes</a></li>
+<li><a class="reference internal" href="#licenses">Licenses</a></li>
+</ul>
+</li>
+</ul>
+</span>
+  </li>
+          
+          
+            
+  <li><a href="index.html"
+         title="previous chapter">&laquo; Bootstrap Theme Demo</a></li>
+          
+          
+            
+  <li><a href="_sources/README.txt"
+         rel="nofollow">Source</a></li>
+          
+        </ul>
+        <ul class="nav secondary-nav">
+          
+            
+<form class="pull-left" action="search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"><img 
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" 
+    alt="Fork me on GitHub"></a>
+
+<div class="container">
+   
+  <div class="section" id="sphinx-bootstrap-theme">
+<h1>Sphinx Bootstrap Theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="Permalink to this headline">¶</a></h1>
+<p>This repository integrates the Twitter <a class="reference external" href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS / JavaScript framework
+as a <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a>. A live <a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">demo</a> is available to preview the theme.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To install the theme, download the theme directory and update your
+configuration</p>
+<ol class="arabic">
+<li><p class="first">Create a &#8220;_themes&#8221; directory in your project source root, and then
+download the &#8220;bootstrap&#8221; directory in this repository into it.</p>
+</li>
+<li><p class="first">Edit your configuration file to point to the bootstrap theme:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Activate the theme.</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">&#39;_themes&#39;</span><span class="p">))</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;_themes&#39;</span><span class="p">]</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s">&#39;bootstrap&#39;</span>
+
+<span class="c"># Optional. Use a shorter name to conserve nav. bar space.</span>
+<span class="n">html_short_title</span> <span class="o">=</span> <span class="s">&quot;Demo&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="sphinx-notes">
+<h2>Sphinx Notes<a class="headerlink" href="#sphinx-notes" title="Permalink to this headline">¶</a></h2>
+<p>The theme places the global TOC, local TOC, navigation (prev, next) and
+source links all in the top Bootstrap navigation bar, along with the Sphinx
+search bar on the left side.</p>
+<p>The global (site-wide) table of contents is the &#8220;Site&#8221; navigation dropdown,
+which is a one-level deep rendering of the <tt class="docutils literal"><span class="pre">toctree</span></tt> for the entire site.
+The local (page-level) table of contents is the &#8220;Page&#8221; navigation dropdown,
+which is a one-level rendering of the current page&#8217;s <tt class="docutils literal"><span class="pre">toc</span></tt>. This obviously
+constrains a little bit of Sphinx&#8217;s extensibility, but seems to be the most
+appropriate UX for the Bootstrap top navigation bar.</p>
+<p>Generally speaking, this is a quick and dirty hack to get the basic theme
+going, so there are likely some oversights and lurking issues. Help and
+bug filings for the project are most welcome.</p>
+</div>
+<div class="section" id="bootstrap-notes">
+<h2>Bootstrap Notes<a class="headerlink" href="#bootstrap-notes" title="Permalink to this headline">¶</a></h2>
+<p>The theme uses the following files from Twitter Bootstrap v1.4.0:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">bootstrap</span><span class="o">-</span><span class="n">dropdown</span><span class="o">.</span><span class="n">js</span>
+<span class="n">bootstrap</span><span class="o">-</span><span class="n">scrollspy</span><span class="o">.</span><span class="n">js</span>
+<span class="n">bootstrap</span><span class="o">.</span><span class="n">css</span>
+</pre></div>
+</div>
+<p>You can drop different versions in your Sphinx &#8220;_static&#8221; directory to
+override these files.</p>
+</div>
+<div class="section" id="licenses">
+<h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">¶</a></h2>
+<p>Sphinx Bootstrap Theme is licensed under the <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt">MIT</a> license.</p>
+<p>Twitter Bootstrap is licensed under the <a class="reference external" href="https://github.com/twitter/bootstrap/blob/master/LICENSE">Apache</a> license.</p>
+</div>
+</div>
+
+
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>
+        &copy; Copyright 2011, Ryan Roemer.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
