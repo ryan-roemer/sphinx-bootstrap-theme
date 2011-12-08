@@ -1,4 +1,6 @@
 \.DS_Store
-.*\.pyc
+*\.pyc
 
 demo/build/*
+bootstrap\.zip
+bootstrap-*\.zip
