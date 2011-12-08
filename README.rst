@@ -16,9 +16,22 @@ Installation
 To install the theme, download the theme directory and update your
 configuration
 
-1. Create a "_themes" directory in your project source root, and then
-   download the "bootstrap" directory in this repository into it.
-2. Edit your configuration file to point to the bootstrap theme::
+1. Create a "_themes" directory in your project source root.
+2. Get the "bootstrap" themes either as raw files or as a zipfile from
+   the repository.
+   
+   a. Most current way is to just clone this repo or download the full
+      repo source and move the "bootstrap" directory to "_themes".
+   b. Alternatively, there are some prepackaged theme zip files (containing
+      only the theme files), which can be read directly by Sphinx. See the
+      repo downloads_ page for available packages. Then download and rename
+      to "bootstrap.zip"::
+      
+        $ cd /path/to/_themes
+        $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap-3c64e4059b6b0fcae4253e7a410febc7aab3d9ca.zip
+        $ mv bootstrap-*.zip bootstrap.zip
+
+3. Edit your configuration file to point to the bootstrap theme::
 
       # Activate the theme.
       sys.path.append(os.path.abspath('_themes'))
@@ -28,6 +41,8 @@ configuration
       # Optional. Use a shorter name to conserve nav. bar space.
       html_short_title = "Demo"
 
+
+.. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
 
 Sphinx Notes
 ============
