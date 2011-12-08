@@ -143,8 +143,24 @@ as a <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a
 <p>To install the theme, download the theme directory and update your
 configuration</p>
 <ol class="arabic">
-<li><p class="first">Create a &#8220;_themes&#8221; directory in your project source root, and then
-download the &#8220;bootstrap&#8221; directory in this repository into it.</p>
+<li><p class="first">Create a &#8220;_themes&#8221; directory in your project source root.</p>
+</li>
+<li><p class="first">Get the &#8220;bootstrap&#8221; themes either as raw files or as a zipfile from
+the repository.</p>
+<ol class="loweralpha">
+<li><p class="first">Most current way is to just clone this repo or download the full
+repo source and move the &#8220;bootstrap&#8221; directory to &#8220;_themes&#8221;.</p>
+</li>
+<li><p class="first">Alternatively, there are some prepackaged theme zip files (containing
+only the theme files), which can be read directly by Sphinx. See the
+repo <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads">downloads</a> page for available packages. Then download and rename
+to &#8220;bootstrap.zip&#8221;:</p>
+<div class="highlight-python"><pre>$ cd /path/to/_themes
+$ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap-3c64e4059b6b0fcae4253e7a410febc7aab3d9ca.zip
+$ mv bootstrap-*.zip bootstrap.zip</pre>
+</div>
+</li>
+</ol>
 </li>
 <li><p class="first">Edit your configuration file to point to the bootstrap theme:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Activate the theme.</span>
