@@ -43,21 +43,18 @@
 <script type="text/javascript">
 (function () {
   /**
-   * Patch the local TOC list.
+   * Patch TOC list.
    *
    * Will mutate the underlying span to have a correct ul for nav.
    *
-   * @param $localSpan: Span containing nested UL's to mutate.
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
    */
-  var patchLocalToc = function ($localSpan) {
+  var patchToc = function ($span, minLevel) {
     var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
       findA;
 
-    // Find all a "internal" tags, traversing recursively. Levels:
-    // 0: Container for TOC.
-    // 1: The page title.
-    // 2: Heading level 1.
-    // 3: Heading level 2 ...
+    // Find all a "internal" tags, traversing recursively.
     findA = function ($elem, level) {
       var level = level || 0,
         $items = $elem.find("> li > a.internal, > ul, > li > ul");
@@ -66,9 +63,9 @@
       $items.each(function (index, item) {
         var $item = $(item),
           tag = item.tagName.toLowerCase(),
-          pad = 10 + ((level - 2) * 10);
+          pad = 10 + ((level - minLevel) * 10);
 
-        if (tag === 'a' && level >= 2) {
+        if (tag === 'a' && level >= minLevel) {
           // Add to existing padding.
           $item.css('padding-left', pad + "px");
           // Add list element.
@@ -81,16 +78,16 @@
     };
 
     // Start construction and return.
-    findA($localSpan);
+    findA($span);
 
     // Wipe out old list and patch in new one.
-    return $localSpan.empty("ul").append($tocList);
+    return $span.empty("ul").append($tocList);
   };
 
   $(document).ready(function () {
     // Patch the global and local TOC's to be bootstrap-compliant.
-    $("span.globaltoc ul").attr('class', "dropdown-menu");
-    patchLocalToc($("span.localtoc"));
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
 
     // Activate.
     $('#topbar').dropdown();
