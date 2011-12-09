@@ -47,19 +47,45 @@
    *
    * Will mutate the underlying span to have a correct ul for nav.
    *
-   * @param $refLinks: Array of A tags to include in new dropdown menu.
+   * @param $localSpan: Span containing nested UL's to mutate.
    */
   var patchLocalToc = function ($localSpan) {
     var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
-      $refLinks = $localSpan.find("> ul > li > ul > li > a.internal");
+      findA;
 
-    // Attach all internal links in order to the new list.
-    $refLinks.each(function (index, link) {
-      $tocList.append($("<li/>").append($(link)));
-    });
+    // Find all a "internal" tags, traversing recursively. Levels:
+    // 0: Container for TOC.
+    // 1: The page title.
+    // 2: Heading level 1.
+    // 3: Heading level 2 ...
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase();
+
+        if (tag === 'a') {
+          console.log(level, $item);
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction.
+    findA($localSpan);
+    // 
+    // // Attach all internal links in order to the new list.
+    // $refLinks.each(function (index, link) {
+    //   $tocList.append($("<li/>").append($(link)));
+    // });
 
     // Wipe out old list and patch in new one.
-    return $localSpan.empty("ul").append($tocList);
+    return $localSpan; //.empty("ul").append($tocList);
   };
 
   $(document).ready(function () {

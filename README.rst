@@ -41,11 +41,12 @@ configuration
       # Optional. Use a shorter name to conserve nav. bar space.
       html_short_title = "Demo"
 
-
 .. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
 
-Sphinx Notes
-============
+Theme Notes
+===========
+Sphinx
+------
 The theme places the global TOC, local TOC, navigation (prev, next) and
 source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.
@@ -53,17 +54,15 @@ search bar on the left side.
 The global (site-wide) table of contents is the "Site" navigation dropdown,
 which is a one-level deep rendering of the ``toctree`` for the entire site.
 The local (page-level) table of contents is the "Page" navigation dropdown,
-which is a one-level rendering of the current page's ``toc``. This obviously
-constrains a little bit of Sphinx's extensibility, but seems to be the most
-appropriate UX for the Bootstrap top navigation bar.
+which is a multi-level rendering of the current page's ``toc``.
 
 Generally speaking, this is a quick and dirty hack to get the basic theme
 going, so there are likely some oversights and lurking issues. Help and
 bug filings for the project are most welcome.
 
 
-Bootstrap Notes
-===============
+Bootstrap
+---------
 The theme uses the following files from Twitter Bootstrap v1.4.0::
 
     bootstrap-dropdown.js
