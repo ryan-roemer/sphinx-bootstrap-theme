@@ -65,10 +65,14 @@
       // Iterate everything in order.
       $items.each(function (index, item) {
         var $item = $(item),
-          tag = item.tagName.toLowerCase();
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - 2) * 10);
 
-        if (tag === 'a') {
-          console.log(level, $item);
+        if (tag === 'a' && level >= 2) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
         } else if (tag === 'ul') {
           // Recurse.
           findA($item, level + 1);
@@ -76,16 +80,11 @@
       });
     };
 
-    // Start construction.
+    // Start construction and return.
     findA($localSpan);
-    // 
-    // // Attach all internal links in order to the new list.
-    // $refLinks.each(function (index, link) {
-    //   $tocList.append($("<li/>").append($(link)));
-    // });
 
     // Wipe out old list and patch in new one.
-    return $localSpan; //.empty("ul").append($tocList);
+    return $localSpan.empty("ul").append($tocList);
   };
 
   $(document).ready(function () {
