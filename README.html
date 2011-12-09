@@ -33,29 +33,51 @@
 <script type="text/javascript">
 (function () {
   /**
-   * Patch the local TOC list.
+   * Patch TOC list.
    *
    * Will mutate the underlying span to have a correct ul for nav.
    *
-   * @param $refLinks: Array of A tags to include in new dropdown menu.
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
    */
-  var patchLocalToc = function ($localSpan) {
+  var patchToc = function ($span, minLevel) {
     var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
-      $refLinks = $localSpan.find("> ul > li > ul > li > a.internal");
+      findA;
 
-    // Attach all internal links in order to the new list.
-    $refLinks.each(function (index, link) {
-      $tocList.append($("<li/>").append($(link)));
-    });
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
 
     // Wipe out old list and patch in new one.
-    return $localSpan.empty("ul").append($tocList);
+    return $span.empty("ul").append($tocList);
   };
 
   $(document).ready(function () {
     // Patch the global and local TOC's to be bootstrap-compliant.
-    $("span.globaltoc ul").attr('class', "dropdown-menu");
-    patchLocalToc($("span.localtoc"));
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
 
     // Activate.
     $('#topbar').dropdown();
@@ -82,7 +104,12 @@
     <a href="index.html"
        class="dropdown-toggle">Site</a>
     <span class="globaltoc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Sphinx Bootstrap Theme</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Sphinx Bootstrap Theme</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#theme-notes">Theme Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#licenses">Licenses</a></li>
+</ul>
+</li>
 </ul>
 </span>
   </li>
@@ -93,8 +120,11 @@
     <span class="localtoc"><ul>
 <li><a class="reference internal" href="#">Sphinx Bootstrap Theme</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#sphinx-notes">Sphinx Notes</a></li>
-<li><a class="reference internal" href="#bootstrap-notes">Bootstrap Notes</a></li>
+<li><a class="reference internal" href="#theme-notes">Theme Notes</a><ul>
+<li><a class="reference internal" href="#id1">Sphinx</a></li>
+<li><a class="reference internal" href="#id2">Bootstrap</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#licenses">Licenses</a></li>
 </ul>
 </li>
@@ -153,11 +183,17 @@ repo source and move the &#8220;bootstrap&#8221; directory to &#8220;_themes&#82
 </li>
 <li><p class="first">Alternatively, there are some prepackaged theme zip files (containing
 only the theme files), which can be read directly by Sphinx. See the
-repo <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads">downloads</a> page for available packages. Then download and rename
-to &#8220;bootstrap.zip&#8221;:</p>
+repo <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads">downloads</a> page for available packages. Then download
+&#8220;bootstrap.zip&#8221;:</p>
 <div class="highlight-python"><pre>$ cd /path/to/_themes
-$ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap-3c64e4059b6b0fcae4253e7a410febc7aab3d9ca.zip
-$ mv bootstrap-*.zip bootstrap.zip</pre>
+$ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap.zip</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The zipfiles have a hash indicating build origin. The
+&#8220;bootstrap.zip&#8221; is a copy of the most recent hashed build. If you do
+get an older hash-named zipfile, you <em>must</em> rename it to the theme
+name (&#8220;bootstrap.zip&#8221;) for Sphinx to properly pick it up.</p>
 </div>
 </li>
 </ol>
@@ -175,23 +211,23 @@ $ mv bootstrap-*.zip bootstrap.zip</pre>
 </li>
 </ol>
 </div>
-<div class="section" id="sphinx-notes">
-<h2>Sphinx Notes<a class="headerlink" href="#sphinx-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theme-notes">
+<h2>Theme Notes<a class="headerlink" href="#theme-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Sphinx<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The theme places the global TOC, local TOC, navigation (prev, next) and
 source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.</p>
 <p>The global (site-wide) table of contents is the &#8220;Site&#8221; navigation dropdown,
-which is a one-level deep rendering of the <tt class="docutils literal"><span class="pre">toctree</span></tt> for the entire site.
+which is a multi-level deep rendering of the <tt class="docutils literal"><span class="pre">toctree</span></tt> for the entire site.
 The local (page-level) table of contents is the &#8220;Page&#8221; navigation dropdown,
-which is a one-level rendering of the current page&#8217;s <tt class="docutils literal"><span class="pre">toc</span></tt>. This obviously
-constrains a little bit of Sphinx&#8217;s extensibility, but seems to be the most
-appropriate UX for the Bootstrap top navigation bar.</p>
+which is a multi-level rendering of the current page&#8217;s <tt class="docutils literal"><span class="pre">toc</span></tt>.</p>
 <p>Generally speaking, this is a quick and dirty hack to get the basic theme
 going, so there are likely some oversights and lurking issues. Help and
 bug filings for the project are most welcome.</p>
 </div>
-<div class="section" id="bootstrap-notes">
-<h2>Bootstrap Notes<a class="headerlink" href="#bootstrap-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>Bootstrap<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>The theme uses the following files from Twitter Bootstrap v1.4.0:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">bootstrap</span><span class="o">-</span><span class="n">dropdown</span><span class="o">.</span><span class="n">js</span>
 <span class="n">bootstrap</span><span class="o">-</span><span class="n">scrollspy</span><span class="o">.</span><span class="n">js</span>
@@ -200,6 +236,7 @@ bug filings for the project are most welcome.</p>
 </div>
 <p>You can drop different versions in your Sphinx &#8220;_static&#8221; directory to
 override these files.</p>
+</div>
 </div>
 <div class="section" id="licenses">
 <h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">¶</a></h2>

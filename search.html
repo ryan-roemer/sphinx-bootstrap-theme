@@ -37,29 +37,51 @@
 <script type="text/javascript">
 (function () {
   /**
-   * Patch the local TOC list.
+   * Patch TOC list.
    *
    * Will mutate the underlying span to have a correct ul for nav.
    *
-   * @param $refLinks: Array of A tags to include in new dropdown menu.
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
    */
-  var patchLocalToc = function ($localSpan) {
+  var patchToc = function ($span, minLevel) {
     var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
-      $refLinks = $localSpan.find("> ul > li > ul > li > a.internal");
+      findA;
 
-    // Attach all internal links in order to the new list.
-    $refLinks.each(function (index, link) {
-      $tocList.append($("<li/>").append($(link)));
-    });
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 10 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          // Add list element.
+          $tocList.append($("<li/>").append($item));
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    // Start construction and return.
+    findA($span);
 
     // Wipe out old list and patch in new one.
-    return $localSpan.empty("ul").append($tocList);
+    return $span.empty("ul").append($tocList);
   };
 
   $(document).ready(function () {
     // Patch the global and local TOC's to be bootstrap-compliant.
-    $("span.globaltoc ul").attr('class', "dropdown-menu");
-    patchLocalToc($("span.localtoc"));
+    patchToc($("span.globaltoc"), 1);
+    patchToc($("span.localtoc"), 2);
 
     // Activate.
     $('#topbar').dropdown();
