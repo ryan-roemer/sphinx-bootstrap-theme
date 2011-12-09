@@ -19,14 +19,14 @@ configuration
 1. Create a "_themes" directory in your project source root.
 2. Get the "bootstrap" themes either as raw files or as a zipfile from
    the repository.
-   
+
    a. Most current way is to just clone this repo or download the full
       repo source and move the "bootstrap" directory to "_themes".
    b. Alternatively, there are some prepackaged theme zip files (containing
       only the theme files), which can be read directly by Sphinx. See the
       repo downloads_ page for available packages. Then download and rename
       to "bootstrap.zip"::
-      
+
         $ cd /path/to/_themes
         $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap-3c64e4059b6b0fcae4253e7a410febc7aab3d9ca.zip
         $ mv bootstrap-*.zip bootstrap.zip
@@ -37,7 +37,7 @@ configuration
       sys.path.append(os.path.abspath('_themes'))
       html_theme_path = ['_themes']
       html_theme = 'bootstrap'
-      
+
       # Optional. Use a shorter name to conserve nav. bar space.
       html_short_title = "Demo"
 
@@ -52,7 +52,7 @@ source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.
 
 The global (site-wide) table of contents is the "Site" navigation dropdown,
-which is a one-level deep rendering of the ``toctree`` for the entire site.
+which is a multi-level deep rendering of the ``toctree`` for the entire site.
 The local (page-level) table of contents is the "Page" navigation dropdown,
 which is a multi-level rendering of the current page's ``toc``.
 
