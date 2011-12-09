@@ -24,12 +24,16 @@ configuration
       repo source and move the "bootstrap" directory to "_themes".
    b. Alternatively, there are some prepackaged theme zip files (containing
       only the theme files), which can be read directly by Sphinx. See the
-      repo downloads_ page for available packages. Then download and rename
-      to "bootstrap.zip"::
+      repo downloads_ page for available packages. Then download
+      "bootstrap.zip"::
 
         $ cd /path/to/_themes
-        $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap-3c64e4059b6b0fcae4253e7a410febc7aab3d9ca.zip
-        $ mv bootstrap-*.zip bootstrap.zip
+        $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap.zip
+
+      .. note:: The zipfiles have a hash indicating build origin. The
+        "bootstrap.zip" is a copy of the most recent hashed build. If you do
+        get an older hash-named zipfile, you *must* rename it to the theme
+        name ("bootstrap.zip") for Sphinx to properly pick it up.
 
 3. Edit your configuration file to point to the bootstrap theme::
 
