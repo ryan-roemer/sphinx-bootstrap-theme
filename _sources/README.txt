@@ -42,8 +42,13 @@ configuration
       html_theme_path = ['_themes']
       html_theme = 'bootstrap'
 
-      # Optional. Use a shorter name to conserve nav. bar space.
+      # (Optional) Use a shorter name to conserve nav. bar space.
       html_short_title = "Demo"
+
+      # (Optional) Logo. Should be exactly 32x32 px to fit the nav. bar.
+      # Path should be relative to the html_static_path setting (e.g.,
+      # "_static") in source.
+      html_logo = "my_logo.png"
 
 .. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
 
