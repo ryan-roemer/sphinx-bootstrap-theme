@@ -7,16 +7,9 @@
   <div class="topbar" data-scrollspy="scrollspy" >
     <div class="topbar-inner">
       <div class="container">
-        {% block sidebarlogo %}
-        {% if logo %}
-          <p class="logo"><a href="{{ pathto(master_doc) }}">
-            <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
-          </a></p>
-        {% endif %}
-        {% endblock %}
-
-        <a class="brand" href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>
-
+        <a class="brand" href="{{ pathto(master_doc) }}">
+          {{ shorttitle|e }}
+        </a>
         <ul class="nav">
           {% block sidebartoc %}
             {% include "globaltoc.html" %}
