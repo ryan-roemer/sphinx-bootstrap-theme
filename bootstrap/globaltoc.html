@@ -1,7 +1,5 @@
-{%- if display_toc %}
-  <li class="dropdown" data-dropdown="dropdown">
-    <a href="{{ pathto(master_doc) }}"
-       class="dropdown-toggle">{{ _('Site') }}</a>
-    <span class="globaltoc">{{ toctree() }}</span>
-  </li>
-{%- endif %}
+<li class="dropdown" data-dropdown="dropdown">
+  <a href="{{ pathto(master_doc) }}"
+     class="dropdown-toggle">{{ _('Site') }}</a>
+  <span class="globaltoc">{{ toctree() }}</span>
+</li>
