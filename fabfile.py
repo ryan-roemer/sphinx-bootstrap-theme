@@ -51,13 +51,23 @@ class GitHub(object):
         auth_str = base64.encodestring(
             "%s:%s" % (self.user, self.password))[:-1]
 
+        req = Request(url_path, method=method)
+        req.add_header("Authorization", "Basic %s" % auth_str)
+        if data:
+            req.add_header("Content-Type", "application/json")
+
+        results = urllib2.urlopen(req, data=data).read()
+        return json.loads(results) if results else {}
+
+    def s3_op(self, path, file_name, headers):
+        """Perform S3 upload operation."""
+
         req = Request(url_path, method=method, data=data)
         req.add_header("Authorization", "Basic %s" % auth_str)
         if data:
             req.add_header("Content-Type", "application/json")
 
-        results = urllib2.urlopen(req).read()
-        return json.loads(results) if results else {}
+        raise Exception("TODO")
 
     def downloads(self):
         """Retrieve current GitHub downloads."""
@@ -84,14 +94,32 @@ class GitHub(object):
         }
 
         # Part 1: Create the resource)
-        result = self.api_op(
+        put_dict = self.api_op(
             "repos/%s/%s/downloads" % (self.user, self.repo),
             method="POST",
             data=data,
         )
 
         # Part 2: Upload file to s3
-        print(result)
+        results = self.s3_op(
+            "https://github.s3.amazonaws.com/",
+            method="POST",
+            data={
+                'key': put_dict['path'],
+                'acl': put_dict['acl'],
+                'success_action_status': 201,
+                'Filename': put_dict['name'],
+                'AWSAccessKeyId': put_dict['accesskeyid'],
+                'Policy': put_dict['policy'],
+                'Signature': put_dict['signature'],
+                'Content-Type': put_dict['mime_type'],
+            },
+        )
+
+        print(dir(results))
+        print(results)
+        return {"TODO": "TODO"}
+
 
 @task
 def clean():
