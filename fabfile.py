@@ -8,20 +8,8 @@ from fabric.api import local, lcd, abort
 from fabric.decorators import task
 
 
-def gh_config(key):
-    """Get a .gitconfig GH value."""
-    val = local("git config github.%s" % key, capture=True).strip()
-    return val if val else None
-
-
-GH_USER = gh_config("user")
-GH_TOKEN = gh_config("token")
-GH_REPO = "sphinx-bootstrap-theme"
-GH_BASE = "https://api.github.com"
-
-
 class Request(urllib2.Request):
-    """Requests with method support."""
+    """Request with method support."""
 
     def __init__(self, *args, **kwargs):
         """Initializer."""
@@ -31,6 +19,45 @@ class Request(urllib2.Request):
     def get_method(self):
         """Method."""
         return self._method
+
+
+class GitHub(object):
+    """GitHub API wrapper."""
+
+    def __init__(self):
+        """Initializer."""
+        self.user = self.config("user")
+        self.token = self.config("token")
+        self.repo = "sphinx-bootstrap-theme"
+        self.api_base = "https://api.github.com"
+
+    @classmethod
+    def config(cls, key):
+        """Get a .gitconfig GH value."""
+        val = local("git config github.%s" % key, capture=True).strip()
+        return val if val else None
+
+    def api_op(self, path, method="GET"):
+        """Perform a GitHub API request and decode to JSON."""
+        url_path = "/".join((self.api_base, path.lstrip("/"))) \
+            if path else self.api_base
+        req = Request(url_path, method=method)
+        url_obj = urllib2.urlopen(req)
+        results = url_obj.read()
+        return json.loads(results) if results else {}
+
+    def downloads(self):
+        """Retrieve current GitHub downloads."""
+        return self.api_op("repos/%s/%s/downloads" % (self.user, self.repo))
+
+    def dl_delete(self, dl_obj):
+        """Delete a download file."""
+        return self.api_op(
+            "repos/%s/%s/downloads/%s" % (self.user, self.repo, dl_obj['id']),
+            method="DELETE",
+        )
+
+
 
 
 @task
@@ -56,31 +83,11 @@ def bundle():
     local("unzip -l bootstrap.zip")
 
 
-def gh_op(path, method="GET"):
-    """Perform a GitHub API request and decode to JSON."""
-    url_path = "/".join((GH_BASE, path.lstrip("/"))) if path else GH_BASE
-    req = Request(url_path, method=method)
-    url_obj = urllib2.urlopen(req)
-    results = url_obj.read()
-    return json.loads(results) if results else {}
-
-
-def gh_downloads():
-    """Retrieve current GitHub downloads."""
-    return gh_op("repos/%s/%s/downloads" % (GH_USER, GH_REPO))
-
-
-def gh_dl_delete(dl_obj):
-    """Delete a download file."""
-    return gh_op("repos/%s/%s/downloads/%s" % (GH_USER, GH_REPO, dl_obj['id']),
-                 method="DELETE")
-
-
 @task
 def downloads():
     """Verify GitHub downloads."""
     print("Downloads:")
-    for download in gh_downloads():
+    for download in GitHub().downloads():
         print("%(created_at)s: %(name)s (%(id)s)" % download)
 
 
@@ -95,7 +102,8 @@ def upload():
         abort("Did not find current zip files. Please create.")
 
     # Check if existing downloads
-    dl_dict = dict((x['name'], x) for x in gh_downloads())
+    github = GitHub()
+    dl_dict = dict((x['name'], x) for x in github.downloads())
     dl_hash = dl_dict.get(hash_zip)
     dl_base = dl_dict.get(base_zip)
 
@@ -105,7 +113,7 @@ def upload():
 
     if dl_base is not None:
         print("Removing current base zip file.")
-        result = gh_dl_delete(dl_base)
+        result = github.dl_delete(dl_base)
         print("Result: %s" % json.dumps(result, indent=2))
 
 
