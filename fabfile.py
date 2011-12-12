@@ -40,16 +40,21 @@ class GitHub(object):
         val = local("git config github.%s" % key, capture=True).strip()
         return val if val else None
 
-    def api_op(self, path, method="GET"):
+    def api_op(self, path, method="GET", data=None):
         """Perform a GitHub API request and decode to JSON."""
-        # Params: URL, auth string.
-        url_path = "/".join((self.api_base, path.lstrip("/"))) \
-            if path else self.api_base
+        # Params: URL, data, auth string.
+        url_path = self.api_base
+        if path:
+            url_path = "/".join((self.api_base, path.lstrip("/")))
+        if not isinstance(data, basestring):
+            data = json.dumps(data)
         auth_str = base64.encodestring(
             "%s:%s" % (self.user, self.password))[:-1]
 
-        req = Request(url_path, method=method)
+        req = Request(url_path, method=method, data=data)
         req.add_header("Authorization", "Basic %s" % auth_str)
+        if data:
+            req.add_header("Content-Type", "application/json")
 
         results = urllib2.urlopen(req).read()
         return json.loads(results) if results else {}
@@ -58,13 +63,35 @@ class GitHub(object):
         """Retrieve current GitHub downloads."""
         return self.api_op("repos/%s/%s/downloads" % (self.user, self.repo))
 
-    def dl_delete(self, dl_obj):
+    def downloads_del(self, dl_obj):
         """Delete a download file."""
         return self.api_op(
             "repos/%s/%s/downloads/%s" % (self.user, self.repo, dl_obj['id']),
             method="DELETE",
         )
 
+    def downloads_put(self, file_name, git_hash, desc=None):
+        """Upload a download file."""
+
+        desc = desc if desc else \
+            ("Pre-packaged sphinx theme for %s." % git_hash)
+        file_size = os.path.getsize(file_name)
+        data = {
+            "name": file_name,
+            "size": file_size,
+            "description": "Latest release",
+            #"content_type": "text/plain" (Optional)
+        }
+
+        # Part 1: Create the resource)
+        result = self.api_op(
+            "repos/%s/%s/downloads" % (self.user, self.repo),
+            method="POST",
+            data=data,
+        )
+
+        # Part 2: Upload file to s3
+        print(result)
 
 @task
 def clean():
@@ -117,7 +144,15 @@ def upload():
         print("Found hashed zip file already. Skipping")
         return
 
-    if dl_base is not None:
-        print("Removing current base zip file.")
-        result = github.dl_delete(dl_base)
-        print("Result: %s" % json.dumps(result, indent=2))
+    # if dl_base is not None:
+    #     print("Removing current base zip file.")
+    #     result = github.downloads_del(dl_base)
+    #     print("Result: %s" % json.dumps(result, indent=2))
+    #
+    # print("Upload new base zip file.")
+    # result = github.downloads_put(dl_base)
+    # print("Result: %s" % json.dumps(result, indent=2))
+
+    print("Upload new hashed zip file.")
+    result = github.downloads_put(hash_zip, git_hash)
+    print("Result: %s" % json.dumps(result, indent=2))
