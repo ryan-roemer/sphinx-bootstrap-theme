@@ -2,6 +2,7 @@
 
 import os
 import json
+import urllib
 import urllib2
 
 from fabric.api import local, lcd, abort
@@ -41,9 +42,16 @@ class GitHub(object):
         """Perform a GitHub API request and decode to JSON."""
         url_path = "/".join((self.api_base, path.lstrip("/"))) \
             if path else self.api_base
-        req = Request(url_path, method=method)
-        url_obj = urllib2.urlopen(req)
-        results = url_obj.read()
+        data = urllib.urlencode({
+            'login': self.user,
+            'token': self.token,
+        })
+
+        req = Request(url_path, method=method, data=data)
+        print(req.get_full_url())
+        print(req.get_data())
+
+        results = urllib2.urlopen(req).read()
         return json.loads(results) if results else {}
 
     def downloads(self):
@@ -56,8 +64,6 @@ class GitHub(object):
             "repos/%s/%s/downloads/%s" % (self.user, self.repo, dl_obj['id']),
             method="DELETE",
         )
-
-
 
 
 @task
@@ -91,31 +97,27 @@ def downloads():
         print("%(created_at)s: %(name)s (%(id)s)" % download)
 
 
-@task
-def upload():
-    """Upload new zip files."""
-    git_hash = local("git rev-parse HEAD", capture=True).strip()
-    base_zip = "bootstrap.zip"
-    hash_zip = "bootstrap-%s.zip" % git_hash
-
-    if not (os.path.exists(base_zip) and os.path.exists(hash_zip)):
-        abort("Did not find current zip files. Please create.")
-
-    # Check if existing downloads
-    github = GitHub()
-    dl_dict = dict((x['name'], x) for x in github.downloads())
-    dl_hash = dl_dict.get(hash_zip)
-    dl_base = dl_dict.get(base_zip)
-
-    if dl_hash is not None:
-        print("Found hashed zip file already. Skipping")
-        return
-
-    if dl_base is not None:
-        print("Removing current base zip file.")
-        result = github.dl_delete(dl_base)
-        print("Result: %s" % json.dumps(result, indent=2))
-
-
-
-
+# @task
+# def upload():
+#     """Upload new zip files."""
+#     git_hash = local("git rev-parse HEAD", capture=True).strip()
+#     base_zip = "bootstrap.zip"
+#     hash_zip = "bootstrap-%s.zip" % git_hash
+# 
+#     if not (os.path.exists(base_zip) and os.path.exists(hash_zip)):
+#         abort("Did not find current zip files. Please create.")
+# 
+#     # Check if existing downloads
+#     github = GitHub()
+#     dl_dict = dict((x['name'], x) for x in github.downloads())
+#     dl_hash = dl_dict.get(hash_zip)
+#     dl_base = dl_dict.get(base_zip)
+# 
+#     if dl_hash is not None:
+#         print("Found hashed zip file already. Skipping")
+#         return
+# 
+#     if dl_base is not None:
+#         print("Removing current base zip file.")
+#         result = github.dl_delete(dl_base)
+#         print("Result: %s" % json.dumps(result, indent=2))
