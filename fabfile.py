@@ -7,9 +7,16 @@ import urllib2
 from fabric.api import local, lcd, abort
 from fabric.decorators import task
 
-GH_USER = "ryan-roemer"
+
+def gh_config(key):
+    """Get a .gitconfig GH value."""
+    val = local("git config github.%s" % key, capture=True).strip()
+    return val if val else None
+
+
+GH_USER = gh_config("user")
+GH_TOKEN = gh_config("token")
 GH_REPO = "sphinx-bootstrap-theme"
-GH_TOKEN = os.environ.get("GITHUB_TOKEN", None)
 GH_BASE = "https://api.github.com"
 
 
@@ -52,9 +59,10 @@ def bundle():
 def gh_op(path, method="GET"):
     """Perform a GitHub API request and decode to JSON."""
     url_path = "/".join((GH_BASE, path.lstrip("/"))) if path else GH_BASE
-    req = Request(url_path)
+    req = Request(url_path, method=method)
     url_obj = urllib2.urlopen(req)
-    return json.loads(url_obj.read())
+    results = url_obj.read()
+    return json.loads(results) if results else {}
 
 
 def gh_downloads():
@@ -62,9 +70,9 @@ def gh_downloads():
     return gh_op("repos/%s/%s/downloads" % (GH_USER, GH_REPO))
 
 
-def gh_dl_delete(dl_id):
+def gh_dl_delete(dl_obj):
     """Delete a download file."""
-    return gh_op("repos/%s/%s/downloads/%s" % (GH_USER, GH_REPO, dl_id),
+    return gh_op("repos/%s/%s/downloads/%s" % (GH_USER, GH_REPO, dl_obj['id']),
                  method="DELETE")
 
 
@@ -73,7 +81,7 @@ def downloads():
     """Verify GitHub downloads."""
     print("Downloads:")
     for download in gh_downloads():
-        print("%(created_at)s: %(name)s" % download)
+        print("%(created_at)s: %(name)s (%(id)s)" % download)
 
 
 @task
@@ -95,7 +103,10 @@ def upload():
         print("Found hashed zip file already. Skipping")
         return
 
-    print("Removing current base zip file.")
+    if dl_base is not None:
+        print("Removing current base zip file.")
+        result = gh_dl_delete(dl_base)
+        print("Result: %s" % json.dumps(result, indent=2))
 
 
 
