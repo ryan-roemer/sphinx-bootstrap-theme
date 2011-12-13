@@ -65,20 +65,6 @@ class GitHub(object):
         results = urllib2.urlopen(req).read()
         return json.loads(results) if results else {}
 
-    def s3_op(self, path, method="POST", data=None):
-        """Perform S3 upload file operation."""
-        from poster.encode import multipart_encode
-        from poster.streaminghttp import register_openers
-
-        # Register poster.
-        register_openers()
-
-        # Update data dictionary, and encode.
-        data_enc, headers = multipart_encode(data)
-
-        req = Request(path, method=method, headers=headers, data=data_enc)
-        return urllib2.urlopen(req)
-
     def downloads(self):
         """Retrieve current GitHub downloads."""
         return self.api_op("repos/%s/%s/downloads" % (self.user, self.repo))
@@ -98,7 +84,7 @@ class GitHub(object):
 
         # Part 1: Create the resource.
         file_size = os.path.getsize(file_name)
-        put_dict = self.api_op(
+        meta = self.api_op(
             "repos/%s/%s/downloads" % (self.user, self.repo),
             method="POST",
             headers={
@@ -112,26 +98,24 @@ class GitHub(object):
             }),
         )
 
-        # Part 2: Upload file to s3
-        results = self.s3_op(
-            "https://github.s3.amazonaws.com/",
-            method="POST",
-            data=[
-                ('Content-Length', file_size),
-                ('key', put_dict['path']),
-                ('acl', put_dict['acl']),
-                ('success_action_status', 201),
-                ('Filename', put_dict['name']),
-                ('AWSAccessKeyId', put_dict['accesskeyid']),
-                ('Policy', put_dict['policy']),
-                ('Signature', put_dict['signature']),
-                ('file', open(file_name)),
-            ],
-        )
+        meta.update({
+            'file_path': file_name,
+        })
 
-        print(dir(results))
-        print(results)
-        return {"TODO": "TODO"}
+        # Part 2: Upload file to s3 (using shelled curl).
+        local("curl "
+              "-F \"key=%(path)s\" "
+              "-F \"acl=%(acl)s\" "
+              "-F \"success_action_status=201\" "
+              "-F \"Filename=%(name)s\" "
+              "-F \"AWSAccessKeyId=%(accesskeyid)s\" "
+              "-F \"Policy=%(policy)s\" "
+              "-F \"Signature=%(signature)s\" "
+              "-F \"Content-Type=%(mime_type)s\" "
+              "-F \"file=@%(file_path)s\" "
+              "https://github.s3.amazonaws.com/" % meta)
+
+        return meta
 
 
 @task
