@@ -35,9 +35,14 @@ class GitHub(object):
         self.api_base = "https://api.github.com"
 
     @classmethod
-    def _fmt_headers(cls, headers):
+    def _add_headers(cls, req, headers=None):
         """Format headers."""
-        return headers if headers else {}
+        if headers:
+            if isinstance(headers, dict):
+                headers = headers.iteritems()
+
+            for key, val in headers:
+                req.add_header(key, val)
 
     @classmethod
     def config(cls, key):
@@ -45,7 +50,7 @@ class GitHub(object):
         val = local("git config github.%s" % key, capture=True).strip()
         return val if val else None
 
-    def api_op(self, path, method="GET", data=None, headers=None):
+    def api_op(self, path, method="GET", headers=None, data=None):
         """Perform a GitHub API request and decode to JSON."""
         # Params: URL, data, auth string.
         url_path = self.api_base
@@ -53,28 +58,20 @@ class GitHub(object):
             url_path = "/".join((self.api_base, path.lstrip("/")))
         auth_str = base64.encodestring(
             "%s:%s" % (self.user, self.password))[:-1]
-        if isinstance(headers, dict):
-            headers = headers.iteritems()
 
-        req = Request(url_path,
-                      method=method,
-                      headers=self._fmt_headers(headers),
-                      data=data)
+        req = Request(url_path, method=method, data=data)
+        self._add_headers(req, headers)
         req.add_header("Authorization", "Basic %s" % auth_str)
 
-        results = urllib2.urlopen(req, data=data).read()
+        results = urllib2.urlopen(req).read()
         return json.loads(results) if results else {}
 
-    def s3_op(self, path, file_name, method="POST", data=None, headers=None):
+    def s3_op(self, path, file_name, method="POST", headers=None, data=None):
         """Perform S3 upload operation."""
+        req = Request(path, method=method, data=data)
+        self._add_headers(req, headers)
 
-        req = Request(path,
-                      method=method,
-                      headers=self._fmt_headers(headers),
-                      data=data)
-        print(req)
-
-        raise Exception("TODO")
+        return urllib2.urlopen(req)
 
     def downloads(self):
         """Retrieve current GitHub downloads."""
@@ -90,37 +87,39 @@ class GitHub(object):
     def downloads_put(self, file_name, git_hash, desc=None):
         """Upload a download file."""
 
-        desc = desc if desc else \
-            ("Pre-packaged sphinx theme for %s." % git_hash)
-        file_size = os.path.getsize(file_name)
-        data = {
-            "name": file_name,
-            "size": file_size,
-            "description": "Latest release",
-            #"content_type": "text/plain" (Optional)
-        }
+        if not desc:
+            desc = "Pre-packaged sphinx theme for %s." % git_hash
 
         # Part 1: Create the resource)
         put_dict = self.api_op(
             "repos/%s/%s/downloads" % (self.user, self.repo),
             method="POST",
-            data=json.dumps(data),
+            headers={
+                'Content-Type': "application/json",
+            },
+            data=json.dumps({
+                "name": file_name,
+                "size": os.path.getsize(file_name),
+                "description": "Latest release",
+                #"content_type": "text/plain" (Optional)
+            }),
         )
 
         # Part 2: Upload file to s3
         results = self.s3_op(
             "https://github.s3.amazonaws.com/",
+            file_name,
             method="POST",
-            data={
-                'key': put_dict['path'],
-                'acl': put_dict['acl'],
-                'success_action_status': 201,
-                'Filename': put_dict['name'],
-                'AWSAccessKeyId': put_dict['accesskeyid'],
-                'Policy': put_dict['policy'],
-                'Signature': put_dict['signature'],
-                'Content-Type': put_dict['mime_type'],
-            },
+            headers=[
+                ('key', put_dict['path']),
+                ('acl', put_dict['acl']),
+                ('success_action_status', 201),
+                ('Filename', put_dict['name']),
+                ('AWSAccessKeyId', put_dict['accesskeyid']),
+                ('Policy', put_dict['policy']),
+                ('Signature', put_dict['signature']),
+                ('Content-Type', put_dict['mime_type']),
+            ],
         )
 
         print(dir(results))
