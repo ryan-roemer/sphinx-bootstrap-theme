@@ -35,37 +35,44 @@ class GitHub(object):
         self.api_base = "https://api.github.com"
 
     @classmethod
+    def _fmt_headers(cls, headers):
+        """Format headers."""
+        return headers if headers else {}
+
+    @classmethod
     def config(cls, key):
         """Get a .gitconfig GH value."""
         val = local("git config github.%s" % key, capture=True).strip()
         return val if val else None
 
-    def api_op(self, path, method="GET", data=None):
+    def api_op(self, path, method="GET", data=None, headers=None):
         """Perform a GitHub API request and decode to JSON."""
         # Params: URL, data, auth string.
         url_path = self.api_base
         if path:
             url_path = "/".join((self.api_base, path.lstrip("/")))
-        if not isinstance(data, basestring):
-            data = json.dumps(data)
         auth_str = base64.encodestring(
             "%s:%s" % (self.user, self.password))[:-1]
+        if isinstance(headers, dict):
+            headers = headers.iteritems()
 
-        req = Request(url_path, method=method)
+        req = Request(url_path,
+                      method=method,
+                      headers=self._fmt_headers(headers),
+                      data=data)
         req.add_header("Authorization", "Basic %s" % auth_str)
-        if data:
-            req.add_header("Content-Type", "application/json")
 
         results = urllib2.urlopen(req, data=data).read()
         return json.loads(results) if results else {}
 
-    def s3_op(self, path, file_name, headers):
+    def s3_op(self, path, file_name, method="POST", data=None, headers=None):
         """Perform S3 upload operation."""
 
-        req = Request(url_path, method=method, data=data)
-        req.add_header("Authorization", "Basic %s" % auth_str)
-        if data:
-            req.add_header("Content-Type", "application/json")
+        req = Request(path,
+                      method=method,
+                      headers=self._fmt_headers(headers),
+                      data=data)
+        print(req)
 
         raise Exception("TODO")
 
@@ -97,7 +104,7 @@ class GitHub(object):
         put_dict = self.api_op(
             "repos/%s/%s/downloads" % (self.user, self.repo),
             method="POST",
-            data=data,
+            data=json.dumps(data),
         )
 
         # Part 2: Upload file to s3
