@@ -90,7 +90,8 @@ class GitHub(object):
         if not desc:
             desc = "Pre-packaged sphinx theme for %s." % git_hash
 
-        # Part 1: Create the resource)
+        # Part 1: Create the resource.
+        file_size = os.path.getsize(file_name)
         put_dict = self.api_op(
             "repos/%s/%s/downloads" % (self.user, self.repo),
             method="POST",
@@ -99,7 +100,7 @@ class GitHub(object):
             },
             data=json.dumps({
                 "name": file_name,
-                "size": os.path.getsize(file_name),
+                "size": file_size,
                 "description": "Latest release",
                 #"content_type": "text/plain" (Optional)
             }),
@@ -111,6 +112,7 @@ class GitHub(object):
             file_name,
             method="POST",
             headers=[
+                ('Content-Length', file_size),
                 ('key', put_dict['path']),
                 ('acl', put_dict['acl']),
                 ('success_action_status', 201),
@@ -118,8 +120,9 @@ class GitHub(object):
                 ('AWSAccessKeyId', put_dict['accesskeyid']),
                 ('Policy', put_dict['policy']),
                 ('Signature', put_dict['signature']),
-                ('Content-Type', put_dict['mime_type']),
+                ('file', open(file_name)),
             ],
+            data=open(file_name),
         )
 
         print(dir(results))
@@ -158,35 +161,35 @@ def downloads():
         print("%(created_at)s: %(name)s (%(id)s)" % download)
 
 
-@task
-def upload():
-    """Upload new zip files."""
-    git_hash = local("git rev-parse HEAD", capture=True).strip()
-    base_zip = "bootstrap.zip"
-    hash_zip = "bootstrap-%s.zip" % git_hash
-
-    if not (os.path.exists(base_zip) and os.path.exists(hash_zip)):
-        abort("Did not find current zip files. Please create.")
-
-    # Check if existing downloads
-    github = GitHub()
-    dl_dict = dict((x['name'], x) for x in github.downloads())
-    dl_hash = dl_dict.get(hash_zip)
-    dl_base = dl_dict.get(base_zip)
-
-    if dl_hash is not None:
-        print("Found hashed zip file already. Skipping")
-        return
-
-    # if dl_base is not None:
-    #     print("Removing current base zip file.")
-    #     result = github.downloads_del(dl_base)
-    #     print("Result: %s" % json.dumps(result, indent=2))
-    #
-    # print("Upload new base zip file.")
-    # result = github.downloads_put(dl_base)
-    # print("Result: %s" % json.dumps(result, indent=2))
-
-    print("Upload new hashed zip file.")
-    result = github.downloads_put(hash_zip, git_hash)
-    print("Result: %s" % json.dumps(result, indent=2))
+# @task
+# def upload():
+#     """Upload new zip files."""
+#     git_hash = local("git rev-parse HEAD", capture=True).strip()
+#     base_zip = "bootstrap.zip"
+#     hash_zip = "bootstrap-%s.zip" % git_hash
+# 
+#     if not (os.path.exists(base_zip) and os.path.exists(hash_zip)):
+#         abort("Did not find current zip files. Please create.")
+# 
+#     # Check if existing downloads
+#     github = GitHub()
+#     dl_dict = dict((x['name'], x) for x in github.downloads())
+#     dl_hash = dl_dict.get(hash_zip)
+#     dl_base = dl_dict.get(base_zip)
+# 
+#     if dl_hash is not None:
+#         print("Found hashed zip file already. Skipping")
+#         return
+# 
+#     # if dl_base is not None:
+#     #     print("Removing current base zip file.")
+#     #     result = github.downloads_del(dl_base)
+#     #     print("Result: %s" % json.dumps(result, indent=2))
+#     #
+#     # print("Upload new base zip file.")
+#     # result = github.downloads_put(dl_base)
+#     # print("Result: %s" % json.dumps(result, indent=2))
+# 
+#     print("Upload new hashed zip file.")
+#     result = github.downloads_put(hash_zip, git_hash)
+#     print("Result: %s" % json.dumps(result, indent=2))
