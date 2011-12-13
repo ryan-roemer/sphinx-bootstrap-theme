@@ -175,7 +175,7 @@ def upload():
         print("Result: %s" % json.dumps(result, indent=2))
 
     print("Upload new base zip file.")
-    result = github.downloads_put(dl_base, git_hash)
+    result = github.downloads_put(base_zip, git_hash)
     print("\nResult: %s" % json.dumps(result, indent=2))
 
     print("Upload new hashed zip file.")
