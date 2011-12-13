@@ -93,7 +93,7 @@ class GitHub(object):
             data=json.dumps({
                 "name": file_name,
                 "size": file_size,
-                "description": "Latest release",
+                "description": desc,
                 #"content_type": "text/plain" (Optional)
             }),
         )
@@ -169,15 +169,15 @@ def upload():
         print("Found hashed zip file already. Skipping")
         return
 
-    # if dl_base is not None:
-    #     print("Removing current base zip file.")
-    #     result = github.downloads_del(dl_base)
-    #     print("Result: %s" % json.dumps(result, indent=2))
-    #
-    # print("Upload new base zip file.")
-    # result = github.downloads_put(dl_base)
-    # print("Result: %s" % json.dumps(result, indent=2))
+    if dl_base is not None:
+        print("Removing current base zip file.")
+        result = github.downloads_del(dl_base)
+        print("Result: %s" % json.dumps(result, indent=2))
+
+    print("Upload new base zip file.")
+    result = github.downloads_put(dl_base, git_hash)
+    print("\nResult: %s" % json.dumps(result, indent=2))
 
     print("Upload new hashed zip file.")
     result = github.downloads_put(hash_zip, git_hash)
-    print("Result: %s" % json.dumps(result, indent=2))
+    print("\nResult: %s" % json.dumps(result, indent=2))
