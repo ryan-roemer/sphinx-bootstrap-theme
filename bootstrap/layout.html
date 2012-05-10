@@ -35,11 +35,11 @@
 <script type="text/javascript">
 function patchToc() {
   alert("Me estoy ejecutando");
-  var listitems = []
 
   $(".dropdown-menu").each(function() {
-    $(this).find("ul").each(function(){
-        $(this).addClass('unstyled');
+    $(this).find("ul").each(function(index, item){
+      var $item = $(item);
+      $item.addClass('unstyled');
     });
     $(this).find("li").each(function() {
       $(this).parent().prepend(this);
