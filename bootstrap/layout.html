@@ -41,7 +41,7 @@ function patchToc() {
       $item.addClass('unstyled');
     });
     $(this).find("li").each(function() {
-      $(this).parent().prepend(this);
+      $(this).parent().append(this);
     });
   });
 }
