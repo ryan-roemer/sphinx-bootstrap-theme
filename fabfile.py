@@ -125,9 +125,15 @@ def clean():
 
 
 @task
-def bundle():
-    """Create zip file upload bundles."""
-    git_hash = local("git rev-parse HEAD", capture=True).strip()
+def bundle(tag=False):
+    """Create zip file upload bundles.
+
+    @param tag  Use git tag instead of hash?
+    """
+    suffix_cmd = "git describe --always --tag" if tag in (True, "True") else \
+                 "git rev-parse HEAD"
+    suffix = local(suffix_cmd, capture=True).strip()
+    print suffix
 
     print("Cleaning old build files.")
     clean()
