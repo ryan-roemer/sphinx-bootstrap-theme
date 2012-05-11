@@ -30,10 +30,13 @@ configuration
         $ cd /path/to/_themes
         $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap.zip
 
-      .. note:: The zipfiles have a hash indicating build origin. The
-        "bootstrap.zip" is a copy of the most recent hashed build. If you do
-        get an older hash-named zipfile, you *must* rename it to the theme
-        name ("bootstrap.zip") for Sphinx to properly pick it up.
+      In addition to the "current" release, the GitHub zipfiles have either git
+      hash releases (for development builds) or tags for official tagged
+      releases. E.g.::
+
+        bootstrap.zip
+        bootstrap-v0.0.1.zip
+        bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
 
 3. Edit your configuration file to point to the bootstrap theme::
 
