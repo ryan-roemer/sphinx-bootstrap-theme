@@ -4,7 +4,7 @@
 
 v0.0.2
 ======
-* Update to Bootstrap v2.0. (`@oscarp <https://github.com/oscarcp>`_)
+* Update to Bootstrap v2.0. (`@oscarcp <https://github.com/oscarcp>`_)
 
 v0.0.1
 ======
