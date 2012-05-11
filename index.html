@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Bootstrap Theme Demo &mdash; My Project 0.0.1 documentation</title>
+    <title>Bootstrap Theme Demo &mdash; Demo 0.0.2 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.1',
+        VERSION:     '0.0.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,9 +26,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-dropdown.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-scrollspy.js"></script>
-    <link rel="top" title="My Project 0.0.1 documentation" href="#" />
+    <script type="text/javascript" src="_static/bootstrap.js"></script>
+    <link rel="top" title="Demo 0.0.2 documentation" href="#" />
     <link rel="next" title="Sphinx Bootstrap Theme" href="README.html" />
 <script type="text/javascript">
 (function () {
@@ -40,9 +39,8 @@
    * @param $span: Span containing nested UL's to mutate.
    * @param minLevel: Starting level for nested lists. (1: global, 2: local).
    */
-  var patchToc = function ($span, minLevel) {
-    var $tocList = $("<ul/>").attr('class', "dropdown-menu"),
-      findA;
+  var patchToc = function ($ul, minLevel) {
+    var findA;
 
     // Find all a "internal" tags, traversing recursively.
     findA = function ($elem, level) {
@@ -53,13 +51,12 @@
       $items.each(function (index, item) {
         var $item = $(item),
           tag = item.tagName.toLowerCase(),
-          pad = 10 + ((level - minLevel) * 10);
+          pad = 15 + ((level - minLevel) * 10);
 
         if (tag === 'a' && level >= minLevel) {
           // Add to existing padding.
           $item.css('padding-left', pad + "px");
-          // Add list element.
-          $tocList.append($("<li/>").append($item));
+          console.log(level, $item, 'padding-left', pad + "px");
         } else if (tag === 'ul') {
           // Recurse.
           findA($item, level + 1);
@@ -67,20 +64,28 @@
       });
     };
 
-    // Start construction and return.
-    findA($span);
-
-    // Wipe out old list and patch in new one.
-    return $span.empty("ul").append($tocList);
+    console.log("HERE");
+    findA($ul);
   };
 
   $(document).ready(function () {
-    // Patch the global and local TOC's to be bootstrap-compliant.
-    patchToc($("span.globaltoc"), 1);
-    patchToc($("span.localtoc"), 2);
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
 
-    // Activate.
-    $('#topbar').dropdown();
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
   });
 }());
 </script>
@@ -88,25 +93,25 @@
   </head>
   <body>
   
-  <div class="topbar" data-scrollspy="scrollspy" >
-    <div class="topbar-inner">
-      <div class="container">
+  <div id="navbar" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
         <a class="brand" href="#">Demo</a>
-        <ul class="nav">
-          
-            <li class="dropdown" data-dropdown="dropdown">
-  <a href="#"
-     class="dropdown-toggle">Site</a>
-  <span class="globaltoc"><ul>
+        <span class="navbar-text pull-left"><b>0.0.2</b></span>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+            
+              <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">Sphinx Bootstrap Theme</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a></li>
 </ul>
-</span>
+</ul>
 </li>
-            <li class="dropdown" data-dropdown="dropdown">
-  <a href="#"
-     class="dropdown-toggle">Page</a>
-  <span class="localtoc"><ul>
+              <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"><ul>
 <li><a class="reference internal" href="#">Bootstrap Theme Demo</a><ul>
 <li><a class="reference internal" href="#contents">Contents</a><ul>
 </ul>
@@ -115,30 +120,40 @@
 </ul>
 </li>
 </ul>
-</span>
+</ul>
+  <!--<span class="localtoc"><ul>
+<li><a class="reference internal" href="#">Bootstrap Theme Demo</a><ul>
+<li><a class="reference internal" href="#contents">Contents</a><ul>
+</ul>
 </li>
-          
-          
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</span>-->
+</li>
             
+            
+              
   <li><a href="README.html"
          title="next chapter">Sphinx Bootstrap Theme &raquo;</a></li>
-          
-          
             
+            
+              
   <li><a href="_sources/index.txt"
          rel="nofollow">Source</a></li>
-          
-        </ul>
-        <ul class="nav secondary-nav">
+            
+          </ul>
           
             
-<form class="pull-left" action="search.html" method="get">
+<form class="navbar-search pull-right" style="margin-bottom:-3px;" action="search.html" method="get">
   <input type="text" name="q" placeholder="Search" />
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
           
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -167,6 +182,7 @@ details and installation instructions.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-2">v0.0.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-1">v0.0.1</a></li>
 </ul>
 </li>
@@ -188,7 +204,7 @@ details and installation instructions.</p>
   <div class="container">
     <p class="pull-right"><a href="#">Back to top</a></p>
     <p>
-        &copy; Copyright 2011, Ryan Roemer.<br/>
+        &copy; Copyright 2011-2012, Ryan Roemer.<br/>
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.<br/>
     </p>
   </div>

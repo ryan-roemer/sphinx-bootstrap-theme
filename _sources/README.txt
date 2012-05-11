@@ -75,14 +75,8 @@ bug filings for the project are most welcome.
 
 Bootstrap
 ---------
-The theme uses the following files from Twitter Bootstrap v1.4.0::
-
-    bootstrap-dropdown.js
-    bootstrap-scrollspy.js
-    bootstrap.css
-
-You can drop different versions in your Sphinx "_static" directory to
-override these files.
+The theme uses Twitter Bootstrap v2.0. You can override any static JS/CSS files
+by dropping different versions in your Sphinx "_static" directory.
 
 
 Licenses
