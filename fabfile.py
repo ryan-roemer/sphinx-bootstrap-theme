@@ -76,11 +76,11 @@ class GitHub(object):
             method="DELETE",
         )
 
-    def downloads_put(self, file_name, git_hash, desc=None):
+    def downloads_put(self, file_name, suffix, desc=None):
         """Upload a download file."""
 
         if not desc:
-            desc = "Pre-packaged sphinx theme for %s." % git_hash
+            desc = "Pre-packaged sphinx theme for %s." % suffix
 
         # Part 1: Create the resource.
         file_size = os.path.getsize(file_name)
@@ -124,16 +124,23 @@ def clean():
     local("rm -rf bootstrap-*.zip bootstrap.zip")
 
 
+def get_suffix(tag=False):
+    """Get build suffix.
+
+    @param tag  Use git tag instead of hash?
+    """
+    suffix_cmd = "git describe --always --tag" if tag in (True, "True") else \
+                 "git rev-parse HEAD"
+    return local(suffix_cmd, capture=True).strip()
+
+
 @task
 def bundle(tag=False):
     """Create zip file upload bundles.
 
     @param tag  Use git tag instead of hash?
     """
-    suffix_cmd = "git describe --always --tag" if tag in (True, "True") else \
-                 "git rev-parse HEAD"
-    suffix = local(suffix_cmd, capture=True).strip()
-    print suffix
+    suffix = get_suffix(tag)
 
     print("Cleaning old build files.")
     clean()
@@ -141,7 +148,7 @@ def bundle(tag=False):
     print("Bundling new files.")
     with lcd("bootstrap"):
         local("zip -r ../bootstrap.zip .")
-    local("cp bootstrap.zip bootstrap-%s.zip" % git_hash)
+    local("cp bootstrap.zip bootstrap-%s.zip" % suffix)
 
     print("Verifying contents.")
     local("unzip -l bootstrap.zip")
@@ -156,23 +163,26 @@ def downloads():
 
 
 @task
-def upload():
-    """Upload new zip files."""
-    git_hash = local("git rev-parse HEAD", capture=True).strip()
-    base_zip = "bootstrap.zip"
-    hash_zip = "bootstrap-%s.zip" % git_hash
+def upload(tag=False):
+    """Upload new zip files.
 
-    if not (os.path.exists(base_zip) and os.path.exists(hash_zip)):
+    @param tag  Use git tag instead of hash?
+    """
+    suffix = get_suffix(tag)
+    base_zip = "bootstrap.zip"
+    suffix_zip = "bootstrap-%s.zip" % suffix
+
+    if not (os.path.exists(base_zip) and os.path.exists(suffix_zip)):
         abort("Did not find current zip files. Please create.")
 
     # Check if existing downloads
     github = GitHub()
     dl_dict = dict((x['name'], x) for x in github.downloads())
-    dl_hash = dl_dict.get(hash_zip)
+    dl_suffix = dl_dict.get(suffix_zip)
     dl_base = dl_dict.get(base_zip)
 
-    if dl_hash is not None:
-        print("Found hashed zip file already. Skipping")
+    if dl_suffix is not None:
+        print("Found suffixed zip file already. Skipping")
         return
 
     if dl_base is not None:
@@ -181,9 +191,9 @@ def upload():
         print("Result: %s" % json.dumps(result, indent=2))
 
     print("Upload new base zip file.")
-    result = github.downloads_put(base_zip, git_hash)
+    result = github.downloads_put(base_zip, suffix)
     print("\nResult: %s" % json.dumps(result, indent=2))
 
-    print("Upload new hashed zip file.")
-    result = github.downloads_put(hash_zip, git_hash)
+    print("Upload new suffixed zip file.")
+    result = github.downloads_put(suffix_zip, suffix)
     print("\nResult: %s" % json.dumps(result, indent=2))
