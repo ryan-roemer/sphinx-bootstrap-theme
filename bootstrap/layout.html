@@ -1,14 +1,16 @@
 {% extends "basic/layout.html" %}
 {% set script_files = script_files + ['_static/bootstrap.js'] %}
-{% set css_files = ['_static/bootstrap.css'] + css_files %}
+{% set css_files = ['_static/bootstrap.css', '_static/bootstrap-sphinx.css'] + css_files %}
 
 {# Sidebar: Rework into our Boostrap nav section. #}
 {% macro navBar() %}
   <div id="navbar" class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container-fluid">
-        <a class="brand" href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a>
+        <a class="brand" href="{{ pathto(master_doc) }}">{{ project|e }}</a>
+        <span class="navbar-text pull-left"><b>{{ version|e }}</b></span>
           <ul class="nav">
+            <li class="divider-vertical"></li>
             {% block sidebartoc %}
               {% include "globaltoc.html" %}
               {% include "localtoc.html" %}
@@ -20,10 +22,9 @@
               {% include "sourcelink.html" %}
             {% endblock %}
           </ul>
-          <div class="navbar-form pull-right">
-            {% block sidebarsearch %}
-              {% include "searchbox.html" %}
-            {% endblock %}
+          {% block sidebarsearch %}
+            {% include "searchbox.html" %}
+          {% endblock %}
           </ul>
         </div>
       </div>
@@ -34,8 +35,6 @@
 {%- block extrahead %}
 <script type="text/javascript">
 function patchToc() {
-  alert("Me estoy ejecutando");
-
   $(".dropdown-menu").each(function() {
     $(this).find("ul").each(function(index, item){
       var $item = $(item);
