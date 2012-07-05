@@ -1,0 +1,22 @@
+/* Example CSS changes
+
+To enable this, make sure you have the following in your conf.py file:
+
+    html_static_path = ["_static"]
+
+And add a "_templates/layout.html" file containing the following lines:
+
+    {% extends "!layout.html" %}
+    {% set css_files = css_files + ['_static/default.css'] %}
+
+ */
+
+/* Make the paragraphs and links in the main white content section larger. */
+.container p,
+.container a {
+    font-size: 1.1em;
+}
+
+/* From here, just use Safari / Chrome's "inspect element" context menu to
+   see what CSS controls the elements you want to change styles on.
+ */
