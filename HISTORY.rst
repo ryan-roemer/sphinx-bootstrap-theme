@@ -2,6 +2,10 @@
  History
 =========
 
+v0.0.3
+======
+* Update to Bootstrap v2.2.1.
+
 v0.0.2
 ======
 * Update to Bootstrap v2.0. (`@oscarcp <https://github.com/oscarcp>`_)
