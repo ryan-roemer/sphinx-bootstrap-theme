@@ -1,23 +1,23 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Search &mdash; Demo 0.0.2 documentation</title>
+    <title>Search &mdash; Demo 0.0.3 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap-2.2.1.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap-responsive-2.2.1.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.2',
+        VERSION:     '0.0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/searchtools.js"></script>
-    <script type="text/javascript" src="_static/bootstrap.js"></script>
-    <link rel="top" title="Demo 0.0.2 documentation" href="index.html" />
+    <script type="text/javascript" src="_static/js/bootstrap-2.2.1.min.js"></script>
+    <link rel="top" title="Demo 0.0.3 documentation" href="index.html" />
   <script type="text/javascript">
     jQuery(function() { Search.loadIndex("searchindex.js"); });
   </script>
@@ -55,20 +55,22 @@
       $items.each(function (index, item) {
         var $item = $(item),
           tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
+          $childrenLi = $item.children('li'),
+          $parentLi = $($item.parent('li'), $item.parent().parent('li'));
 
-        if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
-        } else if (tag === 'ul') {
-          // Recurse.
-          findA($item, level + 1);
+        // Add dropdowns if more children and above minimum level.
+        if (tag === 'ul' && level >= minLevel && $childrenLi.length > 0) {
+          $parentLi
+            .addClass('dropdown-submenu')
+            .children('a').first().attr('tabindex', -1)
+
+          $item.addClass('dropdown-menu');
         }
+
+        findA($item, level + 1);
       });
     };
 
-    console.log("HERE");
     findA($ul);
   };
 
@@ -85,8 +87,15 @@
     });
 
     // Patch in level.
-    patchToc($("ul.globaltoc"), 2);
+    //patchToc($("ul.globaltoc"), 1);
     patchToc($("ul.localtoc"), 2);
+
+    // Add divider to local TOC if more children after.
+    if ($("ul.localtoc > ul > li > ul li").length > 0) {
+      $("ul.localtoc > ul > li > a")
+        .first()
+        .after('<li class="divider"></li>');
+    }
 
     // Enable dropdown.
     $('.dropdown-toggle').dropdown();
@@ -98,15 +107,30 @@
   </head>
   <body>
   
-  <div id="navbar" class="navbar navbar-fixed-top">
+  <!-- <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"><img
+    style="position: absolute; top: 40px; right: 0; border: 0;"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+    alt="Fork me on GitHub"></a> -->
+
+<div class="container">
+  
+  <div id="navbar" class="navbar navbar-inverse">
     <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="brand" href="index.html">Demo</a>
-        <span class="navbar-text pull-left"><b>0.0.2</b></span>
-          <ul class="nav">
-            <li class="divider-vertical"></li>
-            
-              <li class="dropdown">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a class="brand" href="index.html">Demo</a>
+      <span class="navbar-text pull-left"><b>0.0.3</b></span>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          
+            <li class="dropdown">
   <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">Sphinx Bootstrap Theme</a></li>
@@ -114,35 +138,28 @@
 </ul>
 </ul>
 </li>
-              <li class="dropdown">
+            <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"></ul>
   <!--<span class="localtoc"></span>-->
 </li>
-            
-            
-              
-            
-            
-              
-            
-          </ul>
+          
           
             
           
-          </ul>
-        </div>
+          
+            
+          
+        </ul>
+
+        
+          
+        
       </div>
     </div>
   </div>
 
-  <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"><img 
-    style="position: absolute; top: 40px; right: 0; border: 0;"
-    src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" 
-    alt="Fork me on GitHub"></a>
-
-<div class="container">
-   
+  
   <h1 id="search-documentation">Search</h1>
   <div id="fallback" class="admonition warning">
   <script type="text/javascript">$('#fallback').hide();</script>

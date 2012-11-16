@@ -5,11 +5,6 @@
 * Sphinx stylesheet -- Twitter Bootstrap theme.
 */
 
-body {
-  padding-top: 52px;
-}
-
 .navbar .brand {
   color: #FFF;
-  text-shadow: #777 2px 2px 3px;
 }

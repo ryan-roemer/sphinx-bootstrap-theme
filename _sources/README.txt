@@ -35,7 +35,7 @@ configuration
       releases. E.g.::
 
         bootstrap.zip
-        bootstrap-v0.0.2.zip
+        bootstrap-v0.0.3.zip
         bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
 
 3. Edit your configuration file to point to the bootstrap theme::
@@ -75,8 +75,8 @@ bug filings for the project are most welcome.
 
 Bootstrap
 ---------
-The theme uses Twitter Bootstrap v2.0. You can override any static JS/CSS files
-by dropping different versions in your Sphinx "_static" directory.
+The theme uses Twitter Bootstrap v2.2.1. You can override any static JS/CSS
+files by dropping different versions in your Sphinx "_static" directory.
 
 
 Licenses
