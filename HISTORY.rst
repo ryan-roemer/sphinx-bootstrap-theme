@@ -5,6 +5,8 @@
 v0.0.3
 ======
 * Update to Bootstrap v2.2.1.
+* Switch to responsive CSS.
+* Make navbar menus do real dropdowns recursively.
 
 v0.0.2
 ======
