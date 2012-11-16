@@ -69,20 +69,13 @@
           $childrenLi = $item.children('li'),
           $parentLi = $($item.parent('li'), $item.parent().parent('li'));
 
-        if (tag === 'a') {
-          console.log("TODO HERE A", level, $item);
-        } else if (tag === 'ul' && level >= minLevel) {
-          // Recurse.
-          if (level > 0 && $childrenLi.length > 0) {
-            $parentLi
-              .addClass('dropdown-submenu')
-              .children('a').first().attr('tabindex', -1)
+        // Add dropdowns if more children and above minimum level.
+        if (tag === 'ul' && level >= minLevel && $childrenLi.length > 0) {
+          $parentLi
+            .addClass('dropdown-submenu')
+            .children('a').first().attr('tabindex', -1)
 
-            $item.addClass('dropdown-menu');
-
-            console.log("TODO HERE UL", level, $item, $childrenLi, $parentLi);
-
-          }
+          $item.addClass('dropdown-menu');
         }
 
         findA($item, level + 1);
