@@ -66,13 +66,24 @@
       $items.each(function (index, item) {
         var $item = $(item),
           tag = item.tagName.toLowerCase(),
-          pad = 15 + ((level - minLevel) * 10);
+          $childrenLi = $item.children('li'),
+          $parentLi = $($item.parent('li'), $item.parent().parent('li'));
 
         if (tag === 'a' && level >= minLevel) {
-          // Add to existing padding.
-          $item.css('padding-left', pad + "px");
+          console.log("TODO HERE A", level, $item);
         } else if (tag === 'ul') {
           // Recurse.
+          if (level > 0) {
+            $parentLi
+              .addClass('dropdown-submenu')
+              .children('a').first().attr('tabindex', -1)
+
+            $item.addClass('dropdown-menu');
+
+            console.log("TODO HERE UL", level, $item, $childrenLi, $parentLi);
+
+          }
+
           findA($item, level + 1);
         }
       });
