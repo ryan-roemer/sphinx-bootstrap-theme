@@ -1,32 +1,43 @@
 {% extends "basic/layout.html" %}
-{% set script_files = script_files + ['_static/bootstrap.js'] %}
-{% set css_files = ['_static/bootstrap.css', '_static/bootstrap-sphinx.css'] + css_files %}
+{% set script_files = script_files + ['_static/js/bootstrap-2.2.1.min.js'] %}
+{% set css_files = ['_static/css/bootstrap-2.2.1.min.css', '_static/css/bootstrap-responsive-2.2.1.min.css', '_static/bootstrap-sphinx.css'] + css_files %}
+
+{%- block doctype -%}
+<!DOCTYPE html>
+{%- endblock %}
 
 {# Sidebar: Rework into our Boostrap nav section. #}
 {% macro navBar() %}
-  <div id="navbar" class="navbar navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-inverse">
     <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="brand" href="{{ pathto(master_doc) }}">{{ project|e }}</a>
-        <span class="navbar-text pull-left"><b>{{ version|e }}</b></span>
-          <ul class="nav">
-            <li class="divider-vertical"></li>
-            {% block sidebartoc %}
-              {% include "globaltoc.html" %}
-              {% include "localtoc.html" %}
-            {% endblock %}
-            {% block sidebarrel %}
-              {% include "relations.html" %}
-            {% endblock %}
-            {% block sidebarsourcelink %}
-              {% include "sourcelink.html" %}
-            {% endblock %}
-          </ul>
-          {% block sidebarsearch %}
-            {% include "searchbox.html" %}
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a class="brand" href="{{ pathto(master_doc) }}">{{ project|e }}</a>
+      <span class="navbar-text pull-left"><b>{{ version|e }}</b></span>
+
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          {% block sidebartoc %}
+            {% include "globaltoc.html" %}
+            {% include "localtoc.html" %}
           {% endblock %}
-          </ul>
-        </div>
+          {% block sidebarrel %}
+            {% include "relations.html" %}
+          {% endblock %}
+          {% block sidebarsourcelink %}
+            {% include "sourcelink.html" %}
+          {% endblock %}
+        </ul>
+
+        {% block sidebarsearch %}
+          {% include "searchbox.html" %}
+        {% endblock %}
       </div>
     </div>
   </div>
@@ -60,7 +71,6 @@
         if (tag === 'a' && level >= minLevel) {
           // Add to existing padding.
           $item.css('padding-left', pad + "px");
-          console.log(level, $item, 'padding-left', pad + "px");
         } else if (tag === 'ul') {
           // Recurse.
           findA($item, level + 1);
@@ -68,7 +78,6 @@
       });
     };
 
-    console.log("HERE");
     findA($ul);
   };
 
@@ -95,9 +104,8 @@
 </script>
 {% endblock %}
 
-{% block header %}{{ navBar() }}{% endblock %}
-
 {# Silence the sidebar's, relbar's #}
+{% block header %}{% endblock %}
 {% block sidebar1 %}{% endblock %}
 {% block sidebar2 %}{% endblock %}
 {% block relbar1 %}{% endblock %}
@@ -105,7 +113,8 @@
 
 {%- block content %}
 <div class="container">
-   {% block body %} {% endblock %}
+  {{ navBar() }}
+  {% block body %} {% endblock %}
 </div>
 {%- endblock %}
 
