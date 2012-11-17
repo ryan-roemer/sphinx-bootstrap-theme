@@ -30,9 +30,9 @@
           {% block sidebarrel %}
             {% include "relations.html" %}
           {% endblock %}
-          {% block sidebarsourcelink %}
-            {% include "sourcelink.html" %}
-          {% endblock %}
+          {% if theme_source_link_position == "nav" %}
+            <li>{% include "sourcelink.html" %}</li>
+          {% endif %}
         </ul>
 
         {% block sidebarsearch %}
@@ -56,6 +56,7 @@
 {% block sidebar2 %}{% endblock %}
 {% block relbar1 %}{% endblock %}
 {% block relbar2 %}{% endblock %}
+{% block sidebarsourcelink %}{% endblock %}
 
 {%- block content %}
 <div class="container">
@@ -67,7 +68,13 @@
 {%- block footer %}
 <footer class="footer">
   <div class="container">
-    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      {% if theme_source_link_position == "footer" %}
+        <br/>
+        {% include "sourcelink.html" %}
+      {% endif %}
+    </p>
     <p>
     {%- if show_copyright %}
       {%- if hasdoc('copyright') %}

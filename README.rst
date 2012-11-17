@@ -73,13 +73,17 @@ the "conf.py" configuration::
     # "_static") in source.
     html_logo = "my_logo.png"
 
-    # Theme options are theme-specific and customize the look and feel of a theme
-    # further.  For a list of options available for each theme, see the
-    # documentation.
+    # Theme options are theme-specific and customize the look and feel of a
+    # theme further.
     html_theme_options = {
         # HTML navbar class (Default: "navbar") to attach to <div> element.
         # For black navbar, do "navbar navbar-inverse"
         'navbar_class': "navbar navbar-inverse",
+
+
+        # Location of link to source.
+        # Options are "nav" (default), "footer" or anything else to exclude.
+        'source_link_position': "nav",
     }
 
 Theme Notes
