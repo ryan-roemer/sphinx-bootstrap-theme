@@ -18,6 +18,7 @@ Contents
 
    README
    HISTORY
+   TODO
 
 Indices and tables
 ==================
