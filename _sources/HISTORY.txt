@@ -2,7 +2,7 @@
  History
 =========
 
-v0.0.5
+v0.0.6
 ======
 * Fix logo display in navbar.
 
