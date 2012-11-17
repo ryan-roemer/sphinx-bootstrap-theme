@@ -2,13 +2,26 @@
  Sphinx Bootstrap Theme
 ========================
 
-This repository integrates the Twitter Bootstrap_ CSS / JavaScript framework
-as a Sphinx_ theme_. A live demo_ is available to preview the theme.
+This Sphinx_ theme_ integrates the Twitter Bootstrap_ CSS / JavaScript
+framework with various layout options, hierarchical menu navigation,
+and mobile-friendly responsive design.
 
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _theme: http://sphinx.pocoo.org/theming.html
-.. _demo: http://ryan-roemer.github.com/sphinx-bootstrap-theme
+
+
+Demos
+=====
+Here is the theme in use for some of my public projects:
+
+* `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
+  the theme option ``'navbar_class': "navbar navbar-inverse",``.
+* `Django Cloud Browser`_: A Django reusable app for browsering cloud
+  (e.g., Amazon Web Services S3) datastores.
+
+.. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
+.. _Django Cloud Browser: http://ryan-roemer.github.com/django-cloud-browser
 
 
 Installation
@@ -35,25 +48,47 @@ configuration
       releases. E.g.::
 
         bootstrap.zip
-        bootstrap-v0.0.3.zip
+        bootstrap-v0.0.4.zip
         bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
 
-3. Edit your configuration file to point to the bootstrap theme::
+3. Edit the "conf.py" configuration file to point to the bootstrap theme::
 
       # Activate the theme.
       sys.path.append(os.path.abspath('_themes'))
       html_theme_path = ['_themes']
       html_theme = 'bootstrap'
 
-      # (Optional) Use a shorter name to conserve nav. bar space.
-      html_short_title = "Demo"
-
-      # (Optional) Logo. Should be exactly 32x32 px to fit the nav. bar.
-      # Path should be relative to the html_static_path setting (e.g.,
-      # "_static") in source.
-      html_logo = "my_logo.png"
-
 .. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
+
+
+Customization
+=============
+The theme can be further customized with the following options by editing
+the "conf.py" configuration::
+
+    # (Optional) Use a shorter name to conserve nav. bar space.
+    html_short_title = "Demo"
+
+    # (Optional) Logo. Should be exactly 32x32 px to fit the nav. bar.
+    # Path should be relative to the html_static_path setting (e.g.,
+    # "_static") in source.
+    html_logo = "my_logo.png"
+
+    # Theme options are theme-specific and customize the look and feel of a
+    # theme further.
+    html_theme_options = {
+        # HTML navbar class (Default: "navbar") to attach to <div> element.
+        # For black navbar, do "navbar navbar-inverse"
+        'navbar_class': "navbar navbar-inverse",
+
+        # Fix navigation bar to top of page?
+        # Values: "true" (default) or "false"
+        'navbar_fixed_top': "true",
+
+        # Location of link to source.
+        # Options are "nav" (default), "footer" or anything else to exclude.
+        'source_link_position': "nav",
+    }
 
 Theme Notes
 ===========

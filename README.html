@@ -6,18 +6,18 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.0.3 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.0.4 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/bootstrap-2.2.1.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/bootstrap-responsive-2.2.1.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap-responsive-2.2.1.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,90 +27,27 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/bootstrap-2.2.1.min.js"></script>
-    <link rel="top" title="Demo 0.0.3 documentation" href="index.html" />
-    <link rel="next" title="History" href="HISTORY.html" />
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Demo 0.0.4 documentation" href="index.html" />
+    <link rel="next" title="Future Work" href="TODO.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          $childrenLi = $item.children('li'),
-          $parentLi = $($item.parent('li'), $item.parent().parent('li'));
-
-        // Add dropdowns if more children and above minimum level.
-        if (tag === 'ul' && level >= minLevel && $childrenLi.length > 0) {
-          $parentLi
-            .addClass('dropdown-submenu')
-            .children('a').first().attr('tabindex', -1)
-
-          $item.addClass('dropdown-menu');
-        }
-
-        findA($item, level + 1);
-      });
-    };
-
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    //patchToc($("ul.globaltoc"), 1);
-    patchToc($("ul.localtoc"), 2);
-
-    // Add divider to local TOC if more children after.
-    if ($("ul.localtoc > ul > li > ul li").length > 0) {
-      $("ul.localtoc > ul > li > a")
-        .first()
-        .after('<li class="divider"></li>');
-    }
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
   <body>
   
-  <!-- <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"><img
+  <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"
+     class="visible-desktop"><img
     style="position: absolute; top: 40px; right: 0; border: 0;"
     src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
-    alt="Fork me on GitHub"></a> -->
+    alt="Fork me on GitHub"></a>
 
 <div class="container">
   
-  <div id="navbar" class="navbar navbar-inverse">
+  <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
       <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -120,7 +57,7 @@
       </button>
 
       <a class="brand" href="index.html">Demo</a>
-      <span class="navbar-text pull-left"><b>0.0.3</b></span>
+      <span class="navbar-text pull-left"><b>0.0.4</b></span>
 
       <div class="nav-collapse">
         <ul class="nav">
@@ -130,6 +67,7 @@
   <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"><ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Sphinx Bootstrap Theme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a></li>
 </ul>
 </ul>
@@ -138,10 +76,12 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"><ul>
 <li><a class="reference internal" href="#">Sphinx Bootstrap Theme</a><ul>
+<li><a class="reference internal" href="#demos">Demos</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#customization">Customization</a></li>
 <li><a class="reference internal" href="#theme-notes">Theme Notes</a><ul>
-<li><a class="reference internal" href="#id1">Sphinx</a></li>
-<li><a class="reference internal" href="#id2">Bootstrap</a></li>
+<li><a class="reference internal" href="#id2">Sphinx</a></li>
+<li><a class="reference internal" href="#id3">Bootstrap</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#licenses">Licenses</a></li>
@@ -149,32 +89,19 @@
 </li>
 </ul>
 </ul>
-  <!--<span class="localtoc"><ul>
-<li><a class="reference internal" href="#">Sphinx Bootstrap Theme</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#theme-notes">Theme Notes</a><ul>
-<li><a class="reference internal" href="#id1">Sphinx</a></li>
-<li><a class="reference internal" href="#id2">Bootstrap</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#licenses">Licenses</a></li>
-</ul>
-</li>
-</ul>
-</span>-->
 </li>
           
           
             
   <li><a href="index.html"
          title="previous chapter">&laquo; Bootstrap Theme Demo</a></li>
-  <li><a href="HISTORY.html"
-         title="next chapter">History &raquo;</a></li>
+  <li><a href="TODO.html"
+         title="next chapter">Future Work &raquo;</a></li>
           
           
-            
-  <li><a href="_sources/README.txt"
-         rel="nofollow">Source</a></li>
+            <li>
+  <a href="_sources/README.txt"
+     rel="nofollow">Source</a></li>
           
         </ul>
 
@@ -193,8 +120,19 @@
   
   <div class="section" id="sphinx-bootstrap-theme">
 <h1>Sphinx Bootstrap Theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="Permalink to this headline">¶</a></h1>
-<p>This repository integrates the Twitter <a class="reference external" href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS / JavaScript framework
-as a <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a>. A live <a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">demo</a> is available to preview the theme.</p>
+<p>This <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a> integrates the Twitter <a class="reference external" href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS / JavaScript
+framework with various layout options, hierarchical menu navigation,
+and mobile-friendly responsive design.</p>
+<div class="section" id="demos">
+<h2>Demos<a class="headerlink" href="#demos" title="Permalink to this headline">¶</a></h2>
+<p>Here is the theme in use for some of my public projects:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">Sphinx Bootstrap Theme</a>: This project, with a dark top navbar, using
+the theme option <tt class="docutils literal"><span class="pre">'navbar_class':</span> <span class="pre">&quot;navbar</span> <span class="pre">navbar-inverse&quot;,</span></tt>.</li>
+<li><a class="reference external" href="http://ryan-roemer.github.com/django-cloud-browser">Django Cloud Browser</a>: A Django reusable app for browsering cloud
+(e.g., Amazon Web Services S3) datastores.</li>
+</ul>
+</div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>To install the theme, download the theme directory and update your
@@ -219,34 +157,56 @@ $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap
 hash releases (for development builds) or tags for official tagged
 releases. E.g.:</p>
 <div class="highlight-python"><pre>bootstrap.zip
-bootstrap-v0.0.3.zip
+bootstrap-v0.0.4.zip
 bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip</pre>
 </div>
 </li>
 </ol>
 </li>
-<li><p class="first">Edit your configuration file to point to the bootstrap theme:</p>
+<li><p class="first">Edit the &#8220;conf.py&#8221; configuration file to point to the bootstrap theme:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Activate the theme.</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">&#39;_themes&#39;</span><span class="p">))</span>
 <span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;_themes&#39;</span><span class="p">]</span>
 <span class="n">html_theme</span> <span class="o">=</span> <span class="s">&#39;bootstrap&#39;</span>
-
-<span class="c"># (Optional) Use a shorter name to conserve nav. bar space.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="customization">
+<h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
+<p>The theme can be further customized with the following options by editing
+the &#8220;conf.py&#8221; configuration:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># (Optional) Use a shorter name to conserve nav. bar space.</span>
 <span class="n">html_short_title</span> <span class="o">=</span> <span class="s">&quot;Demo&quot;</span>
 
 <span class="c"># (Optional) Logo. Should be exactly 32x32 px to fit the nav. bar.</span>
 <span class="c"># Path should be relative to the html_static_path setting (e.g.,</span>
 <span class="c"># &quot;_static&quot;) in source.</span>
 <span class="n">html_logo</span> <span class="o">=</span> <span class="s">&quot;my_logo.png&quot;</span>
+
+<span class="c"># Theme options are theme-specific and customize the look and feel of a</span>
+<span class="c"># theme further.</span>
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c"># HTML navbar class (Default: &quot;navbar&quot;) to attach to &lt;div&gt; element.</span>
+    <span class="c"># For black navbar, do &quot;navbar navbar-inverse&quot;</span>
+    <span class="s">&#39;navbar_class&#39;</span><span class="p">:</span> <span class="s">&quot;navbar navbar-inverse&quot;</span><span class="p">,</span>
+
+    <span class="c"># Fix navigation bar to top of page?</span>
+    <span class="c"># Values: &quot;true&quot; (default) or &quot;false&quot;</span>
+    <span class="s">&#39;navbar_fixed_top&#39;</span><span class="p">:</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+
+    <span class="c"># Location of link to source.</span>
+    <span class="c"># Options are &quot;nav&quot; (default), &quot;footer&quot; or anything else to exclude.</span>
+    <span class="s">&#39;source_link_position&#39;</span><span class="p">:</span> <span class="s">&quot;nav&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-</li>
-</ol>
 </div>
 <div class="section" id="theme-notes">
 <h2>Theme Notes<a class="headerlink" href="#theme-notes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Sphinx<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Sphinx<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>The theme places the global TOC, local TOC, navigation (prev, next) and
 source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.</p>
@@ -258,8 +218,8 @@ which is a multi-level rendering of the current page&#8217;s <tt class="docutils
 going, so there are likely some oversights and lurking issues. Help and
 bug filings for the project are most welcome.</p>
 </div>
-<div class="section" id="id2">
-<h3>Bootstrap<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Bootstrap<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>The theme uses Twitter Bootstrap v2.2.1. You can override any static JS/CSS
 files by dropping different versions in your Sphinx &#8220;_static&#8221; directory.</p>
 </div>
@@ -275,7 +235,10 @@ files by dropping different versions in your Sphinx &#8220;_static&#8221; direct
 </div>
 <footer class="footer">
   <div class="container">
-    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
     <p>
         &copy; Copyright 2011-2012, Ryan Roemer.<br/>
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.<br/>

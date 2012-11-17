@@ -8,18 +8,18 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Index &mdash; Demo 0.0.3 documentation</title>
+    <title>Index &mdash; Demo 0.0.4 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/bootstrap-2.2.1.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/bootstrap-responsive-2.2.1.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/bootstrap-responsive-2.2.1.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.3',
+        VERSION:     '0.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,88 +29,25 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/bootstrap-2.2.1.min.js"></script>
-    <link rel="top" title="Demo 0.0.3 documentation" href="index.html" />
-<script type="text/javascript">
-(function () {
-  /**
-   * Patch TOC list.
-   *
-   * Will mutate the underlying span to have a correct ul for nav.
-   *
-   * @param $span: Span containing nested UL's to mutate.
-   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
-   */
-  var patchToc = function ($ul, minLevel) {
-    var findA;
-
-    // Find all a "internal" tags, traversing recursively.
-    findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
-
-      // Iterate everything in order.
-      $items.each(function (index, item) {
-        var $item = $(item),
-          tag = item.tagName.toLowerCase(),
-          $childrenLi = $item.children('li'),
-          $parentLi = $($item.parent('li'), $item.parent().parent('li'));
-
-        // Add dropdowns if more children and above minimum level.
-        if (tag === 'ul' && level >= minLevel && $childrenLi.length > 0) {
-          $parentLi
-            .addClass('dropdown-submenu')
-            .children('a').first().attr('tabindex', -1)
-
-          $item.addClass('dropdown-menu');
-        }
-
-        findA($item, level + 1);
-      });
-    };
-
-    findA($ul);
-  };
-
-  $(document).ready(function () {
-    // Add styling, structure to TOC's.
-    $(".dropdown-menu").each(function () {
-      $(this).find("ul").each(function (index, item){
-        var $item = $(item);
-        $item.addClass('unstyled');
-      });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
-    });
-
-    // Patch in level.
-    //patchToc($("ul.globaltoc"), 1);
-    patchToc($("ul.localtoc"), 2);
-
-    // Add divider to local TOC if more children after.
-    if ($("ul.localtoc > ul > li > ul li").length > 0) {
-      $("ul.localtoc > ul > li > a")
-        .first()
-        .after('<li class="divider"></li>');
-    }
-
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
-  });
-}());
-</script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Demo 0.0.4 documentation" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
 
   </head>
   <body>
   
-  <!-- <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"><img
+  <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"
+     class="visible-desktop"><img
     style="position: absolute; top: 40px; right: 0; border: 0;"
     src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
-    alt="Fork me on GitHub"></a> -->
+    alt="Fork me on GitHub"></a>
 
 <div class="container">
   
-  <div id="navbar" class="navbar navbar-inverse">
+  <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
       <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -120,7 +57,7 @@
       </button>
 
       <a class="brand" href="index.html">Demo</a>
-      <span class="navbar-text pull-left"><b>0.0.3</b></span>
+      <span class="navbar-text pull-left"><b>0.0.4</b></span>
 
       <div class="nav-collapse">
         <ul class="nav">
@@ -130,6 +67,7 @@
   <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">Sphinx Bootstrap Theme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a></li>
 </ul>
 </ul>
@@ -137,7 +75,6 @@
             <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"></ul>
-  <!--<span class="localtoc"></span>-->
 </li>
           
           
@@ -147,7 +84,7 @@
           
 
           
-            
+            <li></li>
           
         </ul>
 
@@ -175,7 +112,10 @@
 </div>
 <footer class="footer">
   <div class="container">
-    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
     <p>
         &copy; Copyright 2011-2012, Ryan Roemer.<br/>
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.<br/>
