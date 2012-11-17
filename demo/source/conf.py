@@ -87,6 +87,10 @@ html_theme_options = {
     # HTML navbar class (Default: "navbar") to attach to <div> element.
     # For black navbar, do "navbar navbar-inverse"
     'navbar_class': "navbar navbar-inverse",
+
+    # TODO: Future.
+    # Add page navigation to it's own navigation bar.
+    #'navbar_page_separate': True,
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
