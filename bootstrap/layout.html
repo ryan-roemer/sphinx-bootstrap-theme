@@ -20,7 +20,7 @@
       <a class="brand" href="{{ pathto(master_doc) }}">
         {%- block sidebarlogo %}
           {%- if logo %}
-          <img class="logo" src="_static/{{ logo }}" />
+          <img class="logo" src="{{ logo }}" />
           {%- endif %}
         {%- endblock %}
         {{ project|e }}
