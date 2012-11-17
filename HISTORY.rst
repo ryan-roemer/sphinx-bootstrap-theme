@@ -2,6 +2,10 @@
  History
 =========
 
+v0.0.4
+======
+* Get mobile (iPhone) viewport and nav menus working.
+
 v0.0.3
 ======
 * Update to Bootstrap v2.2.1.
