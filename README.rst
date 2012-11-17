@@ -3,12 +3,24 @@
 ========================
 
 This repository integrates the Twitter Bootstrap_ CSS / JavaScript framework
-as a Sphinx_ theme_. A live demo_ is available to preview the theme.
+as a Sphinx_ theme_.
 
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _theme: http://sphinx.pocoo.org/theming.html
-.. _demo: http://ryan-roemer.github.com/sphinx-bootstrap-theme
+
+
+Demos
+=====
+Here is the theme in use for some of my public projects:
+
+* `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
+  the theme option ``'navbar_class': "navbar navbar-inverse",``.
+* `Django Cloud Browser`_: A Django reusable app for browsering cloud
+  (e.g., Amazon Web Services S3) datastores.
+
+.. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
+.. _Django Cloud Browser: http://ryan-roemer.github.com/django-cloud-browser
 
 
 Installation
