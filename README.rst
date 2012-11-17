@@ -48,7 +48,7 @@ configuration
       releases. E.g.::
 
         bootstrap.zip
-        bootstrap-v0.0.4.zip
+        bootstrap-v0.0.5.zip
         bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
 
 3. Edit the "conf.py" configuration file to point to the bootstrap theme::

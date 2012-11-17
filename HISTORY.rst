@@ -2,6 +2,10 @@
  History
 =========
 
+v0.0.5
+======
+* Fix logo display in navbar.
+
 v0.0.4
 ======
 * Get mobile (iPhone) viewport and nav menus working.
