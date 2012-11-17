@@ -38,22 +38,37 @@ configuration
         bootstrap-v0.0.4.zip
         bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
 
-3. Edit your configuration file to point to the bootstrap theme::
+3. Edit the "conf.py" configuration file to point to the bootstrap theme::
 
       # Activate the theme.
       sys.path.append(os.path.abspath('_themes'))
       html_theme_path = ['_themes']
       html_theme = 'bootstrap'
 
-      # (Optional) Use a shorter name to conserve nav. bar space.
-      html_short_title = "Demo"
-
-      # (Optional) Logo. Should be exactly 32x32 px to fit the nav. bar.
-      # Path should be relative to the html_static_path setting (e.g.,
-      # "_static") in source.
-      html_logo = "my_logo.png"
-
 .. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
+
+
+Customization
+=============
+The theme can be further customized with the following options by editing
+the "conf.py" configuration::
+
+    # (Optional) Use a shorter name to conserve nav. bar space.
+    html_short_title = "Demo"
+
+    # (Optional) Logo. Should be exactly 32x32 px to fit the nav. bar.
+    # Path should be relative to the html_static_path setting (e.g.,
+    # "_static") in source.
+    html_logo = "my_logo.png"
+
+    # Theme options are theme-specific and customize the look and feel of a theme
+    # further.  For a list of options available for each theme, see the
+    # documentation.
+    html_theme_options = {
+        # HTML navbar class (Default: "navbar") to attach to <div> element.
+        # For black navbar, do "navbar navbar-inverse"
+        'navbar_class': "navbar navbar-inverse",
+    }
 
 Theme Notes
 ===========
