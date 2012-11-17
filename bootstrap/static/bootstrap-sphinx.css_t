@@ -19,11 +19,11 @@ body {
 }
 {% endif %}
 
-{%- block sidebarlogo %}
-  {%- if logo %}
-.navbar h3 a, .navbar .brand {
-  background: transparent url("{{ logo }}") no-repeat 22px 3px;
-  padding-left: 62px;
+{%- if logo %}
+.navbar .brand img {
+  margin: none;
+  padding: none;
+  max-width: 24px;
+  max-height: 24px;
 }
-  {%- endif %}
-{%- endblock %}
+{%- endif %}
