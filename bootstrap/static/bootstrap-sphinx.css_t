@@ -9,6 +9,12 @@
   color: #FFF;
 }
 
+{% if theme_navbar_fixed_top == 'true' %}
+body {
+  padding-top: 40px;
+}
+{% endif %}
+
 {%- block sidebarlogo %}
   {%- if logo %}
 .navbar h3 a, .navbar .brand {

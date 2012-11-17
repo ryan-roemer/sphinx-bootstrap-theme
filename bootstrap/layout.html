@@ -1,6 +1,6 @@
 {% extends "basic/layout.html" %}
 {% set script_files = script_files + ['_static/js/bootstrap-2.2.1.min.js', '_static/bootstrap-sphinx.js'] %}
-{% set css_files = ['_static/css/bootstrap-2.2.1.min.css', '_static/css/bootstrap-responsive-2.2.1.min.css', '_static/bootstrap-sphinx.css'] + css_files %}
+{% set css_files = ['_static/css/bootstrap-2.2.1.min.css', '_static/bootstrap-sphinx.css', '_static/css/bootstrap-responsive-2.2.1.min.css'] + css_files %}
 
 {%- block doctype -%}
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 {# Sidebar: Rework into our Boostrap nav section. #}
 {% macro navBar() %}
-  <div id="navbar" class="{{ theme_navbar_class }}">
+  <div id="navbar" class="{{ theme_navbar_class }} {% if theme_navbar_fixed_top == 'true' -%} navbar-fixed-top{%- endif -%}">
     <div class="navbar-inner">
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
       <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
