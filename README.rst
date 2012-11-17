@@ -70,8 +70,8 @@ the "conf.py" configuration::
     html_short_title = "Demo"
 
     # (Optional) Logo. Should be exactly 24x24 px to fit the nav. bar.
-    # Path should be relative to the conf.py directory.
-    html_logo = "_static/my_logo.png"
+    # Path should be relative to the static files directory.
+    html_logo = "my_logo.png"
 
     # Theme options are theme-specific and customize the look and feel of a
     # theme further.

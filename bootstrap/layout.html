@@ -17,14 +17,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="brand" href="{{ pathto(master_doc) }}">
-        {%- block sidebarlogo %}
-          {%- if logo %}
-          <img class="logo" src="{{ logo }}" />
-          {%- endif %}
-        {%- endblock %}
-        {{ project|e }}
-      </a>
+      <a class="brand" href="{{ pathto(master_doc) }}">{{ project|e }}</a>
       <span class="navbar-text pull-left"><b>{{ version|e }}</b></span>
 
       <div class="nav-collapse">
