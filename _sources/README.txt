@@ -48,7 +48,7 @@ configuration
       releases. E.g.::
 
         bootstrap.zip
-        bootstrap-v0.0.4.zip
+        bootstrap-v0.0.5.zip
         bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
 
 3. Edit the "conf.py" configuration file to point to the bootstrap theme::
@@ -69,7 +69,7 @@ the "conf.py" configuration::
     # (Optional) Use a shorter name to conserve nav. bar space.
     html_short_title = "Demo"
 
-    # (Optional) Logo. Should be exactly 32x32 px to fit the nav. bar.
+    # (Optional) Logo. Should be exactly 24x24 px to fit the nav. bar.
     # Path should be relative to the html_static_path setting (e.g.,
     # "_static") in source.
     html_logo = "my_logo.png"
