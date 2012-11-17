@@ -2,8 +2,9 @@
  Sphinx Bootstrap Theme
 ========================
 
-This repository integrates the Twitter Bootstrap_ CSS / JavaScript framework
-as a Sphinx_ theme_.
+This Sphinx_ theme_ integrates the Twitter Bootstrap_ CSS / JavaScript
+framework with various layout options, hierarchical menu navigation,
+and mobile-friendly responsive design.
 
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _Sphinx: http://sphinx.pocoo.org/
