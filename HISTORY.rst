@@ -5,7 +5,7 @@
 v0.0.4
 ======
 * Get mobile (iPhone) viewport and nav menus working.
-* Add new theme options.
+* Add new theme options ``navbar_class``, ``source_link_position``.
 
 v0.0.3
 ======
