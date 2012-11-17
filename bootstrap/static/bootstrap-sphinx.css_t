@@ -5,7 +5,7 @@
 * Sphinx stylesheet -- Twitter Bootstrap theme.
 */
 
-.navbar .brand {
+.navbar-inverse .brand {
   color: #FFF;
 }
 
