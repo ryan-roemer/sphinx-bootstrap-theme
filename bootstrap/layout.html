@@ -8,7 +8,7 @@
 
 {# Sidebar: Rework into our Boostrap nav section. #}
 {% macro navBar() %}
-  <div id="navbar" class="navbar navbar-inverse">
+  <div id="navbar" class="{{ theme_navbar_class }}">
     <div class="navbar-inner">
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
       <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
