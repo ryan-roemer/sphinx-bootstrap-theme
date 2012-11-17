@@ -17,8 +17,8 @@ Contents
    :maxdepth: 2
 
    README
-   HISTORY
    TODO
+   HISTORY
 
 Indices and tables
 ==================
