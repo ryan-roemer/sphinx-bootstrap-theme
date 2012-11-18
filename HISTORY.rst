@@ -2,6 +2,10 @@
  History
 =========
 
+v0.1.0
+======
+* Add support for deployment via PyPI.
+
 v0.0.6
 ======
 * Fix logo display in navbar.
