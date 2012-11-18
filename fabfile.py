@@ -10,8 +10,11 @@ from contextlib import contextmanager
 from fabric.api import local, lcd, abort
 from fabric.decorators import task
 
+
 BUILD_DIRS = (
     "dist",
+    "build",
+    "demo/build",
     "sphinx_bootstrap_theme.egg-info",
 )
 
@@ -28,10 +31,8 @@ SDIST_TXT_FILES = [os.path.splitext(x)[0] + ".txt" for x in SDIST_RST_FILES]
 @task
 def clean():
     """Clean build files."""
-    for build_dir in list(BUILD_DIRS) + [DOC_OUTPUT]:
+    for build_dir in list(BUILD_DIRS):
         local("rm -rf %s" % build_dir)
-
-    local("rm -rf bootstrap-*.zip bootstrap.zip")
 
 
 @contextmanager
@@ -198,7 +199,7 @@ def get_suffix(tag=False):
 
 
 @task
-def bundle(tag=False):
+def gh_bundle(tag=False):
     """Create zip file upload bundles.
 
     @param tag  Use git tag instead of hash?
@@ -208,13 +209,17 @@ def bundle(tag=False):
     print("Cleaning old build files.")
     clean()
 
+    local("mkdir -p build")
+
     print("Bundling new files.")
     with lcd("bootstrap"):
-        local("zip -r ../bootstrap.zip .")
-    local("cp bootstrap.zip bootstrap-%s.zip" % suffix)
+        local("zip -r ../build/bootstrap.zip .")
 
-    print("Verifying contents.")
-    local("unzip -l bootstrap.zip")
+    with lcd("build"):
+        local("cp bootstrap.zip bootstrap-%s.zip" % suffix)
+
+        print("Verifying contents.")
+        local("unzip -l bootstrap.zip")
 
 
 @task
