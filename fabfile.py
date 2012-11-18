@@ -10,7 +10,6 @@ from contextlib import contextmanager
 from fabric.api import local, lcd, abort
 from fabric.decorators import task
 
-
 BUILD_DIRS = (
     "dist",
     "sphinx_bootstrap_theme.egg-info",
@@ -29,8 +28,10 @@ SDIST_TXT_FILES = [os.path.splitext(x)[0] + ".txt" for x in SDIST_RST_FILES]
 @task
 def clean():
     """Clean build files."""
-    for build_dir in list(BUILD_DIRS) + [DOC_OUTPUT, DEV_DB_DIR]:
+    for build_dir in list(BUILD_DIRS) + [DOC_OUTPUT]:
         local("rm -rf %s" % build_dir)
+
+    local("rm -rf bootstrap-*.zip bootstrap.zip")
 
 
 @contextmanager
@@ -184,12 +185,6 @@ class GitHub(object):
               "https://github.s3.amazonaws.com/" % meta)
 
         return meta
-
-
-@task
-def clean():
-    """Clean up build files."""
-    local("rm -rf bootstrap-*.zip bootstrap.zip")
 
 
 def get_suffix(tag=False):
