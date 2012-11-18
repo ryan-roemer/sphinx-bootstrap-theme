@@ -1,0 +1,10 @@
+# Top level.
+include *.txt
+exclude *.rst
+
+# Non-python files.
+recursive-include bootstrap *
+
+# Extraneous files.
+global-exclude .DS_Store
+global-exclude *.pyc
