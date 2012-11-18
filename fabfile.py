@@ -26,7 +26,7 @@ SDIST_TXT_FILES = [os.path.splitext(x)[0] + ".txt" for x in SDIST_RST_FILES]
 
 
 ###############################################################################
-# PyPI
+# Misc.
 ###############################################################################
 @task
 def clean():
@@ -35,6 +35,16 @@ def clean():
         local("rm -rf %s" % build_dir)
 
 
+@task
+def demo():
+    """Clean build files."""
+    with lcd("demo"):
+        local("make html")
+
+
+###############################################################################
+# PyPI
+###############################################################################
 @contextmanager
 def _dist_wrapper():
     """Add temporary distribution build files (and then clean up)."""
