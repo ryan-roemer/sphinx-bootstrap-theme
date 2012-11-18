@@ -26,6 +26,28 @@ Here is the theme in use for some of my public projects:
 
 Installation
 ============
+The theme can be installed from PyPI or downloaded as a zip file from
+GitHub.
+
+Install from PyPI
+-----------------
+1. Install the package::
+
+      $ pip install sphinx_bootstrap_theme
+
+2. Edit the "conf.py" configuration file to point to the bootstrap theme::
+
+      # At the top.
+      import sphinx_bootstrap_theme
+
+      # ...
+
+      # Activate the theme.
+      html_theme = 'bootstrap'
+      html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+
+Download from GitHub
+--------------------
 To install the theme, download the theme directory and update your
 configuration
 
@@ -55,8 +77,8 @@ configuration
 
       # Activate the theme.
       sys.path.append(os.path.abspath('_themes'))
-      html_theme_path = ['_themes']
       html_theme = 'bootstrap'
+      html_theme_path = ['_themes']
 
 .. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
 
