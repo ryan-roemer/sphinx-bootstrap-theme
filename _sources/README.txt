@@ -9,6 +9,8 @@ and mobile-friendly responsive design.
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _theme: http://sphinx.pocoo.org/theming.html
+.. _PyPI: http://pypi.python.org/pypi/sphinx-bootstrap-theme/
+.. _GitHub repository: https://github.com/sphinx-bootstrap-theme/ryan-roemer
 
 
 Demos
@@ -16,7 +18,7 @@ Demos
 Here is the theme in use for some of my public projects:
 
 * `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
-  the theme option ``'navbar_class': "navbar navbar-inverse",``.
+  the theme option ``'navbar_class': "navbar navbar-inverse"``.
 * `Django Cloud Browser`_: A Django reusable app for browsering cloud
   (e.g., Amazon Web Services S3) datastores.
 
@@ -26,11 +28,35 @@ Here is the theme in use for some of my public projects:
 
 Installation
 ============
-To install the theme, download the theme directory and update your
-configuration
+The theme can be installed from PyPI_ or downloaded as a zip file from
+GitHub.
+
+Install from PyPI
+-----------------
+Installation from PyPI_ is fairly straightforward:
+
+1. Install the package::
+
+      $ pip install sphinx_bootstrap_theme
+
+2. Edit the "conf.py" configuration file to point to the bootstrap theme::
+
+      # At the top.
+      import sphinx_bootstrap_theme
+
+      # ...
+
+      # Activate the theme.
+      html_theme = 'bootstrap'
+      html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+
+Download from GitHub
+--------------------
+To install the theme from the `GitHub repository`_, download the theme
+bundle and update your configuration:
 
 1. Create a "_themes" directory in your project source root.
-2. Get the "bootstrap" themes either as raw files or as a zipfile from
+2. Get the "bootstrap" theme either as raw files or as a zipfile from
    the repository.
 
    a. Most current way is to just clone this repo or download the full
@@ -48,15 +74,15 @@ configuration
       releases. E.g.::
 
         bootstrap.zip
-        bootstrap-v0.0.6.zip
+        bootstrap-v0.1.0.zip
         bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
 
 3. Edit the "conf.py" configuration file to point to the bootstrap theme::
 
       # Activate the theme.
       sys.path.append(os.path.abspath('_themes'))
-      html_theme_path = ['_themes']
       html_theme = 'bootstrap'
+      html_theme_path = ['_themes']
 
 .. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
 

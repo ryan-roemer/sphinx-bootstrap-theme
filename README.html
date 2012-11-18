@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.0.6 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.0.6',
+        VERSION:     '0.1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/bootstrap-2.2.1.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.0.6 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.1.0 documentation" href="index.html" />
     <link rel="next" title="Future Work" href="TODO.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -57,7 +57,7 @@
       </button>
 
       <a class="brand" href="index.html">Demo</a>
-      <span class="navbar-text pull-left"><b>0.0.6</b></span>
+      <span class="navbar-text pull-left"><b>0.1.0</b></span>
 
       <div class="nav-collapse">
         <ul class="nav">
@@ -77,7 +77,11 @@
   <ul class="dropdown-menu localtoc"><ul>
 <li><a class="reference internal" href="#">Sphinx Bootstrap Theme</a><ul>
 <li><a class="reference internal" href="#demos">Demos</a></li>
-<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#install-from-pypi">Install from PyPI</a></li>
+<li><a class="reference internal" href="#download-from-github">Download from GitHub</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#customization">Customization</a></li>
 <li><a class="reference internal" href="#theme-notes">Theme Notes</a><ul>
 <li><a class="reference internal" href="#id2">Sphinx</a></li>
@@ -128,19 +132,45 @@ and mobile-friendly responsive design.</p>
 <p>Here is the theme in use for some of my public projects:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">Sphinx Bootstrap Theme</a>: This project, with a dark top navbar, using
-the theme option <tt class="docutils literal"><span class="pre">'navbar_class':</span> <span class="pre">&quot;navbar</span> <span class="pre">navbar-inverse&quot;,</span></tt>.</li>
+the theme option <tt class="docutils literal"><span class="pre">'navbar_class':</span> <span class="pre">&quot;navbar</span> <span class="pre">navbar-inverse&quot;</span></tt>.</li>
 <li><a class="reference external" href="http://ryan-roemer.github.com/django-cloud-browser">Django Cloud Browser</a>: A Django reusable app for browsering cloud
 (e.g., Amazon Web Services S3) datastores.</li>
 </ul>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>To install the theme, download the theme directory and update your
-configuration</p>
+<p>The theme can be installed from <a class="reference external" href="http://pypi.python.org/pypi/sphinx-bootstrap-theme/">PyPI</a> or downloaded as a zip file from
+GitHub.</p>
+<div class="section" id="install-from-pypi">
+<h3>Install from PyPI<a class="headerlink" href="#install-from-pypi" title="Permalink to this headline">¶</a></h3>
+<p>Installation from <a class="reference external" href="http://pypi.python.org/pypi/sphinx-bootstrap-theme/">PyPI</a> is fairly straightforward:</p>
+<ol class="arabic">
+<li><p class="first">Install the package:</p>
+<div class="highlight-python"><pre>$ pip install sphinx_bootstrap_theme</pre>
+</div>
+</li>
+<li><p class="first">Edit the &#8220;conf.py&#8221; configuration file to point to the bootstrap theme:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># At the top.</span>
+<span class="kn">import</span> <span class="nn">sphinx_bootstrap_theme</span>
+
+<span class="c"># ...</span>
+
+<span class="c"># Activate the theme.</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s">&#39;bootstrap&#39;</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="n">sphinx_bootstrap_theme</span><span class="o">.</span><span class="n">get_html_theme_path</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="download-from-github">
+<h3>Download from GitHub<a class="headerlink" href="#download-from-github" title="Permalink to this headline">¶</a></h3>
+<p>To install the theme from the <a class="reference external" href="https://github.com/sphinx-bootstrap-theme/ryan-roemer">GitHub repository</a>, download the theme
+bundle and update your configuration:</p>
 <ol class="arabic">
 <li><p class="first">Create a &#8220;_themes&#8221; directory in your project source root.</p>
 </li>
-<li><p class="first">Get the &#8220;bootstrap&#8221; themes either as raw files or as a zipfile from
+<li><p class="first">Get the &#8220;bootstrap&#8221; theme either as raw files or as a zipfile from
 the repository.</p>
 <ol class="loweralpha">
 <li><p class="first">Most current way is to just clone this repo or download the full
@@ -157,7 +187,7 @@ $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap
 hash releases (for development builds) or tags for official tagged
 releases. E.g.:</p>
 <div class="highlight-python"><pre>bootstrap.zip
-bootstrap-v0.0.6.zip
+bootstrap-v0.1.0.zip
 bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip</pre>
 </div>
 </li>
@@ -166,12 +196,13 @@ bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip</pre>
 <li><p class="first">Edit the &#8220;conf.py&#8221; configuration file to point to the bootstrap theme:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Activate the theme.</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s">&#39;_themes&#39;</span><span class="p">))</span>
-<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;_themes&#39;</span><span class="p">]</span>
 <span class="n">html_theme</span> <span class="o">=</span> <span class="s">&#39;bootstrap&#39;</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;_themes&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </li>
 </ol>
+</div>
 </div>
 <div class="section" id="customization">
 <h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
