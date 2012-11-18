@@ -47,14 +47,13 @@ setup(
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
-        "Framework :: Sphinx",
         "Intended Audience :: Developers",
         "Intended Audience :: System Administrators",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Topic :: Internet",
-        "Topic :: Internet :: WWW/HTTP :: Site Management",
+        "Topic :: Software Development :: Documentation",
     ],
 
     install_requires=[
