@@ -222,8 +222,8 @@ def gh_bundle(tag=False):
     local("mkdir -p build")
 
     print("Bundling new files.")
-    with lcd("bootstrap"):
-        local("zip -r ../build/bootstrap.zip .")
+    with lcd("sphinx_bootstrap_theme/bootstrap"):
+        local("zip -r ../../build/bootstrap.zip .")
 
     with lcd("build"):
         local("cp bootstrap.zip bootstrap-%s.zip" % suffix)
