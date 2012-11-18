@@ -45,7 +45,7 @@ setup(
     author_email="ryan@loose-bits.com",
 
     classifiers=[
-        "Development Status :: 5 - Stable",
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Sphinx",
         "Intended Audience :: Developers",
