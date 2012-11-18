@@ -237,8 +237,8 @@ def gh_upload(tag=False):
     @param tag  Use git tag instead of hash?
     """
     suffix = get_suffix(tag)
-    base_zip = "bootstrap.zip"
-    suffix_zip = "bootstrap-%s.zip" % suffix
+    base_zip = "build/bootstrap.zip"
+    suffix_zip = "build/bootstrap-%s.zip" % suffix
 
     if not (os.path.exists(base_zip) and os.path.exists(suffix_zip)):
         abort("Did not find current zip files. Please create.")
