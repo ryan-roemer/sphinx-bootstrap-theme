@@ -171,7 +171,7 @@ class GitHub(object):
                 'Content-Type': "application/json",
             },
             data=json.dumps({
-                "name": file_name,
+                "name": os.path.basename(file_name),
                 "size": file_size,
                 "description": desc,
                 #"content_type": "text/plain" (Optional)
@@ -248,7 +248,9 @@ def gh_upload(tag=False):
     """
     suffix = get_suffix(tag)
     base_zip = "build/bootstrap.zip"
+    base_file = os.path.basename(base_zip)
     suffix_zip = "build/bootstrap-%s.zip" % suffix
+    suffix_file = os.path.basename(suffix_zip)
 
     if not (os.path.exists(base_zip) and os.path.exists(suffix_zip)):
         abort("Did not find current zip files. Please create.")
@@ -256,8 +258,8 @@ def gh_upload(tag=False):
     # Check if existing downloads
     github = GitHub()
     dl_dict = dict((x['name'], x) for x in github.downloads())
-    dl_suffix = dl_dict.get(suffix_zip)
-    dl_base = dl_dict.get(base_zip)
+    dl_suffix = dl_dict.get(suffix_file)
+    dl_base = dl_dict.get(base_file)
 
     if dl_suffix is not None:
         print("Found suffixed zip file already. Skipping")
