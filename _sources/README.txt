@@ -13,8 +13,13 @@ and mobile-friendly responsive design.
 .. _GitHub repository: https://github.com/sphinx-bootstrap-theme/ryan-roemer
 
 
-Demos
-=====
+Introduction and Demos
+======================
+The theme is introduced and discussed in two blog posts:
+
+* 12/09/2011 - `Twitter Bootstrap Theme for Sphinx <http://loose-bits.com/2011/12/09/sphinx-twitter-bootstrap-theme.html>`_
+* 11/19/2012 - `Sphinx Bootstrap Theme Updates - Mobile, Dropdowns, and More <http://loose-bits.com/2012/11/19/sphinx-bootstrap-theme-updates.html>`_
+
 Here is the theme in use for some of my public projects:
 
 * `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
@@ -127,10 +132,6 @@ The global (site-wide) table of contents is the "Site" navigation dropdown,
 which is a multi-level deep rendering of the ``toctree`` for the entire site.
 The local (page-level) table of contents is the "Page" navigation dropdown,
 which is a multi-level rendering of the current page's ``toc``.
-
-Generally speaking, this is a quick and dirty hack to get the basic theme
-going, so there are likely some oversights and lurking issues. Help and
-bug filings for the project are most welcome.
 
 
 Bootstrap
