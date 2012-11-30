@@ -38,6 +38,17 @@
     findA($ul);
   };
 
+  /**
+   * Patch all tables to remove ``docutils`` class and add Bootstrap base
+   * ``table`` class.
+   */
+  var patchTables = function () {
+    $("table.docutils")
+      .removeClass("docutils")
+      .addClass("table")
+      .attr("border", 0);
+  };
+
   $(document).ready(function () {
     // Fix iPhone menu clicks.
     // From: https://github.com/twitter/bootstrap/issues/4550#issuecomment-8476763
@@ -74,5 +85,8 @@
 
     // Enable dropdown.
     $('.dropdown-toggle').dropdown();
+
+    // Patch tables.
+    patchTables();
   });
 }());

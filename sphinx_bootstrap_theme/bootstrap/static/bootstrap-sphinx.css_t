@@ -29,3 +29,7 @@ body {
 }
   {%- endif %}
 {%- endblock %}
+
+table {
+  border: 0;
+}
