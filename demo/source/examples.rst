@@ -2,7 +2,9 @@
  Examples
 ==========
 
-Various examples of Bootstrap styling applied to Sphinx constructs.
+Various examples of Bootstrap styling applied to Sphinx constructs. You can
+view the `source <./_sources/examples.txt>`_ of this page to see the specific
+reStructuredText used to create these examples.
 
 Tables
 ======
