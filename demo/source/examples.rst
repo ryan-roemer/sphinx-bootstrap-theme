@@ -31,7 +31,7 @@ A "**bordered**" grid table:
 | ...                    | ...        | ...      |          |
 +------------------------+------------+----------+----------+
 
-which uses directive::
+which uses the directive::
 
     .. cssclass:: table-bordered
 
@@ -49,11 +49,10 @@ cell1  cell2  cell3
 ...    ...    ...
 =====  =====  =======
 
-which uses directive::
+which uses the directive::
 
     .. cssclass:: table-striped
 
-|
 And a "**hoverable**" table:
 
 .. cssclass:: table-hover
@@ -66,6 +65,6 @@ cell1  cell2  cell3
 ...    ...    ...
 =====  =====  =======
 
-which uses directive::
+which uses the directive::
 
     .. cssclass:: table-hover
