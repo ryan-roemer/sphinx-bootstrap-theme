@@ -39,7 +39,7 @@ setup(
     version=__version__,
     description="Sphinx Bootstrap Theme.",
     long_description=read_file("README"),
-    url="http://ryan-roemer.github.com/sphinx-bootstrap-theme",
+    url="http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html",
 
     author="Ryan Roemer",
     author_email="ryan@loose-bits.com",

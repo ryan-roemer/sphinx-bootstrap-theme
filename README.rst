@@ -27,9 +27,9 @@ Here is the theme in use for some of my public projects:
 * `Django Cloud Browser`_: A Django reusable app for browsering cloud
   (e.g., Amazon Web Services S3) datastores.
 
-The theme demo website also includes an `examples page`_ with further Bootstrap
-styling options integrated with Sphinx constructs (also take a look at the
-`examples source`_ for the underlying reStructuredText).
+The theme demo website also includes an `examples page`_ for some useful
+illustrations of getting Sphinx to play nicely with Bootstrap (also take a
+look at the `examples source`_ for the underlying reStructuredText).
 
 .. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
 .. _examples page: http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html
