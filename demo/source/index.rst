@@ -17,6 +17,7 @@ Contents
    :maxdepth: 2
 
    README
+   examples
    TODO
    HISTORY
 

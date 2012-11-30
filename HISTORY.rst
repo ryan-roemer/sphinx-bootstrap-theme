@@ -2,6 +2,10 @@
  History
 =========
 
+v0.1.1
+======
+* Add Bootstrap table styling.
+
 v0.1.0
 ======
 * Add support for deployment via PyPI.
