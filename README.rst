@@ -24,8 +24,8 @@ Here is the theme in use for some of my public projects:
 
 * `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
   the theme option ``'navbar_class': "navbar navbar-inverse"``.
-* `Django Cloud Browser`_: A Django reusable app for browsering cloud
-  (e.g., Amazon Web Services S3) datastores.
+* `Django Cloud Browser`_: A Django reusable app for browsing cloud
+  datastores (e.g., Amazon Web Services S3).
 
 The theme demo website also includes an `examples page`_ for some useful
 illustrations of getting Sphinx to play nicely with Bootstrap (also take a
