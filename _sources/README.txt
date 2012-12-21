@@ -24,8 +24,8 @@ Here is the theme in use for some of my public projects:
 
 * `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
   the theme option ``'navbar_class': "navbar navbar-inverse"``.
-* `Django Cloud Browser`_: A Django reusable app for browsering cloud
-  (e.g., Amazon Web Services S3) datastores.
+* `Django Cloud Browser`_: A Django reusable app for browsing cloud
+  datastores (e.g., Amazon Web Services S3).
 
 The theme demo website also includes an `examples page`_ for some useful
 illustrations of getting Sphinx to play nicely with Bootstrap (also take a
@@ -63,6 +63,12 @@ Installation from PyPI_ is fairly straightforward:
 
 Download from GitHub
 --------------------
+
+.. warning:: GitHub has deprecated the downloads feature. We will need to
+  create a new download URL scheme. Please see the GitHub
+  `bug report <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/6>`_
+  for progress.
+
 To install the theme from the `GitHub repository`_, download the theme
 bundle and update your configuration:
 
@@ -113,6 +119,10 @@ the "conf.py" configuration::
     # Theme options are theme-specific and customize the look and feel of a
     # theme further.
     html_theme_options = {
+        # Global TOC depth for "site" navbar tab. (Default: 1)
+        # Switching to -1 shows all levels.
+        'globaltoc_depth': 2,
+
         # HTML navbar class (Default: "navbar") to attach to <div> element.
         # For black navbar, do "navbar navbar-inverse"
         'navbar_class': "navbar navbar-inverse",
@@ -135,7 +145,7 @@ source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.
 
 The global (site-wide) table of contents is the "Site" navigation dropdown,
-which is a multi-level deep rendering of the ``toctree`` for the entire site.
+which is a configurable level rendering of the ``toctree`` for the entire site.
 The local (page-level) table of contents is the "Page" navigation dropdown,
 which is a multi-level rendering of the current page's ``toc``.
 

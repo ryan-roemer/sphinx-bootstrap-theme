@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.1.1 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.1.2 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1.1',
+        VERSION:     '0.1.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/bootstrap-2.2.1.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.1.1 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.1.2 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -57,19 +57,45 @@
       </button>
 
       <a class="brand" href="index.html">Demo</a>
-      <span class="navbar-text pull-left"><b>0.1.1</b></span>
+      <span class="navbar-text pull-left"><b>0.1.2</b></span>
 
       <div class="nav-collapse">
         <ul class="nav">
           <li class="divider-vertical"></li>
           
             <li class="dropdown">
-  <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Site <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">Sphinx Bootstrap Theme</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TODO.html">Future Work</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a></li>
+  <a href="index.html"
+     class="dropdown-toggle"
+     data-toggle="dropdown">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+    ><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Sphinx Bootstrap Theme</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-and-demos">Introduction and Demos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#customization">Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#theme-notes">Theme Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#licenses">Licenses</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#tables">Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Future Work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#css-layout">CSS / Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-2">v0.1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-1">v0.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-0">v0.1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-6">v0.0.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-4">v0.0.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-3">v0.0.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-2">v0.0.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-1">v0.0.1</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -139,8 +165,8 @@ and mobile-friendly responsive design.</p>
 <ul class="simple">
 <li><a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">Sphinx Bootstrap Theme</a>: This project, with a dark top navbar, using
 the theme option <tt class="docutils literal"><span class="pre">'navbar_class':</span> <span class="pre">&quot;navbar</span> <span class="pre">navbar-inverse&quot;</span></tt>.</li>
-<li><a class="reference external" href="http://ryan-roemer.github.com/django-cloud-browser">Django Cloud Browser</a>: A Django reusable app for browsering cloud
-(e.g., Amazon Web Services S3) datastores.</li>
+<li><a class="reference external" href="http://ryan-roemer.github.com/django-cloud-browser">Django Cloud Browser</a>: A Django reusable app for browsing cloud
+datastores (e.g., Amazon Web Services S3).</li>
 </ul>
 <p>The theme demo website also includes an <a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html">examples page</a> for some useful
 illustrations of getting Sphinx to play nicely with Bootstrap (also take a
@@ -174,6 +200,13 @@ GitHub.</p>
 </div>
 <div class="section" id="download-from-github">
 <h3>Download from GitHub<a class="headerlink" href="#download-from-github" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">GitHub has deprecated the downloads feature. We will need to
+create a new download URL scheme. Please see the GitHub
+<a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/6">bug report</a>
+for progress.</p>
+</div>
 <p>To install the theme from the <a class="reference external" href="https://github.com/sphinx-bootstrap-theme/ryan-roemer">GitHub repository</a>, download the theme
 bundle and update your configuration:</p>
 <ol class="arabic">
@@ -227,6 +260,10 @@ the &#8220;conf.py&#8221; configuration:</p>
 <span class="c"># Theme options are theme-specific and customize the look and feel of a</span>
 <span class="c"># theme further.</span>
 <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c"># Global TOC depth for &quot;site&quot; navbar tab. (Default: 1)</span>
+    <span class="c"># Switching to -1 shows all levels.</span>
+    <span class="s">&#39;globaltoc_depth&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+
     <span class="c"># HTML navbar class (Default: &quot;navbar&quot;) to attach to &lt;div&gt; element.</span>
     <span class="c"># For black navbar, do &quot;navbar navbar-inverse&quot;</span>
     <span class="s">&#39;navbar_class&#39;</span><span class="p">:</span> <span class="s">&quot;navbar navbar-inverse&quot;</span><span class="p">,</span>
@@ -250,7 +287,7 @@ the &#8220;conf.py&#8221; configuration:</p>
 source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.</p>
 <p>The global (site-wide) table of contents is the &#8220;Site&#8221; navigation dropdown,
-which is a multi-level deep rendering of the <tt class="docutils literal"><span class="pre">toctree</span></tt> for the entire site.
+which is a configurable level rendering of the <tt class="docutils literal"><span class="pre">toctree</span></tt> for the entire site.
 The local (page-level) table of contents is the &#8220;Page&#8221; navigation dropdown,
 which is a multi-level rendering of the current page&#8217;s <tt class="docutils literal"><span class="pre">toc</span></tt>.</p>
 </div>
