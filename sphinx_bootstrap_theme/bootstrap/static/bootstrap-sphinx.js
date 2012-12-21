@@ -73,7 +73,7 @@
     });
 
     // Patch in level.
-    //patchToc($("ul.globaltoc"), 1);
+    patchToc($("ul.globaltoc"), 1);
     patchToc($("ul.localtoc"), 2);
 
     // Add divider to local TOC if more children after.
@@ -88,5 +88,9 @@
 
     // Patch tables.
     patchTables();
+
+    // Add Note, Warning styles.
+    $('div.note').addClass('alert').addClass('alert-info');
+    $('div.warning').addClass('alert');
   });
 }());
