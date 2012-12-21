@@ -2,6 +2,11 @@
  History
 =========
 
+v0.1.2
+======
+* Add ``globaltoc_depth`` theme option.
+* Add Bootstrap alert styling to "note", "warning" Sphinx directives.
+
 v0.1.1
 ======
 * Add Bootstrap table styling.
