@@ -88,5 +88,9 @@
 
     // Patch tables.
     patchTables();
+
+    // Add Note, Warning styles.
+    $('div.note').addClass('alert').addClass('alert-info');
+    $('div.warning').addClass('alert');
   });
 }());

@@ -63,6 +63,12 @@ Installation from PyPI_ is fairly straightforward:
 
 Download from GitHub
 --------------------
+
+.. warning:: GitHub has deprecated the downloads feature. We will need to
+  create a new download URL scheme. Please see the GitHub
+  `bug report <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/6>`_
+  for progress.
+
 To install the theme from the `GitHub repository`_, download the theme
 bundle and update your configuration:
 
@@ -113,6 +119,10 @@ the "conf.py" configuration::
     # Theme options are theme-specific and customize the look and feel of a
     # theme further.
     html_theme_options = {
+        # Global TOC depth for "site" navbar tab. (Default: 1)
+        # Switching to -1 shows all levels.
+        'globaltoc_depth': 2,
+
         # HTML navbar class (Default: "navbar") to attach to <div> element.
         # For black navbar, do "navbar navbar-inverse"
         'navbar_class': "navbar navbar-inverse",
@@ -135,7 +145,7 @@ source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.
 
 The global (site-wide) table of contents is the "Site" navigation dropdown,
-which is a multi-level deep rendering of the ``toctree`` for the entire site.
+which is a confgiurable level rendering of the ``toctree`` for the entire site.
 The local (page-level) table of contents is the "Page" navigation dropdown,
 which is a multi-level rendering of the current page's ``toc``.
 
