@@ -73,7 +73,7 @@
     });
 
     // Patch in level.
-    //patchToc($("ul.globaltoc"), 1);
+    patchToc($("ul.globaltoc"), 1);
     patchToc($("ul.localtoc"), 2);
 
     // Add divider to local TOC if more children after.
