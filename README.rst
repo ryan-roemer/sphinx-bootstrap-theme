@@ -145,7 +145,7 @@ source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.
 
 The global (site-wide) table of contents is the "Site" navigation dropdown,
-which is a confgiurable level rendering of the ``toctree`` for the entire site.
+which is a configurable level rendering of the ``toctree`` for the entire site.
 The local (page-level) table of contents is the "Page" navigation dropdown,
 which is a multi-level rendering of the current page's ``toc``.
 
