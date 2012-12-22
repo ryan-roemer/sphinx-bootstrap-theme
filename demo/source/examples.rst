@@ -6,6 +6,19 @@ Various examples of Bootstrap styling applied to Sphinx constructs. You can
 view the `source <./_sources/examples.txt>`_ of this page to see the specific
 reStructuredText used to create these examples.
 
+Admonitions
+===========
+The Sphinx Bootstrap Theme uses the Bootstrap ``alert`` classes for Sphinx
+admonitions.
+
+Note
+----
+.. note:: This is a note.
+
+Warning
+-------
+.. warning:: This is a warning.
+
 Tables
 ======
 Here are some examples of Sphinx
