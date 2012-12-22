@@ -10,7 +10,7 @@ and mobile-friendly responsive design.
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _theme: http://sphinx.pocoo.org/theming.html
 .. _PyPI: http://pypi.python.org/pypi/sphinx-bootstrap-theme/
-.. _GitHub repository: https://github.com/sphinx-bootstrap-theme/ryan-roemer
+.. _GitHub repository: https://github.com/ryan-roemer/sphinx-bootstrap-theme
 
 
 Introduction and Demos
