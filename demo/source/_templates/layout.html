@@ -1,4 +1,6 @@
 {% extends "!layout.html" %}
+{# Include our new CSS file into existing ones. #}
+{% set css_files = css_files + ['_static/my-styles.css']%}
 
 {# Add github banner (from: https://github.com/blog/273-github-ribbons). #}
 {% block header %}
@@ -9,3 +11,10 @@
     src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
     alt="Fork me on GitHub"></a>
 {% endblock %}
+
+{# Add hr above normal footer
+{% block footer %}
+  <hr />
+  {{ super() }}
+{% endblock %}
+#}
