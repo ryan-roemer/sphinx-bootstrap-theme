@@ -2,6 +2,10 @@
  History
 =========
 
+v0.1.3
+======
+* Convert inline code to Bootstrap-styled ``code`` elements.
+
 v0.1.2
 ======
 * Add ``globaltoc_depth`` theme option.
