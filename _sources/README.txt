@@ -39,11 +39,6 @@ look at the `examples source`_ for the underlying reStructuredText).
 
 Installation
 ============
-The theme can be installed from PyPI_ or downloaded as a zip file from
-GitHub.
-
-Install from PyPI
------------------
 Installation from PyPI_ is fairly straightforward:
 
 1. Install the package::
@@ -61,47 +56,39 @@ Installation from PyPI_ is fairly straightforward:
       html_theme = 'bootstrap'
       html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
-Download from GitHub
---------------------
+..
+  The theme can be installed from PyPI_ or downloaded as a zip file from
+  GitHub.
 
-.. warning:: GitHub has deprecated the downloads feature. We will need to
-  create a new download URL scheme. Please see the GitHub
-  `bug report <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/6>`_
-  for progress.
+  Install Python Package from PyPI
+  --------------------------------
 
-To install the theme from the `GitHub repository`_, download the theme
-bundle and update your configuration:
+  Download Zip Bundle
+  -------------------
+  To install the theme from a bundled zip file, download the theme
+  bundle from the theme website and update your configuration:
 
-1. Create a "_themes" directory in your project source root.
-2. Get the "bootstrap" theme either as raw files or as a zipfile from
-   the repository.
+  1. Create a "_themes" directory in your project source root.
+  2. Get the "bootstrap" theme either as raw files or as a zipfile.
 
-   a. Most current way is to just clone this repo or download the full
-      repo source and move the "bootstrap" directory to "_themes".
-   b. Alternatively, there are some prepackaged theme zip files (containing
-      only the theme files), which can be read directly by Sphinx. See the
-      repo downloads_ page for available packages. Then download
-      "bootstrap.zip"::
+     a. Most current way is to just clone this repo or download the full
+        repo source and move the "bootstrap" directory to "_themes".
+     b. Alternatively, there are some prepackaged theme zip files (containing
+        only the theme files), which can be read directly by Sphinx. See the
+        downloads_ page for available packages. Then download
+        "bootstrap.zip"::
 
-        $ cd /path/to/_themes
-        $ wget https://github.com/downloads/ryan-roemer/sphinx-bootstrap-theme/bootstrap.zip
+          $ cd /path/to/_themes
+          $ wget https://github.com/ryan-roemer/sphinx-bootstrap-theme/_static/downloads/bootstrap.zip
 
-      In addition to the "current" release, the GitHub zipfiles have either git
-      hash releases (for development builds) or tags for official tagged
-      releases. E.g.::
+  3. Edit the "conf.py" configuration file to point to the bootstrap theme::
 
-        bootstrap.zip
-        bootstrap-v0.1.1.zip
-        bootstrap-f51d73491e9bae68eb1b1c57059d9e0ece03d125.zip
+        # Activate the theme.
+        sys.path.append(os.path.abspath('_themes'))
+        html_theme = 'bootstrap'
+        html_theme_path = ['_themes']
 
-3. Edit the "conf.py" configuration file to point to the bootstrap theme::
-
-      # Activate the theme.
-      sys.path.append(os.path.abspath('_themes'))
-      html_theme = 'bootstrap'
-      html_theme_path = ['_themes']
-
-.. _downloads: https://github.com/ryan-roemer/sphinx-bootstrap-theme/downloads
+  .. _downloads: http://ryan-roemer.github.com/sphinx-bootstrap-theme/downloads.html
 
 
 Customization
