@@ -5,5 +5,3 @@ build
 dist
 *\.egg-info
 demo/build/*
-bootstrap\.zip
-bootstrap-*\.zip
