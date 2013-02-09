@@ -4,6 +4,8 @@
 
 v0.1.4
 ======
+* Added jQuery v1.9.1 with `noConflict()` to allow underlying Sphinx to use
+  whatever jQuery it wants.
 * Update to Bootstrap v2.3.0.
 * Fix multi-word Bootstrap-styled ``code`` elements.
 

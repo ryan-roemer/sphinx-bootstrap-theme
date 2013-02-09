@@ -93,8 +93,12 @@ Installation from PyPI_ is fairly straightforward:
 
 Customization
 =============
-The theme can be further customized with the following options by editing
-the "conf.py" configuration::
+The can be customized in varying ways (some a little more work than others).
+
+Theme Options
+-------------
+The theme provides many built-in options that can be configured by editing
+your "conf.py" file::
 
     # (Optional) Use a shorter name to conserve nav. bar space.
     html_short_title = "Demo"
@@ -123,6 +127,67 @@ the "conf.py" configuration::
         'source_link_position': "nav",
     }
 
+
+Extending "layout.html"
+-----------------------
+As a more "hands on" approach to customization, you can override any template
+in this Sphinx theme or any others. A good candidate for changes is
+"layout.html", which provides most of the look and feel. First, take a look
+at the "`layout.html <_layout>`_" file that the theme provides, and figure out
+what you need to override.
+
+Then, create your own "_templates" directory and "layout.html" file (assuming
+you build from a "source" directory)::
+
+    $ mkdir source/_templates
+    $ touch source/_templates/layout.html
+
+Then, configure your "conf.py"::
+
+    templates_path = ['_templates']
+
+Finally, edit your override file "source/_templates/layout.html"::
+
+    {# Import the theme's layout. #}
+    {% extends "!layout.html" %}
+
+    {# Add some extra stuff before and use exiting with 'super()' call. #}
+    {% block footer %}
+      <h2>My footer of awesomeness.</h2>
+      {{ super() }}
+    {% endblock %}
+
+.. _layout: https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/demo/source/_templates/layout.html
+
+Adding Custom CSS
+-----------------
+Alternately, you could add your own custom static media directory with a CSS
+file to override a style, which in the demo would be something like::
+
+    $ mkdir source/_static
+    $ touch source/_static/my-styles.css
+
+Then, in "conf.py", edit this line::
+
+    html_static_path = ["_static"]
+
+You will also need the override template "source/_templates/layout.html" file
+configured as above, but with the following code::
+
+    {# Import the theme's layout. #}
+    {% extends "!layout.html" %}
+
+    {# Include our new CSS file into existing ones. #}
+    {% set css_files = css_files + ['_static/my-styles.css']%}
+
+Then, in the new file "source/_static/my-styles.css", add any appropriate
+styling, e.g. a top border on the container::
+
+    footer {
+      background-color: red;
+    }
+
+
 Theme Notes
 ===========
 Sphinx
@@ -139,8 +204,13 @@ which is a multi-level rendering of the current page's ``toc``.
 
 Bootstrap
 ---------
-The theme uses Twitter Bootstrap v2.3.0. You can override any static JS/CSS
-files by dropping different versions in your Sphinx "_static" directory.
+The theme uses Twitter Bootstrap v2.3.0 and jQuery v.1.9.1. As the jQuery that
+Bootstrap wants can radically depart from the jQuery Sphinx internal libraries
+use, the library from this theme is integrated via ``noConflict()`` as
+``$jqTheme``.
+
+You can override any static JS/CSS files by dropping different versions in your
+Sphinx "_static" directory.
 
 
 Licenses
