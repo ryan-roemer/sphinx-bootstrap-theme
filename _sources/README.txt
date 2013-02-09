@@ -133,7 +133,7 @@ Extending "layout.html"
 As a more "hands on" approach to customization, you can override any template
 in this Sphinx theme or any others. A good candidate for changes is
 "layout.html", which provides most of the look and feel. First, take a look
-at the "`layout.html <_layout>`_" file that the theme provides, and figure out
+at the "layout.html" file that the theme provides, and figure out
 what you need to override.
 
 Then, create your own "_templates" directory and "layout.html" file (assuming
@@ -157,7 +157,6 @@ Finally, edit your override file "source/_templates/layout.html"::
       {{ super() }}
     {% endblock %}
 
-.. _layout: https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/demo/source/_templates/layout.html
 
 Adding Custom CSS
 -----------------
