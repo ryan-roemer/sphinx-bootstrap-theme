@@ -58,8 +58,15 @@
       });
     });
 
-    // Patch in level.
-    patchToc($("ul.globaltoc"), 1);
+    // Global TOC.
+    if ($("ul.globaltoc li").length) {
+      patchToc($("ul.globaltoc"), 1);
+    } else {
+      // Remove Global TOC.
+      $(".globaltoc-container").remove();
+    }
+
+    // Local TOC.
     patchToc($("ul.localtoc"), 2);
 
     // Mutate sub-lists (for bs-2.3.0).
