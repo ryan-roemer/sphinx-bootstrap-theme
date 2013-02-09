@@ -6,6 +6,18 @@ Various examples of Bootstrap styling applied to Sphinx constructs. You can
 view the `source <./_sources/examples.txt>`_ of this page to see the specific
 reStructuredText used to create these examples.
 
+Headings
+========
+This is a first level heading (``h1``).
+
+Sub-Heading
+-----------
+This is a second level heading (``h2``).
+
+Sub-Sub-Heading
+~~~~~~~~~~~~~~~
+This is a third level heading (``h3``).
+
 
 Code
 ====

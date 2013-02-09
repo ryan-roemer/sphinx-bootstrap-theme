@@ -8,7 +8,9 @@
    * @param minLevel: Starting level for nested lists. (1: global, 2: local).
    */
   var patchToc = function ($ul, minLevel) {
-    var findA;
+    var findA,
+      patchTables,
+      $localLi;
 
     // Find all a "internal" tags, traversing recursively.
     findA = function ($elem, level) {
@@ -42,7 +44,7 @@
    * Patch all tables to remove ``docutils`` class and add Bootstrap base
    * ``table`` class.
    */
-  var patchTables = function () {
+  patchTables = function () {
     $("table.docutils")
       .removeClass("docutils")
       .addClass("table")
@@ -80,13 +82,17 @@
       if (tag === "ul") {
         $ul.replaceWith($kids);
       } else if (tag === "li") {
-        // Insert into previous list with divider.
-        $parent
-          .after($kids)
-          .after('<li class="divider"></li>');
+        // Insert into previous list.
+        $parent.after($kids);
         $ul.remove();
       }
     });
+
+    // Add divider in page TOC.
+    $localLi = $("ul.localtoc li");
+    if ($localLi.length > 2) {
+      $localLi.first().after('<li class="divider"></li>');
+    }
 
     // Enable dropdown.
     $('.dropdown-toggle').dropdown();
