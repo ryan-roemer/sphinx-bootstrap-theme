@@ -12,8 +12,8 @@
 
     // Find all a "internal" tags, traversing recursively.
     findA = function ($elem, level) {
-      var level = level || 0,
-        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+      level = level || 0;
+      var $items = $elem.find("> li > a.internal, > ul, > li > ul");
 
       // Iterate everything in order.
       $items.each(function (index, item) {
@@ -26,7 +26,7 @@
         if (tag === 'ul' && level >= minLevel && $childrenLi.length > 0) {
           $parentLi
             .addClass('dropdown-submenu')
-            .children('a').first().attr('tabindex', -1)
+            .children('a').first().attr('tabindex', -1);
 
           $item.addClass('dropdown-menu');
         }
@@ -94,6 +94,6 @@
     // Inline code styles to Bootstrap style.
     $('tt.docutils').replaceWith(function () {
       return $("<code />").text($(this).text());
-    })
+    });
   });
 }($jqTheme || window.jQuery));
