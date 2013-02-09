@@ -1,6 +1,6 @@
 # Top level.
 include *.txt
-exclude *.rst
+include *.rst
 
 # Non-python files.
 recursive-include sphinx_bootstrap_theme *
