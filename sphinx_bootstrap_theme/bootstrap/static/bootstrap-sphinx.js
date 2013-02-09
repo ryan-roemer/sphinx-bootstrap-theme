@@ -50,6 +50,7 @@
   };
 
   $(document).ready(function () {
+    // TODO REMOVE???
     // Fix iPhone menu clicks.
     // From: https://github.com/twitter/bootstrap/issues/4550#issuecomment-8476763
     $('.dropdown-menu').on('touchstart.dropdown.data-api', function(e) {
@@ -67,14 +68,34 @@
         var $item = $(item);
         $item.addClass('unstyled');
       });
-      $(this).find("li").each(function () {
-        $(this).parent().append(this);
-      });
+      // TODO REMOVE
+      // $(this).find("li").each(function () {
+      //   var $parent = $(this).parent();
+      //   $parent.append($(this).detach());
+      // });
     });
 
     // Patch in level.
     patchToc($("ul.globaltoc"), 1);
     patchToc($("ul.localtoc"), 2);
+
+    // Mutate sub-lists (for bs-2.3.0).
+    $(".dropdown-menu ul").not(".dropdown-menu").each(function () {
+      var $ul = $(this),
+        $parent = $ul.parent(),
+        tag = $parent[0].tagName.toLowerCase(),
+        $kids = $ul.children().detach();
+
+      // Replace list with items if submenu header.
+      if (tag === "ul") {
+        $ul.replaceWith($kids);
+      } else if (tag === "li") {
+        $parent.after($kids);
+        $ul.remove();
+      }
+
+      console.log("TODO HERE", $parent, tag, $ul, $kids);
+    });
 
     // Add divider to local TOC if more children after.
     if ($("ul.localtoc > ul > li > ul li").length > 0) {
