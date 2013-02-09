@@ -6,6 +6,16 @@ Various examples of Bootstrap styling applied to Sphinx constructs. You can
 view the `source <./_sources/examples.txt>`_ of this page to see the specific
 reStructuredText used to create these examples.
 
+
+Code
+====
+The Sphinx Bootstrap Theme uses Bootstrap styling for ``inline code text`` and
+::
+
+    multline
+    code text
+
+
 Admonitions
 ===========
 The Sphinx Bootstrap Theme uses the Bootstrap ``alert`` classes for Sphinx
@@ -18,6 +28,7 @@ Note
 Warning
 -------
 .. warning:: This is a warning.
+
 
 Tables
 ======

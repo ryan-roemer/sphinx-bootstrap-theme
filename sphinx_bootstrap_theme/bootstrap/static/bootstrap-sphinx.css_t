@@ -33,3 +33,9 @@ body {
 table {
   border: 0;
 }
+
+.footer {
+  width: 100%;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}

@@ -139,7 +139,7 @@ which is a multi-level rendering of the current page's ``toc``.
 
 Bootstrap
 ---------
-The theme uses Twitter Bootstrap v2.2.1. You can override any static JS/CSS
+The theme uses Twitter Bootstrap v2.3.0. You can override any static JS/CSS
 files by dropping different versions in your Sphinx "_static" directory.
 
 

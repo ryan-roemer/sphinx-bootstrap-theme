@@ -2,6 +2,11 @@
  History
 =========
 
+v0.1.4
+======
+* Update to Bootstrap v2.3.0.
+* Fix multi-word Bootstrap-styled ``code`` elements.
+
 v0.1.3
 ======
 * Convert inline code to Bootstrap-styled ``code`` elements.
