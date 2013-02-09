@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
   /**
    * Patch TOC list.
    *
@@ -113,4 +113,4 @@
       return $("<code />").text($(this).text());
     })
   });
-}());
+}($jqTheme || window.jQuery));
