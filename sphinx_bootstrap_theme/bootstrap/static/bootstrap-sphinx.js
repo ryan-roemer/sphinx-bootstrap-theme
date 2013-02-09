@@ -68,11 +68,6 @@
         var $item = $(item);
         $item.addClass('unstyled');
       });
-      // TODO REMOVE
-      // $(this).find("li").each(function () {
-      //   var $parent = $(this).parent();
-      //   $parent.append($(this).detach());
-      // });
     });
 
     // Patch in level.
