@@ -50,18 +50,6 @@
   };
 
   $(document).ready(function () {
-    // TODO REMOVE???
-    // Fix iPhone menu clicks.
-    // From: https://github.com/twitter/bootstrap/issues/4550#issuecomment-8476763
-    $('.dropdown-menu').on('touchstart.dropdown.data-api', function(e) {
-      e.stopPropagation();
-    });
-    // See also...
-    // // From: https://github.com/twitter/bootstrap/issues/4550#issuecomment-8879600
-    // $('a.dropdown-toggle, .dropdown-menu a').on('touchstart', function(e) {
-    //   e.stopPropagation();
-    // });
-
     // Add styling, structure to TOC's.
     $(".dropdown-menu").each(function () {
       $(this).find("ul").each(function (index, item){
