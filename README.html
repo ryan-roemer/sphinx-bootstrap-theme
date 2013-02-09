@@ -6,18 +6,18 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.1.3 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.1.5 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/bootstrap-2.2.1.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-2.3.0/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/css/bootstrap-responsive-2.2.1.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-2.3.0/css/bootstrap-responsive.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1.3',
+        VERSION:     '0.1.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,9 +26,11 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/js/bootstrap-2.2.1.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-2.3.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.1.3 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.1.5 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -57,13 +59,13 @@
       </button>
 
       <a class="brand" href="index.html">Demo</a>
-      <span class="navbar-text pull-left"><b>0.1.3</b></span>
+      <span class="navbar-text pull-left"><b>0.1.5</b></span>
 
       <div class="nav-collapse">
         <ul class="nav">
           <li class="divider-vertical"></li>
           
-            <li class="dropdown">
+            <li class="dropdown globaltoc-container">
   <a href="index.html"
      class="dropdown-toggle"
      data-toggle="dropdown">Site <b class="caret"></b></a>
@@ -78,6 +80,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#headings">Headings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#code">Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#admonitions">Admonitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html#tables">Tables</a></li>
 </ul>
@@ -87,6 +91,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-2">v0.1.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-1">v0.1.1</a></li>
@@ -107,7 +112,12 @@
 <li><a class="reference internal" href="#">Sphinx Bootstrap Theme</a><ul>
 <li><a class="reference internal" href="#introduction-and-demos">Introduction and Demos</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
-<li><a class="reference internal" href="#customization">Customization</a></li>
+<li><a class="reference internal" href="#customization">Customization</a><ul>
+<li><a class="reference internal" href="#theme-options">Theme Options</a></li>
+<li><a class="reference internal" href="#extending-layout-html">Extending &#8220;layout.html&#8221;</a></li>
+<li><a class="reference internal" href="#adding-custom-css">Adding Custom CSS</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#theme-notes">Theme Notes</a><ul>
 <li><a class="reference internal" href="#id2">Sphinx</a></li>
 <li><a class="reference internal" href="#id3">Bootstrap</a></li>
@@ -194,8 +204,11 @@ look at the <a class="reference external" href="http://ryan-roemer.github.com/sp
 </div>
 <div class="section" id="customization">
 <h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
-<p>The theme can be further customized with the following options by editing
-the &#8220;conf.py&#8221; configuration:</p>
+<p>The can be customized in varying ways (some a little more work than others).</p>
+<div class="section" id="theme-options">
+<h3>Theme Options<a class="headerlink" href="#theme-options" title="Permalink to this headline">¶</a></h3>
+<p>The theme provides many built-in options that can be configured by editing
+your &#8220;conf.py&#8221; file:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># (Optional) Use a shorter name to conserve nav. bar space.</span>
 <span class="n">html_short_title</span> <span class="o">=</span> <span class="s">&quot;Demo&quot;</span>
 
@@ -225,6 +238,60 @@ the &#8220;conf.py&#8221; configuration:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="extending-layout-html">
+<h3>Extending &#8220;layout.html&#8221;<a class="headerlink" href="#extending-layout-html" title="Permalink to this headline">¶</a></h3>
+<p>As a more &#8220;hands on&#8221; approach to customization, you can override any template
+in this Sphinx theme or any others. A good candidate for changes is
+&#8220;layout.html&#8221;, which provides most of the look and feel. First, take a look
+at the &#8220;<a class="reference external" href="_layout">layout.html</a>&#8221; file that the theme provides, and figure out
+what you need to override.</p>
+<p>Then, create your own &#8220;_templates&#8221; directory and &#8220;layout.html&#8221; file (assuming
+you build from a &#8220;source&#8221; directory):</p>
+<div class="highlight-python"><pre>$ mkdir source/_templates
+$ touch source/_templates/layout.html</pre>
+</div>
+<p>Then, configure your &#8220;conf.py&#8221;:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;_templates&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Finally, edit your override file &#8220;source/_templates/layout.html&#8221;:</p>
+<div class="highlight-python"><pre>{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{# Add some extra stuff before and use exiting with 'super()' call. #}
+{% block footer %}
+  &lt;h2&gt;My footer of awesomeness.&lt;/h2&gt;
+  {{ super() }}
+{% endblock %}</pre>
+</div>
+</div>
+<div class="section" id="adding-custom-css">
+<h3>Adding Custom CSS<a class="headerlink" href="#adding-custom-css" title="Permalink to this headline">¶</a></h3>
+<p>Alternately, you could add your own custom static media directory with a CSS
+file to override a style, which in the demo would be something like:</p>
+<div class="highlight-python"><pre>$ mkdir source/_static
+$ touch source/_static/my-styles.css</pre>
+</div>
+<p>Then, in &#8220;conf.py&#8221;, edit this line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;_static&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You will also need the override template &#8220;source/_templates/layout.html&#8221; file
+configured as above, but with the following code:</p>
+<div class="highlight-python"><pre>{# Import the theme's layout. #}
+{% extends "!layout.html" %}
+
+{# Include our new CSS file into existing ones. #}
+{% set css_files = css_files + ['_static/my-styles.css']%}</pre>
+</div>
+<p>Then, in the new file &#8220;source/_static/my-styles.css&#8221;, add any appropriate
+styling, e.g. a top border on the container:</p>
+<div class="highlight-python"><pre>footer {
+  background-color: red;
+}</pre>
+</div>
+</div>
+</div>
 <div class="section" id="theme-notes">
 <h2>Theme Notes<a class="headerlink" href="#theme-notes" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id2">
@@ -239,8 +306,12 @@ which is a multi-level rendering of the current page&#8217;s <tt class="docutils
 </div>
 <div class="section" id="id3">
 <h3>Bootstrap<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>The theme uses Twitter Bootstrap v2.2.1. You can override any static JS/CSS
-files by dropping different versions in your Sphinx &#8220;_static&#8221; directory.</p>
+<p>The theme uses Twitter Bootstrap v2.3.0 and jQuery v.1.9.1. As the jQuery that
+Bootstrap wants can radically depart from the jQuery Sphinx internal libraries
+use, the library from this theme is integrated via <tt class="docutils literal"><span class="pre">noConflict()</span></tt> as
+<tt class="docutils literal"><span class="pre">$jqTheme</span></tt>.</p>
+<p>You can override any static JS/CSS files by dropping different versions in your
+Sphinx &#8220;_static&#8221; directory.</p>
 </div>
 </div>
 <div class="section" id="licenses">
@@ -259,7 +330,7 @@ files by dropping different versions in your Sphinx &#8220;_static&#8221; direct
       
     </p>
     <p>
-        &copy; Copyright 2011-2012, Ryan Roemer.<br/>
+        &copy; Copyright 2011-2013, Ryan Roemer.<br/>
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
     </p>
   </div>
