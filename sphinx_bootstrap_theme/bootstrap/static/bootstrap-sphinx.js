@@ -90,19 +90,13 @@
       if (tag === "ul") {
         $ul.replaceWith($kids);
       } else if (tag === "li") {
-        $parent.after($kids);
+        // Insert into previous list with divider.
+        $parent
+          .after($kids)
+          .after('<li class="divider"></li>');
         $ul.remove();
       }
-
-      console.log("TODO HERE", $parent, tag, $ul, $kids);
     });
-
-    // Add divider to local TOC if more children after.
-    if ($("ul.localtoc > ul > li > ul li").length > 0) {
-      $("ul.localtoc > ul > li > a")
-        .first()
-        .after('<li class="divider"></li>');
-    }
 
     // Enable dropdown.
     $('.dropdown-toggle').dropdown();
