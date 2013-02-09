@@ -92,7 +92,7 @@
     $('div.warning').addClass('alert');
 
     // Inline code styles to Bootstrap style.
-    $('tt.docutils span.pre').replaceWith(function () {
+    $('tt.docutils').replaceWith(function () {
       return $("<code />").text($(this).text());
     })
   });
