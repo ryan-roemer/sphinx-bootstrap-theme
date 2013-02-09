@@ -4,6 +4,7 @@
 
 v0.1.4
 ======
+* Remove the ``Site`` nav button if no other pages.
 * Added jQuery v1.9.1 with `noConflict()` to allow underlying Sphinx to use
   whatever jQuery it wants.
 * Update to Bootstrap v2.3.0.
