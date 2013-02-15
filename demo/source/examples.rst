@@ -24,7 +24,7 @@ Code
 The Sphinx Bootstrap Theme uses Bootstrap styling for ``inline code text`` and
 ::
 
-    multline
+    multiline
     code text
 
 
