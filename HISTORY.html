@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>History &mdash; Demo 0.1.6 documentation</title>
+    <title>History &mdash; Demo 0.1.7 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1.6',
+        VERSION:     '0.1.7',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-2.3.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.1.6 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.1.7 documentation" href="index.html" />
     <link rel="prev" title="Future Work" href="TODO.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -58,7 +58,7 @@
       </button>
 
       <a class="brand" href="index.html">Demo</a>
-      <span class="navbar-text pull-left"><b>0.1.6</b></span>
+      <span class="navbar-text pull-left"><b>0.1.7</b></span>
 
       <div class="nav-collapse">
         <ul class="nav">
@@ -91,6 +91,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-1-7">v0.1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-4">v0.1.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-3">v0.1.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-1-2">v0.1.2</a></li>
@@ -110,6 +111,7 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"><ul>
 <li><a class="reference internal" href="#">History</a><ul>
+<li><a class="reference internal" href="#v0-1-7">v0.1.7</a></li>
 <li><a class="reference internal" href="#v0-1-4">v0.1.4</a></li>
 <li><a class="reference internal" href="#v0-1-3">v0.1.3</a></li>
 <li><a class="reference internal" href="#v0-1-2">v0.1.2</a></li>
@@ -153,11 +155,21 @@
   
   <div class="section" id="history">
 <h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v0-1-7">
+<h2>v0.1.7<a class="headerlink" href="#v0-1-7" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Add Python 3 support. (<a class="reference external" href="https://github.com/zyga">&#64;zyga</a>)</li>
+<li>Add support for <tt class="docutils literal"><span class="pre">navbar_title</span></tt> theme configuration. The documentation
+originally stated that <tt class="docutils literal"><span class="pre">html_short_title</span></tt> was supported for overriding the
+navbar title (brand), but this never actually worked.
+(Thanks to Tim Kedmenec for pointing this out).</li>
+</ul>
+</div>
 <div class="section" id="v0-1-4">
 <h2>v0.1.4<a class="headerlink" href="#v0-1-4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Remove the <tt class="docutils literal"><span class="pre">Site</span></tt> nav button if no other pages.</li>
-<li>Added jQuery v1.9.1 with <cite>noConflict()</cite> to allow underlying Sphinx to use
+<li>Added jQuery v1.9.1 with <tt class="docutils literal"><span class="pre">noConflict()</span></tt> to allow underlying Sphinx to use
 whatever jQuery it wants.</li>
 <li>Update to Bootstrap v2.3.0.</li>
 <li>Fix multi-word Bootstrap-styled <tt class="docutils literal"><span class="pre">code</span></tt> elements.</li>

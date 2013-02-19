@@ -15,10 +15,11 @@ and mobile-friendly responsive design.
 
 Introduction and Demos
 ======================
-The theme is introduced and discussed in two blog posts:
+The theme is introduced and discussed in the following posts:
 
 * 12/09/2011 - `Twitter Bootstrap Theme for Sphinx <http://loose-bits.com/2011/12/09/sphinx-twitter-bootstrap-theme.html>`_
 * 11/19/2012 - `Sphinx Bootstrap Theme Updates - Mobile, Dropdowns, and More <http://loose-bits.com/2012/11/19/sphinx-bootstrap-theme-updates.html>`_
+* 2/12/2013 - `Sphinx Bootstrap Theme 0.1.6 - Bootstrap and Other Updates <http://loose-bits.com/2013/02/12/sphinx-bootstrap-theme-updates.html>`_
 
 Here is the theme in use for some of my public projects:
 
@@ -66,9 +67,6 @@ Theme Options
 The theme provides many built-in options that can be configured by editing
 your "conf.py" file::
 
-    # (Optional) Use a shorter name to conserve nav. bar space.
-    html_short_title = "Demo"
-
     # (Optional) Logo. Should be exactly 24x24 px to fit the nav. bar.
     # Path should be relative to the static files directory.
     html_logo = "my_logo.png"
@@ -76,6 +74,9 @@ your "conf.py" file::
     # Theme options are theme-specific and customize the look and feel of a
     # theme further.
     html_theme_options = {
+        # Navigation bar title. (Default: ``project`` value)
+        'navbar_title': "Demo",
+
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
         'globaltoc_depth': 2,
@@ -93,6 +94,10 @@ your "conf.py" file::
         'source_link_position': "nav",
     }
 
+Note for the navigation bar title that if you don't specify a theme option of
+``navbar_title`` that the "conf.py" ``project`` string will be used. We don't
+use the ``html_title`` or ``html_short_title`` values because by default those
+both contain version strings, which the navigation bar treats differently.
 
 Extending "layout.html"
 -----------------------
