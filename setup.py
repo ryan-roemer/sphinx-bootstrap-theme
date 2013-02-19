@@ -25,7 +25,7 @@ def read_file(name):
     for ext in exts:
         path = os.path.join(cur_path, '.'.join((name, ext)))
         if os.path.exists(path):
-            with open(path, 'rb') as file_obj:
+            with open(path, 'rt') as file_obj:
                 return file_obj.read()
 
     return ''
