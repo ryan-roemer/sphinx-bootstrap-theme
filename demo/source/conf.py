@@ -88,6 +88,9 @@ html_theme = 'bootstrap'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+    # Navigation bar title. (Default: ``project`` value)
+    'navbar_title': "Demo",
+
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
     'globaltoc_depth': 2,
@@ -119,7 +122,7 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = "Demo"
+#html_short_title = "Demo"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
