@@ -25,7 +25,7 @@ def read_file(name):
     for ext in exts:
         path = os.path.join(cur_path, '.'.join((name, ext)))
         if os.path.exists(path):
-            with open(path, 'rb') as file_obj:
+            with open(path, 'rt') as file_obj:
                 return file_obj.read()
 
     return ''
@@ -37,6 +37,7 @@ def read_file(name):
 setup(
     name="sphinx-bootstrap-theme",
     version=__version__,
+    use_2to3=True,
     description="Sphinx Bootstrap Theme.",
     long_description=read_file("README"),
     url="http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html",
