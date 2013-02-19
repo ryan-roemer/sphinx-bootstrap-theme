@@ -4,6 +4,7 @@
 
 v0.1.7
 ======
+* Add Python 3 support. (`@zyga <https://github.com/zyga>`_)
 * Add support for ``navbar_title`` theme configuration. The documentation
   originally stated that ``html_short_title`` was supported for overriding the
   navbar title (brand), but this never actually worked.
