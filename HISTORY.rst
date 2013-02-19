@@ -2,6 +2,13 @@
  History
 =========
 
+v0.1.7
+======
+* Add support for ``navbar_title`` theme configuration. The documentation
+  originally stated that ``html_short_title`` was supported for overriding the
+  navbar title (brand), but this never actually worked.
+  (Thanks to Tim Kedmenec for pointing this out).
+
 v0.1.4
 ======
 * Remove the ``Site`` nav button if no other pages.
