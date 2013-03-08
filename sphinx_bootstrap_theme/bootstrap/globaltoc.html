@@ -3,5 +3,5 @@
      class="dropdown-toggle"
      data-toggle="dropdown">{{ _('Site') }} <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
-    >{{ toctree(maxdepth=theme_globaltoc_depth|toint, collapse=False) }}</ul>
+    >{{ toctree(maxdepth=theme_globaltoc_depth|toint, collapse=False, includehidden=theme_globaltoc_includehidden|tobool) }}</ul>
 </li>

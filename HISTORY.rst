@@ -2,6 +2,10 @@
  History
 =========
 
+v0.1.8
+======
+* Add `globaltoc_includehidden` option.
+
 v0.1.7
 ======
 * Add Python 3 support. (`@zyga <https://github.com/zyga>`_)

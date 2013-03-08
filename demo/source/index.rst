@@ -21,6 +21,9 @@ Contents
    TODO
    HISTORY
 
+.. Disabled.
+..    downloads
+
 Indices and tables
 ==================
 
