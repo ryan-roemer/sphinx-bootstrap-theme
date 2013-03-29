@@ -136,7 +136,7 @@ html_theme_options = {
     # * spruce
     # * superhero
     # * united
-    'bootswatch_theme': "spacelab",
+    'bootswatch_theme': "",
 
     # TODO: Future.
     # Add page navigation to it's own navigation bar.
