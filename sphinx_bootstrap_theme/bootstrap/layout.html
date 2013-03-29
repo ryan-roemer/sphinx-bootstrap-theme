@@ -1,6 +1,27 @@
 {% extends "basic/layout.html" %}
-{% set script_files = script_files + ['_static/js/jquery-1.9.1.min.js', '_static/js/jquery-fix.js', '_static/bootstrap-2.3.0/js/bootstrap.min.js', '_static/bootstrap-sphinx.js'] %}
-{% set css_files = ['_static/bootstrap-2.3.0/css/bootstrap.min.css', '_static/bootstrap-sphinx.css', '_static/bootstrap-2.3.0/css/bootstrap-responsive.min.css'] + css_files %}
+
+  {% set script_files = script_files + [
+    '_static/js/jquery-1.9.1.min.js',
+    '_static/js/jquery-fix.js',
+    '_static/bootstrap-2.3.0/js/bootstrap.min.js',
+    '_static/bootstrap-sphinx.js'
+  ]
+%}
+{% set css_files = [
+    '_static/bootstrap-2.3.0/css/bootstrap.min.css'
+  ] + css_files
+%}
+{% if theme_bootswatch_theme %}
+{% set css_files = css_files + [
+    'http://netdna.bootstrapcdn.com/bootswatch/2.3.0/' + theme_bootswatch_theme + '/bootstrap.min.css'
+  ]
+%}
+{% endif %}
+{% set css_files = css_files + [
+    '_static/bootstrap-sphinx.css',
+    '_static/bootstrap-2.3.0/css/bootstrap-responsive.min.css'
+  ]
+%}
 
 {%- block doctype -%}
 <!DOCTYPE html>

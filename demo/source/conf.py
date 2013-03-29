@@ -106,7 +106,7 @@ html_theme_options = {
 
     # HTML navbar class (Default: "navbar") to attach to <div> element.
     # For black navbar, do "navbar navbar-inverse"
-    'navbar_class': "navbar navbar-inverse",
+    'navbar_class': "navbar",
 
     # Fix navigation bar to top of page?
     # Values: "true" (default) or "false"
@@ -115,6 +115,28 @@ html_theme_options = {
     # Location of link to source.
     # Options are "nav" (default), "footer" or anything else to exclude.
     'source_link_position': "nav",
+
+    # Bootswatch (http://bootswatch.com/) theme.
+    #
+    # Options are nothing with "" (default) or the name of a valid theme such
+    # as "amelia" or "cosmo".
+    #
+    # Note that this is served off CDN, so won't be available offline.
+    #
+    # Themes:
+    # * amelia
+    # * cerulean
+    # * cosmo
+    # * cyborg
+    # * journal
+    # * readable
+    # * simplex
+    # * slate
+    # * spacelab
+    # * spruce
+    # * superhero
+    # * united
+    'bootswatch_theme': "united",
 
     # TODO: Future.
     # Add page navigation to it's own navigation bar.
