@@ -4,7 +4,8 @@
 
 This Sphinx_ theme_ integrates the Twitter Bootstrap_ CSS / JavaScript
 framework with various layout options, hierarchical menu navigation,
-and mobile-friendly responsive design.
+and mobile-friendly responsive design. It is configurable, extensible
+and can use any number of different Bootswatch_ CSS themes.
 
 .. _Bootstrap: http://twitter.github.com/bootstrap/
 .. _Sphinx: http://sphinx.pocoo.org/
