@@ -117,7 +117,13 @@ html_theme_options = {
     'source_link_position': "nav",
 
     # Bootswatch (http://bootswatch.com/) theme.
-    # Options:
+    #
+    # Options are nothing with "" (default) or the name of a valid theme such
+    # as "amelia" or "cosmo".
+    #
+    # Note that this is served off CDN, so won't be available offline.
+    #
+    # Themes:
     # * amelia
     # * cerulean
     # * cosmo

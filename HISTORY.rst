@@ -2,6 +2,11 @@
  History
 =========
 
+v0.2.0
+======
+* Add `bootswatch_theme` option for `Bootswatch <http://bootswatch.com>`
+  CSS theme support. (`@zyga <https://github.com/zyga>`_)
+
 v0.1.8
 ======
 * Add `globaltoc_includehidden` option.

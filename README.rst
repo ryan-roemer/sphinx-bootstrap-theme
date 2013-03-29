@@ -24,7 +24,8 @@ The theme is introduced and discussed in the following posts:
 Here is the theme in use for some of my public projects:
 
 * `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
-  the theme option ``'navbar_class': "navbar navbar-inverse"``.
+  the theme options ``'navbar_class': "navbar navbar-inverse"`` and
+  ``'source_link_position': "nav"`` to use the "Spacelab_" Bootswatch_ theme.
 * `Django Cloud Browser`_: A Django reusable app for browsing cloud
   datastores (e.g., Amazon Web Services S3).
 
@@ -32,6 +33,8 @@ The theme demo website also includes an `examples page`_ for some useful
 illustrations of getting Sphinx to play nicely with Bootstrap (also take a
 look at the `examples source`_ for the underlying reStructuredText).
 
+.. _Bootswatch: http://bootswatch.com
+.. _Spacelab: http://bootswatch.com/spacelab
 .. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
 .. _examples page: http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html
 .. _examples source: http://ryan-roemer.github.com/sphinx-bootstrap-theme/_sources/examples.txt
@@ -101,12 +104,32 @@ your "conf.py" file::
         # Location of link to source.
         # Options are "nav" (default), "footer" or anything else to exclude.
         'source_link_position': "nav",
+
+        # Bootswatch (http://bootswatch.com/) theme.
+        #
+        # Options are nothing with "" (default) or the name of a valid theme
+        # such as "amelia" or "cosmo".
+        #
+        # Note that this is served off CDN, so won't be available offline.
+        'bootswatch_theme': "spacelab",
     }
 
 Note for the navigation bar title that if you don't specify a theme option of
 ``navbar_title`` that the "conf.py" ``project`` string will be used. We don't
 use the ``html_title`` or ``html_short_title`` values because by default those
 both contain version strings, which the navigation bar treats differently.
+
+Bootswatch
+----------
+The theme option ``bootswatch_theme`` integrates (the totally awesome)
+Bootswatch_ library, so you can choose between the various themes. The
+themes, however, are served off a CDN, not from static files, which means that
+if you are offline, you will see "normal", un-themed Bootstrap for your
+documentation.
+
+This seemed like the best compromise between the size issues with statically
+including all of the various Bootswatch_ themes and actually making them
+available online.
 
 Extending "layout.html"
 -----------------------
