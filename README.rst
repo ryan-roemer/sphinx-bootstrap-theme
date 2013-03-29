@@ -206,7 +206,7 @@ which is a multi-level rendering of the current page's ``toc``.
 
 Bootstrap
 ---------
-The theme uses Twitter Bootstrap v2.3.0 and jQuery v.1.9.1. As the jQuery that
+The theme uses Twitter Bootstrap v2.3.1 and jQuery v.1.9.1. As the jQuery that
 Bootstrap wants can radically depart from the jQuery Sphinx internal libraries
 use, the library from this theme is integrated via ``noConflict()`` as
 ``$jqTheme``.

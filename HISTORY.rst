@@ -4,6 +4,7 @@
 
 v0.2.0
 ======
+* Update to Bootstrap v2.3.1.
 * Add `bootswatch_theme` option for `Bootswatch <http://bootswatch.com>`
   CSS theme support. (`@zyga <https://github.com/zyga>`_)
 
