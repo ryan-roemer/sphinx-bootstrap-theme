@@ -6,18 +6,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.1.8 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.2.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-2.3.0/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-2.3.1/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/2.3.1/united/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-2.3.0/css/bootstrap-responsive.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-2.3.1/css/bootstrap-responsive.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.1.8',
+        VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,9 +29,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-2.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-2.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.1.8 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.2.0 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -44,12 +45,12 @@
   <a href="https://github.com/ryan-roemer/sphinx-bootstrap-theme"
      class="visible-desktop"><img
     style="position: absolute; top: 40px; right: 0; border: 0;"
-    src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
     alt="Fork me on GitHub"></a>
 
 <div class="container">
   
-  <div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+  <div id="navbar" class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
       <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -59,7 +60,7 @@
       </button>
 
       <a class="brand" href="index.html">Demo</a>
-      <span class="navbar-text pull-left"><b>0.1.8</b></span>
+      <span class="navbar-text pull-left"><b>0.2.0</b></span>
 
       <div class="nav-collapse">
         <ul class="nav">
@@ -92,6 +93,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-0">v0.2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-8">v0.1.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-7">v0.1.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-1-4">v0.1.4</a></li>
@@ -117,13 +119,14 @@
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#customization">Customization</a><ul>
 <li><a class="reference internal" href="#theme-options">Theme Options</a></li>
+<li><a class="reference internal" href="#id2">Bootswatch</a></li>
 <li><a class="reference internal" href="#extending-layout-html">Extending &#8220;layout.html&#8221;</a></li>
 <li><a class="reference internal" href="#adding-custom-css">Adding Custom CSS</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#theme-notes">Theme Notes</a><ul>
-<li><a class="reference internal" href="#id2">Sphinx</a></li>
-<li><a class="reference internal" href="#id3">Bootstrap</a></li>
+<li><a class="reference internal" href="#id3">Sphinx</a></li>
+<li><a class="reference internal" href="#id4">Bootstrap</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#licenses">Licenses</a></li>
@@ -164,7 +167,8 @@
 <h1>Sphinx Bootstrap Theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="Permalink to this headline">¶</a></h1>
 <p>This <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a> integrates the Twitter <a class="reference external" href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS / JavaScript
 framework with various layout options, hierarchical menu navigation,
-and mobile-friendly responsive design.</p>
+and mobile-friendly responsive design. It is configurable, extensible
+and can use any number of different <a class="reference external" href="http://bootswatch.com">Bootswatch</a> CSS themes.</p>
 <div class="section" id="introduction-and-demos">
 <h2>Introduction and Demos<a class="headerlink" href="#introduction-and-demos" title="Permalink to this headline">¶</a></h2>
 <p>The theme is introduced and discussed in the following posts:</p>
@@ -175,8 +179,8 @@ and mobile-friendly responsive design.</p>
 </ul>
 <p>Here is the theme in use for some of my public projects:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">Sphinx Bootstrap Theme</a>: This project, with a dark top navbar, using
-the theme option <tt class="docutils literal"><span class="pre">'navbar_class':</span> <span class="pre">&quot;navbar</span> <span class="pre">navbar-inverse&quot;</span></tt>.</li>
+<li><a class="reference external" href="http://ryan-roemer.github.com/sphinx-bootstrap-theme">Sphinx Bootstrap Theme</a>: This project, with the theme option
+<tt class="docutils literal"><span class="pre">'bootswatch_theme':</span> <span class="pre">&quot;united&quot;</span></tt> to use the &#8220;<a class="reference external" href="http://bootswatch.com/united">United</a>&#8221; <a class="reference external" href="http://bootswatch.com">Bootswatch</a> theme.</li>
 <li><a class="reference external" href="http://ryan-roemer.github.com/django-cloud-browser">Django Cloud Browser</a>: A Django reusable app for browsing cloud
 datastores (e.g., Amazon Web Services S3).</li>
 </ul>
@@ -247,6 +251,14 @@ your &#8220;conf.py&#8221; file:</p>
     <span class="c"># Location of link to source.</span>
     <span class="c"># Options are &quot;nav&quot; (default), &quot;footer&quot; or anything else to exclude.</span>
     <span class="s">&#39;source_link_position&#39;</span><span class="p">:</span> <span class="s">&quot;nav&quot;</span><span class="p">,</span>
+
+    <span class="c"># Bootswatch (http://bootswatch.com/) theme.</span>
+    <span class="c">#</span>
+    <span class="c"># Options are nothing with &quot;&quot; (default) or the name of a valid theme</span>
+    <span class="c"># such as &quot;amelia&quot; or &quot;cosmo&quot;.</span>
+    <span class="c">#</span>
+    <span class="c"># Note that this is served off CDN, so won&#39;t be available offline.</span>
+    <span class="s">&#39;bootswatch_theme&#39;</span><span class="p">:</span> <span class="s">&quot;united&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -254,6 +266,17 @@ your &#8220;conf.py&#8221; file:</p>
 <tt class="docutils literal"><span class="pre">navbar_title</span></tt> that the &#8220;conf.py&#8221; <tt class="docutils literal"><span class="pre">project</span></tt> string will be used. We don&#8217;t
 use the <tt class="docutils literal"><span class="pre">html_title</span></tt> or <tt class="docutils literal"><span class="pre">html_short_title</span></tt> values because by default those
 both contain version strings, which the navigation bar treats differently.</p>
+</div>
+<div class="section" id="id2">
+<h3>Bootswatch<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>The theme option <tt class="docutils literal"><span class="pre">bootswatch_theme</span></tt> integrates (the totally awesome)
+<a class="reference external" href="http://bootswatch.com">Bootswatch</a> library, so you can choose between the various themes. The
+themes, however, are served off a CDN, not from static files, which means that
+if you are offline, you will see &#8220;normal&#8221;, un-themed Bootstrap for your
+documentation.</p>
+<p>This seemed like the best compromise between the size issues with statically
+including all of the various <a class="reference external" href="http://bootswatch.com">Bootswatch</a> themes and actually making them
+available online.</p>
 </div>
 <div class="section" id="extending-layout-html">
 <h3>Extending &#8220;layout.html&#8221;<a class="headerlink" href="#extending-layout-html" title="Permalink to this headline">¶</a></h3>
@@ -311,8 +334,8 @@ styling, e.g. a bold background color:</p>
 </div>
 <div class="section" id="theme-notes">
 <h2>Theme Notes<a class="headerlink" href="#theme-notes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id2">
-<h3>Sphinx<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Sphinx<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>The theme places the global TOC, local TOC, navigation (prev, next) and
 source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.</p>
@@ -321,9 +344,9 @@ which is a configurable level rendering of the <tt class="docutils literal"><spa
 The local (page-level) table of contents is the &#8220;Page&#8221; navigation dropdown,
 which is a multi-level rendering of the current page&#8217;s <tt class="docutils literal"><span class="pre">toc</span></tt>.</p>
 </div>
-<div class="section" id="id3">
-<h3>Bootstrap<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>The theme uses Twitter Bootstrap v2.3.0 and jQuery v.1.9.1. As the jQuery that
+<div class="section" id="id4">
+<h3>Bootstrap<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The theme uses Twitter Bootstrap v2.3.1 and jQuery v.1.9.1. As the jQuery that
 Bootstrap wants can radically depart from the jQuery Sphinx internal libraries
 use, the library from this theme is integrated via <tt class="docutils literal"><span class="pre">noConflict()</span></tt> as
 <tt class="docutils literal"><span class="pre">$jqTheme</span></tt>.</p>
@@ -348,7 +371,7 @@ Sphinx &#8220;_static&#8221; directory.</p>
     </p>
     <p>
         &copy; Copyright 2011-2013, Ryan Roemer.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.<br/>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
     </p>
   </div>
 </footer>
