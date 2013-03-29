@@ -117,7 +117,20 @@ html_theme_options = {
     'source_link_position': "nav",
 
     # Bootswatch (http://bootswatch.com/) theme.
-    'bootswatch_theme': "cyborg",
+    # Options:
+    # * amelia
+    # * cerulean
+    # * cosmo
+    # * cyborg
+    # * journal
+    # * readable
+    # * simplex
+    # * slate
+    # * spacelab
+    # * spruce
+    # * superhero
+    # * united
+    'bootswatch_theme': "superhero",
 
     # TODO: Future.
     # Add page navigation to it's own navigation bar.
