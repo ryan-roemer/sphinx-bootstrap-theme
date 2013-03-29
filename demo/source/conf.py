@@ -130,7 +130,7 @@ html_theme_options = {
     # * spruce
     # * superhero
     # * united
-    'bootswatch_theme': "superhero",
+    'bootswatch_theme': "simplex",
 
     # TODO: Future.
     # Add page navigation to it's own navigation bar.
