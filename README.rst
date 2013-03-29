@@ -23,9 +23,8 @@ The theme is introduced and discussed in the following posts:
 
 Here is the theme in use for some of my public projects:
 
-* `Sphinx Bootstrap Theme`_: This project, with a dark top navbar, using
-  the theme options ``'navbar_class': "navbar navbar-inverse"`` and
-  ``'source_link_position': "nav"`` to use the "Spacelab_" Bootswatch_ theme.
+* `Sphinx Bootstrap Theme`_: This project, with the theme option
+  ``'bootswatch_theme': "united"`` to use the "United_" Bootswatch_ theme.
 * `Django Cloud Browser`_: A Django reusable app for browsing cloud
   datastores (e.g., Amazon Web Services S3).
 
@@ -34,7 +33,7 @@ illustrations of getting Sphinx to play nicely with Bootstrap (also take a
 look at the `examples source`_ for the underlying reStructuredText).
 
 .. _Bootswatch: http://bootswatch.com
-.. _Spacelab: http://bootswatch.com/spacelab
+.. _United: http://bootswatch.com/united
 .. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
 .. _examples page: http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html
 .. _examples source: http://ryan-roemer.github.com/sphinx-bootstrap-theme/_sources/examples.txt
@@ -111,7 +110,7 @@ your "conf.py" file::
         # such as "amelia" or "cosmo".
         #
         # Note that this is served off CDN, so won't be available offline.
-        'bootswatch_theme': "spacelab",
+        'bootswatch_theme': "united",
     }
 
 Note for the navigation bar title that if you don't specify a theme option of
