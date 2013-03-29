@@ -116,6 +116,9 @@ html_theme_options = {
     # Options are "nav" (default), "footer" or anything else to exclude.
     'source_link_position': "nav",
 
+    # Bootswatch (http://bootswatch.com/) theme.
+    'bootswatch_theme': "cyborg",
+
     # TODO: Future.
     # Add page navigation to it's own navigation bar.
     #'navbar_page_separate': True,
