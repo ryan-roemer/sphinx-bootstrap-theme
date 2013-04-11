@@ -21,8 +21,9 @@ The theme is introduced and discussed in the following posts:
 * 12/09/2011 - `Twitter Bootstrap Theme for Sphinx <http://loose-bits.com/2011/12/09/sphinx-twitter-bootstrap-theme.html>`_
 * 11/19/2012 - `Sphinx Bootstrap Theme Updates - Mobile, Dropdowns, and More <http://loose-bits.com/2012/11/19/sphinx-bootstrap-theme-updates.html>`_
 * 2/12/2013 - `Sphinx Bootstrap Theme 0.1.6 - Bootstrap and Other Updates <http://loose-bits.com/2013/02/12/sphinx-bootstrap-theme-updates.html>`_
+* 4/10/2013 - `Sphinx Bootstrap Theme 0.2.0 - Now with Bootswatch! <http://loose-bits.com/2013/04/10/sphinx-bootstrap-theme-bootswatch.html>`_
 
-Here is the theme in use for some of my public projects:
+Examples of the theme in use for some public projects:
 
 * `Sphinx Bootstrap Theme`_: This project, with the theme option
   ``'bootswatch_theme': "united"`` to use the "United_" Bootswatch_ theme.
