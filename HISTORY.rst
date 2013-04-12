@@ -10,7 +10,7 @@ v0.2.0
 
 v0.1.8
 ======
-* Add `globaltoc_includehidden` option.
+* Add ``globaltoc_includehidden`` option.
 
 v0.1.7
 ======
