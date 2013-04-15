@@ -42,6 +42,15 @@ Warning
 .. warning:: This is a warning.
 
 
+.. TODO
+  Footnotes
+  =========
+  I have footnoted a first item [#f1]_ and second item [#f2]_.
+
+  .. rubric:: Footnotes
+  .. [#f1] My first footnote.
+  .. [#f2] My second footnote.
+
 Tables
 ======
 Here are some examples of Sphinx
