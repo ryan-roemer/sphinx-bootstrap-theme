@@ -106,7 +106,9 @@
 
     // Inline code styles to Bootstrap style.
     $('tt.docutils span.pre:first-child').each(function (i, e) {
-        $(e).parent().replaceWith(function () {
-            return $("<code />").text($(this).text());});});
+      $(e).parent().replaceWith(function () {
+        return $("<code />").text($(this).text());
+      });
+    });
   });
 }($jqTheme || window.jQuery));
