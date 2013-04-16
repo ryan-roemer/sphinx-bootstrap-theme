@@ -105,8 +105,10 @@
     $('div.warning').addClass('alert');
 
     // Inline code styles to Bootstrap style.
-    $('tt.docutils span.pre:first-child').each(function (i, e) {
-        $(e).parent().replaceWith(function () {
-            return $("<code />").text($(this).text());});});
+    $('tt.docutils.literal').not(".xref").each(function (i, e) {
+        // ignore references
+        if (!$(e).parent().hasClass("reference")) {
+            $(e).replaceWith(function () {
+                return $("<code />").text($(this).text());});}});
   });
 }($jqTheme || window.jQuery));
