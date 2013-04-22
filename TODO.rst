@@ -4,6 +4,7 @@
 
 CSS / Layout
 ============
+* Footnotes: Need much better styling. Maybe switch to tooltips.
 * Optionally move the ``localtoc`` from the top navigation bar into it's own
   navbar below the page title.
 

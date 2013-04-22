@@ -2,6 +2,11 @@
  History
 =========
 
+v0.2.1
+======
+* Fix code styling collision for cross references and inline code blocks.
+  (`@russell <https://github.com/russell>`_)
+
 v0.2.0
 ======
 * Update to Bootstrap v2.3.1.
