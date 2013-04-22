@@ -125,6 +125,8 @@
       // ignore references
       if (!$(e).parent().hasClass("reference")) {
         $(e).replaceWith(function () {
-          return $("<code />").text($(this).text());});}});
+          return $("<code />").text($(this).text());
+        });
+      }});
   });
 }($jqTheme || window.jQuery));
