@@ -2,16 +2,21 @@
  History
 =========
 
+v0.2.2
+======
+* Better literal markup handling for Bootstrap code formatting. (`@russell`_)
+* Scroll window when jumping to an anchor. (`@russell`_)
+
 v0.2.1
 ======
 * Fix code styling collision for cross references and inline code blocks.
-  (`@russell <https://github.com/russell>`_)
+  (`@russell`_)
 
 v0.2.0
 ======
 * Update to Bootstrap v2.3.1.
 * Add ``bootswatch_theme`` option for `Bootswatch <http://bootswatch.com>`_
-  CSS theme support. (`@zyga <https://github.com/zyga>`_)
+  CSS theme support. (`@zyga`_)
 
 v0.1.8
 ======
@@ -19,7 +24,7 @@ v0.1.8
 
 v0.1.7
 ======
-* Add Python 3 support. (`@zyga <https://github.com/zyga>`_)
+* Add Python 3 support. (`@zyga`_)
 * Add support for ``navbar_title`` theme configuration. The documentation
   originally stated that ``html_short_title`` was supported for overriding the
   navbar title (brand), but this never actually worked.
@@ -67,8 +72,12 @@ v0.0.3
 
 v0.0.2
 ======
-* Update to Bootstrap v2.0. (`@oscarcp <https://github.com/oscarcp>`_)
+* Update to Bootstrap v2.0. (`@oscarcp`_)
 
 v0.0.1
 ======
 * Original theme based on Bootstrap v1.4.0.
+
+.. _@russell: https://github.com/russell
+.. _@zyga: https://github.com/zyga
+.. _@oscarcp: https://github.com/oscarcp
