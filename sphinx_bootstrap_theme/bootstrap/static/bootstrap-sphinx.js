@@ -54,12 +54,17 @@
   $(document).ready(function () {
 
     /*
-     * Scroll the window to avoid the topnav bar 
+     * Scroll the window to avoid the topnav bar
      * https://github.com/twitter/bootstrap/issues/1768
      */
     if ($("#navbar.navbar-fixed-top").length > 0) {
-      var shiftWindow = function() { scrollBy(0, -50); };
-      if (location.hash) shiftWindow();
+      var navHeight = $("#navbar").height(),
+        shiftWindow = function() { scrollBy(0, -navHeight - 10); };
+
+      if (location.hash) {
+        shiftWindow();
+      }
+
       window.addEventListener("hashchange", shiftWindow);
     }
 
