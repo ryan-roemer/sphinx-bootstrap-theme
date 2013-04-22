@@ -106,9 +106,9 @@
 
     // Inline code styles to Bootstrap style.
     $('tt.docutils.literal').not(".xref").each(function (i, e) {
-        // ignore references
-        if (!$(e).parent().hasClass("reference")) {
-            $(e).replaceWith(function () {
-                return $("<code />").text($(this).text());});}});
+      // ignore references
+      if (!$(e).parent().hasClass("reference")) {
+        $(e).replaceWith(function () {
+          return $("<code />").text($(this).text());});}});
   });
 }($jqTheme || window.jQuery));
