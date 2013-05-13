@@ -81,6 +81,9 @@ your "conf.py" file::
         # Navigation bar title. (Default: ``project`` value)
         'navbar_title': "Demo",
 
+        # Tab name for entire site. (Default: "Site")
+        'navbar_site_name': "Site",
+
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
         'globaltoc_depth': 2,

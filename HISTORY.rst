@@ -5,6 +5,7 @@
 v0.2.3
 ======
 * Put navbar within a `container`. (`@inducer`_)
+* Add `navbar_site_name` for renaming site nav. tab. (Suggested by `@inducer`_)
 
 v0.2.2
 ======
