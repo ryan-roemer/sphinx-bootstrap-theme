@@ -2,6 +2,10 @@
  History
 =========
 
+v0.2.3
+======
+* Put navbar within a `container`. (`@inducer`_)
+
 v0.2.2
 ======
 * Better literal markup handling for Bootstrap code formatting. (`@russell`_)
@@ -78,6 +82,7 @@ v0.0.1
 ======
 * Original theme based on Bootstrap v1.4.0.
 
+.. _@inducer: https://github.com/inducer
 .. _@russell: https://github.com/russell
 .. _@zyga: https://github.com/zyga
 .. _@oscarcp: https://github.com/oscarcp
