@@ -114,8 +114,8 @@ which uses the directive::
 
     .. cssclass:: table-hover
 
-Functions
----------
+Code Documentation
+==================
 
 An example Python function.
 
