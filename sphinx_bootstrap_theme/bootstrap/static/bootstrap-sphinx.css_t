@@ -35,6 +35,9 @@ body {
 }
 {% endif %}
 
+.section {
+  padding-top: 30px;
+}
 
 {%- block sidebarlogo %}
   {%- if logo %}
