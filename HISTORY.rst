@@ -2,6 +2,12 @@
  History
 =========
 
+v0.2.4
+======
+* Update to Bootstrap v2.3.2.
+* Navbar search box now uses bootstrap search-query class. (`@russell`_)
+* Field-list tables now have an inherited width. (`@russell`_)
+
 v0.2.3
 ======
 * Put navbar within a `container`. (`@inducer`_)
