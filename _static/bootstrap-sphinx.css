@@ -35,6 +35,10 @@ table {
   border: 0;
 }
 
+table.field-list {
+  width: auto;
+}
+
 .footer {
   width: 100%;
   border-top: 1px solid #ccc;
