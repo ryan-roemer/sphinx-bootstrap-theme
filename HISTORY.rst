@@ -4,6 +4,7 @@
 
 v0.2.4
 ======
+* Adjust the max width of field lists. (`@russell`_)
 * Update to Bootstrap v2.3.2.
 * Navbar search box now uses bootstrap search-query class. (`@russell`_)
 * Field-list tables now have an inherited width. (`@russell`_)
