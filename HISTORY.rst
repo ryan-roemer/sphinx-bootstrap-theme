@@ -2,6 +2,10 @@
  History
 =========
 
+UNRELEASED
+==========
+* Search page styling. (`@russell`_)
+
 v0.2.4
 ======
 * Adjust the max width of field lists. (`@russell`_)
