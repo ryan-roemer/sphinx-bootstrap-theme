@@ -2,8 +2,8 @@
  History
 =========
 
-UNRELEASED
-==========
+v0.2.5
+======
 * Search page styling. (`@russell`_)
 
 v0.2.4
