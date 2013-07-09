@@ -231,7 +231,7 @@ Then, view the site in the development server::
     $ fab demo_server
 
 Also, if you are adding a new type of styling or Sphinx or Bootstrap construct,
-please add a usage example to the :doc:`examples` page.
+please add a usage example to the "Examples" page.
 
 
 Licenses
