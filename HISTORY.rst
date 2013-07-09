@@ -2,6 +2,10 @@
  History
 =========
 
+v0.2.6
+======
+* Switch from distribute to setuptools. (Suggested by `@thedrow`_)
+
 v0.2.5
 ======
 * Search page styling. (`@russell`_)
@@ -94,6 +98,7 @@ v0.0.1
 ======
 * Original theme based on Bootstrap v1.4.0.
 
+.. _@thedrow: https://github.com/thedrow
 .. _@inducer: https://github.com/inducer
 .. _@russell: https://github.com/russell
 .. _@zyga: https://github.com/zyga

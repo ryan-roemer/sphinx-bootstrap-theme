@@ -46,6 +46,16 @@ def demo():
         local("make html")
 
 
+@task
+def demo_server(port="8000"):
+    """Serve demo from localhost.
+
+    @param port  Port to run server on.
+    """
+    with lcd("demo/build/html"):
+        local("python -m SimpleHTTPServer %s" % port)
+
+
 ###############################################################################
 # PyPI
 ###############################################################################
