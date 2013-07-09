@@ -219,6 +219,21 @@ You can override any static JS/CSS files by dropping different versions in your
 Sphinx "_static" directory.
 
 
+Contributing
+============
+Contributions to this project are most welcome. Please make sure that the demo
+site builds cleanly, and looks like what you want. First build the demo::
+
+    $ fab clean && fab demo
+
+Then, view the site in the development server::
+
+    $ fab demo_server
+
+Also, if you are adding a new type of styling or Sphinx or Bootstrap construct,
+please add a usage example to the :doc:`examples` page.
+
+
 Licenses
 ========
 Sphinx Bootstrap Theme is licensed under the MIT_ license.
