@@ -1,7 +1,7 @@
 """Sphinx bootstrap theme."""
 import os
 
-VERSION = (0, 2, 5)
+VERSION = (0, 2, 6)
 
 __version__ = ".".join(str(v) for v in VERSION)
 __version_full__ = __version__

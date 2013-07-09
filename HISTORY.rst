@@ -4,6 +4,7 @@
 
 v0.2.6
 ======
+* Use network path for Bootswatch (`@nail`_)
 * Switch from distribute to setuptools. (Suggested by `@thedrow`_)
 
 v0.2.5
@@ -98,6 +99,7 @@ v0.0.1
 ======
 * Original theme based on Bootstrap v1.4.0.
 
+.. _@nail: https://github.com/nail
 .. _@thedrow: https://github.com/thedrow
 .. _@inducer: https://github.com/inducer
 .. _@russell: https://github.com/russell
