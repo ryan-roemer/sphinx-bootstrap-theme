@@ -51,6 +51,10 @@ table {
   border: 0;
 }
 
+.highlighttable .linenos pre {
+    word-break: normal;
+}
+
 table.field-list {
   width: auto;
 }

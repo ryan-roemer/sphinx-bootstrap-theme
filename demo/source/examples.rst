@@ -28,6 +28,10 @@ The Sphinx Bootstrap Theme uses Bootstrap styling for ``inline code text`` and
     code text
 
 
+.. literalinclude:: example.py
+   :linenos:
+
+
 Admonitions
 ===========
 The Sphinx Bootstrap Theme uses the Bootstrap ``alert`` classes for Sphinx
