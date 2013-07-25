@@ -5,11 +5,11 @@
 v0.2.7
 ======
 * Add custom nav bar links. (`@russell`_)
-  Completes [#34](https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/34).
+  Completes `#34 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/34>`_.
 * Fix wrapping of line numbers in code includes. (`@russell`_)
-  Fixes [#35](https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/35).
+  Fixes `#35 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/35>`_.
 * Truncate long page titles in navigation bar. (`@aababilov`_)
-  Fixes [#27](https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/27).
+  Fixes `#27 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/27>`_.
 
 v0.2.6
 ======
