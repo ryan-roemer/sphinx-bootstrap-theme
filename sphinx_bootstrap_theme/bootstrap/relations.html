@@ -4,5 +4,5 @@
 {%- endif %}
 {%- if next %}
   <li><a href="{{ next.link|e }}"
-         title="{{ _('Next Chapter: ') + prev.title|striptags }}">{{ next.title|striptags|truncate(length=16, killwords=True) }} {{ "&raquo;"|safe }}</a></li>
+         title="{{ _('Next Chapter: ') + next.title|striptags }}">{{ next.title|striptags|truncate(length=16, killwords=True) }} {{ "&raquo;"|safe }}</a></li>
 {%- endif %}
