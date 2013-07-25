@@ -27,8 +27,9 @@ The Sphinx Bootstrap Theme uses Bootstrap styling for ``inline code text`` and
     multiline
     code text
 
+Here's an included example with line numbers.
 
-.. literalinclude:: example.py
+.. literalinclude:: ../../sphinx_bootstrap_theme/__init__.py
    :linenos:
 
 

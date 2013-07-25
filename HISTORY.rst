@@ -4,8 +4,12 @@
 
 v0.2.7
 ======
-
-* Truncate long page titles in navigation bar (`@aababilov`_)
+* Add custom nav bar links. (`@russell`_)
+  Completes [#34](https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/34).
+* Fix wrapping of line numbers in code includes. (`@russell`_)
+  Fixes [#35](https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/35).
+* Truncate long page titles in navigation bar. (`@aababilov`_)
+  Fixes [#27](https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/27).
 
 v0.2.6
 ======
@@ -104,6 +108,7 @@ v0.0.1
 ======
 * Original theme based on Bootstrap v1.4.0.
 
+.. _@aababilov: https://github.com/aababilov
 .. _@nail: https://github.com/nail
 .. _@thedrow: https://github.com/thedrow
 .. _@inducer: https://github.com/inducer
