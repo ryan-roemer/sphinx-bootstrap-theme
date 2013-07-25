@@ -94,6 +94,10 @@ html_theme_options = {
     # Tab name for entire site. (Default: "Site")
     'navbar_site_name': "Site",
 
+    # A list of tuples containting pages to link to.  The value should
+    # be in the form [(name, page), ..]
+    # 'navbar_links': [('Examples', 'examples')],
+
     # Global TOC depth for "site" navbar tab. (Default: 1)
     # Switching to -1 shows all levels.
     'globaltoc_depth': 2,
