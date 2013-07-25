@@ -2,6 +2,11 @@
  History
 =========
 
+v0.2.7
+======
+
+* Truncate long page titles in navigation bar (`@aababilov`_)
+
 v0.2.6
 ======
 * Use network path for Bootswatch (`@nail`_)
