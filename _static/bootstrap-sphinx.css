@@ -35,6 +35,15 @@ table {
   border: 0;
 }
 
+.highlighttable .code pre {
+    font-size: 12px;
+}
+
+.highlighttable .linenos pre {
+    word-break: normal;
+    font-size: 12px;
+}
+
 table.field-list {
   width: auto;
 }
