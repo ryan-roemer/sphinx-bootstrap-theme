@@ -22,6 +22,10 @@
     '_static/bootstrap-2.3.2/css/bootstrap-responsive.min.css'
   ]
 %}
+{%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and sidebars %}
+
+{%- set bs_content_span = render_sidebar and "span9" or "span12"%}
+
 
 {%- block doctype -%}
 <!DOCTYPE html>
@@ -50,13 +54,17 @@
                 <li><a href="{{ pathto(doc) }}">{{ title }}</a></li>
               {%- endfor %}
             {% endif %}
-            {% block sidebartoc %}
+            {% block navbartoc %}
               {% include "globaltoc.html" %}
-              {% include "localtoc.html" %}
+              {% if theme_navbar_pagenav %}
+                {% include "navbartoc.html" %}
+              {% endif %}
             {% endblock %}
-            {% block sidebarrel %}
-              {% include "relations.html" %}
-            {% endblock %}
+            {% if theme_navbar_sidebarrel %}
+              {% block sidebarrel %}
+                {% include "relations.html" %}
+              {% endblock %}
+            {% endif %}
             {% if theme_source_link_position == "nav" %}
               <li>{% include "sourcelink.html" %}</li>
             {% endif %}
@@ -71,6 +79,19 @@
   </div>
 {% endmacro %}
 
+{%- macro bsidebar() %}
+      {%- if render_sidebar %}
+      <div class="span3">
+        <div id="sidebar" class="bs-sidenav well" data-spy="affix">
+          {%- for sidebartemplate in sidebars %}
+            {%- include sidebartemplate %}
+          {%- endfor %}
+        </div>
+      </div>
+      {%- endif %}
+{%- endmacro %}
+
+
 {%- block extrahead %}
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -80,8 +101,6 @@
 
 {# Silence the sidebar's, relbar's #}
 {% block header %}{% endblock %}
-{% block sidebar1 %}{% endblock %}
-{% block sidebar2 %}{% endblock %}
 {% block relbar1 %}{% endblock %}
 {% block relbar2 %}{% endblock %}
 {% block sidebarsourcelink %}{% endblock %}
@@ -89,7 +108,13 @@
 {%- block content %}
 {{ navBar() }}
 <div class="container">
-  {% block body %}{% endblock %}
+  <div class="row">
+    {%- block sidebar1 %}{{ bsidebar() }}{% endblock %}
+    <div class="{{ bs_content_span }}">
+      {% block body %}{% endblock %}
+    </div>
+    {% block sidebar2 %} {# possible location for sidebar #} {% endblock %}
+  </div>
 </div>
 {%- endblock %}
 
