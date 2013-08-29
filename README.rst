@@ -88,6 +88,12 @@ your "conf.py" file::
         # be in the form [(name, page), ..]
         'navbar_links': [('Examples', 'examples')],
 
+        # Render the next and previous page links in navbar. (Default: true)
+        'navbar_sidebarrel': True,
+
+        # Render the current pages TOC in the navbar. (Default: true)
+        'navbar_pagenav': True,
+
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
         'globaltoc_depth': 2,
