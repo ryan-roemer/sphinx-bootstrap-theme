@@ -4,9 +4,9 @@
 
 v0.2.8
 ======
-* Sphinx compatible Sidebars (`@russell`_)
-* Topnav sidebarrel can now be disabled  (`@russell`_)
-* Topnav page nav menu can now be disabled  (`@russell`_)
+* Sphinx compatible Sidebars. (`@russell`_)
+* Topnav sidebarrel can now be disabled. (`@russell`_)
+* Topnav page nav menu can now be disabled. (`@russell`_)
 
 v0.2.7
 ======
