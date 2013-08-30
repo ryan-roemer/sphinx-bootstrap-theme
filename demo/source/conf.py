@@ -186,6 +186,7 @@ html_static_path = ["_static"]
 
 # Custom sidebar templates, maps document names to template names.
 #html_sidebars = {}
+html_sidebars = {'sidebar': ['localtoc.html']}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
