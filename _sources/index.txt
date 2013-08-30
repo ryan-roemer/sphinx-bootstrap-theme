@@ -18,6 +18,7 @@ Contents
 
    README
    examples
+   sidebar
    TODO
    HISTORY
 

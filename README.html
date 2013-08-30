@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.2.7 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.2.8 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2.7',
+        VERSION:     '0.2.8',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.2.7 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.2.8 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -60,7 +60,7 @@
         </button>
 
         <a class="brand" href="index.html">Demo</a>
-        <span class="navbar-text pull-left"><b>0.2.7</b></span>
+        <span class="navbar-text pull-left"><b>0.2.8</b></span>
 
         <div class="nav-collapse">
           <ul class="nav">
@@ -90,12 +90,17 @@
 <li class="toctree-l2"><a class="reference internal" href="examples.html#code-documentation">Code Documentation</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="sidebar.html">Sidebar Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sidebar.html#headings">Headings</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="TODO.html">Future Work</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="TODO.html#css-layout">CSS / Layout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TODO.html#infrastructure">Infrastructure</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-8">v0.2.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-7">v0.2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-6">v0.2.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-5">v0.2.5</a></li>
@@ -121,7 +126,8 @@
 </ul>
 </ul>
 </li>
-              <li class="dropdown">
+              
+                <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"><ul>
 <li><a class="reference internal" href="#">Sphinx Bootstrap Theme</a><ul>
@@ -146,13 +152,16 @@
 </ul>
 </ul>
 </li>
+              
             
             
               
+                
   <li><a href="index.html"
          title="Previous Chapter: Bootstrap Theme Demo">&laquo; Bootstrap Theme ...</a></li>
   <li><a href="examples.html"
          title="Next Chapter: Examples">Examples &raquo;</a></li>
+              
             
             
               <li>
@@ -175,7 +184,9 @@
   </div>
 
 <div class="container">
-  
+  <div class="row">
+    <div class="span12">
+      
   <div class="section" id="sphinx-bootstrap-theme">
 <h1>Sphinx Bootstrap Theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="Permalink to this headline">¶</a></h1>
 <p>This <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a> integrates the Twitter <a class="reference external" href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS / JavaScript
@@ -247,6 +258,12 @@ your &#8220;conf.py&#8221; file:</p>
     <span class="c"># A list of tuples containting pages to link to.  The value should</span>
     <span class="c"># be in the form [(name, page), ..]</span>
     <span class="s">&#39;navbar_links&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s">&#39;Examples&#39;</span><span class="p">,</span> <span class="s">&#39;examples&#39;</span><span class="p">)],</span>
+
+    <span class="c"># Render the next and previous page links in navbar. (Default: true)</span>
+    <span class="s">&#39;navbar_sidebarrel&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+
+    <span class="c"># Render the current pages TOC in the navbar. (Default: true)</span>
+    <span class="s">&#39;navbar_pagenav&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
 
     <span class="c"># Global TOC depth for &quot;site&quot; navbar tab. (Default: 1)</span>
     <span class="c"># Switching to -1 shows all levels.</span>
@@ -395,6 +412,9 @@ please add a usage example to the &#8220;Examples&#8221; page.</p>
 </div>
 
 
+    </div>
+      
+  </div>
 </div>
 <footer class="footer">
   <div class="container">

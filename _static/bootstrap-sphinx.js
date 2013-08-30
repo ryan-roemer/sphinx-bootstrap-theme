@@ -85,6 +85,10 @@
     }
 
     // Local TOC.
+    $(".bs-sidenav ul").addClass("nav nav-list");
+    $(".bs-sidenav > ul > li > a").addClass("nav-header");
+
+    // Local TOC.
     patchToc($("ul.localtoc"), 2);
 
     // Mutate sub-lists (for bs-2.3.0).
