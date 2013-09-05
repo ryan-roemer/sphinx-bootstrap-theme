@@ -2,6 +2,10 @@
  History
 =========
 
+dev
+======
+* Update to Bootstrap v3.0.0.
+
 v0.2.8
 ======
 * Sphinx compatible Sidebars. (`@russell`_)
