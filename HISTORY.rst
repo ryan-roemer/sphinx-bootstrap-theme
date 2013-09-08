@@ -2,6 +2,10 @@
  History
 =========
 
+v0.3.0
+======
+* Add Bootstrap v3.0.0 with legacy option for v2.3.2. (`@MiCHiLU`_)
+
 v0.2.9
 ======
 * Add ``navbar_links`` theme option. (`@newgene`_)
