@@ -134,12 +134,28 @@ your "conf.py" file::
         #
         # Note that this is served off CDN, so won't be available offline.
         'bootswatch_theme': "united",
+
+        # Choose Bootstrap version.
+        # Values: "3" (default) or "2" (in quotes)
+        'bootstrap_version': "3",
     }
 
 Note for the navigation bar title that if you don't specify a theme option of
 ``navbar_title`` that the "conf.py" ``project`` string will be used. We don't
 use the ``html_title`` or ``html_short_title`` values because by default those
 both contain version strings, which the navigation bar treats differently.
+
+Bootstrap Versions
+------------------
+The theme supports Bootstrap v2.3.2 and v3.0.0 via the ``bootstrap_version``
+theme option (of ``"2"`` or ``"3"``). Some notes regarding version differences:
+
+* Bootstrap 3 has dropped support for `sub-menus`_, so while supported by this
+  theme, they will not show up in site or page menus.
+* Internally, "navbar.html" is the Sphinx template used for Bootstrap v3 and
+  "navbar-2.html" is the template used for v2.
+
+.. _`sub-menus`: http://stackoverflow.com/questions/18023493
 
 Bootswatch
 ----------

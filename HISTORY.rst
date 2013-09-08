@@ -4,13 +4,12 @@
 
 v0.3.0
 ======
-* Update to Bootstrap v3.0.0.
+* Update to Bootstrap v3.0.0. (`@MiCHiLU`_)
 
 v0.2.9
 ======
 * Add ``navbar_links`` theme option. (`@newgene`_)
 * Add ``navbarextra`` block in "layout.html". (`@grncdr`_)
-=======
 
 v0.2.8
 ======
@@ -125,11 +124,12 @@ v0.0.1
 * Original theme based on Bootstrap v1.4.0.
 
 .. _@aababilov: https://github.com/aababilov
-.. _@newgene: https://github.com/newgene
 .. _@grncdr: https://github.com/grncdr
-.. _@nail: https://github.com/nail
-.. _@thedrow: https://github.com/thedrow
 .. _@inducer: https://github.com/inducer
-.. _@russell: https://github.com/russell
-.. _@zyga: https://github.com/zyga
+.. _@MiCHiLU: https://github.com/MiCHiLU
+.. _@nail: https://github.com/nail
+.. _@newgene: https://github.com/newgene
 .. _@oscarcp: https://github.com/oscarcp
+.. _@russell: https://github.com/russell
+.. _@thedrow: https://github.com/thedrow
+.. _@zyga: https://github.com/zyga

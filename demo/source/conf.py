@@ -151,11 +151,11 @@ html_theme_options = {
     # * spruce
     # * superhero
     # * united
-    'bootswatch_theme': "united",
+    'bootswatch_theme': "",
 
-    # TODO: Future.
-    # Add page navigation to it's own navigation bar.
-    #'navbar_page_separate': True,
+    # Choose Bootstrap version.
+    # Values: "3" (default) or "2" (in quotes)
+    'bootstrap_version': "3",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
