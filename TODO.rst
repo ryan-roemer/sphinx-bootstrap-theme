@@ -2,14 +2,9 @@
  Future Work
 =============
 
-Bootstrap v3
-============
-* Responsive Nav Trigger: Needs to be much wider for bs3 version (see bs2
-  customizations).
-* Version text is smushed in mobile viewport.
-
 CSS / Layout
 ============
+* Search Bar: Is aligned right inconsistently in BS2 vs. BS3.
 * Footnotes: Need much better styling. Maybe switch to tooltips.
 * Optionally move the ``localtoc`` from the top navigation bar into it's own
   navbar below the page title.
