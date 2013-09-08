@@ -4,6 +4,7 @@
 
 v0.2.9
 ======
+* Add ``navbar_links`` theme option. (`@newgene`_)
 * Add ``navbarextra`` block in "layout.html". (`@grncdr`_)
 
 v0.2.8
@@ -119,6 +120,7 @@ v0.0.1
 * Original theme based on Bootstrap v1.4.0.
 
 .. _@aababilov: https://github.com/aababilov
+.. _@newgene: https://github.com/newgene
 .. _@grncdr: https://github.com/grncdr
 .. _@nail: https://github.com/nail
 .. _@thedrow: https://github.com/thedrow
