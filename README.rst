@@ -84,9 +84,14 @@ your "conf.py" file::
         # Tab name for entire site. (Default: "Site")
         'navbar_site_name': "Site",
 
-        # A list of tuples containting pages to link to.  The value should
-        # be in the form [(name, page), ..]
-        'navbar_links': [('Examples', 'examples')],
+        # A list of tuples containing pages or urls to link to.
+        # Valid tuples should be in the following forms:
+        #    (name, page)                 # a link to a page
+        #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
+        #    (name, "http://example.com", True)    # a link to an arbitrary absolute url
+        # Note the "1" or "True" value above as the third argument to indicate an
+        # arbitrary url.
+        'navbar_links': [('Examples', 'examples'), ('Link', 'http://example.com', True)],
 
         # Render the next and previous page links in navbar. (Default: true)
         'navbar_sidebarrel': True,
