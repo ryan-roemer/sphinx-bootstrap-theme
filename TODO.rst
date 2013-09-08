@@ -2,6 +2,12 @@
  Future Work
 =============
 
+Bootstrap v3
+============
+* Responsive Nav Trigger: Needs to be much wider for bs3 version (see bs2
+  customizations).
+* Version text is smushed in mobile viewport.
+
 CSS / Layout
 ============
 * Footnotes: Need much better styling. Maybe switch to tooltips.
