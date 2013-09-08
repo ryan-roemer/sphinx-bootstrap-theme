@@ -2,10 +2,15 @@
  History
 =========
 
+v0.3.0
+======
+* Update to Bootstrap v3.0.0.
+
 v0.2.9
 ======
 * Add ``navbar_links`` theme option. (`@newgene`_)
 * Add ``navbarextra`` block in "layout.html". (`@grncdr`_)
+=======
 
 v0.2.8
 ======
