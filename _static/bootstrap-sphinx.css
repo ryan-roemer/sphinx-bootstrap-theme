@@ -92,6 +92,9 @@ table.field-list {
 /* Tablet
 ------------------------- */
 @media (max-width: 767px) {
+  .navbar-version {
+    padding-left: 5px;
+  }
   .bs-sidenav {
     width: auto;
     margin-bottom: 20px;

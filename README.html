@@ -1,4 +1,11 @@
 
+
+  
+ 
+  
+ 
+
+
 <!DOCTYPE html>
 
 
@@ -6,19 +13,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.2.8 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-2.3.2/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-2.3.2/css/bootstrap-responsive.min.css" type="text/css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.2.8',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,9 +34,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-2.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.2.8 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.3.0 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -49,21 +54,21 @@
     alt="Fork me on GitHub"></a>
 
 
-  <div id="navbar" class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+        <a class="navbar-brand" href="index.html">Demo</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.3.0</b></span>
+      </div>
 
-        <a class="brand" href="index.html">Demo</a>
-        <span class="navbar-text pull-left"><b>0.2.8</b></span>
-
-        <div class="nav-collapse">
-          <ul class="nav">
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
             <li class="divider-vertical"></li>
             
             
@@ -94,12 +99,11 @@
 <li class="toctree-l2"><a class="reference internal" href="sidebar.html#headings">Headings</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="TODO.html">Future Work</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="TODO.html#css-layout">CSS / Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TODO.html#infrastructure">Infrastructure</a></li>
 </ul>
-</li>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-0">v0.3.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-9">v0.2.9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-8">v0.2.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-7">v0.2.7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-2-6">v0.2.6</a></li>
@@ -123,6 +127,11 @@
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-1">v0.0.1</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="TODO.html">Future Work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#css-layout">CSS / Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TODO.html#infrastructure">Infrastructure</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -135,6 +144,7 @@
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#customization">Customization</a><ul>
 <li><a class="reference internal" href="#theme-options">Theme Options</a></li>
+<li><a class="reference internal" href="#bootstrap-versions">Bootstrap Versions</a></li>
 <li><a class="reference internal" href="#id2">Bootswatch</a></li>
 <li><a class="reference internal" href="#extending-layout-html">Extending &#8220;layout.html&#8221;</a></li>
 <li><a class="reference internal" href="#adding-custom-css">Adding Custom CSS</a></li>
@@ -164,6 +174,8 @@
               
             
             
+            
+            
               <li>
   <a href="_sources/README.txt"
      rel="nofollow">Source</a></li>
@@ -172,14 +184,15 @@
 
           
             
-<form class="navbar-search pull-right" action="search.html" method="get">
-  <input type="text" name="q" class="search-query" placeholder="Search" />
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
   <input type="hidden" name="check_keywords" value="yes" />
   <input type="hidden" name="area" value="default" />
 </form>
           
         </div>
-      </div>
     </div>
   </div>
 
@@ -255,9 +268,17 @@ your &#8220;conf.py&#8221; file:</p>
     <span class="c"># Tab name for entire site. (Default: &quot;Site&quot;)</span>
     <span class="s">&#39;navbar_site_name&#39;</span><span class="p">:</span> <span class="s">&quot;Site&quot;</span><span class="p">,</span>
 
-    <span class="c"># A list of tuples containting pages to link to.  The value should</span>
-    <span class="c"># be in the form [(name, page), ..]</span>
-    <span class="s">&#39;navbar_links&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s">&#39;Examples&#39;</span><span class="p">,</span> <span class="s">&#39;examples&#39;</span><span class="p">)],</span>
+    <span class="c"># A list of tuples containing pages or urls to link to.</span>
+    <span class="c"># Valid tuples should be in the following forms:</span>
+    <span class="c">#    (name, page)                 # a link to a page</span>
+    <span class="c">#    (name, &quot;/aa/bb&quot;, 1)          # a link to an arbitrary relative url</span>
+    <span class="c">#    (name, &quot;http://example.com&quot;, True) # arbitrary absolute url</span>
+    <span class="c"># Note the &quot;1&quot; or &quot;True&quot; value above as the third argument to indicate</span>
+    <span class="c"># an arbitrary url.</span>
+    <span class="s">&#39;navbar_links&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s">&quot;Examples&quot;</span><span class="p">,</span> <span class="s">&quot;examples&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&quot;Link&quot;</span><span class="p">,</span> <span class="s">&quot;http://example.com&quot;</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+    <span class="p">],</span>
 
     <span class="c"># Render the next and previous page links in navbar. (Default: true)</span>
     <span class="s">&#39;navbar_sidebarrel&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
@@ -297,6 +318,10 @@ your &#8220;conf.py&#8221; file:</p>
     <span class="c">#</span>
     <span class="c"># Note that this is served off CDN, so won&#39;t be available offline.</span>
     <span class="s">&#39;bootswatch_theme&#39;</span><span class="p">:</span> <span class="s">&quot;united&quot;</span><span class="p">,</span>
+
+    <span class="c"># Choose Bootstrap version.</span>
+    <span class="c"># Values: &quot;3&quot; (default) or &quot;2&quot; (in quotes)</span>
+    <span class="s">&#39;bootstrap_version&#39;</span><span class="p">:</span> <span class="s">&quot;3&quot;</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -304,6 +329,17 @@ your &#8220;conf.py&#8221; file:</p>
 <tt class="docutils literal"><span class="pre">navbar_title</span></tt> that the &#8220;conf.py&#8221; <tt class="docutils literal"><span class="pre">project</span></tt> string will be used. We don&#8217;t
 use the <tt class="docutils literal"><span class="pre">html_title</span></tt> or <tt class="docutils literal"><span class="pre">html_short_title</span></tt> values because by default those
 both contain version strings, which the navigation bar treats differently.</p>
+</div>
+<div class="section" id="bootstrap-versions">
+<h3>Bootstrap Versions<a class="headerlink" href="#bootstrap-versions" title="Permalink to this headline">¶</a></h3>
+<p>The theme supports Bootstrap v2.3.2 and v3.0.0 via the <tt class="docutils literal"><span class="pre">bootstrap_version</span></tt>
+theme option (of <tt class="docutils literal"><span class="pre">&quot;2&quot;</span></tt> or <tt class="docutils literal"><span class="pre">&quot;3&quot;</span></tt>). Some notes regarding version differences:</p>
+<ul class="simple">
+<li>Bootstrap 3 has dropped support for <a class="reference external" href="http://stackoverflow.com/questions/18023493">sub-menus</a>, so while supported by this
+theme, they will not show up in site or page menus.</li>
+<li>Internally, &#8220;navbar.html&#8221; is the Sphinx template used for Bootstrap v3 and
+&#8220;navbar-2.html&#8221; is the template used for v2.</li>
+</ul>
 </div>
 <div class="section" id="id2">
 <h3>Bootswatch<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
@@ -322,7 +358,9 @@ available online.</p>
 in this Sphinx theme or any others. A good candidate for changes is
 &#8220;layout.html&#8221;, which provides most of the look and feel. First, take a look
 at the &#8220;layout.html&#8221; file that the theme provides, and figure out
-what you need to override.</p>
+what you need to override. As a side note, we have some theme-specific
+enhancements, such as the <tt class="docutils literal"><span class="pre">navbarextra</span></tt> template block for additional
+content in the navbar.</p>
 <p>Then, create your own &#8220;_templates&#8221; directory and &#8220;layout.html&#8221; file (assuming
 you build from a &#8220;source&#8221; directory):</p>
 <div class="highlight-python"><pre>$ mkdir source/_templates
@@ -336,7 +374,7 @@ $ touch source/_templates/layout.html</pre>
 <div class="highlight-python"><pre>{# Import the theme's layout. #}
 {% extends "!layout.html" %}
 
-{# Add some extra stuff before and use exiting with 'super()' call. #}
+{# Add some extra stuff before and use existing with 'super()' call. #}
 {% block footer %}
   &lt;h2&gt;My footer of awesomeness.&lt;/h2&gt;
   {{ super() }}
@@ -384,10 +422,10 @@ which is a multi-level rendering of the current page&#8217;s <tt class="docutils
 </div>
 <div class="section" id="id4">
 <h3>Bootstrap<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>The theme uses Twitter Bootstrap v2.3.1 and jQuery v.1.9.1. As the jQuery that
-Bootstrap wants can radically depart from the jQuery Sphinx internal libraries
-use, the library from this theme is integrated via <tt class="docutils literal"><span class="pre">noConflict()</span></tt> as
-<tt class="docutils literal"><span class="pre">$jqTheme</span></tt>.</p>
+<p>The theme offers Twitter Bootstrap v2.x and v3.x, both of which rely on
+jQuery v.1.9.x. As the jQuery that Bootstrap wants can radically depart from
+the jQuery Sphinx internal libraries use, the library from this theme is
+integrated via <tt class="docutils literal"><span class="pre">noConflict()</span></tt> as <tt class="docutils literal"><span class="pre">$jqTheme</span></tt>.</p>
 <p>You can override any static JS/CSS files by dropping different versions in your
 Sphinx &#8220;_static&#8221; directory.</p>
 </div>

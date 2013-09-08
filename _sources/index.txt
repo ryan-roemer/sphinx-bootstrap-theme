@@ -13,14 +13,22 @@ details and installation instructions.
 Contents
 ========
 
+Setting up and using the theme.
+
 .. toctree::
    :maxdepth: 2
 
    README
    examples
    sidebar
-   TODO
+
+Development history and feature wish lists.
+
+.. toctree::
+   :maxdepth: 1
+
    HISTORY
+   TODO
 
 .. Disabled.
 ..    downloads

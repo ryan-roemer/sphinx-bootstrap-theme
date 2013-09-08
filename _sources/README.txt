@@ -84,9 +84,17 @@ your "conf.py" file::
         # Tab name for entire site. (Default: "Site")
         'navbar_site_name': "Site",
 
-        # A list of tuples containting pages to link to.  The value should
-        # be in the form [(name, page), ..]
-        'navbar_links': [('Examples', 'examples')],
+        # A list of tuples containing pages or urls to link to.
+        # Valid tuples should be in the following forms:
+        #    (name, page)                 # a link to a page
+        #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
+        #    (name, "http://example.com", True) # arbitrary absolute url
+        # Note the "1" or "True" value above as the third argument to indicate
+        # an arbitrary url.
+        'navbar_links': [
+            ("Examples", "examples"),
+            ("Link", "http://example.com", True),
+        ],
 
         # Render the next and previous page links in navbar. (Default: true)
         'navbar_sidebarrel': True,
@@ -126,12 +134,28 @@ your "conf.py" file::
         #
         # Note that this is served off CDN, so won't be available offline.
         'bootswatch_theme': "united",
+
+        # Choose Bootstrap version.
+        # Values: "3" (default) or "2" (in quotes)
+        'bootstrap_version': "3",
     }
 
 Note for the navigation bar title that if you don't specify a theme option of
 ``navbar_title`` that the "conf.py" ``project`` string will be used. We don't
 use the ``html_title`` or ``html_short_title`` values because by default those
 both contain version strings, which the navigation bar treats differently.
+
+Bootstrap Versions
+------------------
+The theme supports Bootstrap v2.3.2 and v3.0.0 via the ``bootstrap_version``
+theme option (of ``"2"`` or ``"3"``). Some notes regarding version differences:
+
+* Bootstrap 3 has dropped support for `sub-menus`_, so while supported by this
+  theme, they will not show up in site or page menus.
+* Internally, "navbar.html" is the Sphinx template used for Bootstrap v3 and
+  "navbar-2.html" is the template used for v2.
+
+.. _`sub-menus`: http://stackoverflow.com/questions/18023493
 
 Bootswatch
 ----------
@@ -151,7 +175,9 @@ As a more "hands on" approach to customization, you can override any template
 in this Sphinx theme or any others. A good candidate for changes is
 "layout.html", which provides most of the look and feel. First, take a look
 at the "layout.html" file that the theme provides, and figure out
-what you need to override.
+what you need to override. As a side note, we have some theme-specific
+enhancements, such as the ``navbarextra`` template block for additional
+content in the navbar.
 
 Then, create your own "_templates" directory and "layout.html" file (assuming
 you build from a "source" directory)::
@@ -168,7 +194,7 @@ Finally, edit your override file "source/_templates/layout.html"::
     {# Import the theme's layout. #}
     {% extends "!layout.html" %}
 
-    {# Add some extra stuff before and use exiting with 'super()' call. #}
+    {# Add some extra stuff before and use existing with 'super()' call. #}
     {% block footer %}
       <h2>My footer of awesomeness.</h2>
       {{ super() }}
@@ -220,10 +246,10 @@ which is a multi-level rendering of the current page's ``toc``.
 
 Bootstrap
 ---------
-The theme uses Twitter Bootstrap v2.3.1 and jQuery v.1.9.1. As the jQuery that
-Bootstrap wants can radically depart from the jQuery Sphinx internal libraries
-use, the library from this theme is integrated via ``noConflict()`` as
-``$jqTheme``.
+The theme offers Twitter Bootstrap v2.x and v3.x, both of which rely on
+jQuery v.1.9.x. As the jQuery that Bootstrap wants can radically depart from
+the jQuery Sphinx internal libraries use, the library from this theme is
+integrated via ``noConflict()`` as ``$jqTheme``.
 
 You can override any static JS/CSS files by dropping different versions in your
 Sphinx "_static" directory.
