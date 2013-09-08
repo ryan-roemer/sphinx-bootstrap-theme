@@ -151,7 +151,9 @@ As a more "hands on" approach to customization, you can override any template
 in this Sphinx theme or any others. A good candidate for changes is
 "layout.html", which provides most of the look and feel. First, take a look
 at the "layout.html" file that the theme provides, and figure out
-what you need to override.
+what you need to override. As a side note, we have some theme-specific
+enhancements, such as the ``navbarextra`` template block for additional
+content in the navbar.
 
 Then, create your own "_templates" directory and "layout.html" file (assuming
 you build from a "source" directory)::
@@ -168,7 +170,7 @@ Finally, edit your override file "source/_templates/layout.html"::
     {# Import the theme's layout. #}
     {% extends "!layout.html" %}
 
-    {# Add some extra stuff before and use exiting with 'super()' call. #}
+    {# Add some extra stuff before and use existing with 'super()' call. #}
     {% block footer %}
       <h2>My footer of awesomeness.</h2>
       {{ super() }}

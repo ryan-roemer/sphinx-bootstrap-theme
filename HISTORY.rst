@@ -2,6 +2,10 @@
  History
 =========
 
+v0.2.9
+======
+* Add ``navbarextra`` block in "layout.html". (`@grncdr`_)
+
 v0.2.8
 ======
 * Sphinx compatible Sidebars. (`@russell`_)
@@ -115,6 +119,7 @@ v0.0.1
 * Original theme based on Bootstrap v1.4.0.
 
 .. _@aababilov: https://github.com/aababilov
+.. _@grncdr: https://github.com/grncdr
 .. _@nail: https://github.com/nail
 .. _@thedrow: https://github.com/thedrow
 .. _@inducer: https://github.com/inducer
