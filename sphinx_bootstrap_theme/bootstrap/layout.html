@@ -65,6 +65,8 @@
                 {% include "relations.html" %}
               {% endblock %}
             {% endif %}
+            {% block navbarextra %}
+            {% endblock %}
             {% if theme_source_link_position == "nav" %}
               <li>{% include "sourcelink.html" %}</li>
             {% endif %}
