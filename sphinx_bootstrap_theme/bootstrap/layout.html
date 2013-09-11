@@ -1,5 +1,6 @@
 {% if theme_bootstrap_version == "3" %}
   {% set bootstrap_version, bootstrap_additional_css, navbar_version = "3.0.0", "theme", "" %}
+  {% set bs_span_prefix = "col-md-" %}
  {% if theme_bootswatch_theme %}
   {% set css_files = css_files + [
       '_static/bootstrap-sphinx.css',
@@ -19,6 +20,7 @@
  {% endif %}
 {% else %}
   {% set bootstrap_version, bootstrap_additional_css, navbar_version = "2.3.2", "responsive", "-2" %}
+  {% set bs_span_prefix = "span" %}
   {% set css_files = [
       '_static/bootstrap-' + bootstrap_version + '/css/bootstrap.min.css'
     ] + css_files
@@ -47,7 +49,7 @@
 %}
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and sidebars %}
 
-{%- set bs_content_span = render_sidebar and "span9" or "span12"%}
+{%- set bs_content_width = render_sidebar and "9" or "12"%}
 
 
 {%- block doctype -%}
@@ -61,7 +63,7 @@
 
 {%- macro bsidebar() %}
       {%- if render_sidebar %}
-      <div class="span3">
+      <div class="{{ bs_span_prefix }}3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix">
           {%- for sidebartemplate in sidebars %}
             {%- include sidebartemplate %}
@@ -90,7 +92,7 @@
 <div class="container">
   <div class="row">
     {%- block sidebar1 %}{{ bsidebar() }}{% endblock %}
-    <div class="{{ bs_content_span }}">
+    <div class="{{ bs_span_prefix }}{{ bs_content_width }}">
       {% block body %}{% endblock %}
     </div>
     {% block sidebar2 %} {# possible location for sidebar #} {% endblock %}
