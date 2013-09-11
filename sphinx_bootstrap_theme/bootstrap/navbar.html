@@ -15,8 +15,8 @@
           <ul class="nav navbar-nav">
             <li class="divider-vertical"></li>
             {% if theme_navbar_links %}
-              {%- for title, doc in theme_navbar_links %}
-                <li><a href="{{ pathto(doc) }}">{{ title }}</a></li>
+              {%- for link in theme_navbar_links %}
+                <li><a href="{{ pathto(*link[1:]) }}">{{ link[0] }}</a></li>
               {%- endfor %}
             {% endif %}
             {% block navbartoc %}
