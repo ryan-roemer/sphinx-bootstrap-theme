@@ -50,11 +50,13 @@ body {
 .bs-sidenav {
   width: 228px;
   margin: 30px 0 0;
-  padding: 10px 0;
+  padding: 10px 0 0 5px;
 }
 
 .bs-sidenav ul{
   list-style-type: none;
+  padding-left: 25px;
+  margin-left: 0;  /* bootstrap 2 compatability. */
 }
 
 table {
@@ -96,6 +98,35 @@ table.field-list {
   }
 }
 
+{% if theme_bootstrap_version == "3" %}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 1190px) {
+  .bs-sidenav {
+    width: auto;
+    margin-top: 20px;
+  }
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+  .navbar-version {
+    padding-left: 5px;
+  }
+  .bs-sidenav {
+    width: auto;
+    margin-bottom: 20px;
+  }
+  .bs-sidenav.affix {
+    position: static;
+    top: 0;
+  }
+}
+
+{% else %}
+
 /* Tablet to desktop
 ------------------------- */
 @media (min-width: 768px) and (max-width: 979px) {
@@ -120,3 +151,4 @@ table.field-list {
     top: 0;
   }
 }
+{% endif %}
