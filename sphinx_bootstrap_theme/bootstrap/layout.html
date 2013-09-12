@@ -3,8 +3,8 @@
   {% set bs_span_prefix = "col-md-" %}
  {% if theme_bootswatch_theme %}
   {% set css_files = css_files + [
-      '_static/bootstrap-sphinx.css',
-      '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css'
+      '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
+      '_static/bootstrap-sphinx.css'
     ]
   %}
  {% else %}
@@ -13,8 +13,8 @@
     ] + css_files
   %}
   {% set css_files = css_files + [
-      '_static/bootstrap-sphinx.css',
-      '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css'
+      '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
+      '_static/bootstrap-sphinx.css'
     ]
   %}
  {% endif %}
@@ -32,8 +32,8 @@
   %}
   {% endif %}
   {% set css_files = css_files + [
-      '_static/bootstrap-sphinx.css',
-      '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css'
+      '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
+      '_static/bootstrap-sphinx.css'
     ]
   %}
 {% endif %}
