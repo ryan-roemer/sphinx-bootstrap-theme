@@ -4,7 +4,8 @@
 
 v0.3.1
 ======
-* Fixed display of sidebar. (`@adamcharnock`_ `@russell`_)
+* Re-add ``navbar_links`` theme option lost in bad merge. (`@newgene`_)
+* Fixed display of sidebar. (`@adamcharnock`_, `@russell`_)
 
 v0.3.0
 ======
