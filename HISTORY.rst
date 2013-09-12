@@ -2,6 +2,10 @@
  History
 =========
 
+v0.3.1
+======
+* Fixed display of sidebar. (`@adamcharnock`_ `@russell`_)
+
 v0.3.0
 ======
 * Add Bootstrap v3.0.0 with legacy option for v2.3.2. (`@MiCHiLU`_)
