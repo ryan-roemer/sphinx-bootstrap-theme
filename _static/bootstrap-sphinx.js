@@ -88,6 +88,29 @@
     $(".bs-sidenav ul").addClass("nav nav-list");
     $(".bs-sidenav > ul > li > a").addClass("nav-header");
 
+    
+    // back to top
+    setTimeout(function () {
+      var $sideBar = $('.bs-sidenav');
+
+      $sideBar.affix({
+        offset: {
+          top: function () {
+            var offsetTop      = $sideBar.offset().top;
+            var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
+            var navOuterHeight = $('#navbar').height();
+
+            return (this.top = offsetTop - navOuterHeight - sideBarMargin);
+          }
+        , bottom: function () {
+            // add 25 because the footer height doesn't seem to be enough
+            return (this.bottom = $('.footer').outerHeight(true) + 25);
+          }
+        }
+      });
+    }, 100);
+    
+
     // Local TOC.
     patchToc($("ul.localtoc"), 2);
 
