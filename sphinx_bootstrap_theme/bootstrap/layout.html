@@ -61,7 +61,20 @@
 {% include "navbar" + navbar_version + ".html" %}
 {% endmacro %}
 
-{%- macro bsidebar() %}
+{% if theme_bootstrap_version == "3" %}
+  {%- macro bsidebar() %}
+      {%- if render_sidebar %}
+      <div class="{{ bs_span_prefix }}3">
+        <div id="sidebar" class="bs-sidenav" role="complementary">
+          {%- for sidebartemplate in sidebars %}
+            {%- include sidebartemplate %}
+          {%- endfor %}
+        </div>
+      </div>
+      {%- endif %}
+  {%- endmacro %}
+{% else %}
+  {%- macro bsidebar() %}
       {%- if render_sidebar %}
       <div class="{{ bs_span_prefix }}3">
         <div id="sidebar" class="bs-sidenav well" data-spy="affix">
@@ -71,7 +84,8 @@
         </div>
       </div>
       {%- endif %}
-{%- endmacro %}
+  {%- endmacro %}
+{% endif %}
 
 
 {%- block extrahead %}
