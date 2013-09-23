@@ -59,6 +59,10 @@ table {
     font-size: 12px;
 }
 
+div.highlight {
+  background: none;
+}
+
 table.field-list {
   width: auto;
 }
