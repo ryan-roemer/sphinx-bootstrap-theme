@@ -2,6 +2,10 @@
  History
 =========
 
+v0.3.2
+======
+* Fix background color visibility behind rounding in code blocks. (`@kosiakk`_)
+
 v0.3.1
 ======
 * Re-add ``navbar_links`` theme option lost in bad merge. (`@newgene`_)
@@ -129,8 +133,10 @@ v0.0.1
 * Original theme based on Bootstrap v1.4.0.
 
 .. _@aababilov: https://github.com/aababilov
+.. _@adamcharnock: https://github.com/adamcharnock
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
+.. _@kosiakk: https://github.com/kosiakk
 .. _@MiCHiLU: https://github.com/MiCHiLU
 .. _@nail: https://github.com/nail
 .. _@newgene: https://github.com/newgene
