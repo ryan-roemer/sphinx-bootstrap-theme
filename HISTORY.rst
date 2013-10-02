@@ -4,6 +4,7 @@
 
 v0.3.2
 ======
+* Fix scroll handlers for nav. bar. (`@sccolbert`_)
 * Fix background color visibility behind rounding in code blocks. (`@kosiakk`_)
 
 v0.3.1
@@ -142,5 +143,6 @@ v0.0.1
 .. _@newgene: https://github.com/newgene
 .. _@oscarcp: https://github.com/oscarcp
 .. _@russell: https://github.com/russell
+.. _@sccolbert: https://github.com/sccolbert
 .. _@thedrow: https://github.com/thedrow
 .. _@zyga: https://github.com/zyga
