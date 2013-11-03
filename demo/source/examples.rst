@@ -32,6 +32,17 @@ Here's an included example with line numbers.
 .. literalinclude:: ../../sphinx_bootstrap_theme/__init__.py
    :linenos:
 
+It works with inline ``<html><body>hi</body></html>`` code and
+multiline:
+
+.. code-block:: html
+
+    <html>
+      <body>
+        hi
+      </body>
+    </html>
+
 
 Admonitions
 ===========
