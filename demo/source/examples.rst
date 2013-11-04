@@ -32,16 +32,28 @@ Here's an included example with line numbers.
 .. literalinclude:: ../../sphinx_bootstrap_theme/__init__.py
    :linenos:
 
-It works with inline ``<html><body>hi</body></html>`` code and
-multiline:
+It also works with existing Sphinx highlighting:
 
 .. code-block:: html
 
     <html>
-      <body>
-        hi
-      </body>
+      <body>Hello World</body>
     </html>
+
+.. code-block:: python
+
+    def hello():
+        """Greet."""
+        return "Hello World"
+
+.. code-block:: javascript
+
+    /**
+     * Greet.
+     */
+    function hello(): {
+      return "Hello World";
+    }
 
 
 Admonitions

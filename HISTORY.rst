@@ -2,6 +2,10 @@
  History
 =========
 
+Current
+=======
+* Preserve HTML inside literal code blocks. (`@tristanlins`_)
+
 v0.3.2
 ======
 * Fix scroll handlers for nav. bar. (`@sccolbert`_)
@@ -145,4 +149,5 @@ v0.0.1
 .. _@russell: https://github.com/russell
 .. _@sccolbert: https://github.com/sccolbert
 .. _@thedrow: https://github.com/thedrow
+.. _@tristanlins: https://github.com/tristanlins
 .. _@zyga: https://github.com/zyga
