@@ -103,6 +103,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#current">Current</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-2">v0.3.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-1">v0.3.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-0">v0.3.0</a></li>
@@ -357,6 +358,13 @@ documentation.</p>
 <p>This seemed like the best compromise between the size issues with statically
 including all of the various <a class="reference external" href="http://bootswatch.com">Bootswatch</a> themes and actually making them
 available online.</p>
+<p><strong>Development Note</strong>: The themes use an http/https-agnostic <cite>//</cite> URL preface,
+meaning that they <strong>will</strong> work for real http and https serving, but
+<strong>will not</strong> work for <cite>file://</cite> based-URL references. This means that in
+development, you need to statically serve your documentation HTML, and not
+just click an HTML file &#8220;open&#8221; on your machine. For the demo repository,
+we use a <cite>demo_server</cite> task that does just this &#8211; see &#8220;fabfile.py&#8221; for
+more details.</p>
 </div>
 <div class="section" id="extending-layout-html">
 <h3>Extending &#8220;layout.html&#8221;<a class="headerlink" href="#extending-layout-html" title="Permalink to this headline">¶</a></h3>

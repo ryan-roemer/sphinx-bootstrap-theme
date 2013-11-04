@@ -103,6 +103,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#current">Current</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-2">v0.3.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-1">v0.3.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-0">v0.3.0</a></li>
@@ -256,6 +257,25 @@ code text</pre>
     <span class="k">return</span> <span class="p">[</span><span class="n">cur_dir</span><span class="p">]</span>
 </pre></div>
 </td></tr></table></div>
+<p>It also works with existing Sphinx highlighting:</p>
+<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
+  <span class="nt">&lt;body&gt;</span>Hello World<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Greet.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s">&quot;Hello World&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * Greet.</span>
+<span class="cm"> */</span>
+<span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span><span class="o">:</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="admonitions">
 <h2>Admonitions<a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>

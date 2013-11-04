@@ -170,6 +170,14 @@ This seemed like the best compromise between the size issues with statically
 including all of the various Bootswatch_ themes and actually making them
 available online.
 
+**Development Note**: The themes use an http/https-agnostic `//` URL preface,
+meaning that they **will** work for real http and https serving, but
+**will not** work for `file://` based-URL references. This means that in
+development, you need to statically serve your documentation HTML, and not
+just click an HTML file "open" on your machine. For the demo repository,
+we use a `demo_server` task that does just this -- see "fabfile.py" for
+more details.
+
 Extending "layout.html"
 -----------------------
 As a more "hands on" approach to customization, you can override any template

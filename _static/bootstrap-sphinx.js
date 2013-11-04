@@ -153,7 +153,7 @@
       // ignore references
       if (!$(e).parent().hasClass("reference")) {
         $(e).replaceWith(function () {
-          return $("<code />").text($(this).text());
+          return $("<code />").html($(this).html());
         });
       }});
   });
