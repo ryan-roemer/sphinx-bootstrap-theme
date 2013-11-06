@@ -1,23 +1,26 @@
+{% extends "basic/layout.html" %}
+
 {% if theme_bootstrap_version == "3" %}
   {% set bootstrap_version, bootstrap_additional_css, navbar_version = "3.0.0", "theme", "" %}
   {% set bs_span_prefix = "col-md-" %}
- {% if theme_bootswatch_theme %}
-  {% set css_files = css_files + [
-      '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
-      '_static/bootstrap-sphinx.css'
-    ]
-  %}
- {% else %}
-  {% set css_files = [
-      '_static/bootstrap-' + bootstrap_version + '/css/bootstrap.min.css'
-    ] + css_files
-  %}
-  {% set css_files = css_files + [
-      '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
-      '_static/bootstrap-sphinx.css'
-    ]
-  %}
- {% endif %}
+
+  {% if theme_bootswatch_theme %}
+    {% set css_files = css_files + [
+        '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
+        '_static/bootstrap-sphinx.css'
+      ]
+    %}
+  {% else %}
+    {% set css_files = [
+        '_static/bootstrap-' + bootstrap_version + '/css/bootstrap.min.css'
+      ] + css_files
+    %}
+    {% set css_files = css_files + [
+        '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
+        '_static/bootstrap-sphinx.css'
+      ]
+    %}
+  {% endif %}
 {% else %}
   {% set bootstrap_version, bootstrap_additional_css, navbar_version = "2.3.2", "responsive", "-2" %}
   {% set bs_span_prefix = "span" %}
@@ -25,12 +28,14 @@
       '_static/bootstrap-' + bootstrap_version + '/css/bootstrap.min.css'
     ] + css_files
   %}
+
   {% if theme_bootswatch_theme %}
-  {% set css_files = css_files + [
-      '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css'
-    ]
-  %}
+    {% set css_files = css_files + [
+        '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css'
+      ]
+    %}
   {% endif %}
+
   {% set css_files = css_files + [
       '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
       '_static/bootstrap-sphinx.css'
@@ -38,19 +43,17 @@
   %}
 {% endif %}
 
-{% extends "basic/layout.html" %}
-
-  {% set script_files = script_files + [
+{% set script_files = script_files + [
     '_static/js/jquery-1.9.1.min.js',
     '_static/js/jquery-fix.js',
     '_static/bootstrap-' + bootstrap_version + '/js/bootstrap.min.js',
     '_static/bootstrap-sphinx.js'
   ]
 %}
+
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and sidebars %}
 
 {%- set bs_content_width = render_sidebar and "9" or "12"%}
-
 
 {%- block doctype -%}
 <!DOCTYPE html>
