@@ -136,8 +136,6 @@ html_theme_options = {
     # Options are nothing with "" (default) or the name of a valid theme such
     # as "amelia" or "cosmo".
     #
-    # Note that this is served off CDN, so won't be available offline.
-    #
     # Themes:
     # * amelia
     # * cerulean
@@ -149,7 +147,7 @@ html_theme_options = {
     # * slate
     # * spacelab
     # * spruce
-    # * superhero
+    # * superhero (v2 only)
     # * united
     'bootswatch_theme': "united",
 
