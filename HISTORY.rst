@@ -4,7 +4,10 @@
 
 v0.3.3
 ======
+* Allow custom CSS overrides, even on Bootstrap CSS.
+  Completes `#68 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/68>`_.
 * Add offline bootswatch files.
+  Completes `#19 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/19>`_.
 * Preserve HTML inside literal code blocks. (`@tristanlins`_)
 
 v0.3.2

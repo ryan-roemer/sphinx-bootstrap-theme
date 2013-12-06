@@ -24,7 +24,10 @@
   %}
 {% endif %}
 
-{% set css_files = css_files + theme_css_files %}
+{% if not bootswatch_css_custom %}
+  {% set bootswatch_css_custom = [] %}
+{% endif %}
+{% set css_files = css_files + theme_css_files + bootswatch_css_custom %}
 
 {% set script_files = script_files + [
     '_static/js/jquery-1.9.1.min.js',
