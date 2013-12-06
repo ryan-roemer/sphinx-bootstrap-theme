@@ -147,6 +147,7 @@ html_theme_options = {
     # * slate
     # * spacelab
     # * spruce
+    # * superhero (v2 only)
     # * united
     'bootswatch_theme': "united",
 
