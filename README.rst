@@ -206,8 +206,8 @@ configured as above, but with the following code::
     {# Import the theme's layout. #}
     {% extends "!layout.html" %}
 
-    {# Include our new CSS file into existing ones. #}
-    {% set css_files = css_files + ['_static/my-styles.css']%}
+    {# Custom CSS overrides #}
+    {% set bootswatch_css_custom = ['_static/my-styles.css'] %}
 
 Then, in the new file "source/_static/my-styles.css", add any appropriate
 styling, e.g. a bold background color::

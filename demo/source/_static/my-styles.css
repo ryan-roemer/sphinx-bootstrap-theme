@@ -1,0 +1,8 @@
+/* Unused samples for overrides example. */
+.navbar-default .navbar-brand {
+  color: yellow;
+}
+
+footer {
+  background-color: red;
+}
