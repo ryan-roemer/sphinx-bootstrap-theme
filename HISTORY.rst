@@ -2,8 +2,9 @@
  History
 =========
 
-Current
-=======
+v0.3.3
+======
+* Add offline bootswatch files.
 * Preserve HTML inside literal code blocks. (`@tristanlins`_)
 
 v0.3.2

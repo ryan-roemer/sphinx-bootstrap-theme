@@ -132,8 +132,6 @@ your "conf.py" file::
         #
         # Options are nothing with "" (default) or the name of a valid theme
         # such as "amelia" or "cosmo".
-        #
-        # Note that this is served off CDN, so won't be available offline.
         'bootswatch_theme': "united",
 
         # Choose Bootstrap version.
@@ -157,26 +155,6 @@ theme option (of ``"2"`` or ``"3"``). Some notes regarding version differences:
   "navbar-2.html" is the template used for v2.
 
 .. _`sub-menus`: http://stackoverflow.com/questions/18023493
-
-Bootswatch
-----------
-The theme option ``bootswatch_theme`` integrates (the totally awesome)
-Bootswatch_ library, so you can choose between the various themes. The
-themes, however, are served off a CDN, not from static files, which means that
-if you are offline, you will see "normal", un-themed Bootstrap for your
-documentation.
-
-This seemed like the best compromise between the size issues with statically
-including all of the various Bootswatch_ themes and actually making them
-available online.
-
-**Development Note**: The themes use an http/https-agnostic `//` URL preface,
-meaning that they **will** work for real http and https serving, but
-**will not** work for `file://` based-URL references. This means that in
-development, you need to statically serve your documentation HTML, and not
-just click an HTML file "open" on your machine. For the demo repository,
-we use a `demo_server` task that does just this -- see "fabfile.py" for
-more details.
 
 Extending "layout.html"
 -----------------------

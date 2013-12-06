@@ -7,7 +7,7 @@
 
   {% if theme_bootswatch_theme %}
     {% set theme_css_files = theme_css_files + [
-        '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
+        '_static/bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
         '_static/bootstrap-sphinx.css'
       ]
     %}
@@ -30,7 +30,7 @@
 
   {% if theme_bootswatch_theme %}
     {% set theme_css_files = theme_css_files + [
-        '//netdna.bootstrapcdn.com/bootswatch/' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css'
+        '_static/bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css'
       ]
     %}
   {% endif %}
