@@ -1,12 +1,4 @@
 
-
-  
-  
- 
-  
- 
-
-
 <!DOCTYPE html>
 
 
@@ -14,17 +6,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.3.2 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.3.3 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.0.0/united/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '0.3.2',
+        VERSION:     '0.3.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -37,7 +29,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.3.2 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.3.3 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -65,7 +57,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.html">Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.3.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.3.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -103,7 +95,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#current">Current</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-3">v0.3.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-2">v0.3.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-1">v0.3.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-0">v0.3.0</a></li>
@@ -149,14 +141,13 @@
 <li><a class="reference internal" href="#customization">Customization</a><ul>
 <li><a class="reference internal" href="#theme-options">Theme Options</a></li>
 <li><a class="reference internal" href="#bootstrap-versions">Bootstrap Versions</a></li>
-<li><a class="reference internal" href="#id2">Bootswatch</a></li>
 <li><a class="reference internal" href="#extending-layout-html">Extending &#8220;layout.html&#8221;</a></li>
 <li><a class="reference internal" href="#adding-custom-css">Adding Custom CSS</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#theme-notes">Theme Notes</a><ul>
-<li><a class="reference internal" href="#id3">Sphinx</a></li>
-<li><a class="reference internal" href="#id4">Bootstrap</a></li>
+<li><a class="reference internal" href="#id2">Sphinx</a></li>
+<li><a class="reference internal" href="#id3">Bootstrap</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#contributing">Contributing</a></li>
@@ -322,8 +313,6 @@ your &#8220;conf.py&#8221; file:</p>
     <span class="c">#</span>
     <span class="c"># Options are nothing with &quot;&quot; (default) or the name of a valid theme</span>
     <span class="c"># such as &quot;amelia&quot; or &quot;cosmo&quot;.</span>
-    <span class="c">#</span>
-    <span class="c"># Note that this is served off CDN, so won&#39;t be available offline.</span>
     <span class="s">&#39;bootswatch_theme&#39;</span><span class="p">:</span> <span class="s">&quot;united&quot;</span><span class="p">,</span>
 
     <span class="c"># Choose Bootstrap version.</span>
@@ -347,24 +336,6 @@ theme, they will not show up in site or page menus.</li>
 <li>Internally, &#8220;navbar.html&#8221; is the Sphinx template used for Bootstrap v3 and
 &#8220;navbar-2.html&#8221; is the template used for v2.</li>
 </ul>
-</div>
-<div class="section" id="id2">
-<h3>Bootswatch<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>The theme option <tt class="docutils literal"><span class="pre">bootswatch_theme</span></tt> integrates (the totally awesome)
-<a class="reference external" href="http://bootswatch.com">Bootswatch</a> library, so you can choose between the various themes. The
-themes, however, are served off a CDN, not from static files, which means that
-if you are offline, you will see &#8220;normal&#8221;, un-themed Bootstrap for your
-documentation.</p>
-<p>This seemed like the best compromise between the size issues with statically
-including all of the various <a class="reference external" href="http://bootswatch.com">Bootswatch</a> themes and actually making them
-available online.</p>
-<p><strong>Development Note</strong>: The themes use an http/https-agnostic <cite>//</cite> URL preface,
-meaning that they <strong>will</strong> work for real http and https serving, but
-<strong>will not</strong> work for <cite>file://</cite> based-URL references. This means that in
-development, you need to statically serve your documentation HTML, and not
-just click an HTML file &#8220;open&#8221; on your machine. For the demo repository,
-we use a <cite>demo_server</cite> task that does just this &#8211; see &#8220;fabfile.py&#8221; for
-more details.</p>
 </div>
 <div class="section" id="extending-layout-html">
 <h3>Extending &#8220;layout.html&#8221;<a class="headerlink" href="#extending-layout-html" title="Permalink to this headline">¶</a></h3>
@@ -411,8 +382,8 @@ configured as above, but with the following code:</p>
 <div class="highlight-python"><pre>{# Import the theme's layout. #}
 {% extends "!layout.html" %}
 
-{# Include our new CSS file into existing ones. #}
-{% set css_files = css_files + ['_static/my-styles.css']%}</pre>
+{# Custom CSS overrides #}
+{% set bootswatch_css_custom = ['_static/my-styles.css'] %}</pre>
 </div>
 <p>Then, in the new file &#8220;source/_static/my-styles.css&#8221;, add any appropriate
 styling, e.g. a bold background color:</p>
@@ -424,8 +395,8 @@ styling, e.g. a bold background color:</p>
 </div>
 <div class="section" id="theme-notes">
 <h2>Theme Notes<a class="headerlink" href="#theme-notes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id3">
-<h3>Sphinx<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Sphinx<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>The theme places the global TOC, local TOC, navigation (prev, next) and
 source links all in the top Bootstrap navigation bar, along with the Sphinx
 search bar on the left side.</p>
@@ -434,8 +405,8 @@ which is a configurable level rendering of the <tt class="docutils literal"><spa
 The local (page-level) table of contents is the &#8220;Page&#8221; navigation dropdown,
 which is a multi-level rendering of the current page&#8217;s <tt class="docutils literal"><span class="pre">toc</span></tt>.</p>
 </div>
-<div class="section" id="id4">
-<h3>Bootstrap<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Bootstrap<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>The theme offers Twitter Bootstrap v2.x and v3.x, both of which rely on
 jQuery v.1.9.x. As the jQuery that Bootstrap wants can radically depart from
 the jQuery Sphinx internal libraries use, the library from this theme is
