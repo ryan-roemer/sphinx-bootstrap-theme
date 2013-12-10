@@ -2,6 +2,11 @@
  History
 =========
 
+v0.3.4
+======
+* Fix the long-broken "Source" nav. link.
+* Add missing "flatly" to bootswatch CSS static files.
+
 v0.3.3
 ======
 * Allow custom CSS overrides, even on Bootstrap CSS.

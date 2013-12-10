@@ -156,5 +156,9 @@
           return $("<code />").html($(this).html());
         });
       }});
+
+    // Update sourcelink to remove outerdiv (fixes appearance in navbar).
+    var $srcLink = $(".nav #sourcelink");
+    $srcLink.parent().html($srcLink.html());
   });
 }($jqTheme || window.jQuery));
