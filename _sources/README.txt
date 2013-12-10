@@ -27,7 +27,7 @@ The theme is introduced and discussed in the following posts:
 Examples of the theme in use for some public projects:
 
 * `Sphinx Bootstrap Theme`_: This project, with the theme option
-  ``'bootswatch_theme': "united"`` to use the "United_" Bootswatch_ theme.
+  ``'bootswatch_theme': "flatly"`` to use the "Flatly_" Bootswatch_ theme.
 * `Django Cloud Browser`_: A Django reusable app for browsing cloud
   datastores (e.g., Amazon Web Services S3).
 
@@ -37,6 +37,7 @@ look at the `examples source`_ for the underlying reStructuredText).
 
 .. _Bootswatch: http://bootswatch.com
 .. _United: http://bootswatch.com/united
+.. _Flatly: http://bootswatch.com/flatly
 .. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
 .. _examples page: http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html
 .. _examples source: http://ryan-roemer.github.com/sphinx-bootstrap-theme/_sources/examples.txt
