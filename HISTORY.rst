@@ -4,6 +4,7 @@
 
 v0.3.4
 ======
+* Switch demo to "flatly" theme.
 * Fix the long-broken "Source" nav. link.
 * Add missing "flatly" to bootswatch CSS static files.
 
