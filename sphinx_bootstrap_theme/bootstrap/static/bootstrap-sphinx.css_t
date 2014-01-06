@@ -38,7 +38,7 @@ body {
 {%- block sidebarlogo %}
   {%- if logo %}
 @media (min-width: 980px) {
-  .navbar h3 a, .navbar .brand {
+  .navbar h3 a, .navbar .brand, .navbar-brand {
     background: transparent url("{{ logo }}") no-repeat 22px 3px;
     padding-left: 62px;
   }
