@@ -2,6 +2,10 @@
  History
 =========
 
+v0.3.5
+======
+* Fix responsive Bootswatch for Bootstrap v2.
+
 v0.3.4
 ======
 * Switch demo to "flatly" theme.

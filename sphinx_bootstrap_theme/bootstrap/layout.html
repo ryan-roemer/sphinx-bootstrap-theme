@@ -10,11 +10,21 @@
 {% endif %}
 
 {% if theme_bootswatch_theme %}
-  {% set theme_css_files = theme_css_files + [
-      '_static/bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
-      '_static/bootstrap-sphinx.css'
-    ]
-  %}
+  {# BS2 needs "bootstrap-responsive.css". BS3 doesn't. #}
+  {% if theme_bootstrap_version == "3" %}
+    {% set theme_css_files = theme_css_files + [
+        '_static/bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
+        '_static/bootstrap-sphinx.css'
+      ]
+    %}
+  {% else %}
+    {% set theme_css_files = theme_css_files + [
+        '_static/bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
+        '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
+        '_static/bootstrap-sphinx.css'
+      ]
+    %}
+  {% endif %}
 {% else %}
   {% set theme_css_files = theme_css_files + [
       '_static/bootstrap-' + bootstrap_version + '/css/bootstrap.min.css',

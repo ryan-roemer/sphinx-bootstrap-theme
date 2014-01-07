@@ -150,7 +150,7 @@ html_theme_options = {
     # * spruce (v2 only)
     # * superhero (v2 only)
     # * united
-    'bootswatch_theme': "",
+    'bootswatch_theme': "flatly",
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)
