@@ -4,6 +4,8 @@
 
 v0.3.5
 ======
+* Adds navbar logo's back to BS3. Switch to actual ``<img>`` tags for logos.
+  Fixes `#52 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/52>`_.
 * Fix responsive Bootswatch for Bootstrap v2.
 
 v0.3.4
