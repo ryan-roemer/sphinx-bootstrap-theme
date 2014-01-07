@@ -2,6 +2,11 @@
  Future Work
 =============
 
+Misc
+====
+* Fix top padding on fork me banner.
+* Update (c) to 2014.
+
 CSS / Layout
 ============
 * Search Bar: Is aligned right inconsistently in BS2 vs. BS3.
