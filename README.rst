@@ -73,8 +73,8 @@ Theme Options
 The theme provides many built-in options that can be configured by editing
 your "conf.py" file::
 
-    # (Optional) Logo. Should be exactly 24x24 px to fit the nav. bar.
-    # Path should be relative to the static files directory.
+    # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
+    # Path should be relative to the ``_static`` files directory.
     html_logo = "my_logo.png"
 
     # Theme options are theme-specific and customize the look and feel of a

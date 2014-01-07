@@ -8,7 +8,12 @@
           <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="{{ pathto(master_doc) }}">{% if theme_navbar_title -%}{{ theme_navbar_title|e }}{%- else -%}{{ project|e }}{%- endif -%}</a>
+        <a class="brand" href="{{ pathto(master_doc) }}">
+          {%- block sidebarlogo %}
+            {%- if logo %}<img src="_static/{{ logo }}">{%- endif %}
+          {%- endblock %}
+          {% if theme_navbar_title -%}{{ theme_navbar_title|e }}{%- else -%}{{ project|e }}{%- endif -%}
+        </a>
         <span class="navbar-text pull-left"><b>{{ version|e }}</b></span>
 
         <div class="nav-collapse">
