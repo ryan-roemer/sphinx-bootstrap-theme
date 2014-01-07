@@ -13,21 +13,27 @@
   top: 0px;
 }
 
-{% if theme_navbar_fixed_top == 'true' %}
-body {
-{% if theme_bootswatch_theme %}
-  padding-top: 50px;
-{% else %}
-  padding-top: 40px;
+{% if theme_bootstrap_version == "2" %}
+@media (min-width: 980px) {
 {% endif %}
+  {% if theme_navbar_fixed_top == 'true' %}
+  body {
+  {% if theme_bootswatch_theme %}
+    padding-top: 60px;
+  {% else %}
+    padding-top: 40px;
+  {% endif %}
+  }
+  .page-top {
+  {% if theme_bootswatch_theme %}
+    top: 60px;
+  {% else %}
+    top: 40px;
+  {% endif %}
+  }
+{% if theme_bootstrap_version == "2" %}
 }
-.page-top {
-{% if theme_bootswatch_theme %}
-  top: 50px;
-{% else %}
-  top: 40px;
 {% endif %}
-}
 
 .navbar-inner {
   padding-left:  12px !important;
