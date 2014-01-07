@@ -169,9 +169,9 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = "Demo"
 
-# The name of an image file (relative to this directory) to place at the top
-# of the sidebar.
-#html_logo = None
+# (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
+# Path should be relative to the ``_static`` files directory.
+# html_logo = "my-logo.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
