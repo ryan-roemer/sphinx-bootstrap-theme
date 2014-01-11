@@ -21,6 +21,7 @@ Setting up and using the theme.
    README
    examples
    sidebar
+   subdir/index
 
 Development history and feature wish lists.
 
