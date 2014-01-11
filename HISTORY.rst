@@ -2,6 +2,10 @@
  History
 =========
 
+Current
+======
+* Make navbar logo work with subdirectories. (`@cdbennett`_)
+
 v0.3.5
 ======
 * Adds navbar logo's back to BS3. Switch to actual ``<img>`` tags for logos.
@@ -155,6 +159,7 @@ v0.0.1
 
 .. _@aababilov: https://github.com/aababilov
 .. _@adamcharnock: https://github.com/adamcharnock
+.. _@cdbennett: https://github.com/cdbennett
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
 .. _@kosiakk: https://github.com/kosiakk
