@@ -4,6 +4,7 @@
 
 v0.3.6
 ======
+* Add bootswatch glyphicon links in bootswatch.
 * Selectively hide links on navbar in certain view sizes. From here on out,
   `hidden-sm` in BS3 is applied to next/previous and source navigation links.
 * Make navbar logo work with subdirectories. (`@cdbennett`_)
