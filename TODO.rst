@@ -4,7 +4,6 @@
 
 Misc
 ====
-* Fix top padding on fork me banner.
 * Update (c) to 2014.
 
 CSS / Layout
