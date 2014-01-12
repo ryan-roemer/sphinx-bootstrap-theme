@@ -71,6 +71,13 @@ Warning
 
 
 .. TODO
+  https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/76
+  (Needs a plugin)
+  Todo
+  ----
+  .. todo:: This is a todo.
+
+  https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/81
   Footnotes
   =========
   I have footnoted a first item [#f1]_ and second item [#f2]_.
