@@ -35,16 +35,26 @@
     containing fewer words won't appear in the result list.{% endtrans %}
   </p>
 
-  <form class="form-search" action="" method="get">
-    <input type="text" name="q" class="input-medium search-query">
-    <button type="submit" class="btn">{{ _('search') }}</button>
+  {% if theme_bootstrap_version == "3" %}
+  <form class="form-inline" action="" method="get">
+    <div class="form-group">
+      <input type="text" class="form-control" name="q" value="" />
+    </div>
+    <input type="submit" class="btn btn-default" value="{{ _('search') }}" />
+    <span id="search-progress" style="padding-left: 10px"></span>
+  </form>  
+  {% else %}
+  <form class="form-search">
+    <input type="text" class="input-medium search-query" name="q" value="" />
+    <input type="submit" class="btn btn-default" value="{{ _('search') }}" />
     <span id="search-progress" style="padding-left: 10px"></span>
   </form>
-
+  {% endif %}
+  
   {% if search_performed %}
     <h2>{{ _('Search Results') }}</h2>
     {% if not search_results %}
-      <p>{{ _('Your search did not match any results.') }}</p>
+      <p>{{ _('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.') }}</p>
     {% endif %}
   {% endif %}
   <div id="search-results">
