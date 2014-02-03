@@ -2,6 +2,10 @@
  History
 =========
 
+Current
+======
+* Add footnote styling. (`@russell`_)
+
 v0.3.6
 ======
 * Add bootswatch glyphicon links in bootswatch.
