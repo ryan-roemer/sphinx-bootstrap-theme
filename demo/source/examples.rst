@@ -77,14 +77,13 @@ Warning
   ----
   .. todo:: This is a todo.
 
-  https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/81
-  Footnotes
-  =========
-  I have footnoted a first item [#f1]_ and second item [#f2]_.
+Footnotes
+=========
+I have footnoted a first item [#f1]_ and second item [#f2]_.
 
-  .. rubric:: Footnotes
-  .. [#f1] My first footnote.
-  .. [#f2] My second footnote.
+.. rubric:: Footnotes
+.. [#f1] My first footnote.
+.. [#f2] My second footnote.
 
 Tables
 ======
