@@ -58,6 +58,21 @@ div.highlight {
   background: none;
 }
 
+a.footnote-reference {
+    vertical-align: super;
+    font-size: 75%;
+}
+
+table.footnote td.label {
+    font-size: 100%;
+    display: block;
+    line-height: normal;
+}
+
+table.footnote {
+  width: auto;
+}
+
 table.field-list {
   width: auto;
 }
