@@ -2,7 +2,7 @@
 
 {% set theme_css_files = [] %}
 {% if theme_bootstrap_version == "3" %}
-  {% set bootstrap_version, bootstrap_additional_css, navbar_version = "3.0.0", "theme", "" %}
+  {% set bootstrap_version, bootstrap_additional_css, navbar_version = "3.0.3", "theme", "" %}
   {% set bs_span_prefix = "col-md-" %}
 {% else %}
   {% set bootstrap_version, bootstrap_additional_css, navbar_version = "2.3.2", "responsive", "-2" %}
@@ -41,8 +41,8 @@
 
 {% set script_files = script_files + [
     '_static/js/jquery-1.9.1.min.js',
-    '_static/js/jquery-fix.js',
     '_static/bootstrap-' + bootstrap_version + '/js/bootstrap.min.js',
+    '_static/js/jquery-fix.js',
     '_static/bootstrap-sphinx.js'
   ]
 %}
