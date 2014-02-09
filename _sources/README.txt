@@ -7,7 +7,7 @@ framework with various layout options, hierarchical menu navigation,
 and mobile-friendly responsive design. It is configurable, extensible
 and can use any number of different Bootswatch_ CSS themes.
 
-.. _Bootstrap: http://twitter.github.com/bootstrap/
+.. _Bootstrap: http://getbootstrap.com/
 .. _Sphinx: http://sphinx.pocoo.org/
 .. _theme: http://sphinx.pocoo.org/theming.html
 .. _PyPI: http://pypi.python.org/pypi/sphinx-bootstrap-theme/
