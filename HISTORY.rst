@@ -2,7 +2,7 @@
  History
 =========
 
-Current
+v0.3.7
 ======
 * Add footnote styling. (`@russell`_)
 * Update search.html to allow search locally. (`@fjfeijoo`_)
