@@ -141,15 +141,18 @@ html_theme_options = {
     # * cerulean
     # * cosmo
     # * cyborg
+    # * cupid (v3 only)
     # * flatly
     # * journal
+    # * lumen (v3 only)
     # * readable
     # * simplex
     # * slate
     # * spacelab
     # * spruce (v2 only)
-    # * superhero (v2 only)
+    # * superhero
     # * united
+    # * yeti (v3 only)
     'bootswatch_theme': "flatly",
 
     # Choose Bootstrap version.
