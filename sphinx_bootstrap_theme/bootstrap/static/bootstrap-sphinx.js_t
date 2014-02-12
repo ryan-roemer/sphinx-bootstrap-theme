@@ -158,4 +158,4 @@
     var $srcLink = $(".nav #sourcelink");
     $srcLink.parent().html($srcLink.html());
   });
-}($jqTheme || window.jQuery));
+}(window.jQuery));
