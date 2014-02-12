@@ -2,6 +2,10 @@
  History
 =========
 
+v0.3.8
+======
+* Update to Bootstrap v3.1.0. (`@torbjoernk`_)
+
 v0.3.7
 ======
 * Add footnote styling. (`@russell`_)
@@ -169,6 +173,7 @@ v0.0.1
 .. _@aababilov: https://github.com/aababilov
 .. _@adamcharnock: https://github.com/adamcharnock
 .. _@cdbennett: https://github.com/cdbennett
+.. _@fjfeijoo: https://github.com/fjfeijoo
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
 .. _@kosiakk: https://github.com/kosiakk
@@ -179,5 +184,6 @@ v0.0.1
 .. _@russell: https://github.com/russell
 .. _@sccolbert: https://github.com/sccolbert
 .. _@thedrow: https://github.com/thedrow
+.. _@torbjoernk: https://github.com/torbjoernk
 .. _@tristanlins: https://github.com/tristanlins
 .. _@zyga: https://github.com/zyga
