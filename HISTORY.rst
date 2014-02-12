@@ -3,7 +3,7 @@
 =========
 
 Current
-======
+=======
 * Add footnote styling. (`@russell`_)
 * Update search.html to allow search locally. (`@fjfeijoo`_)
 * Updated search template for BS3. (`@russell`_)

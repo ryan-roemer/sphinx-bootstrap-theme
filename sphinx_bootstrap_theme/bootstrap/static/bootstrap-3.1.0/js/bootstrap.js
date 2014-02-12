@@ -53,7 +53,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     $.support.transition = transitionEnd()
   })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: alert.js v3.1.0
@@ -142,7 +142,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
 
   $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: button.js v3.1.0
@@ -250,7 +250,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     e.preventDefault()
   })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: carousel.js v3.1.0
@@ -456,7 +456,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     })
   })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: collapse.js v3.1.0
@@ -627,7 +627,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     $target.collapse(option)
   })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: dropdown.js v3.1.0
@@ -775,7 +775,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu], [role=listbox]', Dropdown.prototype.keydown)
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: modal.js v3.1.0
@@ -1019,7 +1019,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     .on('show.bs.modal', '.modal', function () { $(document.body).addClass('modal-open') })
     .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: tooltip.js v3.1.0
@@ -1419,7 +1419,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     return this
   }
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: popover.js v3.1.0
@@ -1530,7 +1530,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     return this
   }
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: scrollspy.js v3.1.0
@@ -1684,7 +1684,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     })
   })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: tab.js v3.1.0
@@ -1810,7 +1810,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     $(this).tab('show')
   })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
 
 /* ========================================================================
  * Bootstrap: affix.js v3.1.0
@@ -1948,4 +1948,4 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap requires jQuery'
     })
   })
 
-}(jQuery);
+}(window.$jqTheme||window.jQuery);
