@@ -39,9 +39,10 @@
 {% endif %}
 {% set css_files = css_files + theme_css_files + bootswatch_css_custom %}
 
-{% set script_files = script_files + [
-    '_static/js/jquery-1.9.1.min.js',
-    '_static/js/jquery-fix.js',
+{% set script_files = [
+    '_static/js/jquery.min.js',
+    '_static/underscore.js',
+    '_static/doctools.js',
     '_static/bootstrap-' + bootstrap_version + '/js/bootstrap.min.js',
     '_static/bootstrap-sphinx.js'
   ]
