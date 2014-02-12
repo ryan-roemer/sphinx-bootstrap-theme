@@ -138,8 +138,12 @@
       $localLi.first().after('<li class="divider"></li>');
     }
 
-    // Enable dropdown.
-    $('.dropdown-toggle').dropdown();
+    // Manually add dropdown.
+    // Appears unnecessary as of:
+    //   https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/90
+    // Remove next time around...
+    // a.dropdown-toggle class needed in globaltoc.html
+    //$('.dropdown-toggle').dropdown();
 
     // Patch tables.
     patchTables();
@@ -161,4 +165,4 @@
     var $srcLink = $(".nav #sourcelink");
     $srcLink.parent().html($srcLink.html());
   });
-}($jqTheme || window.jQuery));
+}(window.$jqTheme || window.jQuery));
