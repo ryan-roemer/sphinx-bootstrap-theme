@@ -63,22 +63,19 @@ admonitions.
 
 Note
 ----
-.. note:: This is a note.
+.. note:: This is a **note**.
+
+Todo
+----
+.. todo:: This is a **todo**.
 
 Warning
 -------
-.. warning:: This is a warning.
+.. warning:: This is a **warning**.
 
 Danger
 ------
-.. danger:: This is dangerous.
-
-.. TODO
-  https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/76
-  (Needs a plugin)
-  Todo
-  ----
-  .. todo:: This is a todo.
+.. danger:: This is **danger**-ous.
 
 Footnotes
 =========
