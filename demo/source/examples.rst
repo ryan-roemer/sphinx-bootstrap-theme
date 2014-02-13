@@ -69,6 +69,9 @@ Warning
 -------
 .. warning:: This is a warning.
 
+Danger
+------
+.. danger:: This is dangerous.
 
 .. TODO
   https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/76
