@@ -2,8 +2,8 @@
  History
 =========
 
-Current
-=======
+v0.3.9
+======
 * Restyle alerts and admonitions. (`@masklinn`_)
 
 v0.3.8
