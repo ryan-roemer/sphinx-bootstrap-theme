@@ -132,7 +132,7 @@ html_theme_options = {
 
     # Location of link to source.
     # Options are "nav" (default), "footer" or anything else to exclude.
-    'source_link_position': "nav",
+    'source_link_position': "footer",
 
     # Bootswatch (http://bootswatch.com/) theme.
     #
@@ -156,7 +156,7 @@ html_theme_options = {
     # * superhero
     # * united
     # * yeti (v3 only)
-    'bootswatch_theme': "flatly",
+    'bootswatch_theme': "cupid",
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)
