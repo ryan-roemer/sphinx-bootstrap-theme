@@ -2,6 +2,10 @@
  History
 =========
 
+v0.3.9
+======
+* Restyle alerts and admonitions. (`@masklinn`_)
+
 v0.3.8
 ======
 * Update to Bootstrap v3.1.0. (`@torbjoernk`_)
@@ -177,6 +181,7 @@ v0.0.1
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
 .. _@kosiakk: https://github.com/kosiakk
+.. _@masklinn: https://github.com/masklinn
 .. _@MiCHiLU: https://github.com/MiCHiLU
 .. _@nail: https://github.com/nail
 .. _@newgene: https://github.com/newgene

@@ -149,8 +149,13 @@
     patchTables();
 
     // Add Note, Warning styles. (BS v2,3 compatible).
-    $('div.note').addClass('alert alert-info');
-    $('div.warning').addClass('alert alert-danger alert-error');
+    $('.admonition').addClass('alert alert-info')
+      .filter('.warning, .caution')
+        .removeClass('alert-info')
+        .addClass('alert-warning').end()
+      .filter('.error, .danger')
+        .removeClass('alert-info')
+        .addClass('alert-danger alert-error').end();
 
     // Inline code styles to Bootstrap style.
     $('tt.docutils.literal').not(".xref").each(function (i, e) {
