@@ -22,6 +22,7 @@ Setting up and using the theme.
    examples
    sidebar
    subdir/index
+   example_module.rst
 
 Development history and feature wish lists.
 
