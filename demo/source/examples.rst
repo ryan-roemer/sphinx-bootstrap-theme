@@ -77,6 +77,18 @@ Danger
 ------
 .. danger:: This is **danger**-ous.
 
+Attention
+---------
+.. attention:: This is a note.
+
+See Also
+--------
+.. seealso:: Probably a reference.
+
+Error
+-----
+.. error:: This is a error.
+
 Footnotes
 =========
 I have footnoted a first item [#f1]_ and second item [#f2]_.
