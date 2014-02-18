@@ -9,6 +9,7 @@ from sphinx.locale import admonitionlabels, l_
 
 
 admonitionlabels['todo'] = l_('Todo')
+admonitionlabels['example'] = l_('Example')
 
 
 alert_classes = {
@@ -22,7 +23,8 @@ alert_classes = {
     'seealso':   'info',
     'tip':       'primary',
     'warning':   'warning',
-    'todo':      'info'
+    'todo':      'info',
+    'example':   'info'
 }
 
 
@@ -76,6 +78,17 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append('</span>')
 
     def visit_admonition(self, node, name=''):
+        if isinstance(node[0], nodes.title):
+            if node[0].astext() in ['Example', 'Examples']:
+                del node['classes']
+                del node[0]
+                self.context.append('example')
+                name = 'example'
+            elif node[0].astext() in ['Note', 'Notes']:
+                del node['classes']
+                del node[0]
+                self.context.append('note')
+                name = 'note'
         if name:
             self.body.append(self.starttag(node, 'div', CLASS='panel panel-%s' % alert_classes[name]))
             self.body.append('<div class="panel-heading"><h6 class="panel-title">%s</h6></div>\n' % admonitionlabels[name])
@@ -86,6 +99,9 @@ class BootstrapTranslator(HTMLTranslator):
         if name:
             # closing off the additional div.panel-body
             self.body.append('</div>\n')
+        elif self.context[-1] in alert_classes.keys():
+            self.body.append('</div>\n')
+            self.context.pop()
         self.body.append('</div>\n')
 
     def visit_note(self, node):
@@ -117,6 +133,11 @@ class BootstrapTranslator(HTMLTranslator):
         self.visit_admonition(node, 'seealso')
     def depart_seealso(self, node):
         self.depart_admonition(node, 'seealso')
+
+    def visit_example(self, node):
+        self.visit_admonition(node, 'example')
+    def depart_example(self, node):
+        self.depart_admonition(node, 'example')
 
     def visit_todo_node(self, node):
         node.remove(node[0])  # remove additional 'Todo' title node
@@ -365,6 +386,7 @@ class BootstrapTranslator(HTMLTranslator):
         node.clear()
 
     def _print_single_parameter(self, node):
+        _do_name = True
         _name = None
         _do_type = False
         _type = None
@@ -373,15 +395,18 @@ class BootstrapTranslator(HTMLTranslator):
         for _c in node.children:
             if _do_desc:
                 _desc.append(_c)
-            elif node.children.index(_c) == 0 and isinstance(_c, nodes.strong):
+            elif _do_name and node.children.index(_c) == 0 and isinstance(_c, (nodes.strong, nodes.literal)):
                 _name = _c[0].astext()
+                _do_name = False
             elif isinstance(_c, nodes.Text):
                 if _do_type is False and _c.astext() == ' (':
                     _do_type = True
                     _type = ''
                 elif _c.astext() == ')':
                     _do_type = False
-                elif _c.astext() == ' -- ':
+                elif _c.astext().startswith(' -- '):
+                    if len(_c.replace(' -- ', '', 1)) > 0:
+                        _desc.append(nodes.Text(_c.replace(' -- ', '', 1)))
                     _do_desc = True
             elif isinstance(_c, nodes.emphasis) and _do_type and _type == '':
                 _type = _c[0]
