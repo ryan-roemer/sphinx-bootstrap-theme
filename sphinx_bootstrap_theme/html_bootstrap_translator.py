@@ -38,6 +38,7 @@ member_types = {
 
 
 split_parameter_types = re.compile('\sor\s|,\s')
+parameter_desc_start = re.compile('^[\s]--[\s]')
 
 
 class BootstrapTranslator(HTMLTranslator):
@@ -189,14 +190,31 @@ class BootstrapTranslator(HTMLTranslator):
     def depart_field_list(self, node):
         self.body.append('</div>\n')
 
+    def _fixup_return_type(self, node):
+        if node[0].astext() == 'Returns':
+            _return = node
+            _this_index = node.parent.index(node)
+
+            if len(node.parent.children) > _this_index + 1:
+                if node.parent[_this_index + 1][0].astext() == 'Return type':
+                    _rtype = node.parent[_this_index + 1]
+                    _rtype_new = [nodes.Text(' (')]
+                    if isinstance(_rtype[1][0], nodes.paragraph):
+                        for elem in _rtype[1][0]:
+                            _rtype_new.append(elem.deepcopy())
+                    _rtype_new.append(nodes.Text(')'))
+                    _return[1][0].insert(1, _rtype_new)
+
     def visit_field(self, node):
+        if node[0][0].astext() == 'Return type':
+            # return type should be handelt by _fixup_return_type on 'Returns' nodes
+            raise nodes.SkipNode
+
         _contextual_class = 'default'
+        self._fixup_return_type(node)
         _field_name_title = node[0][0].astext()
         if _field_name_title == 'Raises':
             _contextual_class = 'warning'
-        if _field_name_title == 'Return type':
-            _field_name_title = 'Returns'
-            node[0].replace(node[0][0], nodes.Text('Returns'))
         if node[0][0].astext() in ['Raises']:
             if node[0].__len__() == 3:
                 node[1][0].insert(0, nodes.Text(' -- '))
@@ -219,9 +237,7 @@ class BootstrapTranslator(HTMLTranslator):
 
     def visit_field_body(self, node):
         self.body.append(self.starttag(node, 'div', '', CLASS='panel-body field-body'))
-        if self.field_context[-1] in ['Parameters']:
-            self._print_parameters(node)
-        if self.field_context[-1] in ['Raises']:
+        if self.field_context[-1] in ['Parameters', 'Raises', 'Returns']:
             self._print_parameters(node)
     def depart_field_body(self, node):
         self.body.append('</div>')
@@ -395,7 +411,9 @@ class BootstrapTranslator(HTMLTranslator):
                          '<col class="col-md-8 col-parameter-desc"></col>'
                          '</colgroup>'
                          '<tbody>')
-        # print("Raw: '%s'" % node.__str__())
+
+        # if self.field_context[-1] in ['Returns']:
+            # print("\n\nRaw %s: '%s'" % (self.field_context[-1], node.__str__()))
         if isinstance(node.children[0], nodes.paragraph):
             self._print_single_parameter(node[0])
         elif isinstance(node.children[0], nodes.bullet_list):
@@ -408,7 +426,7 @@ class BootstrapTranslator(HTMLTranslator):
         _do_name = True
         _name = None
         _do_type = False
-        _type = None
+        _types = []
         _do_desc = False
         _desc = []
         for _c in node.children:
@@ -421,14 +439,19 @@ class BootstrapTranslator(HTMLTranslator):
                 if _do_type is False and _c.astext() == ' (':
                     _do_type = True
                     _type = ''
-                elif _c.astext() == ')':
+                if _c.astext() == ')':
+                    _c.replace(')', '', 1)
                     _do_type = False
-                elif _c.astext().startswith(' -- '):
-                    if len(_c.replace(' -- ', '', 1)) > 0:
-                        _desc.append(nodes.Text(_c.replace(' -- ', '', 1)))
+                if parameter_desc_start.search(_c.astext()) is not None:
+                    _d = parameter_desc_start.findall(_c.astext())
+                    if len(re.sub(parameter_desc_start, '', _c.__str__(), count=1).strip()) > 0:
+                        _desc.append(nodes.Text(re.sub(parameter_desc_start, '', _c.__str__(), count=1)))
                     _do_desc = True
-            elif isinstance(_c, nodes.emphasis) and _do_type and _type == '':
-                _type = _c[0]
+            elif isinstance(_c, (nodes.emphasis, nodes.literal, nodes.reference)) and _do_type:
+                if isinstance(_c, (nodes.emphasis, nodes.literal)):
+                    _types.append(_c[0])
+                else:
+                    _types.append(_c)
 
         self.body.append('<tr>'
                          '<td>'
@@ -437,16 +460,18 @@ class BootstrapTranslator(HTMLTranslator):
                          '<td>'
                          '<div class="parameter-type">')
 
-        _type_str = ''
-        if isinstance(_type, nodes.Text):
-            _types = split_parameter_types.split(_type.astext())
-            _type_str += '<code>'
-            if len(_types) > 1:
-                _type_str += '</code>, <code>'.join(_types)
-            elif len(_types) == 1:
-                _type_str += _types[0]
-            _type_str += '</code>'
-        self.body.append('%s</div></td>' % _type_str +
+        print("Types: %s" % _types)
+        for _ti in range(0, len(_types)):
+            if len(_types) > 1 and _ti > 0:
+                self.body.append(', ')
+            self.body.append('<code>')
+            if isinstance(_types[_ti], nodes.reference):
+                _types[_ti].walkabout(self)
+            else:
+                self.body.append(_types[_ti].astext())
+            self.body.append('</code>')
+
+        self.body.append('</div></td>'
                          '<td>'
                          '<div class="parameter-desc">')
 
