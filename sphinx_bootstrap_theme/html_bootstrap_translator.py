@@ -77,6 +77,20 @@ class BootstrapTranslator(HTMLTranslator):
     def depart_compact_paragraph(self, node):
         self.body.append('</span>')
 
+    def visit_attribution(self, node):
+        if isinstance(node.parent, nodes.block_quote):
+            self.body.append(self.starttag(node, 'footer'))
+        else:
+            prefix, suffix = self.attribution_formats[self.settings.attribution]
+            self.context.append(suffix)
+            self.body.append(self.starttag(node, 'p', prefix, CLASS='attribution'))
+
+    def depart_attribution(self, node):
+        if isinstance(node.parent, nodes.block_quote):
+            self.body.append("</footer>\n")
+        else:
+            self.body.append(self.context.pop() + '</p>\n')
+
     def visit_admonition(self, node, name=''):
         if isinstance(node[0], nodes.title):
             if node[0].astext() in ['Example', 'Examples']:
@@ -91,7 +105,12 @@ class BootstrapTranslator(HTMLTranslator):
                 name = 'note'
         if name:
             self.body.append(self.starttag(node, 'div', CLASS='panel panel-%s' % alert_classes[name]))
-            self.body.append('<div class="panel-heading"><h6 class="panel-title">%s</h6></div>\n' % admonitionlabels[name])
+            self.section_level += 1
+            self.body.append(
+                '<div class="panel-heading"><h%d class="panel-title">%s</h%d></div>\n' %
+                (self.section_level, admonitionlabels[name], self.section_level)
+            )
+            self.section_level -= 1
             self.body.append(self.starttag(node, 'div', CLASS='panel-body'))
         else:
             self.body.append(self.starttag(node, 'div', CLASS='panel panel-default'))
@@ -342,7 +361,7 @@ class BootstrapTranslator(HTMLTranslator):
         """
         _cls = 'desc-annotation'
         if node[0].astext() in member_types.values():
-            _cls += ' desc-annotation-type'
+            _cls += ' desc-annotation-type text-muted'
         self.body.append(self.starttag(node, 'tt', '', CLASS=_cls))
     def depart_desc_annotation(self, node):
         self.body.append('</tt>')
