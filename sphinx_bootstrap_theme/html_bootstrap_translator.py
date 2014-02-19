@@ -38,7 +38,6 @@ member_types = {
 
 
 split_parameter_types = re.compile('\sor\s|,\s')
-parameter_desc_start = re.compile('^[\s]--[\s]')
 
 
 class BootstrapTranslator(HTMLTranslator):
@@ -185,6 +184,9 @@ class BootstrapTranslator(HTMLTranslator):
         if len(node):
             node[0]['classes'].append('first')
 
+    def visit_definition_list(self, node):
+        self.body.append(self.starttag(node, 'dl', CLASS='dl-horizontal'))
+
     def visit_field_list(self, node):
         self.body.append(self.starttag(node, 'div', CLASS='panel-group field-list'))
     def depart_field_list(self, node):
@@ -192,7 +194,6 @@ class BootstrapTranslator(HTMLTranslator):
 
     def _fixup_return_type(self, node):
         if node[0].astext() == 'Returns':
-            _return = node
             _this_index = node.parent.index(node)
 
             if len(node.parent.children) > _this_index + 1:
@@ -203,11 +204,30 @@ class BootstrapTranslator(HTMLTranslator):
                         for elem in _rtype[1][0]:
                             _rtype_new.append(elem.deepcopy())
                     _rtype_new.append(nodes.Text(')'))
-                    _return[1][0].insert(1, _rtype_new)
+                    _strongs = node.traverse(condition=nodes.strong)
+
+                    if len(_strongs) > 0:
+                        _return_name = _strongs[0]
+                        _return_para = _return_name.parent
+                        _first_strong_id_in_its_parent = _return_para.index(_strongs[0])
+                        _return_para.insert(_first_strong_id_in_its_parent + 1, _rtype_new)
+
+                        if isinstance(_return_para, nodes.paragraph) \
+                                and isinstance(_return_para.parent, nodes.paragraph):
+                            _return_para_parent = _return_para.parent
+                            if len(_return_para_parent) > 1 \
+                                    and isinstance(_return_para_parent[1], (nodes.bullet_list, nodes.definition_list, nodes.field_list)):
+                                _para = []
+                                for _p in _return_para_parent[0]:
+                                    _para.append(_p.deepcopy())
+                                _list = _return_para_parent[1].deepcopy()
+                                _return_para_parent.clear()
+                                _return_para_parent.extend(_para)
+                                _return_para_parent.append(_list)
 
     def visit_field(self, node):
         if node[0][0].astext() == 'Return type':
-            # return type should be handelt by _fixup_return_type on 'Returns' nodes
+            # return type should be handled by _fixup_return_type on 'Returns' nodes
             raise nodes.SkipNode
 
         _contextual_class = 'default'
@@ -252,7 +272,6 @@ class BootstrapTranslator(HTMLTranslator):
     def depart_table(self, node):
         self.compact_p = self.context.pop()
         self.body.append('</table>\n')
-
 
     def visit_desc(self, node):
         if node['objtype'] in member_types.keys() and node['objtype'] != 'staticmethod':
@@ -406,23 +425,30 @@ class BootstrapTranslator(HTMLTranslator):
     def _print_parameters(self, node):
         self.body.append('<table class="table table-condensed">'
                          '<colgroup>'
-                         '<col class="col-md-2 col-parameter-name"></col>'
-                         '<col class="col-md-2 col-parameter-type"></col>'
-                         '<col class="col-md-8 col-parameter-desc"></col>'
+                         '<col class="col-parameter-name"></col>'
+                         '<col class="col-parameter-type"></col>'
+                         '<col class="col-parameter-desc"></col>'
                          '</colgroup>'
                          '<tbody>')
 
-        # if self.field_context[-1] in ['Returns']:
-            # print("\n\nRaw %s: '%s'" % (self.field_context[-1], node.__str__()))
         if isinstance(node.children[0], nodes.paragraph):
+            if self.field_context[-1] in ['Raises']:
+                if len(node.children) > 1:
+                    if isinstance(node[1], nodes.bullet_list):
+                        node[0].append(node[1].deepcopy())
+                        node.remove(node[1])
+
             self._print_single_parameter(node[0])
         elif isinstance(node.children[0], nodes.bullet_list):
+            first = True
             for _c in node.children[0]:
-                self._print_single_parameter(_c[0])
+                self._print_single_parameter(_c[0], first=first)
+                if first:
+                    first = False
         self.body.append('</tbody></table>')
         node.clear()
 
-    def _print_single_parameter(self, node):
+    def _print_single_parameter(self, node, first=False):
         _do_name = True
         _name = None
         _do_type = False
@@ -438,42 +464,60 @@ class BootstrapTranslator(HTMLTranslator):
             elif isinstance(_c, nodes.Text):
                 if _do_type is False and _c.astext() == ' (':
                     _do_type = True
-                    _type = ''
                 if _c.astext() == ')':
                     _c.replace(')', '', 1)
                     _do_type = False
-                if parameter_desc_start.search(_c.astext()) is not None:
-                    _d = parameter_desc_start.findall(_c.astext())
-                    if len(re.sub(parameter_desc_start, '', _c.__str__(), count=1).strip()) > 0:
-                        _desc.append(nodes.Text(re.sub(parameter_desc_start, '', _c.__str__(), count=1)))
+                if _c.astext() in [' -- ', ' --'] or _c.astext().find(' --') != -1:
+                    if len(_c.astext().replace(' --', '', 1).lstrip()) > 0:
+                        _desc.append(nodes.Text(_c.astext().replace(' --', '', 1).lstrip()))
                     _do_desc = True
+                if ' of ' in _c.astext() and _do_type:
+                    _types.append(_c)
             elif isinstance(_c, (nodes.emphasis, nodes.literal, nodes.reference)) and _do_type:
                 if isinstance(_c, (nodes.emphasis, nodes.literal)):
                     _types.append(_c[0])
                 else:
                     _types.append(_c)
 
+        _cls = 'parameter-name'
+        if first:
+            _cls += ' first-parameter'
         self.body.append('<tr>'
                          '<td>'
-                         '<div class="parameter-name"><strong>%s</strong></div>' % _name +
-                         '</td>'
+                         '<div class="%s"><strong>%s</strong></div>' % (_cls, _name))
+        _cls = 'parameter-type'
+        if first:
+            _cls += ' first-parameter'
+        self.body.append('</td>'
                          '<td>'
-                         '<div class="parameter-type">')
-
-        print("Types: %s" % _types)
+                         '<div class="%s">' % _cls)
+        _of_type = False
         for _ti in range(0, len(_types)):
-            if len(_types) > 1 and _ti > 0:
-                self.body.append(', ')
-            self.body.append('<code>')
-            if isinstance(_types[_ti], nodes.reference):
-                _types[_ti].walkabout(self)
-            else:
+            if _types[_ti].astext() == ' of ':
                 self.body.append(_types[_ti].astext())
-            self.body.append('</code>')
+                _of_type = True
+            else:
+                if len(_types) > 1 and _ti > 0 and not _of_type:
+                    self.body.append(', ')
+                if _of_type:
+                    _of_type = False
+                self.body.append('<code>')
+                if isinstance(_types[_ti], nodes.reference):
+                    if isinstance(_types[_ti][0], nodes.literal):
+                        _type = nodes.Text(_types[_ti][0].astext())
+                        _types[_ti].clear()
+                        _types[_ti].append(_type)
+                    _types[_ti].walkabout(self)
+                else:
+                    self.body.append(_types[_ti].astext())
+                self.body.append('</code>')
 
+        _cls = 'parameter-desc'
+        if first:
+            _cls += ' first-parameter'
         self.body.append('</div></td>'
                          '<td>'
-                         '<div class="parameter-desc">')
+                         '<div class="%s">' % _cls)
 
         for _desc_elem in _desc:
             _desc_elem.walkabout(self)
