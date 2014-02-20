@@ -2,16 +2,16 @@
 {%- if prev %}
   <li>
     <a href="{{ prev.link|e }}" title="{{ _('Previous Chapter: ') + prev.title|striptags }}">
-      {%- if theme_bootstrap_version == "3" -%}<span class="glyphicon glyphicon-chevron-left visible-sm"></span>{%- endif -%}
-      <span class="hidden-sm">{{ "&laquo;"|safe }} {{ prev.title|striptags|truncate(length=16, killwords=True) }}</span>
+      <i class="fa fa-chevron-left fa-fw"></i>
+      <span class="hidden-xs">{{ prev.title|striptags|truncate(length=16, killwords=True) }}</span>
     </a>
   </li>
 {%- endif %}
 {%- if next %}
   <li>
     <a href="{{ next.link|e }}" title="{{ _('Next Chapter: ') + next.title|striptags }}">
-      {%- if theme_bootstrap_version == "3" -%}<span class="glyphicon glyphicon-chevron-right visible-sm"></span>{%- endif -%}
-      <span class="hidden-sm">{{ next.title|striptags|truncate(length=16, killwords=True) }} {{ "&raquo;"|safe }}</span>
+      <span class="hidden-xs">{{ next.title|striptags|truncate(length=16, killwords=True) }}</span>
+      <i class="fa fa-chevron-right fa-fw"></i>
     </a>
   </li>
 {%- endif %}
