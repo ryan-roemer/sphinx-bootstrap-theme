@@ -1,4 +1,4 @@
-  <div id="navbar" class="{{ theme_navbar_class }} navbar-default {% if theme_navbar_fixed_top == 'true' -%} navbar-fixed-top{%- endif -%}">
+  <div id="navbar" class="{{ theme_navbar_class }} navbar-default hidden-print {% if theme_navbar_fixed_top == 'true' -%} navbar-fixed-top{%- endif -%}">
     <div class="container">
       <div class="navbar-header">
         <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -13,7 +13,7 @@
           {%- endblock %}
           {% if theme_navbar_title -%}{{ theme_navbar_title|e }}{%- else -%}{{ project|e }}{%- endif -%}
         </a>
-        <span class="navbar-text navbar-version pull-left"><b>{{ version|e }}</b></span>
+        <p class="navbar-text navbar-version navbar-left"><strong>{{ version|e }}</strong></p>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
