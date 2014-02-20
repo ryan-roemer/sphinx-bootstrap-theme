@@ -14,6 +14,7 @@
   {% if theme_bootstrap_version == "3" %}
     {% set theme_css_files = theme_css_files + [
         '_static/bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
+        '_static/font-awesome-4.0.3/css/font-awesome.min.css',
         '_static/bootstrap-sphinx.css'
       ]
     %}
@@ -21,6 +22,7 @@
     {% set theme_css_files = theme_css_files + [
         '_static/bootswatch-' + bootstrap_version + '/' + theme_bootswatch_theme + '/bootstrap.min.css',
         '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
+        '_static/font-awesome-4.0.3/css/font-awesome.min.css',
         '_static/bootstrap-sphinx.css'
       ]
     %}
@@ -29,6 +31,7 @@
   {% set theme_css_files = theme_css_files + [
       '_static/bootstrap-' + bootstrap_version + '/css/bootstrap.min.css',
       '_static/bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css',
+      '_static/font-awesome-4.0.3/css/font-awesome.min.css',
       '_static/bootstrap-sphinx.css'
     ]
   %}
@@ -114,28 +117,56 @@
 
 {%- block footer %}
 <footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      {% if theme_source_link_position == "footer" %}
-        <br/>
-        {% include "sourcelink.html" %}
-      {% endif %}
-    </p>
-    <p>
-    {%- if show_copyright %}
-      {%- if hasdoc('copyright') %}
-        {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
-      {%- else %}
-        {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
+  <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="footer-navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+          {% if theme_source_link_position == "footer" %}
+            <li>
+              {% include "sourcelink.html" %}
+            </li>
+          {% endif %}
+          {% if theme_navbar_sidebarrel %}
+            <li>
+              {% block sidebarrel %}
+                {% include "relations.html" %}
+              {% endblock %}
+            </li>
+          {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#">
+              <i class="fa fa-chevron-up fa-fw"></i> <span class="hidden-sm hidden-xs">Back to top</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-text">
+    <p class="text-muted">
+      {%- if show_copyright %}
+        {%- if hasdoc('copyright') %}
+          {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
+        {%- else %}
+          {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
+        {%- endif %}
       {%- endif %}
-    {%- endif %}
-    {%- if last_updated %}
-      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
-    {%- endif %}
-    {%- if show_sphinx %}
-      {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
-    {%- endif %}
+      {%- if last_updated %}
+        {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
+      {%- endif %}
+      {%- if show_sphinx %}
+        {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
+      {%- endif %}
     </p>
   </div>
 </footer>
