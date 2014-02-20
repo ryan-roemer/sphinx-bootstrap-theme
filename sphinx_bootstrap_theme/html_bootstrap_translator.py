@@ -73,9 +73,9 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append('</div>')
 
     def visit_compact_paragraph(self, node):
-        self.body.append(self.starttag(node, 'span', CLASS='compact-paragraph'))
+        pass
     def depart_compact_paragraph(self, node):
-        self.body.append('</span>')
+        pass
 
     def visit_attribution(self, node):
         if isinstance(node.parent, nodes.block_quote):
