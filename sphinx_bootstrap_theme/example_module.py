@@ -1,6 +1,5 @@
 # coding=utf-8
-"""
-Example Module to show of :py:mod:`sphinx.autodoc` features with **Twitter Bootstrap**.
+"""Example Module to show of :py:mod:`sphinx.autodoc` features with **Twitter Bootstrap**.
 
 .. moduleauthor:: Torbjörn Klatt <opensource@torbjoern-klatt.de>
 """

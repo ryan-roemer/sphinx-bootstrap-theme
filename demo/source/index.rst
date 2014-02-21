@@ -22,7 +22,9 @@ Setting up and using the theme.
    examples
    sidebar
    subdir/index
-   example_module.rst
+   example_module
+   html_bootstrap_translator
+
 
 Development history and feature wish lists.
 

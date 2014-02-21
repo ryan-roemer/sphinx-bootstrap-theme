@@ -1,4 +1,8 @@
 # coding=utf-8
+"""A custom Sphinx HTML Translator for *Twitter Bootstrap* layout
+
+.. moduleauthor:: Torbjörn Klatt <opensource@torbjoern-klatt.de>
+"""
 import sys
 import re
 
@@ -8,10 +12,12 @@ from sphinx import addnodes
 from sphinx.locale import admonitionlabels, l_
 
 
+# add this to support sphinx.ext.todo
 admonitionlabels['todo'] = l_('Todo')
 admonitionlabels['example'] = l_('Example')
 
 
+#: Mapping of admonition classes to Bootstrap contextual classes
 alert_classes = {
     'attention': 'primary',
     'caution':   'warning',
@@ -28,6 +34,7 @@ alert_classes = {
 }
 
 
+#: Mapping of object types to signature annotations
 member_types = {
     'function': 'function ',
     'method': 'method ',
@@ -41,7 +48,15 @@ split_parameter_types = re.compile('\sor\s|,\s')
 
 
 class BootstrapTranslator(HTMLTranslator):
-    # Twitter Bootstrap is HTML5
+    """Custom HTML Translator for a Bootstrap-ifyied Sphinx layout
+
+    This is a specialization of the default HTML Translator of the docutils
+    package.
+    Only a couple of functions have been overridden to produce valid HTML to be
+    directly styled with *Twitter Bootstrap*.
+    """
+
+    # overridden
     doctype = '<!DOCTYPE html>\n'
 
     def __init__(self, builder, *args, **kwds):
@@ -66,32 +81,94 @@ class BootstrapTranslator(HTMLTranslator):
         self.collapse_context = []
         self.collapse_id_count = 0
         self.collapse_item_count = 0
+        self.first_param = 0
 
-    def visit_comment(self, node):
+    # overridden
+    def visit_comment(self, node, sub=re.compile('-(?=-)').sub):
+        """A comment. Printed but hidden by default.
+        """
         self.body.append(self.starttag(node, 'div', '', CLASS='comment hidden'))
+
     def depart_comment(self, node):
         self.body.append('</div>')
 
     def visit_compact_paragraph(self, node):
+        """Must be defined for use with Sphinx.
+
+        We are not doing anything here.
+        """
         pass
+
     def depart_compact_paragraph(self, node):
         pass
 
+    # overridden
     def visit_attribution(self, node):
+        """Attribution line (e.g. in block quotes)
+
+        With *Twitter Bootstrap* we are able to style a special attribution
+        paragraph (read "*footer*") at the end of block quotes with the ReST
+        directive ``epigraph``.
+
+        .. admonition:: Example
+
+            The ReST directive::
+
+                .. epigraph::
+
+                    This is a block quote with a footer/attribution line.
+
+                    -- this is the attribution
+
+            renders to:
+
+            .. epigraph::
+
+                This is a block quote with a footer/attribution line.
+
+                -- this is the attribution
+        """
         if isinstance(node.parent, nodes.block_quote):
             self.body.append(self.starttag(node, 'footer'))
         else:
             prefix, suffix = self.attribution_formats[self.settings.attribution]
             self.context.append(suffix)
-            self.body.append(self.starttag(node, 'p', prefix, CLASS='attribution'))
+            self.body.append(
+                self.starttag(node, 'p', prefix, CLASS='attribution'))
 
+    # overridden
     def depart_attribution(self, node):
         if isinstance(node.parent, nodes.block_quote):
             self.body.append("</footer>\n")
         else:
             self.body.append(self.context.pop() + '</p>\n')
 
+    # overridden
     def visit_admonition(self, node, name=''):
+        """Admonition panel
+
+        A admonition is a special section within a object description which is
+        rendered as a panel.
+        For a list of supported admonitions, see the keys of
+        :py:attr:`.alert_classes` and :py:attr:`.admonitionLabels`.
+
+        The following note is a usage example of an admonition.
+
+        .. note::
+            This method is usually called via one of the specialized wrappers:
+
+            * :py:meth:`.visit_note`
+            * :py:meth:`.visit_attention`
+            * :py:meth:`.visit_warning`
+            * :py:meth:`.visit_danger`
+            * :py:meth:`.visit_error`
+            * :py:meth:`.visit_seealso`
+            * :py:meth:`.visit_example`
+            * :py:meth:`.visit_todo_node`
+
+        :param str name: type of the admonition as in the keys of
+            :py:attr:`.alert_classes`.
+        """
         if isinstance(node[0], nodes.title):
             if node[0].astext() in ['Example', 'Examples']:
                 del node['classes']
@@ -104,16 +181,22 @@ class BootstrapTranslator(HTMLTranslator):
                 self.context.append('note')
                 name = 'note'
         if name:
-            self.body.append(self.starttag(node, 'div', CLASS='panel panel-%s' % alert_classes[name]))
+            self.body.append(
+                self.starttag(node, 'div',
+                              CLASS='panel panel-%s' % alert_classes[name]))
             self.section_level += 1
             self.body.append(
-                '<div class="panel-heading"><h%d class="panel-title">%s</h%d></div>\n' %
+                '<div class="panel-heading">'
+                '<h%d class="panel-title">%s</h%d></div>\n' %
                 (self.section_level, admonitionlabels[name], self.section_level)
             )
             self.section_level -= 1
             self.body.append(self.starttag(node, 'div', CLASS='panel-body'))
         else:
-            self.body.append(self.starttag(node, 'div', CLASS='panel panel-default'))
+            self.body.append(
+                self.starttag(node, 'div', CLASS='panel panel-default'))
+
+    # overridden
     def depart_admonition(self, node=None, name=''):
         if name:
             # closing off the additional div.panel-body
@@ -125,50 +208,60 @@ class BootstrapTranslator(HTMLTranslator):
 
     def visit_note(self, node):
         self.visit_admonition(node, 'note')
+
     def depart_note(self, node):
         self.depart_admonition(node, 'note')
 
     def visit_attention(self, node):
         self.visit_admonition(node, 'attention')
+
     def depart_attention(self, node):
         self.depart_admonition(node, 'attention')
 
     def visit_warning(self, node):
         self.visit_admonition(node, 'warning')
+
     def depart_warning(self, node):
         self.depart_admonition(node, 'warning')
 
     def visit_danger(self, node):
         self.visit_admonition(node, 'danger')
+
     def depart_danger(self, node):
         self.depart_admonition(node, 'danger')
 
     def visit_error(self, node):
         self.visit_admonition(node, 'error')
+
     def depart_error(self, node):
         self.depart_admonition(node, 'error')
 
     def visit_seealso(self, node):
         self.visit_admonition(node, 'seealso')
+
     def depart_seealso(self, node):
         self.depart_admonition(node, 'seealso')
 
     def visit_example(self, node):
         self.visit_admonition(node, 'example')
+
     def depart_example(self, node):
         self.depart_admonition(node, 'example')
 
     def visit_todo_node(self, node):
         node.remove(node[0])  # remove additional 'Todo' title node
         self.visit_admonition(node, 'todo')
+
     def depart_todo_node(self, node):
         self.depart_admonition(node, 'todo')
 
     def visit_index(self, node):
         pass
+
     def depart_index(self, node):
         pass
 
+    # overridden
     def visit_bullet_list(self, node):
         atts = {}
         old_compact_simple = self.compact_simple
@@ -179,16 +272,42 @@ class BootstrapTranslator(HTMLTranslator):
             atts['class'] = ' simple'
         self.body.append(self.starttag(node, 'ul', **atts))
 
+    # overridden
     def visit_list_item(self, node):
         self.body.append(self.starttag(node, 'li', '',))
         if len(node):
             node[0]['classes'].append('first')
 
+    # overridden
     def visit_definition_list(self, node):
+        """Bootstrap-ified Definition List
+
+        .. admonition:: Example
+
+        The ReST definition list::
+
+            Key One
+                Is the first
+
+            Second Key
+                Is the second
+
+        is rendered to:
+
+        Key One
+            Is the first
+
+        Second Key
+            Is the second
+        """
         self.body.append(self.starttag(node, 'dl', CLASS='dl-horizontal'))
 
+    # overridden
     def visit_field_list(self, node):
-        self.body.append(self.starttag(node, 'div', CLASS='panel-group field-list'))
+        self.body.append(
+            self.starttag(node, 'div', CLASS='panel-group field-list'))
+
+    # overridden
     def depart_field_list(self, node):
         self.body.append('</div>\n')
 
@@ -209,14 +328,20 @@ class BootstrapTranslator(HTMLTranslator):
                     if len(_strongs) > 0:
                         _return_name = _strongs[0]
                         _return_para = _return_name.parent
-                        _first_strong_id_in_its_parent = _return_para.index(_strongs[0])
-                        _return_para.insert(_first_strong_id_in_its_parent + 1, _rtype_new)
+                        _first_strong_id_in_its_parent = \
+                            _return_para.index(_strongs[0])
+                        _return_para.insert(_first_strong_id_in_its_parent + 1,
+                                            _rtype_new)
 
                         if isinstance(_return_para, nodes.paragraph) \
-                                and isinstance(_return_para.parent, nodes.paragraph):
+                                and isinstance(_return_para.parent,
+                                               nodes.paragraph):
                             _return_para_parent = _return_para.parent
                             if len(_return_para_parent) > 1 \
-                                    and isinstance(_return_para_parent[1], (nodes.bullet_list, nodes.definition_list, nodes.field_list)):
+                                    and isinstance(_return_para_parent[1],
+                                                   (nodes.bullet_list,
+                                                    nodes.definition_list,
+                                                    nodes.field_list)):
                                 _para = []
                                 for _p in _return_para_parent[0]:
                                     _para.append(_p.deepcopy())
@@ -225,9 +350,11 @@ class BootstrapTranslator(HTMLTranslator):
                                 _return_para_parent.extend(_para)
                                 _return_para_parent.append(_list)
 
+    # overridden
     def visit_field(self, node):
         if node[0][0].astext() == 'Return type':
-            # return type should be handled by _fixup_return_type on 'Returns' nodes
+            # return type should be handled by _fixup_return_type
+            #  on 'Returns' nodes
             raise nodes.SkipNode
 
         _contextual_class = 'default'
@@ -242,26 +369,39 @@ class BootstrapTranslator(HTMLTranslator):
                 del node[0][2]
                 del node[0][1]
         self.field_context.append(_field_name_title)
-        self.body.append(self.starttag(node, 'div', CLASS='panel panel-%s field' % _contextual_class))
+        self.body.append(
+            self.starttag(node, 'div',
+                          CLASS='panel panel-%s field' % _contextual_class))
         self.section_level += 1
+
+    # overridden
     def depart_field(self, node):
         self.field_context.pop()
         self.section_level -= 1
         self.body.append('</div>')
 
+    # overridden
     def visit_field_name(self, node):
-        self.body.append(self.starttag(node, 'div', '', CLASS='panel-heading field-name'))
+        self.body.append(
+            self.starttag(node, 'div', '', CLASS='panel-heading field-name'))
         self.body.append('<h%d class=panel-title>' % self.section_level)
+
+    # overridden
     def depart_field_name(self, node):
         self.body.append('</h%d></div>' % self.section_level)
 
+    # overridden
     def visit_field_body(self, node):
-        self.body.append(self.starttag(node, 'div', '', CLASS='panel-body field-body'))
+        self.body.append(
+            self.starttag(node, 'div', '', CLASS='panel-body field-body'))
         if self.field_context[-1] in ['Parameters', 'Raises', 'Returns']:
             self._print_parameters(node)
+
+    # overridden
     def depart_field_body(self, node):
         self.body.append('</div>')
 
+    # overridden
     def visit_table(self, node):
         self.context.append(self.compact_p)
         self.compact_p = True
@@ -269,58 +409,80 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append(
             self.starttag(node, 'table', CLASS=classes))
 
+    # overridden
     def depart_table(self, node):
         self.compact_p = self.context.pop()
         self.body.append('</table>\n')
 
     def visit_desc(self, node):
-        if node['objtype'] in member_types.keys() and node['objtype'] != 'staticmethod':
-            node[0].insert(0, addnodes.desc_annotation(text=member_types[node['objtype']]))
-        self.body.append(self.starttag(node, 'div',
-                                       CLASS='panel panel-default %s' % node['objtype']))
+        if node['objtype'] in member_types.keys() \
+                and node['objtype'] != 'staticmethod':
+            node[0].insert(0,
+                           addnodes
+                           .desc_annotation(text=member_types[node['objtype']]))
+        self.body.append(
+            self.starttag(node, 'div',
+                          CLASS='panel panel-default %s' % node['objtype']))
         if node['objtype'] in ['class']:
-            self.collapse_context.append([node['objtype'], '%s-id%d' % (node['objtype'], self.collapse_id_count)])
+            self.collapse_context.append([node['objtype'],
+                                          '%s-id%d' % (node['objtype'],
+                                                       self.collapse_id_count)])
             self.collapse_id_count += 1
-        if len(self.collapse_context) > 0 and node['objtype'] in member_types.keys():
-            self.collapse_context[-1].append('%s-id%d' % (node['objtype'], self.collapse_item_count))
+        if len(self.collapse_context) > 0 \
+                and node['objtype'] in member_types.keys():
+            self.collapse_context[-1]\
+                .append('%s-id%d' % (node['objtype'], self.collapse_item_count))
             self.collapse_item_count += 1
         self.section_level += 1
+
     def depart_desc(self, node):
         self.section_level -= 1
         if node['objtype'] in ['class']:
             self.collapse_context.pop()
-        if len(self.collapse_context) > 0 and node['objtype'] in member_types.keys():
+        if len(self.collapse_context) > 0 \
+                and node['objtype'] in member_types.keys():
             self.collapse_context[-1].pop()
         self.body.append('</div>')
 
     def visit_desc_signature(self, node):
-        self.body.append(self.starttag(node, 'div', CLASS='panel-heading desc-signature'))
+        self.body.append(
+            self.starttag(node, 'div', CLASS='panel-heading desc-signature'))
         self.body.append('<h%d class="panel-title">' % self.section_level)
-        if len(self.collapse_context) > 0 and self.collapse_context[-1][0] in ['class'] \
+        if len(self.collapse_context) > 0 \
+                and self.collapse_context[-1][0] in ['class'] \
                 and len(self.collapse_context[-1]) == 3:
-            self.body.append('<a data-toggle="collapse" data-parent="#%s" href="#%s">' % (self.collapse_context[-1][1], self.collapse_context[-1][2]))
+            self.body.append(
+                '<a data-toggle="collapse" '
+                'data-parent="#%s" ' % self.collapse_context[-1][1] +
+                'href="#%s">' % self.collapse_context[-1][2])
+
     def depart_desc_signature(self, node):
-        if len(self.collapse_context) > 0 and self.collapse_context[-1][0] in ['class'] \
+        if len(self.collapse_context) > 0 \
+                and self.collapse_context[-1][0] in ['class'] \
                 and len(self.collapse_context[-1]) == 3:
             self.body.append('</a>')
         self.body.append('</h%d></div>' % self.section_level)
 
     def visit_desc_name(self, node):
         self.body.append(self.starttag(node, 'tt', '', CLASS='desc-name'))
+
     def depart_desc_name(self, node):
         self.body.append('</tt>')
 
     def visit_desc_addname(self, node):
-        self.body.append(self.starttag(node, 'tt', '', CLASS='desc-addname'))
+        self.body.append(
+            self.starttag(node, 'tt', '', CLASS='desc-addname'))
+        self.body.append('<span class="text-muted">')
+
     def depart_desc_addname(self, node):
-        self.body.append('</tt>')
+        self.body.append('</span></tt>')
 
     def visit_desc_parameterlist(self, node):
-        """
-        The list of parameters in a method signature.
+        """The list of parameters in a method signature.
         Including the enclosing brackets.
         """
-        self.body.append(self.starttag(node, 'tt', '', CLASS='desc-parameterlist'))
+        self.body.append(
+            self.starttag(node, 'tt', '', CLASS='desc-parameterlist'))
         self.body.append('<big>(</big>')
         self.first_param = 1
         self.optional_param_level = 0
@@ -328,15 +490,16 @@ class BootstrapTranslator(HTMLTranslator):
         self.required_params_left = sum([isinstance(c, addnodes.desc_parameter)
                                          for c in node.children])
         self.param_separator = node.child_text_separator
+
     def depart_desc_parameterlist(self, node):
         self.body.append('<big>)</big>')
         self.body.append('</tt>')
 
     def visit_desc_parameter(self, node):
+        """A single parameter in a method signature
         """
-        A single parameter in a method signature
-        """
-        self.body.append(self.starttag(node, 'span', '', CLASS='desc-parameter'))
+        self.body.append(
+            self.starttag(node, 'span', '', CLASS='desc-parameter'))
         if self.first_param:
             self.first_param = 0
         elif not self.required_params_left:
@@ -345,6 +508,7 @@ class BootstrapTranslator(HTMLTranslator):
             self.required_params_left -= 1
         if not node.hasattr('noemph'):
             self.body.append('<em>')
+
     def depart_desc_parameter(self, node):
         if not node.hasattr('noemph'):
             self.body.append('</em>')
@@ -353,56 +517,69 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append('</span>')
 
     def visit_desc_optional(self, node):
-        """
-        Optional parameters in a method signature.
+        """Optional parameters in a method signature.
         """
         self.body.append(self.starttag(node, 'span', '', CLASS='desc-optional'))
         self.optional_param_level += 1
         self.body.append('[')
+
     def depart_desc_optional(self, node):
         self.optional_param_level -= 1
         self.body.append(']</span>')
 
     def visit_desc_returns(self, node):
         self.body.append(self.starttag(node, 'tt', '', CLASS='desc-returns'))
+
     def depart_desc_returns(self, node):
         self.body.append('</tt>')
 
     def visit_desc_content(self, node):
+        """The content of a class, method or attribute.
         """
-        The content of a class, method or attribute.
-        """
-        if len(self.collapse_context) > 0 and self.collapse_context[-1][0] in ['class'] \
+        if len(self.collapse_context) > 0 \
+                and self.collapse_context[-1][0] in ['class'] \
                 and len(self.collapse_context[-1]) == 2:
-            self.body.append('<div class="panel-group" id="%s">' % self.collapse_context[-1][1])
+            self.body.append(
+                '<div class="panel-group" '
+                'id="%s">' % self.collapse_context[-1][1])
             self.collapse_id_count += 1
-        if len(self.collapse_context) > 0 and self.collapse_context[-1][0] in ['class'] \
+
+        if len(self.collapse_context) > 0 \
+                and self.collapse_context[-1][0] in ['class'] \
                 and len(self.collapse_context[-1]) == 3:
-            self.body.append('<div id="%s" class="panel-collapse collapse">' % (self.collapse_context[-1][2]))
-        self.body.append(self.starttag(node, 'div', CLASS='panel-body desc-content'))
+            self.body.append(
+                '<div id="%s"' % self.collapse_context[-1][2] +
+                ' class="panel-collapse collapse">')
+        self.body.append(
+            self.starttag(node, 'div', CLASS='panel-body desc-content'))
+
     def depart_desc_content(self, node):
-        if len(self.collapse_context) > 0 and self.collapse_context[-1][0] in ['class'] \
+        if len(self.collapse_context) > 0 \
+                and self.collapse_context[-1][0] in ['class'] \
                 and len(self.collapse_context[-1]) == 2:
             self.body.append('</div>')
-        if len(self.collapse_context) > 0 and self.collapse_context[-1][0] in ['class'] \
+
+        if len(self.collapse_context) > 0 \
+                and self.collapse_context[-1][0] in ['class'] \
                 and len(self.collapse_context[-1]) == 3:
             self.body.append('</div>')
         self.body.append('</div>')
 
     def visit_desc_annotation(self, node):
+        """Annotations in object signatures.
+
+        This is either the ``class``, ``method`` or ``attribute`` identifier or
+        the value of module or class attributes.
         """
-        The ``class``, ``method`` or ``attribute`` in a class signature or the
-        value of a class or instance attribute.
-        """
-        _cls = 'desc-annotation'
-        if node[0].astext() in member_types.values():
-            _cls += ' desc-annotation-type text-muted'
-        self.body.append(self.starttag(node, 'tt', '', CLASS=_cls))
+        self.body.append(
+            self.starttag(node, 'tt', '', CLASS='desc-annotation text-muted'))
+
     def depart_desc_annotation(self, node):
         self.body.append('</tt>')
 
     def visit_toctree(self, node):
         self.body.append(self.starttag(node, 'span', CLASS='toctree'))
+
     def depart_toctree(self, node):
         self.body.append('</span>')
 
@@ -411,14 +588,20 @@ class BootstrapTranslator(HTMLTranslator):
     def visit_displaymath(self, node):
         import sphinx.ext.mathjax
         sphinx.ext.mathjax.html_visit_displaymath(self, node)
+
     def depart_displaymath(self, node):
         return
+
+    # overridden
     def visit_math(self, node):
         import sphinx.ext.mathjax
         sphinx.ext.mathjax.html_visit_math(self, node)
+
+    # overridden
     def depart_math(self, node):
         return
 
+    # overridden
     def unknown_visit(self, node):
         raise NotImplementedError('Unknown node: %s' % node.__class__.__name__)
 
@@ -458,22 +641,31 @@ class BootstrapTranslator(HTMLTranslator):
         for _c in node.children:
             if _do_desc:
                 _desc.append(_c)
-            elif _do_name and node.children.index(_c) == 0 and isinstance(_c, (nodes.strong, nodes.literal)):
+
+            elif _do_name and node.children.index(_c) == 0 \
+                    and isinstance(_c, (nodes.strong, nodes.literal)):
                 _name = _c[0].astext()
                 _do_name = False
+
             elif isinstance(_c, nodes.Text):
                 if _do_type is False and _c.astext() == ' (':
                     _do_type = True
                 if _c.astext() == ')':
                     _c.replace(')', '', 1)
                     _do_type = False
-                if _c.astext() in [' -- ', ' --'] or _c.astext().find(' --') != -1:
+                if _c.astext() in [' -- ', ' --'] \
+                        or _c.astext().find(' --') != -1:
                     if len(_c.astext().replace(' --', '', 1).lstrip()) > 0:
-                        _desc.append(nodes.Text(_c.astext().replace(' --', '', 1).lstrip()))
+                        _desc.append(
+                            nodes.Text(
+                                _c.astext().replace(' --', '', 1).lstrip()))
                     _do_desc = True
                 if ' of ' in _c.astext() and _do_type:
                     _types.append(_c)
-            elif isinstance(_c, (nodes.emphasis, nodes.literal, nodes.reference)) and _do_type:
+
+            elif isinstance(_c, (nodes.emphasis, nodes.literal,
+                                 nodes.reference)) \
+                    and _do_type:
                 if isinstance(_c, (nodes.emphasis, nodes.literal)):
                     _types.append(_c[0])
                 else:
@@ -482,9 +674,10 @@ class BootstrapTranslator(HTMLTranslator):
         _cls = 'parameter-name'
         if first:
             _cls += ' first-parameter'
-        self.body.append('<tr>'
-                         '<td>'
-                         '<div class="%s"><strong>%s</strong></div>' % (_cls, _name))
+        self.body.append(
+            '<tr>'
+            '<td>'
+            '<div class="%s"><strong>%s</strong></div>' % (_cls, _name))
         _cls = 'parameter-type'
         if first:
             _cls += ' first-parameter'
