@@ -105,7 +105,7 @@
 {%- block content %}
 {{ navBar() }}
 <div class="container">
-  <div class="row">
+  <div class="{% if theme_bootstrap_version == '3' %}row{% else %}row-fluid{% endif %}">
     {%- block sidebar1 %}{{ bsidebar() }}{% endblock %}
     <div class="{{ bs_span_prefix }}{{ bs_content_width }}">
       {% block body %}{% endblock %}
@@ -117,41 +117,76 @@
 
 {%- block footer %}
 <footer class="footer">
-  <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+    {% if theme_bootstrap_version == "3" %}
+      <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="footer-navbar-collapse">
+            <ul class="nav navbar-nav navbar-left">
+              {% if theme_source_link_position == "footer" %}
+                <li>
+                  {% include "sourcelink.html" %}
+                </li>
+              {% endif %}
+              {% if theme_navbar_sidebarrel %}
+                <li>
+                  {% include "relations.html" %}
+                </li>
+              {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#">
+                  <i class="fa fa-chevron-up fa-fw"></i> <span class="hidden-sm hidden-xs">Back to top</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="collapse navbar-collapse" id="footer-navbar-collapse">
-        <ul class="nav navbar-nav navbar-left">
-          {% if theme_source_link_position == "footer" %}
-            <li>
-              {% include "sourcelink.html" %}
-            </li>
-          {% endif %}
-          {% if theme_navbar_sidebarrel %}
-            <li>
-              {% block sidebarrel %}
-                {% include "relations.html" %}
-              {% endblock %}
-            </li>
-          {% endif %}
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#">
-              <i class="fa fa-chevron-up fa-fw"></i> <span class="hidden-sm hidden-xs">Back to top</span>
-            </a>
-          </li>
-        </ul>
+    {% else %}
+      <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+        <div class="navbar-inner">
+          <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <button class="btn btn-navbar" data-toggle="collapse" data-target="#footer-navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <div class="nav-collapse" id="footer-navbar-collapse">
+              <ul class="nav navbar-nav navbar-left">
+                {% if theme_source_link_position == "footer" %}
+                  <li>
+                    {% include "sourcelink.html" %}
+                  </li>
+                {% endif %}
+                {% if theme_navbar_sidebarrel %}
+                  <li>
+                    {% include "relations.html" %}
+                  </li>
+                {% endif %}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-chevron-up fa-fw"></i> <span class="hidden-sm hidden-xs">Back to top</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    {% endif %}
   <div class="footer-text">
     <p class="text-muted">
       {%- if show_copyright %}

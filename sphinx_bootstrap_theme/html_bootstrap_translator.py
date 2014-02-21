@@ -183,18 +183,21 @@ class BootstrapTranslator(HTMLTranslator):
         if name:
             self.body.append(
                 self.starttag(node, 'div',
-                              CLASS='panel panel-%s' % alert_classes[name]))
+                              CLASS=('accordion-group panel '
+                                     'panel-%s' % alert_classes[name])))
             self.section_level += 1
             self.body.append(
-                '<div class="panel-heading">'
+                '<div class="accordion-heading panel-heading">'
                 '<h%d class="panel-title">%s</h%d></div>\n' %
                 (self.section_level, admonitionlabels[name], self.section_level)
             )
             self.section_level -= 1
-            self.body.append(self.starttag(node, 'div', CLASS='panel-body'))
+            self.body.append(self.starttag(node, 'div',
+                                           CLASS='accordion-inner panel-body'))
         else:
             self.body.append(
-                self.starttag(node, 'div', CLASS='panel panel-default'))
+                self.starttag(node, 'div',
+                              CLASS='accordion-group panel panel-default'))
 
     # overridden
     def depart_admonition(self, node=None, name=''):
@@ -305,7 +308,8 @@ class BootstrapTranslator(HTMLTranslator):
     # overridden
     def visit_field_list(self, node):
         self.body.append(
-            self.starttag(node, 'div', CLASS='panel-group field-list'))
+            self.starttag(node, 'div',
+                          CLASS='accordion panel-group field-list'))
 
     # overridden
     def depart_field_list(self, node):
@@ -371,7 +375,8 @@ class BootstrapTranslator(HTMLTranslator):
         self.field_context.append(_field_name_title)
         self.body.append(
             self.starttag(node, 'div',
-                          CLASS='panel panel-%s field' % _contextual_class))
+                          CLASS=('accordion-goup panel '
+                                 'panel-%s field' % _contextual_class)))
         self.section_level += 1
 
     # overridden
@@ -383,8 +388,9 @@ class BootstrapTranslator(HTMLTranslator):
     # overridden
     def visit_field_name(self, node):
         self.body.append(
-            self.starttag(node, 'div', '', CLASS='panel-heading field-name'))
-        self.body.append('<h%d class=panel-title>' % self.section_level)
+            self.starttag(node, 'div', '',
+                          CLASS='accordion-heading panel-heading field-name'))
+        self.body.append('<h%d class="panel-title">' % self.section_level)
 
     # overridden
     def depart_field_name(self, node):
@@ -393,7 +399,8 @@ class BootstrapTranslator(HTMLTranslator):
     # overridden
     def visit_field_body(self, node):
         self.body.append(
-            self.starttag(node, 'div', '', CLASS='panel-body field-body'))
+            self.starttag(node, 'div', '',
+                          CLASS='accordion-inner panel-body field-body'))
         if self.field_context[-1] in ['Parameters', 'Raises', 'Returns']:
             self._print_parameters(node)
 
@@ -422,7 +429,8 @@ class BootstrapTranslator(HTMLTranslator):
                            .desc_annotation(text=member_types[node['objtype']]))
         self.body.append(
             self.starttag(node, 'div',
-                          CLASS='panel panel-default %s' % node['objtype']))
+                          CLASS=('accordion-group panel panel-default '
+                                 '%s' % node['objtype'])))
         if node['objtype'] in ['class']:
             self.collapse_context.append([node['objtype'],
                                           '%s-id%d' % (node['objtype'],
@@ -446,7 +454,9 @@ class BootstrapTranslator(HTMLTranslator):
 
     def visit_desc_signature(self, node):
         self.body.append(
-            self.starttag(node, 'div', CLASS='panel-heading desc-signature'))
+            self.starttag(node, 'div',
+                          CLASS=('accordion-heading panel-heading '
+                                 'desc-signature')))
         self.body.append('<h%d class="panel-title">' % self.section_level)
         if len(self.collapse_context) > 0 \
                 and self.collapse_context[-1][0] in ['class'] \
@@ -472,7 +482,7 @@ class BootstrapTranslator(HTMLTranslator):
     def visit_desc_addname(self, node):
         self.body.append(
             self.starttag(node, 'tt', '', CLASS='desc-addname'))
-        self.body.append('<span class="text-muted">')
+        self.body.append('<span class="text-muted muted">')
 
     def depart_desc_addname(self, node):
         self.body.append('</span></tt>')
@@ -540,7 +550,7 @@ class BootstrapTranslator(HTMLTranslator):
                 and self.collapse_context[-1][0] in ['class'] \
                 and len(self.collapse_context[-1]) == 2:
             self.body.append(
-                '<div class="panel-group" '
+                '<div class="accordion panel-group" '
                 'id="%s">' % self.collapse_context[-1][1])
             self.collapse_id_count += 1
 
@@ -549,9 +559,10 @@ class BootstrapTranslator(HTMLTranslator):
                 and len(self.collapse_context[-1]) == 3:
             self.body.append(
                 '<div id="%s"' % self.collapse_context[-1][2] +
-                ' class="panel-collapse collapse">')
+                ' class="accordion-body panel-collapse collapse">')
         self.body.append(
-            self.starttag(node, 'div', CLASS='panel-body desc-content'))
+            self.starttag(node, 'div',
+                          CLASS='accordion-inner panel-body desc-content'))
 
     def depart_desc_content(self, node):
         if len(self.collapse_context) > 0 \
@@ -572,7 +583,8 @@ class BootstrapTranslator(HTMLTranslator):
         the value of module or class attributes.
         """
         self.body.append(
-            self.starttag(node, 'tt', '', CLASS='desc-annotation text-muted'))
+            self.starttag(node, 'tt', '',
+                          CLASS='desc-annotation text-muted muted'))
 
     def depart_desc_annotation(self, node):
         self.body.append('</tt>')

@@ -203,6 +203,17 @@ table.field-list {
   margin-left: 0;  /* bootstrap 2 compatability. */
 }
 
+.panel-title {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 16px;
+  color: inherit;
+  line-height: 1.1;
+}
+.panel-heading {
+  padding: 10px 15px;
+}
+
 @media (min-width: 1200px) {
   .bs-sidenav {
       width: 258px;
