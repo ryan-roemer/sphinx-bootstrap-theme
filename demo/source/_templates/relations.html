@@ -1,0 +1,15 @@
+{# Custom override of relations to use chevrons for nav. Assumming BS3. #}
+{%- if prev %}
+  <li>
+    <a href="{{ prev.link|e }}" title="{{ _('Previous Chapter: ') + prev.title|striptags }}">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+  </li>
+{%- endif %}
+{%- if next %}
+  <li>
+    <a href="{{ next.link|e }}" title="{{ _('Next Chapter: ') + next.title|striptags }}">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </li>
+{%- endif %}
