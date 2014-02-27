@@ -2,6 +2,10 @@
  History
 =========
 
+v0.4.0
+======
+* Fix bug preventing Glyphicons from working with Bootswatch themes.
+
 v0.3.9
 ======
 * Restyle alerts and admonitions. (`@masklinn`_)
