@@ -2,7 +2,7 @@
  Sphinx Bootstrap Theme
 ========================
 
-This Sphinx_ theme_ integrates the Twitter Bootstrap_ CSS / JavaScript
+This Sphinx_ theme_ integrates the Bootstrap_ CSS / JavaScript
 framework with various layout options, hierarchical menu navigation,
 and mobile-friendly responsive design. It is configurable, extensible
 and can use any number of different Bootswatch_ CSS themes.
@@ -234,7 +234,7 @@ which is a multi-level rendering of the current page's ``toc``.
 
 Bootstrap
 ---------
-The theme offers Twitter Bootstrap v2.x and v3.x, both of which rely on
+The theme offers Bootstrap v2.x and v3.x, both of which rely on
 jQuery v.1.9.x. As the jQuery that Bootstrap wants can radically depart from
 the jQuery Sphinx internal libraries use, the library from this theme is
 integrated via ``noConflict()`` as ``$jqTheme``.
@@ -260,9 +260,8 @@ please add a usage example to the "Examples" page.
 
 Licenses
 ========
-Sphinx Bootstrap Theme is licensed under the MIT_ license.
+Sphinx Bootstrap Theme is licensed under the `MIT license <https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt>`_.
 
-Twitter Bootstrap is licensed under the Apache_ license.
+Bootstrap v2 is licensed under the `Apache license 2.0 <https://github.com/twbs/bootstrap/blob/v2.3.2/LICENSE>`_.
 
-.. _MIT: https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt
-.. _Apache: https://github.com/twitter/bootstrap/blob/master/LICENSE
+Bootstrap v3.1.0+ is licensed under the `MIT license <https://github.com/twbs/bootstrap/blob/master/LICENSE>`_.
