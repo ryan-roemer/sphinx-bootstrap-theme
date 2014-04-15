@@ -614,9 +614,9 @@ class BootstrapTranslator(HTMLTranslator):
     def _print_parameters(self, node):
         self.body.append('<table class="table table-condensed">'
                          '<colgroup>'
-                         '<col class="col-parameter-name"></col>'
-                         '<col class="col-parameter-type"></col>'
-                         '<col class="col-parameter-desc"></col>'
+                         '<col class="col-parameter-name"/>'
+                         '<col class="col-parameter-type"/>'
+                         '<col class="col-parameter-desc"/>'
                          '</colgroup>'
                          '<tbody>')
 
