@@ -315,6 +315,38 @@ class BootstrapTranslator(HTMLTranslator):
     def depart_field_list(self, node):
         self.body.append('</div>\n')
 
+    # overwritten
+    def visit_literal_block(self, node):
+        if node.rawsource != node.astext():
+            # most probably a parsed-literal block -- don't highlight
+            return HTMLTranslator.visit_literal_block(self, node)
+        lang = self.highlightlang
+        linenos = node.rawsource.count('\n') >= \
+            self.highlightlinenothreshold - 1
+        highlight_args = node.get('highlight_args', {})
+        if 'language' in node:
+            # code-block directives
+            lang = node['language']
+            highlight_args['force'] = True
+        if 'linenos' in node:
+            linenos = node['linenos']
+
+        def warner(msg):
+            self.builder.warn(msg, (self.builder.current_docname, node.line))
+        highlighted = self.highlighter.highlight_block(
+            node.rawsource, lang, warn=warner, linenos=linenos,
+            **highlight_args)
+        starttag = self.starttag(node, 'div', suffix='',
+                                 CLASS='highlight-%s' % lang)
+        # NOTE (RS) This filename node requires a test but i don't
+        # know how to create an example
+        if 'filename' in node:
+            starttag += ('<div class="code-block-filename"><tt>'
+                         + node['filename']
+                         + '</tt></div>')
+        self.body.append(starttag + highlighted + '</div>\n')
+        raise nodes.SkipNode
+
     def _fixup_return_type(self, node):
         if node[0].astext() == 'Returns':
             _this_index = node.parent.index(node)
