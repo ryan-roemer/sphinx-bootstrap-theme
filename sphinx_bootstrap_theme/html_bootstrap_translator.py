@@ -34,16 +34,6 @@ alert_classes = {
 }
 
 
-#: Mapping of object types to signature annotations
-member_types = {
-    'function': 'function ',
-    'method': 'method ',
-    'attribute': 'attribute ',
-    'staticmethod': 'static ',
-    'static': 'static '
-}
-
-
 split_parameter_types = re.compile('\sor\s|,\s')
 
 
@@ -454,34 +444,18 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append('</table>\n')
 
     def visit_desc(self, node):
-        if node['objtype'] in member_types.keys() \
-                and node['objtype'] != 'staticmethod':
-            node[0].insert(0,
-                           addnodes
-                           .desc_annotation(text=member_types[node['objtype']]))
         self.body.append(
             self.starttag(node, 'div',
                           CLASS=('accordion-group panel panel-default '
                                  '%s' % node['objtype'])))
-        if node['objtype'] in ['class']:
-            self.collapse_context.append([node['objtype'],
-                                          '%s-id%d' % (node['objtype'],
-                                                       self.collapse_id_count)])
-            self.collapse_id_count += 1
-        if len(self.collapse_context) > 0 \
-                and node['objtype'] in member_types.keys():
-            self.collapse_context[-1]\
-                .append('%s-id%d' % (node['objtype'], self.collapse_item_count))
-            self.collapse_item_count += 1
+        self.collapse_context.append('%s-id%d' % (node['objtype'],
+                                                  self.collapse_id_count))
+        self.collapse_id_count += 1
         self.section_level += 1
 
     def depart_desc(self, node):
         self.section_level -= 1
-        if node['objtype'] in ['class']:
-            self.collapse_context.pop()
-        if len(self.collapse_context) > 0 \
-                and node['objtype'] in member_types.keys():
-            self.collapse_context[-1].pop()
+        self.collapse_context.pop()
         self.body.append('</div>')
 
     def visit_desc_signature(self, node):
@@ -490,18 +464,14 @@ class BootstrapTranslator(HTMLTranslator):
                           CLASS=('accordion-heading panel-heading '
                                  'desc-signature')))
         self.body.append('<h%d class="panel-title">' % self.section_level)
-        if len(self.collapse_context) > 0 \
-                and self.collapse_context[-1][0] in ['class'] \
-                and len(self.collapse_context[-1]) == 3:
+        if len(self.collapse_context) > 1:
             self.body.append(
                 '<a data-toggle="collapse" '
-                'data-parent="#%s" ' % self.collapse_context[-1][1] +
-                'href="#%s">' % self.collapse_context[-1][2])
+                'data-parent="#%s" ' % self.collapse_context[-2] +
+                'href="#%s">' % self.collapse_context[-1])
 
     def depart_desc_signature(self, node):
-        if len(self.collapse_context) > 0 \
-                and self.collapse_context[-1][0] in ['class'] \
-                and len(self.collapse_context[-1]) == 3:
+        if len(self.collapse_context) > 1:
             self.body.append('</a>')
         self.body.append('</h%d></div>' % self.section_level)
 
@@ -578,34 +548,26 @@ class BootstrapTranslator(HTMLTranslator):
     def visit_desc_content(self, node):
         """The content of a class, method or attribute.
         """
-        if len(self.collapse_context) > 0 \
-                and self.collapse_context[-1][0] in ['class'] \
-                and len(self.collapse_context[-1]) == 2:
+        if len(self.collapse_context) > 1:
+            self.body.append(
+                '<div id="%s"' % self.collapse_context[-1] +
+                ' class="accordion-body panel-collapse collapse">')
+        elif len(self.collapse_context) > 0:
             self.body.append(
                 '<div class="accordion panel-group" '
-                'id="%s">' % self.collapse_context[-1][1])
+                'id="%s">' % self.collapse_context[-1])
             self.collapse_id_count += 1
 
-        if len(self.collapse_context) > 0 \
-                and self.collapse_context[-1][0] in ['class'] \
-                and len(self.collapse_context[-1]) == 3:
-            self.body.append(
-                '<div id="%s"' % self.collapse_context[-1][2] +
-                ' class="accordion-body panel-collapse collapse">')
         self.body.append(
             self.starttag(node, 'div',
                           CLASS='accordion-inner panel-body desc-content'))
 
     def depart_desc_content(self, node):
-        if len(self.collapse_context) > 0 \
-                and self.collapse_context[-1][0] in ['class'] \
-                and len(self.collapse_context[-1]) == 2:
+        if len(self.collapse_context) > 1:
+            self.body.append('</div>')
+        elif len(self.collapse_context) > 0:
             self.body.append('</div>')
 
-        if len(self.collapse_context) > 0 \
-                and self.collapse_context[-1][0] in ['class'] \
-                and len(self.collapse_context[-1]) == 3:
-            self.body.append('</div>')
         self.body.append('</div>')
 
     def visit_desc_annotation(self, node):
