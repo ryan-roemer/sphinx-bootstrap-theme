@@ -37,6 +37,36 @@ alert_classes = {
 split_parameter_types = re.compile('\sor\s|,\s')
 
 
+def find_parent(node, search_term, distance):
+
+    parent = node.parent
+    for i in xrange(distance):
+        if not parent:
+            return False
+
+        if parent.tagname == search_term:
+            return parent
+        parent = parent.parent
+
+    return False
+
+
+def node_to_dict(node):
+    if node.rawsource:
+        return {node.tagname: node.rawsource}
+    nodes_dict = {node.tagname: []}
+    for child in node.children:
+        nodes_dict[node.tagname].append(node_to_dict(child))
+    return nodes_dict
+
+
+def debug_print(node):
+    """Useful in pdb sessions"""
+    node = node_to_dict(node)
+    import pprint
+    pprint.pprint(node)
+
+
 class BootstrapTranslator(HTMLTranslator):
     """Custom HTML Translator for a Bootstrap-ifyied Sphinx layout
 
@@ -67,7 +97,6 @@ class BootstrapTranslator(HTMLTranslator):
         self.param_separator = ''
         self.optional_param_level = 0
         self._table_row_index = 0
-        self.field_context = []
         self.collapse_context = []
         self.collapse_id_count = 0
         self.collapse_item_count = 0
@@ -82,6 +111,14 @@ class BootstrapTranslator(HTMLTranslator):
     def depart_comment(self, node):
         self.body.append('</div>')
 
+    # overwritten
+    def should_be_compact_paragraph(self, node):
+        """Determine if the <p> tags around paragraph can be omitted."""
+        # Compact paragraphs if they are in a parameter list.
+        if find_parent(node, 'field_list', distance=6):
+            return True
+        return HTMLTranslator.should_be_compact_paragraph(self, node)
+
     def visit_compact_paragraph(self, node):
         """Must be defined for use with Sphinx.
 
@@ -91,6 +128,16 @@ class BootstrapTranslator(HTMLTranslator):
 
     def depart_compact_paragraph(self, node):
         pass
+
+    # overridden
+    def visit_paragraph(self, node):
+        if self.should_be_compact_paragraph(node):
+            # Added some extra space between compacted paragraphs.
+            self.body.append(' ')
+            self.context.append('')
+        else:
+            self.body.append(self.starttag(node, 'p', ''))
+            self.context.append('</p>\n')
 
     # overridden
     def visit_attribution(self, node):
@@ -256,6 +303,10 @@ class BootstrapTranslator(HTMLTranslator):
 
     # overridden
     def visit_bullet_list(self, node):
+        if find_parent(node, 'field_list', distance=4):
+            self.body.append(self.starttag(node, 'table',
+                                           CLASS='table-condensed'))
+            return
         atts = {}
         old_compact_simple = self.compact_simple
         self.context.append((self.compact_simple, self.compact_p))
@@ -266,7 +317,26 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append(self.starttag(node, 'ul', **atts))
 
     # overridden
+    def depart_bullet_list(self, node):
+        if find_parent(node, 'field_list', distance=4):
+            self.body.append('</table>')
+            return
+        HTMLTranslator.depart_bullet_list(self, node)
+
+    # overridden
     def visit_list_item(self, node):
+        if find_parent(node, 'field_list', distance=5):
+            self.body.append(self.starttag(node, 'tr'))
+            self.body.append(self.starttag(node, 'td'))
+            node[0][0].walkabout(self)
+            self.body.append('</td>')
+
+            self.body.append(self.starttag(node, 'td'))
+            map(lambda x: x.walkabout(self), node[0][1:])
+            self.body.append('</td>')
+            self.body.append('</tr>')
+            node.clear()
+            return
         self.body.append(self.starttag(node, 'li', '',))
         if len(node):
             node[0]['classes'].append('first')
@@ -294,16 +364,6 @@ class BootstrapTranslator(HTMLTranslator):
             Is the second
         """
         self.body.append(self.starttag(node, 'dl', CLASS='dl-horizontal'))
-
-    # overridden
-    def visit_field_list(self, node):
-        self.body.append(
-            self.starttag(node, 'div',
-                          CLASS='accordion panel-group field-list'))
-
-    # overridden
-    def depart_field_list(self, node):
-        self.body.append('</div>\n')
 
     # overwritten
     def visit_literal_block(self, node):
@@ -337,98 +397,36 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append(starttag + highlighted + '</div>\n')
         raise nodes.SkipNode
 
-    def _fixup_return_type(self, node):
-        if node[0].astext() == 'Returns':
-            _this_index = node.parent.index(node)
-
-            if len(node.parent.children) > _this_index + 1:
-                if node.parent[_this_index + 1][0].astext() == 'Return type':
-                    _rtype = node.parent[_this_index + 1]
-                    _rtype_new = [nodes.Text(' (')]
-                    if isinstance(_rtype[1][0], nodes.paragraph):
-                        for elem in _rtype[1][0]:
-                            _rtype_new.append(elem.deepcopy())
-                    _rtype_new.append(nodes.Text(')'))
-                    _strongs = node.traverse(condition=nodes.strong)
-
-                    if len(_strongs) > 0:
-                        _return_name = _strongs[0]
-                        _return_para = _return_name.parent
-                        _first_strong_id_in_its_parent = \
-                            _return_para.index(_strongs[0])
-                        _return_para.insert(_first_strong_id_in_its_parent + 1,
-                                            _rtype_new)
-
-                        if isinstance(_return_para, nodes.paragraph) \
-                                and isinstance(_return_para.parent,
-                                               nodes.paragraph):
-                            _return_para_parent = _return_para.parent
-                            if len(_return_para_parent) > 1 \
-                                    and isinstance(_return_para_parent[1],
-                                                   (nodes.bullet_list,
-                                                    nodes.definition_list,
-                                                    nodes.field_list)):
-                                _para = []
-                                for _p in _return_para_parent[0]:
-                                    _para.append(_p.deepcopy())
-                                _list = _return_para_parent[1].deepcopy()
-                                _return_para_parent.clear()
-                                _return_para_parent.extend(_para)
-                                _return_para_parent.append(_list)
-
     # overridden
     def visit_field(self, node):
-        if node[0][0].astext() == 'Return type':
-            # return type should be handled by _fixup_return_type
-            #  on 'Returns' nodes
-            raise nodes.SkipNode
-
-        _contextual_class = 'default'
-        self._fixup_return_type(node)
-        _field_name_title = node[0][0].astext()
-        if _field_name_title == 'Raises':
-            _contextual_class = 'warning'
-        if node[0][0].astext() in ['Raises']:
-            if node[0].__len__() == 3:
-                node[1][0].insert(0, nodes.Text(' -- '))
-                node[1][0].insert(0, nodes.strong(text=node[0][2].astext()))
-                del node[0][2]
-                del node[0][1]
-        self.field_context.append(_field_name_title)
-        self.body.append(
-            self.starttag(node, 'div',
-                          CLASS=('accordion-goup panel '
-                                 'panel-%s field' % _contextual_class)))
+        self.body.append(self.starttag(node, 'tr', '', CLASS='field'))
         self.section_level += 1
 
     # overridden
     def depart_field(self, node):
-        self.field_context.pop()
         self.section_level -= 1
-        self.body.append('</div>')
+        self.body.append('</tr>')
 
     # overridden
     def visit_field_name(self, node):
-        self.body.append(
-            self.starttag(node, 'div', '',
-                          CLASS='accordion-heading panel-heading field-name'))
-        self.body.append('<h%d class="panel-title">' % self.section_level)
-
-    # overridden
-    def depart_field_name(self, node):
-        self.body.append('</h%d></div>' % self.section_level)
+        atts = {'scope': 'col'}
+        if self.in_docinfo:
+            atts['class'] = 'docinfo-name'
+        else:
+            atts['class'] = 'field-name'
+        self.context.append('')
+        self.body.append(self.starttag(node, 'th', '', **atts))
 
     # overridden
     def visit_field_body(self, node):
-        self.body.append(
-            self.starttag(node, 'div', '',
-                          CLASS='accordion-inner panel-body field-body'))
-        if self.field_context[-1] in ['Parameters', 'Raises', 'Returns']:
-            self._print_parameters(node)
+        HTMLTranslator.visit_field_body(self, node)
+        self.body.append(self.starttag(node, 'blockquote',
+                                       style='font-size: 100%'))
 
     # overridden
     def depart_field_body(self, node):
-        self.body.append('</div>')
+        self.body.append('</blockquote>')
+        HTMLTranslator.depart_field_body(self, node)
 
     # overridden
     def visit_table(self, node):
@@ -612,7 +610,7 @@ class BootstrapTranslator(HTMLTranslator):
         raise NotImplementedError('Unknown node: %s' % node.__class__.__name__)
 
     def _print_parameters(self, node):
-        self.body.append('<table class="table table-condensed">'
+        self.body.append('<table class="table-condensed">'
                          '<colgroup>'
                          '<col class="col-parameter-name"/>'
                          '<col class="col-parameter-type"/>'
@@ -621,13 +619,12 @@ class BootstrapTranslator(HTMLTranslator):
                          '<tbody>')
 
         if isinstance(node.children[0], nodes.paragraph):
-            if self.field_context[-1] in ['Raises']:
-                if len(node.children) > 1:
-                    if isinstance(node[1], nodes.bullet_list):
-                        node[0].append(node[1].deepcopy())
-                        node.remove(node[1])
-
-            self._print_single_parameter(node[0])
+            if len(node.children) > 1:
+                if isinstance(node[1], nodes.bullet_list):
+                    node[0].append(node[1].deepcopy())
+                    node.remove(node[1])
+            else:
+                self._print_single_parameter(node[0])
         elif isinstance(node.children[0], nodes.bullet_list):
             first = True
             for _c in node.children[0]:
@@ -644,6 +641,15 @@ class BootstrapTranslator(HTMLTranslator):
         _types = []
         _do_desc = False
         _desc = []
+
+        _cls = 'parameter-name'
+        if first:
+            _cls += ' first-parameter'
+        self.body.append(
+            '<tr>'
+            '<td>'
+            '<div class="%s"><strong>' % _cls)
+
         for _c in node.children:
             if _do_desc:
                 _desc.append(_c)
@@ -676,18 +682,15 @@ class BootstrapTranslator(HTMLTranslator):
                     _types.append(_c[0])
                 else:
                     _types.append(_c)
+            else:
+                _c.walkabout(self)
 
-        _cls = 'parameter-name'
-        if first:
-            _cls += ' first-parameter'
-        self.body.append(
-            '<tr>'
-            '<td>'
-            '<div class="%s"><strong>%s</strong></div>' % (_cls, _name))
+        if _name:
+            self.body.append(_name)
         _cls = 'parameter-type'
         if first:
             _cls += ' first-parameter'
-        self.body.append('</td>'
+        self.body.append('</strong></div></td>'
                          '<td>'
                          '<div class="%s">' % _cls)
         _of_type = False
