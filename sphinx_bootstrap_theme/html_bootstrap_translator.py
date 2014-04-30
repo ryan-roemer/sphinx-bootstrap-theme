@@ -738,3 +738,9 @@ class BootstrapTranslator(HTMLTranslator):
 
     def depart_acks(self, node):
         pass
+
+    def visit_literal_emphasis(self, node):
+        return self.visit_emphasis(node)
+
+    def depart_literal_emphasis(self, node):
+        return self.depart_emphasis(node)
