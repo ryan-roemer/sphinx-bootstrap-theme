@@ -726,3 +726,15 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append('</div>'
                          '</td>'
                          '</tr>')
+
+    def visit_glossary(self, node):
+        pass
+
+    def depart_glossary(self, node):
+        pass
+
+    def visit_acks(self, node):
+        pass
+
+    def depart_acks(self, node):
+        pass

@@ -20,6 +20,7 @@ Setting up and using the theme.
 
    README
    examples
+   more_examples
    sidebar
    subdir/index
    example_module
