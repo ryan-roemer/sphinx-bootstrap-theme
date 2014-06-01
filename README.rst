@@ -105,8 +105,8 @@ your "conf.py" file::
         'navbar_pagenav': True,
 
         # Tab name for the current pages TOC. (Default: "Page")
-        navbar_pagenav_name = Page
-
+        'navbar_pagenav_name': "Page",
+        
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
         'globaltoc_depth': 2,
