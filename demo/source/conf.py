@@ -134,6 +134,10 @@ html_theme_options = {
     # Options are "nav" (default), "footer" or anything else to exclude.
     'source_link_position': "nav",
 
+    # If use relbar (breadcrumbs) or not.
+    # Values: "true" or "false" (default)
+    'relbar_enable': "true",
+
     # Bootswatch (http://bootswatch.com/) theme.
     #
     # Options are nothing with "" (default) or the name of a valid theme such
