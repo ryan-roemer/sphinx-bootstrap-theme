@@ -750,3 +750,21 @@ class BootstrapTranslator(HTMLTranslator):
 
     def depart_literal_emphasis(self, node):
         return self.depart_emphasis(node)
+
+    def visit_literal_strong(self, node):
+        return self.visit_strong(node)
+
+    def depart_literal_strong(self, node):
+        return self.depart_strong(node)
+
+    # overwritten
+    def visit_literal(self, node):
+        if node.parent.tagname != 'reference':
+            self.body.append(self.starttag(node, 'code'))
+            self.protect_literal_text += 1
+
+    # # overwritten
+    def depart_literal(self, node):
+        if node.parent.tagname != 'reference':
+            self.protect_literal_text -= 1
+            self.body.append('</code>')
