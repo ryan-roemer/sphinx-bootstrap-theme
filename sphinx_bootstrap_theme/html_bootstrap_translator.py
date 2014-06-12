@@ -487,6 +487,12 @@ class BootstrapTranslator(HTMLTranslator):
     def depart_desc_addname(self, node):
         self.body.append('</span></tt>')
 
+    def visit_desc_type(self, node):
+        pass
+
+    def depart_desc_type(self, node):
+        pass
+
     def visit_desc_parameterlist(self, node):
         """The list of parameters in a method signature.
         Including the enclosing brackets.
