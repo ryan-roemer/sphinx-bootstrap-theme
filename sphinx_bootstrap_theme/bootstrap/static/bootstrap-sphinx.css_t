@@ -76,7 +76,19 @@ table.footnote {
 }
 
 table.field-list {
+  width: 100%;
+}
+
+td.field-name {
   width: auto;
+}
+
+td.field-body {
+  width: 100%;
+}
+
+.panel-group {
+  margin-bottom: 0;
 }
 
 .footer {
