@@ -2,6 +2,10 @@
  History
 =========
 
+Current
+======
+* Add config option for page name tab. (`@masklinn`_)
+
 v0.4.0
 ======
 * Fix bug preventing Glyphicons from working with Bootswatch themes.
@@ -192,6 +196,7 @@ v0.0.1
 .. _@oscarcp: https://github.com/oscarcp
 .. _@russell: https://github.com/russell
 .. _@sccolbert: https://github.com/sccolbert
+.. _@shiumachi: https://github.com/shiumachi
 .. _@thedrow: https://github.com/thedrow
 .. _@torbjoernk: https://github.com/torbjoernk
 .. _@tristanlins: https://github.com/tristanlins

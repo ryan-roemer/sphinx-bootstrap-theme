@@ -97,6 +97,9 @@ html_theme_options = {
     # Tab name for entire site. (Default: "Site")
     'navbar_site_name': "Site",
 
+    # Tab name for the current pages TOC. (Default: "Page")
+    'navbar_pagenav_name': "Page",
+
     # A list of tuples containing pages or urls to link to.
     # Valid tuples should be in the following forms:
     #    (name, page)                 # a link to a page
