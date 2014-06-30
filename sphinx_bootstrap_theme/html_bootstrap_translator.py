@@ -1,5 +1,5 @@
 # coding=utf-8
-"""A custom Sphinx HTML Translator for *Twitter Bootstrap* layout
+"""A custom Sphinx HTML Translator for *Bootstrap* layout
 
 .. moduleauthor:: Torbjörn Klatt <opensource@torbjoern-klatt.de>
 """
@@ -73,7 +73,7 @@ class BootstrapTranslator(HTMLTranslator):
     This is a specialization of the default HTML Translator of the docutils
     package.
     Only a couple of functions have been overridden to produce valid HTML to be
-    directly styled with *Twitter Bootstrap*.
+    directly styled with *Bootstrap*.
     """
 
     # overridden
@@ -143,9 +143,9 @@ class BootstrapTranslator(HTMLTranslator):
     def visit_attribution(self, node):
         """Attribution line (e.g. in block quotes)
 
-        With *Twitter Bootstrap* we are able to style a special attribution
-        paragraph (read "*footer*") at the end of block quotes with the ReST
-        directive ``epigraph``.
+        With *Bootstrap* we are able to style a special attribution paragraph
+        (read "*footer*") at the end of block quotes with the ReST directive
+        ``epigraph``.
 
         .. admonition:: Example
 
