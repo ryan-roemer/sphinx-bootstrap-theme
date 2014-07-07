@@ -1,5 +1,5 @@
 # coding=utf-8
-"""A custom Sphinx HTML Translator for *Twitter Bootstrap* layout
+"""A custom Sphinx HTML Translator for *Bootstrap* layout
 
 .. moduleauthor:: Torbjörn Klatt <opensource@torbjoern-klatt.de>
 """
@@ -68,12 +68,12 @@ def debug_print(node):
 
 
 class BootstrapTranslator(HTMLTranslator):
-    """Custom HTML Translator for a Bootstrap-ifyied Sphinx layout
+    """Custom HTML Translator for a Bootstrap-ified Sphinx layout
 
     This is a specialization of the default HTML Translator of the docutils
     package.
     Only a couple of functions have been overridden to produce valid HTML to be
-    directly styled with *Twitter Bootstrap*.
+    directly styled with *Bootstrap*.
     """
 
     # overridden
@@ -143,9 +143,9 @@ class BootstrapTranslator(HTMLTranslator):
     def visit_attribution(self, node):
         """Attribution line (e.g. in block quotes)
 
-        With *Twitter Bootstrap* we are able to style a special attribution
-        paragraph (read "*footer*") at the end of block quotes with the ReST
-        directive ``epigraph``.
+        With *Bootstrap* we are able to style a special attribution paragraph
+        (read "*footer*") at the end of block quotes with the ReST directive
+        ``epigraph``.
 
         .. admonition:: Example
 
@@ -342,6 +342,21 @@ class BootstrapTranslator(HTMLTranslator):
             node[0]['classes'].append('first')
 
     # overridden
+    def visit_hlist(self, node):
+        """A hlist. Compact version of a list.
+        """
+        atts = {'class': 'hlist'}
+        self.body.append(self.starttag(node, 'div', **atts))
+
+    def depart_hlist(self, node):
+        self.body.append('</div>')
+
+    def visit_hlistcol(self, node):
+        pass
+    def depart_hlistcol(self, node):
+        pass
+
+    # overridden
     def visit_definition_list(self, node):
         """Bootstrap-ified Definition List
 
@@ -440,6 +455,12 @@ class BootstrapTranslator(HTMLTranslator):
     def depart_table(self, node):
         self.compact_p = self.context.pop()
         self.body.append('</table>\n')
+
+    # LaTeX only
+    def visit_tabular_col_spec(self, node):
+        pass
+    def depart_tabular_col_spec(self, node):
+        pass
 
     def visit_desc(self, node):
         self.body.append(
@@ -768,3 +789,18 @@ class BootstrapTranslator(HTMLTranslator):
         if node.parent.tagname != 'reference':
             self.protect_literal_text -= 1
             self.body.append('</code>')
+
+    # autosummary extension
+    def visit_autosummary_table(self, node):
+        from sphinx.ext.autosummary import autosummary_table_visit_html
+        autosummary_table_visit_html(self, node)
+
+    def depart_autosummary_table(self, node):
+        pass
+
+    def visit_autosummary_toc(self, node):
+        from sphinx.ext.autosummary import autosummary_toc_visit_html
+        autosummary_toc_visit_html(self, node)
+
+    def depart_autosummary_toc(self, node):
+        pass
