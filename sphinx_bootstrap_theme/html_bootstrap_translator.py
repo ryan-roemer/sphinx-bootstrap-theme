@@ -456,6 +456,12 @@ class BootstrapTranslator(HTMLTranslator):
         self.compact_p = self.context.pop()
         self.body.append('</table>\n')
 
+    # LaTeX only
+    def visit_tabular_col_spec(self, node):
+        pass
+    def depart_tabular_col_spec(self, node):
+        pass
+
     def visit_desc(self, node):
         self.body.append(
             self.starttag(node, 'div',
