@@ -789,3 +789,18 @@ class BootstrapTranslator(HTMLTranslator):
         if node.parent.tagname != 'reference':
             self.protect_literal_text -= 1
             self.body.append('</code>')
+
+    # autosummary extension
+    def visit_autosummary_table(self, node):
+        from sphinx.ext.autosummary import autosummary_table_visit_html
+        autosummary_table_visit_html(self, node)
+
+    def depart_autosummary_table(self, node):
+        pass
+
+    def visit_autosummary_toc(self, node):
+        from sphinx.ext.autosummary import autosummary_toc_visit_html
+        autosummary_toc_visit_html(self, node)
+
+    def depart_autosummary_toc(self, node):
+        pass
