@@ -68,7 +68,7 @@ def debug_print(node):
 
 
 class BootstrapTranslator(HTMLTranslator):
-    """Custom HTML Translator for a Bootstrap-ifyied Sphinx layout
+    """Custom HTML Translator for a Bootstrap-ified Sphinx layout
 
     This is a specialization of the default HTML Translator of the docutils
     package.
@@ -340,6 +340,21 @@ class BootstrapTranslator(HTMLTranslator):
         self.body.append(self.starttag(node, 'li', '',))
         if len(node):
             node[0]['classes'].append('first')
+
+    # overridden
+    def visit_hlist(self, node):
+        """A hlist. Compact version of a list.
+        """
+        atts = {'class': 'hlist'}
+        self.body.append(self.starttag(node, 'div', **atts))
+
+    def depart_hlist(self, node):
+        self.body.append('</div>')
+
+    def visit_hlistcol(self, node):
+        pass
+    def depart_hlistcol(self, node):
+        pass
 
     # overridden
     def visit_definition_list(self, node):
