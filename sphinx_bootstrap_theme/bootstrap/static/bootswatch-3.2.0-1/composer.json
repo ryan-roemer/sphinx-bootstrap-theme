@@ -1,0 +1,40 @@
+{
+    "name": "thomaspark/bootswatch",
+    "description": "Themes for Bootstrap",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "thomaspark",
+            "email": "thomas@bootswatch.com"
+        }
+    ],
+    "type": "component",
+    "require": {
+        "robloach/component-installer": "0.0.*"
+    },
+    "extra": {
+        "component": {
+            "name": "bootswatch",
+            "files": [
+                "README.md",
+                "LICENSE",
+                "amelia/*",
+                "cerulean/*",
+                "cosmo/*",
+                "cyborg/*",
+                "darkly/*",
+                "flatly/*",
+                "fonts/*",
+                "journal/*",
+                "lumen/*",
+                "readable/*",
+                "simplex/*",
+                "slate/*",
+                "spacelab/*",
+                "superhero/*",
+                "united/*",
+                "yeti/*"
+            ]
+        }
+    }
+}
