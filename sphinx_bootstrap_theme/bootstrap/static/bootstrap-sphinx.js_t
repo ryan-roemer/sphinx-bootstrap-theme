@@ -90,6 +90,7 @@
     $(".bs-sidenav > ul > li > a").addClass("nav-header");
 
     {% if theme_bootstrap_version == "3" %}
+    {% if theme_navbar_fixed_top %}
     // back to top
     setTimeout(function () {
       var $sideBar = $('.bs-sidenav');
@@ -110,6 +111,7 @@
         }
       });
     }, 100);
+    {% endif %}
     {% endif %}
 
     // Local TOC.
