@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Sphinx Bootstrap Theme &mdash; Demo 0.4.0 documentation</title>
+    <title>Sphinx Bootstrap Theme &mdash; Demo 0.4.1 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.4.0',
+        VERSION:     '0.4.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.4.0 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.4.1 documentation" href="index.html" />
     <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Bootstrap Theme Demo" href="index.html" />
 <meta charset='utf-8'>
@@ -65,7 +65,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.4.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -111,6 +111,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-1">v0.4.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-0">v0.4.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-9">v0.3.9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-8">v0.3.8</a></li>
@@ -232,7 +233,7 @@
       
   <div class="section" id="sphinx-bootstrap-theme">
 <h1>Sphinx Bootstrap Theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="Permalink to this headline">¶</a></h1>
-<p>This <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a> integrates the Twitter <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> CSS / JavaScript
+<p>This <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a> integrates the <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> CSS / JavaScript
 framework with various layout options, hierarchical menu navigation,
 and mobile-friendly responsive design. It is configurable, extensible
 and can use any number of different <a class="reference external" href="http://bootswatch.com">Bootswatch</a> CSS themes.</p>
@@ -317,6 +318,9 @@ your &#8220;conf.py&#8221; file:</p>
 
     <span class="c"># Render the current pages TOC in the navbar. (Default: true)</span>
     <span class="s">&#39;navbar_pagenav&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+
+    <span class="c"># Tab name for the current pages TOC. (Default: &quot;Page&quot;)</span>
+    <span class="s">&#39;navbar_pagenav_name&#39;</span><span class="p">:</span> <span class="s">&quot;Page&quot;</span><span class="p">,</span>
 
     <span class="c"># Global TOC depth for &quot;site&quot; navbar tab. (Default: 1)</span>
     <span class="c"># Switching to -1 shows all levels.</span>
@@ -446,7 +450,7 @@ which is a multi-level rendering of the current page&#8217;s <tt class="docutils
 </div>
 <div class="section" id="id3">
 <h3>Bootstrap<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>The theme offers Twitter Bootstrap v2.x and v3.x, both of which rely on
+<p>The theme offers Bootstrap v2.x and v3.x, both of which rely on
 jQuery v.1.9.x. As the jQuery that Bootstrap wants can radically depart from
 the jQuery Sphinx internal libraries use, the library from this theme is
 integrated via <tt class="docutils literal"><span class="pre">noConflict()</span></tt> as <tt class="docutils literal"><span class="pre">$jqTheme</span></tt>.</p>
@@ -471,7 +475,8 @@ please add a usage example to the &#8220;Examples&#8221; page.</p>
 <div class="section" id="licenses">
 <h2>Licenses<a class="headerlink" href="#licenses" title="Permalink to this headline">¶</a></h2>
 <p>Sphinx Bootstrap Theme is licensed under the <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt">MIT</a> license.</p>
-<p>Twitter Bootstrap is licensed under the <a class="reference external" href="https://github.com/twitter/bootstrap/blob/master/LICENSE">Apache</a> license.</p>
+<p><a class="reference external" href="https://github.com/twbs/bootstrap/blob/v2.3.2/LICENSE">Bootstrap v2</a> is licensed under the Apache license 2.0.</p>
+<p><a class="reference external" href="https://github.com/twbs/bootstrap/blob/master/LICENSE">Bootstrap v3.1.0+</a> is licensed under the MIT license.</p>
 </div>
 </div>
 

@@ -2,7 +2,7 @@
  Sphinx Bootstrap Theme
 ========================
 
-This Sphinx_ theme_ integrates the Twitter Bootstrap_ CSS / JavaScript
+This Sphinx_ theme_ integrates the Bootstrap_ CSS / JavaScript
 framework with various layout options, hierarchical menu navigation,
 and mobile-friendly responsive design. It is configurable, extensible
 and can use any number of different Bootswatch_ CSS themes.
@@ -103,6 +103,9 @@ your "conf.py" file::
 
         # Render the current pages TOC in the navbar. (Default: true)
         'navbar_pagenav': True,
+
+        # Tab name for the current pages TOC. (Default: "Page")
+        'navbar_pagenav_name': "Page",
 
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
@@ -234,7 +237,7 @@ which is a multi-level rendering of the current page's ``toc``.
 
 Bootstrap
 ---------
-The theme offers Twitter Bootstrap v2.x and v3.x, both of which rely on
+The theme offers Bootstrap v2.x and v3.x, both of which rely on
 jQuery v.1.9.x. As the jQuery that Bootstrap wants can radically depart from
 the jQuery Sphinx internal libraries use, the library from this theme is
 integrated via ``noConflict()`` as ``$jqTheme``.
@@ -262,7 +265,11 @@ Licenses
 ========
 Sphinx Bootstrap Theme is licensed under the MIT_ license.
 
-Twitter Bootstrap is licensed under the Apache_ license.
+`Bootstrap v2`_ is licensed under the Apache license 2.0.
 
-.. _MIT: https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt
-.. _Apache: https://github.com/twitter/bootstrap/blob/master/LICENSE
+`Bootstrap v3.1.0+`_ is licensed under the MIT license.
+
+.. _`MIT`: https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt
+.. _`Bootstrap v2`: https://github.com/twbs/bootstrap/blob/v2.3.2/LICENSE
+.. _`Bootstrap v3.1.0+`: https://github.com/twbs/bootstrap/blob/master/LICENSE
+
