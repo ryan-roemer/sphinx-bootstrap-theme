@@ -2,8 +2,9 @@
  History
 =========
 
-Current
+v0.4.1
 ======
+* Fix non-fixed-top navbar. (`@Danack`_)
 * Add config option for page name tab. (`@masklinn`_)
 
 v0.4.0
@@ -185,6 +186,7 @@ v0.0.1
 .. _@aababilov: https://github.com/aababilov
 .. _@adamcharnock: https://github.com/adamcharnock
 .. _@cdbennett: https://github.com/cdbennett
+.. _@Danack: https://github.com/Danack
 .. _@fjfeijoo: https://github.com/fjfeijoo
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
