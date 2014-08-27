@@ -106,7 +106,7 @@ your "conf.py" file::
 
         # Tab name for the current pages TOC. (Default: "Page")
         'navbar_pagenav_name': "Page",
-        
+
         # Global TOC depth for "site" navbar tab. (Default: 1)
         # Switching to -1 shows all levels.
         'globaltoc_depth': 2,
@@ -263,8 +263,13 @@ please add a usage example to the "Examples" page.
 
 Licenses
 ========
-Sphinx Bootstrap Theme is licensed under the `MIT license <https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt>`_.
+Sphinx Bootstrap Theme is licensed under the MIT_ license.
 
-Bootstrap v2 is licensed under the `Apache license 2.0 <https://github.com/twbs/bootstrap/blob/v2.3.2/LICENSE>`_.
+`Bootstrap v2`_ is licensed under the Apache license 2.0.
 
-Bootstrap v3.1.0+ is licensed under the `MIT license <https://github.com/twbs/bootstrap/blob/master/LICENSE>`_.
+`Bootstrap v3.1.0+`_ is licensed under the MIT license.
+
+.. _`MIT`: https://github.com/ryan-roemer/sphinx-bootstrap-theme/blob/master/LICENSE.txt
+.. _`Bootstrap v2`: https://github.com/twbs/bootstrap/blob/v2.3.2/LICENSE
+.. _`Bootstrap v3.1.0+`: https://github.com/twbs/bootstrap/blob/master/LICENSE
+
