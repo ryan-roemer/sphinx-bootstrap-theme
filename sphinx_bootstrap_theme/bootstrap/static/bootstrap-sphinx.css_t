@@ -16,7 +16,7 @@
 {% if theme_bootstrap_version == "2" %}
 @media (min-width: 980px) {
 {% endif %}
-  {% if theme_navbar_fixed_top == 'true' %}
+  {% if theme_navbar_fixed_top|tobool %}
   body {
   {% if theme_bootswatch_theme %}
     padding-top: 60px;

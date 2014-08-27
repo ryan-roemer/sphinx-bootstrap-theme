@@ -89,7 +89,7 @@
     $(".bs-sidenav ul").addClass("nav nav-list");
     $(".bs-sidenav > ul > li > a").addClass("nav-header");
 
-    {% if theme_navbar_fixed_top and theme_bootstrap_version == "3" %}
+    {% if theme_navbar_fixed_top|tobool and theme_bootstrap_version == "3" %}
     // back to top
     setTimeout(function () {
       var $sideBar = $('.bs-sidenav');
