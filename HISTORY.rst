@@ -2,8 +2,8 @@
  History
 =========
 
-Current
-=======
+v0.4.2
+======
 * Update to Bootstrap v3.2.0.
 
 v0.4.1
