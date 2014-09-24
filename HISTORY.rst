@@ -2,6 +2,10 @@
  History
 =========
 
+Current
+=======
+* Update to Bootstrap v3.2.0.
+
 v0.4.1
 ======
 * Fix non-fixed-top navbar. (`@Danack`_)
