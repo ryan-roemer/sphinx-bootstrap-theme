@@ -5,17 +5,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Future Work &mdash; Demo 0.4.1 documentation</title>
+    <title>Future Work &mdash; Demo 0.4.2 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.1.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.4.1',
+        VERSION:     '0.4.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.4.1 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.4.2 documentation" href="index.html" />
     <link rel="prev" title="History" href="HISTORY.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -64,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.4.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -110,6 +110,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-2">v0.4.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-1">v0.4.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-0">v0.4.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-3-9">v0.3.9</a></li>
@@ -149,6 +150,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Future Work</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#css-layout">CSS / Layout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
 </ul>
@@ -167,6 +169,7 @@
 <li><a class="reference internal" href="#">Future Work</a><ul>
 <li><a class="reference internal" href="#css-layout">CSS / Layout</a></li>
 <li><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
 </ul>
@@ -228,6 +231,16 @@ navbar below the page title.</li>
 <ul class="simple">
 <li>Re-enable the downloads.</li>
 </ul>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>Updating bootswatch:</p>
+<blockquote>
+<div><p>$ cd scm/vendor/bootswatch
+$ find . -name &#8220;bootstrap.min.css&#8221; | </p>
+<blockquote>
+<div>egrep -v &#8220;/2|bower_components/&#8221; | xargs tar cf - &gt; ~/Desktop/bootswatch-3.2.0.tar</div></blockquote>
+</div></blockquote>
 </div>
 </div>
 
