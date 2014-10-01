@@ -2,6 +2,10 @@
  History
 =========
 
+Current
+=======
+* Remove divider-vertical from BS3 navbar.html. (`@kaycebasques`_)
+
 v0.4.2
 ======
 * Update to Bootstrap v3.2.0.
@@ -194,6 +198,7 @@ v0.0.1
 .. _@fjfeijoo: https://github.com/fjfeijoo
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
+.. _@kaycebasques: https://github.com/kaycebasques
 .. _@kosiakk: https://github.com/kosiakk
 .. _@masklinn: https://github.com/masklinn
 .. _@MiCHiLU: https://github.com/MiCHiLU
