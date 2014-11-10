@@ -2,8 +2,9 @@
  History
 =========
 
-Current
-=======
+v0.4.3
+======
+* Add ``fonts/`` directories to bootswatch. (`@gkthiruvathukal`_)
 * Remove divider-vertical from BS3 navbar.html. (`@kaycebasques`_)
 
 v0.4.2
@@ -196,6 +197,7 @@ v0.0.1
 .. _@cdbennett: https://github.com/cdbennett
 .. _@Danack: https://github.com/Danack
 .. _@fjfeijoo: https://github.com/fjfeijoo
+.. _@gkthiruvathukal: https://github.com/gkthiruvathukal
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
 .. _@kaycebasques: https://github.com/kaycebasques
