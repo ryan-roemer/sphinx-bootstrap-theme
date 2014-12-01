@@ -2,8 +2,8 @@
  History
 =========
 
-Current
-=======
+v0.4.4
+======
 * Reset ``.container`` padding after Sphinx 1.3b commit overrode CSS.
   Fixes `#114 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/114>`_.
   (`@EricFromCanada`_)
