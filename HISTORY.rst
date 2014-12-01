@@ -4,10 +4,14 @@
 
 Current
 =======
+* Reset ``.container`` padding after Sphinx 1.3b commit overrode CSS.
+  Fixes `#114 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/114>`_.
+  (`@EricFromCanada`_)
 * Fix situation where Python 3 + modern Sphinx results in empty strings being
   interpreted as a non-existent Bootswatch theme for
   ``theme_bootswatch_theme`` by permissively allowing old (empty quotes) or
   new (empty or ``None``) styles.
+  Fixes `#115 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/115>`_.
   (`@EricFromCanada`_, `@peteut`_, `@mdboom`_)
 
 v0.4.3
