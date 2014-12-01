@@ -18,14 +18,14 @@
 {% endif %}
   {% if theme_navbar_fixed_top|tobool %}
   body {
-  {% if theme_bootswatch_theme %}
+  {% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
     padding-top: 60px;
   {% else %}
     padding-top: 40px;
   {% endif %}
   }
   .page-top {
-  {% if theme_bootswatch_theme %}
+  {% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
     top: 60px;
   {% else %}
     top: 40px;

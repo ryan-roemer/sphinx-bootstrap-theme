@@ -2,6 +2,14 @@
  History
 =========
 
+Current
+=======
+* Fix situation where Python 3 + modern Sphinx results in empty strings being
+  interpreted as a non-existent Bootswatch theme for
+  ``theme_bootswatch_theme`` by permissively allowing old (empty quotes) or
+  new (empty or ``None``) styles.
+  (`@EricFromCanada`_, `@peteut`_, `@mdboom`_)
+
 v0.4.3
 ======
 * Add ``fonts/`` directories to bootswatch. (`@gkthiruvathukal`_)
@@ -196,6 +204,7 @@ v0.0.1
 .. _@adamcharnock: https://github.com/adamcharnock
 .. _@cdbennett: https://github.com/cdbennett
 .. _@Danack: https://github.com/Danack
+.. _@EricFromCanada: https://github.com/EricFromCanada
 .. _@fjfeijoo: https://github.com/fjfeijoo
 .. _@gkthiruvathukal: https://github.com/gkthiruvathukal
 .. _@grncdr: https://github.com/grncdr
@@ -203,10 +212,12 @@ v0.0.1
 .. _@kaycebasques: https://github.com/kaycebasques
 .. _@kosiakk: https://github.com/kosiakk
 .. _@masklinn: https://github.com/masklinn
+.. _@mdboom: https://github.com/mdboom
 .. _@MiCHiLU: https://github.com/MiCHiLU
 .. _@nail: https://github.com/nail
 .. _@newgene: https://github.com/newgene
 .. _@oscarcp: https://github.com/oscarcp
+.. _@peteut: https://github.com/peteut
 .. _@russell: https://github.com/russell
 .. _@sccolbert: https://github.com/sccolbert
 .. _@shiumachi: https://github.com/shiumachi

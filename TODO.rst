@@ -52,7 +52,10 @@ Notes
 
 Updating bootswatch:
 
+.. code-block:: bash
+
     $ cd scm/vendor/bootswatch
     $ find . -name "bootstrap.min.css" | \
       egrep -v "\/2|bower_components\/" | \
       xargs tar cf - > ~/Desktop/bootswatch-3.2.0.tar
+    # TODO: AND... add the fonts too!
