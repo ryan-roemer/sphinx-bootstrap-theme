@@ -9,7 +9,7 @@
   {% set bs_span_prefix = "span" %}
 {% endif %}
 
-{% if theme_bootswatch_theme %}
+{% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
   {# BS2 needs "bootstrap-responsive.css". BS3 doesn't. #}
   {% if theme_bootstrap_version == "3" %}
     {% set theme_css_files = theme_css_files + [
