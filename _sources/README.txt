@@ -134,7 +134,7 @@ your "conf.py" file::
 
         # Bootswatch (http://bootswatch.com/) theme.
         #
-        # Options are nothing with "" (default) or the name of a valid theme
+        # Options are nothing (default) or the name of a valid theme
         # such as "amelia" or "cosmo".
         'bootswatch_theme': "united",
 
@@ -259,6 +259,15 @@ Then, view the site in the development server::
 
 Also, if you are adding a new type of styling or Sphinx or Bootstrap construct,
 please add a usage example to the "Examples" page.
+
+**Note**: If you are in Python 3, Fabric isn't available, so we have a very
+rough Makefile in its place. Try:
+
+    $ make clean && make demo
+
+Then, view the site in the development server::
+
+    $ make demo_server
 
 
 Licenses
