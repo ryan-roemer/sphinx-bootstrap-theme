@@ -4,6 +4,8 @@
 
 Current
 =======
+* Add Glyphicon fonts to Bootswatch 2 static assets. Also add example using the
+  icons so we can catch errors like this better in the future.
 * Fix CSS generation with ``'navbar_fixed_top': "false"`` and
   ``'bootstrap_version': "2"``.
   Fixes `#121 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/121>`_.

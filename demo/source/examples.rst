@@ -85,6 +85,39 @@ I have footnoted a first item [#f1]_ and second item [#f2]_.
 .. [#f1] My first footnote.
 .. [#f2] My second footnote.
 
+Icons
+=====
+Icons are different in Bootstrap 2 and 3, so you will only see an
+icon below for the version of Bootstrap that we used to build these docs.
+
+Bootstrap 2
+-----------
+The following template HTML:
+
+.. code-block:: html
+
+    <span class="icon-star-empty"></span>
+
+translates to a neat star:
+
+.. raw:: html
+
+    <span style="font-size: 2em" class="icon-star-empty"></span>
+
+Bootstrap 3
+-----------
+The following template HTML:
+
+.. code-block:: html
+
+    <span class="glyphicon glyphicon-star-empty"></span>
+
+translates to a neat star:
+
+.. raw:: html
+
+    <span class="glyphicon glyphicon-star-empty"></span>
+
 Tables
 ======
 Here are some examples of Sphinx
