@@ -21,24 +21,27 @@
   top: 0px;
 }
 
+{% if theme_navbar_fixed_top|tobool %}
+
 {% if theme_bootstrap_version == "2" %}
 @media (min-width: 980px) {
 {% endif %}
-  {% if theme_navbar_fixed_top|tobool %}
+
   body {
-  {% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
-    padding-top: 60px;
-  {% else %}
-    padding-top: 40px;
-  {% endif %}
+    {% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
+      padding-top: 60px;
+    {% else %}
+      padding-top: 40px;
+    {% endif %}
   }
   .page-top {
-  {% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
-    top: 60px;
-  {% else %}
-    top: 40px;
-  {% endif %}
+    {% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
+      top: 60px;
+    {% else %}
+      top: 40px;
+    {% endif %}
   }
+
 {% if theme_bootstrap_version == "2" %}
 }
 {% endif %}
@@ -47,6 +50,14 @@
   padding-left:  12px !important;
   padding-right: 12px !important;
 }
+{% else %}
+{% if theme_bootstrap_version == "2" %}
+@media (min-width: 980px) {
+  .navbar .container {
+    width: 940px;
+  }
+}
+{% endif %}
 {% endif %}
 
 table {

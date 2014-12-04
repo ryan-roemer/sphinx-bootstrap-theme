@@ -2,6 +2,13 @@
  History
 =========
 
+Current
+=======
+* Fix CSS generation with ``'navbar_fixed_top': "false"`` and
+  ``'bootstrap_version': "2"``.
+  Fixes `#121 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/121>`_.
+  (`@EricFromCanada`_)
+
 v0.4.4
 ======
 * Reset ``.container`` padding after Sphinx 1.3b commit overrode CSS.
