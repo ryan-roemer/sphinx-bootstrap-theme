@@ -2,8 +2,8 @@
  History
 =========
 
-Current
-=======
+v0.4.5
+======
 * Add Glyphicon fonts to Bootswatch 2 static assets. Also add example using the
   icons so we can catch errors like this better in the future.
 * Fix CSS generation with ``'navbar_fixed_top': "false"`` and
