@@ -102,7 +102,7 @@ translates to a neat star:
 
 .. raw:: html
 
-    <span style="font-size: 2em" class="icon-star-empty"></span>
+    <span class="icon-star-empty"></span>
 
 Bootstrap 3
 -----------
