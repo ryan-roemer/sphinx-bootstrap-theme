@@ -2,6 +2,10 @@
  History
 =========
 
+Current
+=======
+* Update Sphinx website links. (`@mrmsl`_)
+
 v0.4.5
 ======
 * Add Glyphicon fonts to Bootswatch 2 static assets. Also add example using the
@@ -227,6 +231,7 @@ v0.0.1
 .. _@masklinn: https://github.com/masklinn
 .. _@mdboom: https://github.com/mdboom
 .. _@MiCHiLU: https://github.com/MiCHiLU
+.. _@mrmsl: https://github.com/mrmsl
 .. _@nail: https://github.com/nail
 .. _@newgene: https://github.com/newgene
 .. _@oscarcp: https://github.com/oscarcp
