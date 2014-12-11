@@ -8,8 +8,8 @@ and mobile-friendly responsive design. It is configurable, extensible
 and can use any number of different Bootswatch_ CSS themes.
 
 .. _Bootstrap: http://getbootstrap.com/
-.. _Sphinx: http://sphinx.pocoo.org/
-.. _theme: http://sphinx.pocoo.org/theming.html
+.. _Sphinx: http://sphinx-doc.org/
+.. _theme: http://sphinx-doc.org/theming.html
 .. _PyPI: http://pypi.python.org/pypi/sphinx-bootstrap-theme/
 .. _GitHub repository: https://github.com/ryan-roemer/sphinx-bootstrap-theme
 

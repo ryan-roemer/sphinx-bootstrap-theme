@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 
@@ -15,7 +14,7 @@
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
+        URL_ROOT:    './',
         VERSION:     '0.4.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
@@ -112,6 +111,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#current">Current</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-5">v0.4.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-4">v0.4.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-3">v0.4.3</a></li>
@@ -239,7 +239,7 @@
       
   <div class="section" id="sphinx-bootstrap-theme">
 <h1>Sphinx Bootstrap Theme<a class="headerlink" href="#sphinx-bootstrap-theme" title="Permalink to this headline">¶</a></h1>
-<p>This <a class="reference external" href="http://sphinx.pocoo.org/">Sphinx</a> <a class="reference external" href="http://sphinx.pocoo.org/theming.html">theme</a> integrates the <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> CSS / JavaScript
+<p>This <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a> <a class="reference external" href="http://sphinx-doc.org/theming.html">theme</a> integrates the <a class="reference external" href="http://getbootstrap.com/">Bootstrap</a> CSS / JavaScript
 framework with various layout options, hierarchical menu navigation,
 and mobile-friendly responsive design. It is configurable, extensible
 and can use any number of different <a class="reference external" href="http://bootswatch.com">Bootswatch</a> CSS themes.</p>
@@ -269,7 +269,8 @@ look at the <a class="reference external" href="http://ryan-roemer.github.com/sp
 <p>Installation from <a class="reference external" href="http://pypi.python.org/pypi/sphinx-bootstrap-theme/">PyPI</a> is fairly straightforward:</p>
 <ol class="arabic">
 <li><p class="first">Install the package:</p>
-<div class="highlight-python"><pre>$ pip install sphinx_bootstrap_theme</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install sphinx_bootstrap_theme
+</pre></div>
 </div>
 </li>
 <li><p class="first">Edit the &#8220;conf.py&#8221; configuration file to point to the bootstrap theme:</p>
@@ -391,30 +392,33 @@ enhancements, such as the <tt class="docutils literal"><span class="pre">navbare
 content in the navbar.</p>
 <p>Then, create your own &#8220;_templates&#8221; directory and &#8220;layout.html&#8221; file (assuming
 you build from a &#8220;source&#8221; directory):</p>
-<div class="highlight-python"><pre>$ mkdir source/_templates
-$ touch source/_templates/layout.html</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ mkdir source/_templates
+$ touch source/_templates/layout.html
+</pre></div>
 </div>
 <p>Then, configure your &#8220;conf.py&#8221;:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;_templates&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>Finally, edit your override file &#8220;source/_templates/layout.html&#8221;:</p>
-<div class="highlight-python"><pre>{# Import the theme's layout. #}
-{% extends "!layout.html" %}
+<div class="highlight-python"><div class="highlight"><pre>{# Import the theme&#39;s layout. #}
+{% extends &quot;!layout.html&quot; %}
 
-{# Add some extra stuff before and use existing with 'super()' call. #}
+{# Add some extra stuff before and use existing with &#39;super()&#39; call. #}
 {% block footer %}
   &lt;h2&gt;My footer of awesomeness.&lt;/h2&gt;
   {{ super() }}
-{% endblock %}</pre>
+{% endblock %}
+</pre></div>
 </div>
 </div>
 <div class="section" id="adding-custom-css">
 <h3>Adding Custom CSS<a class="headerlink" href="#adding-custom-css" title="Permalink to this headline">¶</a></h3>
 <p>Alternately, you could add your own custom static media directory with a CSS
 file to override a style, which in the demo would be something like:</p>
-<div class="highlight-python"><pre>$ mkdir source/_static
-$ touch source/_static/my-styles.css</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ mkdir source/_static
+$ touch source/_static/my-styles.css
+</pre></div>
 </div>
 <p>Then, in &#8220;conf.py&#8221;, edit this line:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;_static&quot;</span><span class="p">]</span>
@@ -422,17 +426,19 @@ $ touch source/_static/my-styles.css</pre>
 </div>
 <p>You will also need the override template &#8220;source/_templates/layout.html&#8221; file
 configured as above, but with the following code:</p>
-<div class="highlight-python"><pre>{# Import the theme's layout. #}
-{% extends "!layout.html" %}
+<div class="highlight-python"><div class="highlight"><pre>{# Import the theme&#39;s layout. #}
+{% extends &quot;!layout.html&quot; %}
 
 {# Custom CSS overrides #}
-{% set bootswatch_css_custom = ['_static/my-styles.css'] %}</pre>
+{% set bootswatch_css_custom = [&#39;_static/my-styles.css&#39;] %}
+</pre></div>
 </div>
 <p>Then, in the new file &#8220;source/_static/my-styles.css&#8221;, add any appropriate
 styling, e.g. a bold background color:</p>
-<div class="highlight-python"><pre>footer {
+<div class="highlight-python"><div class="highlight"><pre>footer {
   background-color: red;
-}</pre>
+}
+</pre></div>
 </div>
 </div>
 </div>
@@ -462,19 +468,23 @@ Sphinx &#8220;_static&#8221; directory.</p>
 <h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
 <p>Contributions to this project are most welcome. Please make sure that the demo
 site builds cleanly, and looks like what you want. First build the demo:</p>
-<div class="highlight-python"><pre>$ fab clean &amp;&amp; fab demo</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ fab clean &amp;&amp; fab demo
+</pre></div>
 </div>
 <p>Then, view the site in the development server:</p>
-<div class="highlight-python"><pre>$ fab demo_server</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ fab demo_server
+</pre></div>
 </div>
 <p>Also, if you are adding a new type of styling or Sphinx or Bootstrap construct,
 please add a usage example to the &#8220;Examples&#8221; page.</p>
 <p><strong>Note</strong>: If you are in Python 3, Fabric isn&#8217;t available, so we have a very
 rough Makefile in its place. Try:</p>
-<div class="highlight-python"><pre>$ make clean &amp;&amp; make demo</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ make clean &amp;&amp; make demo
+</pre></div>
 </div>
 <p>Then, view the site in the development server:</p>
-<div class="highlight-python"><pre>$ make demo_server</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ make demo_server
+</pre></div>
 </div>
 </div>
 <div class="section" id="licenses">
@@ -498,7 +508,7 @@ rough Makefile in its place. Try:</p>
     </p>
     <p>
         &copy; Copyright 2011-2014, Ryan Roemer.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.<br/>
     </p>
   </div>
 </footer>
