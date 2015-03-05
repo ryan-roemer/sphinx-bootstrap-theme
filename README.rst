@@ -30,6 +30,7 @@ Examples of the theme in use for some public projects:
   ``'bootswatch_theme': "flatly"`` to use the "Flatly_" Bootswatch_ theme.
 * `Django Cloud Browser`_: A Django reusable app for browsing cloud
   datastores (e.g., Amazon Web Services S3).
+* `C++ Format`_: Small, safe and fast formatting library for C++.
 
 The theme demo website also includes an `examples page`_ for some useful
 illustrations of getting Sphinx to play nicely with Bootstrap (also take a
@@ -42,6 +43,7 @@ look at the `examples source`_ for the underlying reStructuredText).
 .. _examples page: http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html
 .. _examples source: http://ryan-roemer.github.com/sphinx-bootstrap-theme/_sources/examples.txt
 .. _Django Cloud Browser: http://ryan-roemer.github.com/django-cloud-browser
+.. _C++ Format: http://cppformat.readthedocs.org
 
 
 Installation
