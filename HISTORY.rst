@@ -4,6 +4,9 @@
 
 Current
 =======
+* Switch demo to "sandstone" theme.
+* Update to Bootswatch v3.3.4+1.
+* Update to Bootstrap v3.3.4.
 * Update Sphinx website links. (`@mrmsl`_)
 
 v0.4.5
