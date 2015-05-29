@@ -143,24 +143,11 @@ html_theme_options = {
     # as "amelia" or "cosmo".
     #
     # Example themes:
-    # * amelia
-    # * cerulean
-    # * cosmo
-    # * cyborg
-    # * cupid (v3 only)
     # * flatly
-    # * journal
-    # * lumen (v3 only)
-    # * paper (v3 only)
-    # * readable
-    # * simplex
-    # * slate
-    # * spacelab
-    # * spruce (v2 only)
-    # * superhero
+    # * sandstone (v3 only)
     # * united
     # * yeti (v3 only)
-    'bootswatch_theme': "yeti",
+    'bootswatch_theme': "sandstone",
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)
