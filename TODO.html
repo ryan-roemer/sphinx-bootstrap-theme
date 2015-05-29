@@ -5,17 +5,17 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Future Work &mdash; Demo 0.4.5 documentation</title>
+    <title>Future Work &mdash; Demo 0.4.6 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.2.0/flatly/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.4/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.4.5',
+        VERSION:     '0.4.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.4.5 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.4.6 documentation" href="index.html" />
     <link rel="prev" title="History" href="HISTORY.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -64,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.4.5</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.6</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -110,7 +110,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#current">Current</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-6">v0.4.6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-5">v0.4.5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-4">v0.4.4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-3">v0.4.3</a></li>
@@ -154,7 +154,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Future Work</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#css-layout">CSS / Layout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrade-notes">Upgrade Notes</a></li>
 </ul>
 </li>
 </ul>
@@ -173,7 +173,7 @@
 <li><a class="reference internal" href="#">Future Work</a><ul>
 <li><a class="reference internal" href="#css-layout">CSS / Layout</a></li>
 <li><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
-<li><a class="reference internal" href="#notes">Notes</a></li>
+<li><a class="reference internal" href="#upgrade-notes">Upgrade Notes</a></li>
 </ul>
 </li>
 </ul>
@@ -236,14 +236,20 @@ navbar below the page title.</li>
 <li>Re-enable the downloads.</li>
 </ul>
 </div>
-<div class="section" id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
-<p>Updating bootswatch:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd </span>scm/vendor/bootswatch
+<div class="section" id="upgrade-notes">
+<h2>Upgrade Notes<a class="headerlink" href="#upgrade-notes" title="Permalink to this headline">¶</a></h2>
+<p>Get new <tt class="docutils literal"><span class="pre">bootstrap-VERSION</span></tt> and drop in <tt class="docutils literal"><span class="pre">bootstrap/static</span></tt>.</p>
+<p>Manually grep and replace instances of <tt class="docutils literal"><span class="pre">jQuery</span></tt> with
+<tt class="docutils literal"><span class="pre">(window.$jqTheme</span> <span class="pre">||</span> <span class="pre">window.jQuery)</span></tt> in files in the new
+<cite>bootstrap-VERSION/js</cite> directory.</p>
+<p>Update <tt class="docutils literal"><span class="pre">VERSION</span></tt> in <tt class="docutils literal"><span class="pre">sphinx_bootstrap_theme/bootstrap/layout.html</span></tt></p>
+<p>Update bootswatch:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Create tarball of everything for bootswatch to drop in and replace.</span>
+<span class="nv">$ </span><span class="nb">cd </span>scm/vendor/bootswatch
+<span class="nv">$ </span>git checkout v3.3.4+1
 <span class="nv">$ </span>find . -name <span class="s2">&quot;bootstrap.min.css&quot;</span> | <span class="se">\</span>
-  egrep -v <span class="s2">&quot;\/2|bower_components\/&quot;</span> | <span class="se">\</span>
-  xargs tar cf - &gt; ~/Desktop/bootswatch-3.2.0.tar
-<span class="c"># TODO: AND... add the fonts too!</span>
+  <span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;./fonts&quot;</span> <span class="o">&amp;&amp;</span> egrep -v <span class="s2">&quot;\/2|bower_components\/&quot;</span><span class="o">)</span> | <span class="se">\</span>
+  xargs tar cf - &gt; ~/Desktop/bootswatch-3.3.4.tar
 </pre></div>
 </div>
 </div>
@@ -261,7 +267,7 @@ navbar below the page title.</li>
       
     </p>
     <p>
-        &copy; Copyright 2011-2014, Ryan Roemer.<br/>
+        &copy; Copyright 2011-2015, Ryan Roemer.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.<br/>
     </p>
   </div>

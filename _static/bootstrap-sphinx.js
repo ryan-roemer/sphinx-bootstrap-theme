@@ -138,13 +138,6 @@
       $localLi.first().after('<li class="divider"></li>');
     }
 
-    // Manually add dropdown.
-    // Appears unnecessary as of:
-    //   https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/90
-    // Remove next time around...
-    // a.dropdown-toggle class needed in globaltoc.html
-    //$('.dropdown-toggle').dropdown();
-
     // Patch tables.
     patchTables();
 
