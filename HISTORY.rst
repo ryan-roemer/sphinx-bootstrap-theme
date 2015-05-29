@@ -2,8 +2,8 @@
  History
 =========
 
-Current
-=======
+v0.4.6
+======
 * Switch demo to "sandstone" theme.
 * Update to Bootswatch v3.3.4+1.
 * Update to Bootstrap v3.3.4.
