@@ -33,7 +33,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Demo'
-copyright = u'2011-2014, Ryan Roemer'
+copyright = u'2011-2015, Ryan Roemer'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -142,7 +142,7 @@ html_theme_options = {
     # Options are nothing (default) or the name of a valid theme such
     # as "amelia" or "cosmo".
     #
-    # Themes:
+    # Example themes:
     # * amelia
     # * cerulean
     # * cosmo
@@ -151,6 +151,7 @@ html_theme_options = {
     # * flatly
     # * journal
     # * lumen (v3 only)
+    # * paper (v3 only)
     # * readable
     # * simplex
     # * slate
@@ -159,7 +160,7 @@ html_theme_options = {
     # * superhero
     # * united
     # * yeti (v3 only)
-    'bootswatch_theme': "flatly",
+    'bootswatch_theme': "sandstone",
 
     # Choose Bootstrap version.
     # Values: "3" (default) or "2" (in quotes)

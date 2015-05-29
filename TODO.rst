@@ -47,15 +47,24 @@ Infrastructure
 
   .. _downloads: http://ryan-roemer.github.com/sphinx-bootstrap-theme/downloads.html
 
-Notes
-=====
+Upgrade Notes
+=============
 
-Updating bootswatch:
+Get new ``bootstrap-VERSION`` and drop in ``bootstrap/static``.
+
+Manually grep and replace instances of ``jQuery`` with
+``(window.$jqTheme || window.jQuery)`` in files in the new
+`bootstrap-VERSION/js` directory.
+
+Update ``VERSION`` in ``sphinx_bootstrap_theme/bootstrap/layout.html``
+
+Update bootswatch:
 
 .. code-block:: bash
 
+    # Create tarball of everything for bootswatch to drop in and replace.
     $ cd scm/vendor/bootswatch
+    $ git checkout v3.3.4+1
     $ find . -name "bootstrap.min.css" | \
-      egrep -v "\/2|bower_components\/" | \
-      xargs tar cf - > ~/Desktop/bootswatch-3.2.0.tar
-    # TODO: AND... add the fonts too!
+      (echo "./fonts" && egrep -v "\/2|bower_components\/") | \
+      xargs tar cf - > ~/Desktop/bootswatch-3.3.4.tar
