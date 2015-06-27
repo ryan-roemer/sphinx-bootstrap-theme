@@ -2,6 +2,12 @@
  History
 =========
 
+v0.4.7
+======
+* Fix jumpy sidenav
+  `#131 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/131>`_.
+  (`@cslarsen_`)
+
 v0.4.6
 ======
 * Switch demo to "sandstone" theme.
@@ -223,6 +229,7 @@ v0.0.1
 .. _@aababilov: https://github.com/aababilov
 .. _@adamcharnock: https://github.com/adamcharnock
 .. _@cdbennett: https://github.com/cdbennett
+.. _@cslarsen: https://github.com/cslarsen
 .. _@Danack: https://github.com/Danack
 .. _@EricFromCanada: https://github.com/EricFromCanada
 .. _@fjfeijoo: https://github.com/fjfeijoo
