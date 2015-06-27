@@ -6,7 +6,7 @@ v0.4.7
 ======
 * Fix jumpy sidenav
   `#131 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/131>`_.
-  (`@cslarsen_`)
+  (`@cslarsen`_)
 
 v0.4.6
 ======
