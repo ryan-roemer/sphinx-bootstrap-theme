@@ -2,6 +2,11 @@
  History
 =========
 
+v0.4.8
+======
+* Fix sidenav overflow / scrolling.
+  `#136 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/136>`_.
+
 v0.4.7
 ======
 * Fix jumpy sidenav
