@@ -64,7 +64,7 @@ Update bootswatch:
 
     # Create tarball of everything for bootswatch to drop in and replace.
     $ cd scm/vendor/bootswatch
-    $ git checkout v3.3.4+1
+    $ git checkout v3.3.6+1
     $ find . -name "bootstrap.min.css" | \
       (echo "./fonts" && egrep -v "\/2|bower_components\/") | \
-      xargs tar cf - > ~/Desktop/bootswatch-3.3.4.tar
+      xargs tar cf - > ~/Desktop/bootswatch-3.3.6.tar

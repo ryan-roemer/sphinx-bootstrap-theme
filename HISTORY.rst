@@ -2,6 +2,11 @@
  History
 =========
 
+Current
+=======
+* Update to Bootswatch v3.3.6+1
+* Update to Bootstrap v3.3.6
+
 v0.4.8
 ======
 * Fix sidenav overflow / scrolling.
