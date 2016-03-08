@@ -5,14 +5,14 @@
  */
 
 if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
-  throw new Error('Bootstrap\'s JavaScript requires (window.$jqTheme || window.jQuery)')
+  throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
 
 +function ($) {
   'use strict';
-  var version = $.fn.(window.$jqTheme || window.jQuery).split(' ')[0].split('.')
+  var version = $.fn.jquery.split(' ')[0].split('.')
   if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 2)) {
-    throw new Error('Bootstrap\'s JavaScript requires (window.$jqTheme || window.jQuery) version 1.9.1 or higher, but lower than version 3')
+    throw new Error('Bootstrap\'s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 3')
   }
 }((window.$jqTheme || window.jQuery));
 
@@ -1249,7 +1249,7 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
 /* ========================================================================
  * Bootstrap: tooltip.js v3.3.6
  * http://getbootstrap.com/javascript/#tooltip
- * Inspired by the original (window.$jqTheme || window.jQuery).tipsy by Jason Frame
+ * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -2059,9 +2059,9 @@ if (typeof (window.$jqTheme || window.jQuery) === 'undefined') {
   // ====================
 
   var Tab = function (element) {
-    // jscs:disable requireDollarBefore(window.$jqTheme || window.jQuery)Assignment
+    // jscs:disable requireDollarBeforejQueryAssignment
     this.element = $(element)
-    // jscs:enable requireDollarBefore(window.$jqTheme || window.jQuery)Assignment
+    // jscs:enable requireDollarBeforejQueryAssignment
   }
 
   Tab.VERSION = '3.3.6'
