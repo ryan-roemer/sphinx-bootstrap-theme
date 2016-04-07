@@ -2,8 +2,8 @@
  History
 =========
 
-Current
-=======
+v0.4.9
+======
 * Update to Bootstrap v3.3.6 and Bootswatch v3.3.6+1 (`@ppyv`_)
 
 v0.4.8
