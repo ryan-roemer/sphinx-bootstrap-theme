@@ -4,8 +4,7 @@
 
 Current
 =======
-* Update to Bootswatch v3.3.6+1
-* Update to Bootstrap v3.3.6
+* Update to Bootstrap v3.3.6 and Bootswatch v3.3.6+1 (`@ppyv`_)
 
 v0.4.8
 ======
@@ -256,6 +255,7 @@ v0.0.1
 .. _@newgene: https://github.com/newgene
 .. _@oscarcp: https://github.com/oscarcp
 .. _@peteut: https://github.com/peteut
+.. _@ppyv: https://github.com/ppyv
 .. _@russell: https://github.com/russell
 .. _@sccolbert: https://github.com/sccolbert
 .. _@shiumachi: https://github.com/shiumachi
