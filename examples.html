@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Examples &mdash; Demo 0.4.9 documentation</title>
+    <title>Examples &mdash; Demo 0.4.10 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -15,7 +15,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.4.9',
+        VERSION:     '0.4.10',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.4.9 documentation" href="index.html" />
+    <link rel="top" title="Demo 0.4.10 documentation" href="index.html" />
     <link rel="next" title="Sidebar Examples" href="sidebar.html" />
     <link rel="prev" title="Sphinx Bootstrap Theme" href="README.html" />
 <meta charset='utf-8'>
@@ -65,7 +65,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.4.9</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.10</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -112,6 +112,7 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-10">v0.4.10</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-9">v0.4.9</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-8">v0.4.8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-7">v0.4.7</a></li>
@@ -214,7 +215,7 @@
               
                 
   <li>
-    <a href="README.html" title="Previous Chapter: Sphinx Bootstrap Theme"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Sphinx Bootstrap...</span>
+    <a href="README.html" title="Previous Chapter: Sphinx Bootstrap Theme"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Sphinx Bootst...</span>
     </a>
   </li>
   <li>
@@ -272,7 +273,7 @@ reStructuredText used to create these examples.</p>
 <div class="section" id="code">
 <h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
 <p>The Sphinx Bootstrap Theme uses Bootstrap styling for <tt class="docutils literal"><span class="pre">inline</span> <span class="pre">code</span> <span class="pre">text</span></tt> and</p>
-<div class="highlight-python"><div class="highlight"><pre>multiline
+<div class="highlight-python"><div class="highlight"><pre><span></span>multiline
 code text
 </pre></div>
 </div>
@@ -288,12 +289,12 @@ code text
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span class="sd">&quot;&quot;&quot;Sphinx bootstrap theme.&quot;&quot;&quot;</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Sphinx bootstrap theme.&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">VERSION</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
-<span class="n">__version__</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">VERSION</span><span class="p">)</span>
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">VERSION</span><span class="p">)</span>
 <span class="n">__version_full__</span> <span class="o">=</span> <span class="n">__version__</span>
 
 <span class="k">def</span> <span class="nf">get_html_theme_path</span><span class="p">():</span>
@@ -303,17 +304,17 @@ code text
 </pre></div>
 </td></tr></table></div>
 <p>It also works with existing Sphinx highlighting:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;html&gt;</span>
-  <span class="nt">&lt;body&gt;</span>Hello World<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Greet.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="s">&quot;Hello World&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello World&quot;</span>
 </pre></div>
 </div>
-<div class="highlight-javascript"><div class="highlight"><pre><span class="cm">/**</span>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm"> * Greet.</span>
 <span class="cm"> */</span>
 <span class="kd">function</span> <span class="nx">hello</span><span class="p">()</span><span class="o">:</span> <span class="p">{</span>
@@ -379,7 +380,7 @@ icon below for the version of Bootstrap that we used to build these docs.</p>
 <div class="section" id="bootstrap-2">
 <h3>Bootstrap 2<a class="headerlink" href="#bootstrap-2" title="Permalink to this headline">¶</a></h3>
 <p>The following template HTML:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-star-empty&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-star-empty&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>translates to a neat star:</p>
@@ -387,7 +388,7 @@ icon below for the version of Bootstrap that we used to build these docs.</p>
 <div class="section" id="bootstrap-3">
 <h3>Bootstrap 3<a class="headerlink" href="#bootstrap-3" title="Permalink to this headline">¶</a></h3>
 <p>The following template HTML:</p>
-<div class="highlight-html"><div class="highlight"><pre><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;glyphicon glyphicon-star-empty&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;glyphicon glyphicon-star-empty&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
 </pre></div>
 </div>
 <p>translates to a neat star:</p>
@@ -437,7 +438,7 @@ tables.</p>
 </tbody>
 </table>
 <p>which uses the directive:</p>
-<div class="highlight-python"><div class="highlight"><pre>.. cssclass:: table-bordered
+<div class="highlight-python"><div class="highlight"><pre><span></span>.. cssclass:: table-bordered
 </pre></div>
 </div>
 </div>
@@ -472,7 +473,7 @@ tables.</p>
 </tbody>
 </table>
 <p>which uses the directive:</p>
-<div class="highlight-python"><div class="highlight"><pre>.. cssclass:: table-striped
+<div class="highlight-python"><div class="highlight"><pre><span></span>.. cssclass:: table-striped
 </pre></div>
 </div>
 <p>And a &#8220;<strong>hoverable</strong>&#8221; table:</p>
@@ -504,7 +505,7 @@ tables.</p>
 </tbody>
 </table>
 <p>which uses the directive:</p>
-<div class="highlight-python"><div class="highlight"><pre>.. cssclass:: table-hover
+<div class="highlight-python"><div class="highlight"><pre><span></span>.. cssclass:: table-hover
 </pre></div>
 </div>
 </div>

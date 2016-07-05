@@ -2,9 +2,14 @@
  History
 =========
 
+v0.4.10
+=======
+* Fix logo / brand title wrapping bug. (`@miketheman`_)
+  `#141 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/141>`_.
+
 v0.4.9
 ======
-* Update to Bootstrap v3.3.6 and Bootswatch v3.3.6+1 (`@ppyv`_)
+* Update to Bootstrap v3.3.6 and Bootswatch v3.3.6+1. (`@ppyv`_)
 
 v0.4.8
 ======
@@ -250,6 +255,7 @@ v0.0.1
 .. _@masklinn: https://github.com/masklinn
 .. _@mdboom: https://github.com/mdboom
 .. _@MiCHiLU: https://github.com/MiCHiLU
+.. _@miketheman: https://github.com/miketheman
 .. _@mrmsl: https://github.com/mrmsl
 .. _@nail: https://github.com/nail
 .. _@newgene: https://github.com/newgene
