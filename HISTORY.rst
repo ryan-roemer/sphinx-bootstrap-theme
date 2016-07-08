@@ -2,6 +2,12 @@
  History
 =========
 
+Unreleased
+==========
+* Fix logo sizing issue on mobile with RTD.
+  `#142 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/142>`_.
+
+
 v0.4.10
 =======
 * Fix logo / brand title wrapping bug. (`@miketheman`_)
