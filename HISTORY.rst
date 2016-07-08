@@ -2,8 +2,8 @@
  History
 =========
 
-Unreleased
-==========
+v0.4.11
+=======
 * Fix logo sizing issue on mobile with RTD.
   `#142 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/142>`_.
 
