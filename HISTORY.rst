@@ -2,6 +2,11 @@
  History
 =========
 
+v0.4.12
+=======
+* Fix typo in theme CSS rule. (`@vkoby`_)
+  `#144 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/144>`_.
+
 v0.4.11
 =======
 * Fix logo sizing issue on mobile with RTD.
@@ -274,4 +279,5 @@ v0.0.1
 .. _@thedrow: https://github.com/thedrow
 .. _@torbjoernk: https://github.com/torbjoernk
 .. _@tristanlins: https://github.com/tristanlins
+.. _@vkoby: https://github.com/vkoby
 .. _@zyga: https://github.com/zyga
