@@ -41,7 +41,7 @@ def clean():
 
 @task
 def demo():
-    """Clean build files."""
+    """Build demo files."""
     with lcd("demo"):
         local("make html")
 
