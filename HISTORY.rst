@@ -2,6 +2,11 @@
  History
 =========
 
+v0.4.13
+=======
+* Fix search with larger sidebar. (`@cemsbr`_)
+  `#148 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/148>`_.
+
 v0.4.12
 =======
 * Fix typo in theme CSS rule. (`@vkoby`_)
@@ -254,6 +259,7 @@ v0.0.1
 .. _@aababilov: https://github.com/aababilov
 .. _@adamcharnock: https://github.com/adamcharnock
 .. _@cdbennett: https://github.com/cdbennett
+.. _@cemsbr: https://github.com/cemsbr
 .. _@cslarsen: https://github.com/cslarsen
 .. _@Danack: https://github.com/Danack
 .. _@EricFromCanada: https://github.com/EricFromCanada
