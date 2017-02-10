@@ -80,6 +80,7 @@ Danger
 Footnotes
 =========
 I have footnoted a first item [#f1]_ and second item [#f2]_.
+This also references the second item [#f2]_.
 
 .. rubric:: Footnotes
 .. [#f1] My first footnote.
