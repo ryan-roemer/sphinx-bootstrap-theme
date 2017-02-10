@@ -2,6 +2,11 @@
  History
 =========
 
+v0.4.14
+=======
+* Fix visibiliy of multiple footnote references. (`@drewhutchison`_)
+  `#152 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/152>`_.
+
 v0.4.13
 =======
 * Fix search with larger sidebar. (`@cemsbr`_)
@@ -262,6 +267,7 @@ v0.0.1
 .. _@cemsbr: https://github.com/cemsbr
 .. _@cslarsen: https://github.com/cslarsen
 .. _@Danack: https://github.com/Danack
+.. _@drewhutchison: https://github.com/drewhutchison
 .. _@EricFromCanada: https://github.com/EricFromCanada
 .. _@fjfeijoo: https://github.com/fjfeijoo
 .. _@gkthiruvathukal: https://github.com/gkthiruvathukal
