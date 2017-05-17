@@ -4,7 +4,7 @@
 
 Unreleased
 ==========
-* Fix `css_files` breakage from Sphinx `1.6+` update.
+* Fix ``css_files`` breakage from Sphinx `1.6+` update.
   `#158 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/158>`_,
   `#160 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/160>`_.
 
