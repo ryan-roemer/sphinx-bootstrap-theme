@@ -215,7 +215,7 @@ configured as above, but with the following code::
     {% extends "!layout.html" %}
 
     {# Custom CSS overrides #}
-    {% set bootswatch_css_custom = ['_static/my-styles.css'] %}
+    {% set bootswatch_css_custom = ['my-styles.css'] %}
 
 Then, in the new file "source/_static/my-styles.css", add any appropriate
 styling, e.g. a bold background color::
