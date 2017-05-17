@@ -30,12 +30,6 @@
     @import url("{{ 'bootstrap-' + bootstrap_version + '/css/bootstrap-' + bootstrap_additional_css + '.min.css' }}");
 {% endif %}
 
-{% if bootswatch_css_custom %}
-  {%- for css_custom in bootswatch_css_custom %}
-    @import url("{{ css_custom }}");
-  {%- endfor %}
-{% endif %}
-
 /*
  * Styles
  */
