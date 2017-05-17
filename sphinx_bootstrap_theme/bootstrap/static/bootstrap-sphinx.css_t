@@ -13,10 +13,8 @@
 
 {% if theme_bootstrap_version == "3" %}
   {% set bootstrap_version, bootstrap_additional_css = "3.3.6", "theme" %}
-  {% set bs_span_prefix = "col-md-" %}
 {% else %}
   {% set bootstrap_version, bootstrap_additional_css = "2.3.2", "responsive" %}
-  {% set bs_span_prefix = "span" %}
 {% endif %}
 
 {% if theme_bootswatch_theme and theme_bootswatch_theme != "\"\"" %}
