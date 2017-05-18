@@ -225,6 +225,9 @@ html_sidebars = {'sidebar': ['localtoc.html', 'sourcelink.html', 'searchbox.html
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'MyProjectDoc'
 
+# # Custom style overrides
+# def setup(app):
+#     app.add_stylesheet('my-styles.css')  # may also be an URL
 
 # -- Options for LaTeX output --------------------------------------------------
 
