@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Future Work &mdash; Demo 0.4.14 documentation</title>
+    <title>Future Work &#8212; Demo 0.5.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.6/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.4.14',
+        VERSION:     '0.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +26,8 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.4.14 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="History" href="HISTORY.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -64,7 +63,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.4.14</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -101,7 +100,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sidebar.html">Sidebar Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sidebar.html#headings">Headings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sidebar.html#let-s-rock-some-lorem">Let&#8217;s Rock Some Lorem!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sidebar.html#let-s-rock-some-lorem">Let’s Rock Some Lorem!</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="subdir/index.html">Subdirectory Page</a><ul>
@@ -111,6 +110,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-5-0">v0.5.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-14">v0.4.14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-13">v0.4.13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-4-12">v0.4.12</a></li>
@@ -160,7 +160,7 @@
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-0-1">v0.0.1</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Future Work</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Future Work</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#css-layout">CSS / Layout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#upgrade-notes">Upgrade Notes</a></li>
@@ -204,7 +204,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/TODO.txt"
+  <a href="_sources/TODO.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -235,7 +235,7 @@
 <ul class="simple">
 <li>Search Bar: Is aligned right inconsistently in BS2 vs. BS3.</li>
 <li>Footnotes: Need much better styling. Maybe switch to tooltips.</li>
-<li>Optionally move the <tt class="docutils literal"><span class="pre">localtoc</span></tt> from the top navigation bar into it&#8217;s own
+<li>Optionally move the <code class="docutils literal"><span class="pre">localtoc</span></code> from the top navigation bar into it’s own
 navbar below the page title.</li>
 </ul>
 </div>
@@ -247,16 +247,16 @@ navbar below the page title.</li>
 </div>
 <div class="section" id="upgrade-notes">
 <h2>Upgrade Notes<a class="headerlink" href="#upgrade-notes" title="Permalink to this headline">¶</a></h2>
-<p>Get new <tt class="docutils literal"><span class="pre">bootstrap-VERSION</span></tt> and drop in <tt class="docutils literal"><span class="pre">bootstrap/static</span></tt>.</p>
-<p>Manually grep and replace instances of <tt class="docutils literal"><span class="pre">jQuery</span></tt> with
-<tt class="docutils literal"><span class="pre">(window.$jqTheme</span> <span class="pre">||</span> <span class="pre">window.jQuery)</span></tt> in files in the new
+<p>Get new <code class="docutils literal"><span class="pre">bootstrap-VERSION</span></code> and drop in <code class="docutils literal"><span class="pre">bootstrap/static</span></code>.</p>
+<p>Manually grep and replace instances of <code class="docutils literal"><span class="pre">jQuery</span></code> with
+<code class="docutils literal"><span class="pre">(window.$jqTheme</span> <span class="pre">||</span> <span class="pre">window.jQuery)</span></code> in files in the new
 <cite>bootstrap-VERSION/js</cite> directory.</p>
-<p>Update <tt class="docutils literal"><span class="pre">VERSION</span></tt> in <tt class="docutils literal"><span class="pre">sphinx_bootstrap_theme/bootstrap/layout.html</span></tt></p>
+<p>Update <code class="docutils literal"><span class="pre">VERSION</span></code> in <code class="docutils literal"><span class="pre">sphinx_bootstrap_theme/bootstrap/layout.html</span></code></p>
 <p>Update bootswatch:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span class="c"># Create tarball of everything for bootswatch to drop in and replace.</span>
-<span class="nv">$ </span><span class="nb">cd </span>scm/vendor/bootswatch
-<span class="nv">$ </span>git checkout v3.3.6+1
-<span class="nv">$ </span>find . -name <span class="s2">&quot;bootstrap.min.css&quot;</span> <span class="p">|</span> <span class="se">\</span>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create tarball of everything for bootswatch to drop in and replace.</span>
+$ <span class="nb">cd</span> scm/vendor/bootswatch
+$ git checkout v3.3.6+1
+$ find . -name <span class="s2">&quot;bootstrap.min.css&quot;</span> <span class="p">|</span> <span class="se">\</span>
   <span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;./fonts&quot;</span> <span class="o">&amp;&amp;</span> egrep -v <span class="s2">&quot;\/2|bower_components\/&quot;</span><span class="o">)</span> <span class="p">|</span> <span class="se">\</span>
   xargs tar cf - &gt; ~/Desktop/bootswatch-3.3.6.tar
 </pre></div>
@@ -277,7 +277,7 @@ navbar below the page title.</li>
     </p>
     <p>
         &copy; Copyright 2011-2016, Ryan Roemer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.1.<br/>
     </p>
   </div>
 </footer>

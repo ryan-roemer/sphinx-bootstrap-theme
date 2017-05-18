@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>History &mdash; Demo 0.4.14 documentation</title>
+    <title>History &#8212; Demo 0.5.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.6/sandstone/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.4.14',
+        VERSION:     '0.5.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -28,7 +26,8 @@
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="Demo 0.4.14 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Future Work" href="TODO.html" />
     <link rel="prev" title="Subdirectory Page" href="subdir/index.html" />
 <meta charset='utf-8'>
@@ -65,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.4.14</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.5.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -102,7 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sidebar.html">Sidebar Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="sidebar.html#headings">Headings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sidebar.html#let-s-rock-some-lorem">Let&#8217;s Rock Some Lorem!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sidebar.html#let-s-rock-some-lorem">Let’s Rock Some Lorem!</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="subdir/index.html">Subdirectory Page</a><ul>
@@ -111,7 +110,8 @@
 </li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">History</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#v0-5-0">v0.5.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-4-14">v0.4.14</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-4-13">v0.4.13</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v0-4-12">v0.4.12</a></li>
@@ -181,6 +181,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">History</a><ul>
+<li><a class="reference internal" href="#v0-5-0">v0.5.0</a></li>
 <li><a class="reference internal" href="#v0-4-14">v0.4.14</a></li>
 <li><a class="reference internal" href="#v0-4-13">v0.4.13</a></li>
 <li><a class="reference internal" href="#v0-4-12">v0.4.12</a></li>
@@ -239,7 +240,7 @@
               
                 
   <li>
-    <a href="subdir/index.html" title="Previous Chapter: Subdirectory Page"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Subdirectory Pag...</span>
+    <a href="subdir/index.html" title="Previous Chapter: Subdirectory Page"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Subdirectory ...</span>
     </a>
   </li>
   <li>
@@ -253,7 +254,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="_sources/HISTORY.txt"
+  <a href="_sources/HISTORY.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -279,6 +280,15 @@
       
   <div class="section" id="history">
 <h1>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="v0-5-0">
+<h2>v0.5.0<a class="headerlink" href="#v0-5-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Fix <code class="docutils literal"><span class="pre">css_files</span></code> breakage from Sphinx <code class="docutils literal"><span class="pre">1.6+</span></code> update.
+<a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/158">#158</a>,
+<a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/160">#160</a>.</li>
+<li><strong>Breaking Change</strong>: Remove <code class="docutils literal"><span class="pre">bootswatch_css_custom</span></code> override, and instead opt for documenting idiomatic Sphinx-version specific generic overrides for custom CSS.</li>
+</ul>
+</div>
 <div class="section" id="v0-4-14">
 <h2>v0.4.14<a class="headerlink" href="#v0-4-14" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -338,7 +348,7 @@
 <div class="section" id="v0-4-6">
 <h2>v0.4.6<a class="headerlink" href="#v0-4-6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Switch demo to &#8220;sandstone&#8221; theme.</li>
+<li>Switch demo to “sandstone” theme.</li>
 <li>Update to Bootswatch v3.3.4+1.</li>
 <li>Update to Bootstrap v3.3.4.</li>
 <li>Update Sphinx website links. (<a class="reference external" href="https://github.com/mrmsl">&#64;mrmsl</a>)</li>
@@ -349,8 +359,8 @@
 <ul class="simple">
 <li>Add Glyphicon fonts to Bootswatch 2 static assets. Also add example using the
 icons so we can catch errors like this better in the future.</li>
-<li>Fix CSS generation with <tt class="docutils literal"><span class="pre">'navbar_fixed_top':</span> <span class="pre">&quot;false&quot;</span></tt> and
-<tt class="docutils literal"><span class="pre">'bootstrap_version':</span> <span class="pre">&quot;2&quot;</span></tt>.
+<li>Fix CSS generation with <code class="docutils literal"><span class="pre">'navbar_fixed_top':</span> <span class="pre">&quot;false&quot;</span></code> and
+<code class="docutils literal"><span class="pre">'bootstrap_version':</span> <span class="pre">&quot;2&quot;</span></code>.
 Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/121">#121</a>.
 (<a class="reference external" href="https://github.com/EricFromCanada">&#64;EricFromCanada</a>)</li>
 </ul>
@@ -358,13 +368,13 @@ Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-
 <div class="section" id="v0-4-4">
 <h2>v0.4.4<a class="headerlink" href="#v0-4-4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Reset <tt class="docutils literal"><span class="pre">.container</span></tt> padding after Sphinx 1.3b commit overrode CSS.
+<li>Reset <code class="docutils literal"><span class="pre">.container</span></code> padding after Sphinx 1.3b commit overrode CSS.
 Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/114">#114</a>.
 (<a class="reference external" href="https://github.com/EricFromCanada">&#64;EricFromCanada</a>)</li>
 <li>Fix situation where Python 3 + modern Sphinx results in empty strings being
 interpreted as a non-existent Bootswatch theme for
-<tt class="docutils literal"><span class="pre">theme_bootswatch_theme</span></tt> by permissively allowing old (empty quotes) or
-new (empty or <tt class="docutils literal"><span class="pre">None</span></tt>) styles.
+<code class="docutils literal"><span class="pre">theme_bootswatch_theme</span></code> by permissively allowing old (empty quotes) or
+new (empty or <code class="docutils literal"><span class="pre">None</span></code>) styles.
 Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/115">#115</a>.
 (<a class="reference external" href="https://github.com/EricFromCanada">&#64;EricFromCanada</a>, <a class="reference external" href="https://github.com/peteut">&#64;peteut</a>, <a class="reference external" href="https://github.com/mdboom">&#64;mdboom</a>)</li>
 </ul>
@@ -372,7 +382,7 @@ Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-
 <div class="section" id="v0-4-3">
 <h2>v0.4.3<a class="headerlink" href="#v0-4-3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Add <tt class="docutils literal"><span class="pre">fonts/</span></tt> directories to bootswatch. (<a class="reference external" href="https://github.com/gkthiruvathukal">&#64;gkthiruvathukal</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">fonts/</span></code> directories to bootswatch. (<a class="reference external" href="https://github.com/gkthiruvathukal">&#64;gkthiruvathukal</a>)</li>
 <li>Remove divider-vertical from BS3 navbar.html. (<a class="reference external" href="https://github.com/kaycebasques">&#64;kaycebasques</a>)</li>
 </ul>
 </div>
@@ -427,7 +437,7 @@ Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-
 <div class="section" id="v0-3-5">
 <h2>v0.3.5<a class="headerlink" href="#v0-3-5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Adds navbar logo&#8217;s back to BS3. Switch to actual <tt class="docutils literal"><span class="pre">&lt;img&gt;</span></tt> tags for logos.
+<li>Adds navbar logo’s back to BS3. Switch to actual <code class="docutils literal"><span class="pre">&lt;img&gt;</span></code> tags for logos.
 Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/52">#52</a>.</li>
 <li>Fix responsive Bootswatch for Bootstrap v2.</li>
 </ul>
@@ -435,9 +445,9 @@ Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-
 <div class="section" id="v0-3-4">
 <h2>v0.3.4<a class="headerlink" href="#v0-3-4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Switch demo to &#8220;flatly&#8221; theme.</li>
-<li>Fix the long-broken &#8220;Source&#8221; nav. link.</li>
-<li>Add missing &#8220;flatly&#8221; to bootswatch CSS static files.</li>
+<li>Switch demo to “flatly” theme.</li>
+<li>Fix the long-broken “Source” nav. link.</li>
+<li>Add missing “flatly” to bootswatch CSS static files.</li>
 </ul>
 </div>
 <div class="section" id="v0-3-3">
@@ -460,7 +470,7 @@ Completes <a class="reference external" href="https://github.com/ryan-roemer/sph
 <div class="section" id="v0-3-1">
 <h2>v0.3.1<a class="headerlink" href="#v0-3-1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Re-add <tt class="docutils literal"><span class="pre">navbar_links</span></tt> theme option lost in bad merge. (<a class="reference external" href="https://github.com/newgene">&#64;newgene</a>)</li>
+<li>Re-add <code class="docutils literal"><span class="pre">navbar_links</span></code> theme option lost in bad merge. (<a class="reference external" href="https://github.com/newgene">&#64;newgene</a>)</li>
 <li>Fixed display of sidebar. (<a class="reference external" href="https://github.com/adamcharnock">&#64;adamcharnock</a>, <a class="reference external" href="https://github.com/russell">&#64;russell</a>)</li>
 </ul>
 </div>
@@ -473,8 +483,8 @@ Completes <a class="reference external" href="https://github.com/ryan-roemer/sph
 <div class="section" id="v0-2-9">
 <h2>v0.2.9<a class="headerlink" href="#v0-2-9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Add <tt class="docutils literal"><span class="pre">navbar_links</span></tt> theme option. (<a class="reference external" href="https://github.com/newgene">&#64;newgene</a>)</li>
-<li>Add <tt class="docutils literal"><span class="pre">navbarextra</span></tt> block in &#8220;layout.html&#8221;. (<a class="reference external" href="https://github.com/grncdr">&#64;grncdr</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">navbar_links</span></code> theme option. (<a class="reference external" href="https://github.com/newgene">&#64;newgene</a>)</li>
+<li>Add <code class="docutils literal"><span class="pre">navbarextra</span></code> block in “layout.html”. (<a class="reference external" href="https://github.com/grncdr">&#64;grncdr</a>)</li>
 </ul>
 </div>
 <div class="section" id="v0-2-8">
@@ -543,22 +553,22 @@ Fixes <a class="reference external" href="https://github.com/ryan-roemer/sphinx-
 <h2>v0.2.0<a class="headerlink" href="#v0-2-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Update to Bootstrap v2.3.1.</li>
-<li>Add <tt class="docutils literal"><span class="pre">bootswatch_theme</span></tt> option for <a class="reference external" href="http://bootswatch.com">Bootswatch</a>
+<li>Add <code class="docutils literal"><span class="pre">bootswatch_theme</span></code> option for <a class="reference external" href="http://bootswatch.com">Bootswatch</a>
 CSS theme support. (<a class="reference external" href="https://github.com/zyga">&#64;zyga</a>)</li>
 </ul>
 </div>
 <div class="section" id="v0-1-8">
 <h2>v0.1.8<a class="headerlink" href="#v0-1-8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Add <tt class="docutils literal"><span class="pre">globaltoc_includehidden</span></tt> option.</li>
+<li>Add <code class="docutils literal"><span class="pre">globaltoc_includehidden</span></code> option.</li>
 </ul>
 </div>
 <div class="section" id="v0-1-7">
 <h2>v0.1.7<a class="headerlink" href="#v0-1-7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Add Python 3 support. (<a class="reference external" href="https://github.com/zyga">&#64;zyga</a>)</li>
-<li>Add support for <tt class="docutils literal"><span class="pre">navbar_title</span></tt> theme configuration. The documentation
-originally stated that <tt class="docutils literal"><span class="pre">html_short_title</span></tt> was supported for overriding the
+<li>Add support for <code class="docutils literal"><span class="pre">navbar_title</span></code> theme configuration. The documentation
+originally stated that <code class="docutils literal"><span class="pre">html_short_title</span></code> was supported for overriding the
 navbar title (brand), but this never actually worked.
 (Thanks to Tim Kedmenec for pointing this out).</li>
 </ul>
@@ -566,24 +576,24 @@ navbar title (brand), but this never actually worked.
 <div class="section" id="v0-1-4">
 <h2>v0.1.4<a class="headerlink" href="#v0-1-4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Remove the <tt class="docutils literal"><span class="pre">Site</span></tt> nav button if no other pages.</li>
-<li>Added jQuery v1.9.1 with <tt class="docutils literal"><span class="pre">noConflict()</span></tt> to allow underlying Sphinx to use
+<li>Remove the <code class="docutils literal"><span class="pre">Site</span></code> nav button if no other pages.</li>
+<li>Added jQuery v1.9.1 with <code class="docutils literal"><span class="pre">noConflict()</span></code> to allow underlying Sphinx to use
 whatever jQuery it wants.</li>
 <li>Update to Bootstrap v2.3.0.</li>
-<li>Fix multi-word Bootstrap-styled <tt class="docutils literal"><span class="pre">code</span></tt> elements.</li>
+<li>Fix multi-word Bootstrap-styled <code class="docutils literal"><span class="pre">code</span></code> elements.</li>
 </ul>
 </div>
 <div class="section" id="v0-1-3">
 <h2>v0.1.3<a class="headerlink" href="#v0-1-3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Convert inline code to Bootstrap-styled <tt class="docutils literal"><span class="pre">code</span></tt> elements.</li>
+<li>Convert inline code to Bootstrap-styled <code class="docutils literal"><span class="pre">code</span></code> elements.</li>
 </ul>
 </div>
 <div class="section" id="v0-1-2">
 <h2>v0.1.2<a class="headerlink" href="#v0-1-2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Add <tt class="docutils literal"><span class="pre">globaltoc_depth</span></tt> theme option.</li>
-<li>Add Bootstrap alert styling to &#8220;note&#8221;, &#8220;warning&#8221; Sphinx directives.</li>
+<li>Add <code class="docutils literal"><span class="pre">globaltoc_depth</span></code> theme option.</li>
+<li>Add Bootstrap alert styling to “note”, “warning” Sphinx directives.</li>
 </ul>
 </div>
 <div class="section" id="v0-1-1">
@@ -608,7 +618,7 @@ whatever jQuery it wants.</li>
 <h2>v0.0.4<a class="headerlink" href="#v0-0-4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Get mobile (iPhone) viewport and nav menus working.</li>
-<li>Add new theme options <tt class="docutils literal"><span class="pre">navbar_class</span></tt>, <tt class="docutils literal"><span class="pre">source_link_position</span></tt>.</li>
+<li>Add new theme options <code class="docutils literal"><span class="pre">navbar_class</span></code>, <code class="docutils literal"><span class="pre">source_link_position</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="v0-0-3">
@@ -646,7 +656,7 @@ whatever jQuery it wants.</li>
     </p>
     <p>
         &copy; Copyright 2011-2016, Ryan Roemer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.1.<br/>
     </p>
   </div>
 </footer>

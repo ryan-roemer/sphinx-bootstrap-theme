@@ -204,26 +204,39 @@ file to override a style, which in the demo would be something like::
     $ mkdir source/_static
     $ touch source/_static/my-styles.css
 
+In the new file "source/_static/my-styles.css", add any appropriate styling,
+e.g. a bold background color::
+
+    footer {
+      background-color: red;
+    }
+
 Then, in "conf.py", edit this line::
 
     html_static_path = ["_static"]
 
-You will also need the override template "source/_templates/layout.html" file
+From there it depends on which version of Sphinx you are using:
+
+**Sphinx <= 1.5**
+
+You will need the override template "source/_templates/layout.html" file
 configured as above, but with the following code::
 
     {# Import the theme's layout. #}
     {% extends "!layout.html" %}
 
     {# Custom CSS overrides #}
-    {% set bootswatch_css_custom = ['_static/my-styles.css'] %}
+    {% set css_files = css_files + ['_static/my-styles.css'] %}
 
-Then, in the new file "source/_static/my-styles.css", add any appropriate
-styling, e.g. a bold background color::
+**Sphinx >= 1.6**
 
-    footer {
-      background-color: red;
-    }
+Add a `setup` function in "conf.py" with stylesheet paths added relative to the
+static path::
 
+    def setup(app):
+        app.add_stylesheet("my-styles.css") # also can be a full URL
+        # app.add_stylesheet("ANOTHER.css")
+        # app.add_stylesheet("AND_ANOTHER.css")
 
 Theme Notes
 ===========
