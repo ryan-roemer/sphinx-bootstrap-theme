@@ -2,6 +2,11 @@
  History
 =========
 
+v0.5.1
+======
+* Fix `@import url()` CSS imports to be relative paths so that you can have a
+  non-root / nested site.
+
 v0.5.0
 ======
 * Fix ``css_files`` breakage from Sphinx ``1.6+`` update.
