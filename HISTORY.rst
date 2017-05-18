@@ -4,7 +4,7 @@
 
 v0.5.1
 ======
-* Fix `@import url()` CSS imports to be relative paths so that you can have a
+* Fix ``@import url()`` CSS imports to be relative paths so that you can have a
   non-root / nested site.
 
 v0.5.0
