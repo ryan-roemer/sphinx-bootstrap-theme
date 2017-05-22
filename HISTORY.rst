@@ -2,6 +2,11 @@
  History
 =========
 
+v0.5.2
+======
+* Fix sidebar jQuery issue with height. (`@Sheile`_)
+  `#157 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/157>`_.
+
 v0.5.1
 ======
 * Fix ``@import url()`` CSS imports to be relative paths so that you can have a
@@ -300,6 +305,7 @@ v0.0.1
 .. _@ppyv: https://github.com/ppyv
 .. _@russell: https://github.com/russell
 .. _@sccolbert: https://github.com/sccolbert
+.. _@Sheile: https://github.com/Sheile
 .. _@shiumachi: https://github.com/shiumachi
 .. _@thedrow: https://github.com/thedrow
 .. _@torbjoernk: https://github.com/torbjoernk
