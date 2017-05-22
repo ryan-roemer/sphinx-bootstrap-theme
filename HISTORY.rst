@@ -2,10 +2,14 @@
  History
 =========
 
-v0.5.2
+v0.5.3
 ======
 * Fix sidebar jQuery issue with height. (`@Sheile`_)
   `#157 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/157>`_.
+
+v0.5.2
+======
+*bad release*
 
 v0.5.1
 ======
