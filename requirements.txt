@@ -1,2 +1,2 @@
 Fabric==1.6.0
-Sphinx==1.6.1
+Sphinx>=1.6.1

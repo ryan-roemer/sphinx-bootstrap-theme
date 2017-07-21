@@ -138,7 +138,7 @@ your "conf.py" file::
         # Bootswatch (http://bootswatch.com/) theme.
         #
         # Options are nothing (default) or the name of a valid theme
-        # such as "amelia" or "cosmo".
+        # such as "cosmo" or "sandstone".
         'bootswatch_theme': "united",
 
         # Choose Bootstrap version.
@@ -153,7 +153,7 @@ both contain version strings, which the navigation bar treats differently.
 
 Bootstrap Versions
 ------------------
-The theme supports Bootstrap ``v2.3.2`` and ``v3.3.4`` via the
+The theme supports Bootstrap ``v2.3.2`` and ``v3.3.7`` via the
 ``bootstrap_version`` theme option (of ``"2"`` or ``"3"``). Some notes
 regarding version differences:
 
@@ -161,6 +161,8 @@ regarding version differences:
   theme, they will not show up in site or page menus.
 * Internally, "navbar.html" is the Sphinx template used for Bootstrap v3 and
   "navbar-2.html" is the template used for v2.
+* If you are unsure what to choose, choose Bootstrap **3**.  If you experience some
+  form of compatibility issues, then try and use Bootstrap 2.
 
 .. _`sub-menus`: http://stackoverflow.com/questions/18023493
 
@@ -228,15 +230,30 @@ configured as above, but with the following code::
     {# Custom CSS overrides #}
     {% set css_files = css_files + ['_static/my-styles.css'] %}
 
-**Sphinx >= 1.6**
+.. warning::
 
-Add a `setup` function in "conf.py" with stylesheet paths added relative to the
+   The Sphinx Bootstrap Theme does not provide legacy Sphinx support, the
+   last version supporting Sphinx <= 1.5 is in Sphinx Bootstrap Theme v0.4.9.
+   Versions 0.5.0 and higher need Sphinx 1.6.1 (or higher).
+
+   See `Issue #159 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/159>`_
+   for more information.
+
+**Sphinx >= 1.6.1**
+
+Add a ``setup`` function in "conf.py" with stylesheet paths added relative to the
 static path::
 
     def setup(app):
         app.add_stylesheet("my-styles.css") # also can be a full URL
         # app.add_stylesheet("ANOTHER.css")
         # app.add_stylesheet("AND_ANOTHER.css")
+
+.. tip::
+
+   Sphinx automatically calls your ``setup`` function defined in "conf.py" during
+   the build process for you.  There is no need to, nor should you, call this
+   function directly in your code.
 
 Theme Notes
 ===========
