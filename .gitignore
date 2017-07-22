@@ -1,9 +1,11 @@
-\.DS_Store
-*\.pyc
+.DS_Store
+*.pyc
 
 build
 dist
-*\.egg-info
+*.egg-info
 demo/build/*
 node_modules
 __pycache__
+.vscode
+

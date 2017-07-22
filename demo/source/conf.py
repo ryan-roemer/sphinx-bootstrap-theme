@@ -140,7 +140,7 @@ html_theme_options = {
     # Bootswatch (http://bootswatch.com/) theme.
     #
     # Options are nothing (default) or the name of a valid theme such
-    # as "amelia" or "cosmo".
+    # such as "cosmo" or "sandstone".
     #
     # Example themes:
     # * flatly
