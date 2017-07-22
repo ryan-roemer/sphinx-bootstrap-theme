@@ -230,11 +230,7 @@ configured as above, but with the following code::
     {# Custom CSS overrides #}
     {% set css_files = css_files + ['_static/my-styles.css'] %}
 
-.. warning::
-
-   The Sphinx Bootstrap Theme does not provide legacy Sphinx support, the
-   last version supporting Sphinx <= 1.5 is in Sphinx Bootstrap Theme v0.4.9.
-   Versions 0.5.0 and higher need Sphinx 1.6.1 (or higher).
+.. note::
 
    See `Issue #159 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/159>`_
    for more information.

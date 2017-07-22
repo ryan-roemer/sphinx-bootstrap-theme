@@ -17,5 +17,5 @@ demo:
 #
 # make demo_server PORT=8080
 PORT ?= 8000
-demo_server:
+demo_server: demo
 	cd demo/build/html && python3 -m http.server $(PORT)
