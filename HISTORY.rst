@@ -2,6 +2,11 @@
  History
 =========
 
+v0.6.0
+======
+* Upgrade to Bootstrap / Bootswatch v3.3.7. (`@svenevs`_)
+  `#164 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/164>`_.
+
 v0.5.3
 ======
 * Fix sidebar jQuery issue with height. (`@Sheile`_)
@@ -311,6 +316,7 @@ v0.0.1
 .. _@sccolbert: https://github.com/sccolbert
 .. _@Sheile: https://github.com/Sheile
 .. _@shiumachi: https://github.com/shiumachi
+.. _@svenevs: https://github.com/svenevs
 .. _@thedrow: https://github.com/thedrow
 .. _@torbjoernk: https://github.com/torbjoernk
 .. _@tristanlins: https://github.com/tristanlins
