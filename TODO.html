@@ -3,16 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Future Work &#8212; Demo 0.5.3 documentation</title>
-    
+    <title>Future Work &#8212; Demo 0.6.0 documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.5.3',
+        VERSION:     '0.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,7 +21,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -63,7 +60,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -185,7 +182,11 @@
 <li><a class="reference internal" href="#">Future Work</a><ul>
 <li><a class="reference internal" href="#css-layout">CSS / Layout</a></li>
 <li><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
-<li><a class="reference internal" href="#upgrade-notes">Upgrade Notes</a></li>
+<li><a class="reference internal" href="#upgrade-notes">Upgrade Notes</a><ul>
+<li><a class="reference internal" href="#updating-bootstrap">Updating Bootstrap</a></li>
+<li><a class="reference internal" href="#update-bootswatch">Update Bootswatch</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -250,19 +251,174 @@ navbar below the page title.</li>
 </div>
 <div class="section" id="upgrade-notes">
 <h2>Upgrade Notes<a class="headerlink" href="#upgrade-notes" title="Permalink to this headline">¶</a></h2>
-<p>Get new <code class="docutils literal"><span class="pre">bootstrap-VERSION</span></code> and drop in <code class="docutils literal"><span class="pre">bootstrap/static</span></code>.</p>
-<p>Manually grep and replace instances of <code class="docutils literal"><span class="pre">jQuery</span></code> with
+<p>When upgrading, you must upgrade <strong>both</strong> Bootstrap and Bootswatch — Bootswatch
+releases are custom tailored to the a specific version of Bootstrap.  The version of
+jQuery (1.11) should be OK to leave as is unless a specific issue arises.</p>
+<p>In the below examples we are upgrading to bootstrap 3.3.7; Bootstrap 2 versions should
+not have a need to be changed.</p>
+<div class="section" id="updating-bootstrap">
+<h3>Updating Bootstrap<a class="headerlink" href="#updating-bootstrap" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Get new <code class="docutils literal"><span class="pre">bootstrap-VERSION</span></code> and drop in <code class="docutils literal"><span class="pre">bootstrap/static</span></code>.</p>
+<ul>
+<li><p class="first">New versions should be available <a class="reference external" href="http://getbootstrap.com/getting-started/#download">here</a>.</p>
+</li>
+<li><p class="first">Choose “Bootstrap”:</p>
+<blockquote>
+<div><p>Compiled and minified CSS, JavaScript, and fonts.  No docs or original
+source files are included.</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">Manually grep and replace instances of <code class="docutils literal"><span class="pre">(jQuery)</span></code> with
 <code class="docutils literal"><span class="pre">(window.$jqTheme</span> <span class="pre">||</span> <span class="pre">window.jQuery)</span></code> in files in the new
-<cite>bootstrap-VERSION/js</cite> directory.</p>
-<p>Update <code class="docutils literal"><span class="pre">VERSION</span></code> in <code class="docutils literal"><span class="pre">sphinx_bootstrap_theme/bootstrap/layout.html</span></code></p>
-<p>Update bootswatch:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Create tarball of everything for bootswatch to drop in and replace.</span>
-$ <span class="nb">cd</span> scm/vendor/bootswatch
-$ git checkout v3.3.6+1
-$ find . -name <span class="s2">&quot;bootstrap.min.css&quot;</span> <span class="p">|</span> <span class="se">\</span>
-  <span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;./fonts&quot;</span> <span class="o">&amp;&amp;</span> egrep -v <span class="s2">&quot;\/2|bower_components\/&quot;</span><span class="o">)</span> <span class="p">|</span> <span class="se">\</span>
-  xargs tar cf - &gt; ~/Desktop/bootswatch-3.3.6.tar
+<code class="docutils literal"><span class="pre">bootstrap-VERSION/js</span></code> directory.  See below.</p>
+</li>
+<li><p class="first">Update <code class="docutils literal"><span class="pre">VERSION</span></code> in <code class="docutils literal"><span class="pre">sphinx_bootstrap_theme/bootstrap/layout.html</span></code>:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">theme_bootstrap_version</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">bootstrap_version</span><span class="o">,</span> <span class="nv">navbar_version</span> <span class="o">=</span> <span class="s2">&quot;3.3.7&quot;</span><span class="o">,</span> <span class="s2">&quot;&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">bs_span_prefix</span> <span class="o">=</span> <span class="s2">&quot;col-md-&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">bootstrap_version</span><span class="o">,</span> <span class="nv">navbar_version</span> <span class="o">=</span> <span class="s2">&quot;2.3.2&quot;</span><span class="o">,</span> <span class="s2">&quot;-2&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">bs_span_prefix</span> <span class="o">=</span> <span class="s2">&quot;span&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
+</div>
+</li>
+<li><p class="first">Update <code class="docutils literal"><span class="pre">VERSION</span></code> in <code class="docutils literal"><span class="pre">sphinx_bootstrap_theme/bootstrap/static/bootstrap-sphinx.css_t</span></code></p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">if</span> <span class="nv">theme_bootstrap_version</span> <span class="o">==</span> <span class="s2">&quot;3&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">bootstrap_version</span><span class="o">,</span> <span class="nv">bootstrap_additional_css</span> <span class="o">=</span> <span class="s2">&quot;3.3.7&quot;</span><span class="o">,</span> <span class="s2">&quot;theme&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{%</span> <span class="k">set</span> <span class="nv">bootstrap_version</span><span class="o">,</span> <span class="nv">bootstrap_additional_css</span> <span class="o">=</span> <span class="s2">&quot;2.3.2&quot;</span><span class="o">,</span> <span class="s2">&quot;responsive&quot;</span> <span class="cp">%}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Choose your favorite text replacement tool for step 2, we will use <code class="docutils literal"><span class="pre">grep</span></code> and <code class="docutils literal"><span class="pre">sed</span></code>.
+The example here will be with the file <code class="docutils literal"><span class="pre">bootstrap.js</span></code> for understandability (since it
+is not minified).</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">#</span> First, locate the all of the calls to jQuery
+<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(jQuery)&#39;</span> bootstrap.js
+<span class="go">bootstrap.js:17:}(jQuery);</span>
+<span class="go">bootstrap.js:77:}(jQuery);</span>
+<span class="go">bootstrap.js:172:}(jQuery);</span>
+<span class="go">bootstrap.js:298:}(jQuery);</span>
+<span class="go">bootstrap.js:536:}(jQuery);</span>
+<span class="go">bootstrap.js:749:}(jQuery);</span>
+<span class="go">bootstrap.js:915:}(jQuery);</span>
+<span class="go">bootstrap.js:1255:}(jQuery);</span>
+<span class="go">bootstrap.js:1776:}(jQuery);</span>
+<span class="go">bootstrap.js:1885:}(jQuery);</span>
+<span class="go">bootstrap.js:2058:}(jQuery);</span>
+<span class="go">bootstrap.js:2214:}(jQuery);</span>
+<span class="go">bootstrap.js:2377:}(jQuery);</span>
+
+<span class="gp">#</span> Make the replacement in-place <span class="k">while</span> creating
+<span class="gp">#</span> a bootstrap.js.bak file <span class="o">(</span>backup of the original<span class="o">)</span>
+<span class="gp">$</span> sed -i.bak <span class="s1">&#39;s/(jQuery)/(window.$jqTheme || window.jQuery)/g&#39;</span> bootstrap.js
+
+<span class="gp">#</span> Verify there are no more <span class="o">(</span>jQuery<span class="o">)</span> left, and search our replacement
+<span class="gp">#</span> <span class="k">for</span> sanity checking <span class="o">(</span>all the line numbers should match up<span class="o">)</span>
+<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(jQuery)&#39;</span> bootstrap.js
+<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(window.$jqTheme || window.jQuery)&#39;</span> bootstrap.js
+<span class="gp">bootstrap.js:17:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:77:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:172:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:298:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:536:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:749:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:915:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:1255:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:1776:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:1885:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:2058:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:2214:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:2377:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+
+<span class="gp">#</span> IMPORTANT! Check your work!  Most of these were all in either
+<span class="gp">#</span> comments or error strings <span class="o">(</span>that we want to leave as is<span class="o">)</span>,
+<span class="gp">#</span> but line <span class="m">7</span> below needs to be updated!
+<span class="gp">#</span>
+<span class="gp">#</span> So line <span class="m">7</span> should be changed <span class="o">(</span>by you<span class="o">)</span> to be
+<span class="gp">#</span>
+<span class="gp">#</span>     <span class="k">if</span> <span class="o">(</span>typeof <span class="o">(</span>window.<span class="nv">$jqTheme</span> <span class="o">||</span> window.jQuery<span class="o">)</span> <span class="o">===</span> <span class="s1">&#39;undefined&#39;</span><span class="o">)</span> <span class="o">{</span>
+<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;jQuery&#39;</span> bootstrap.js
+<span class="go">bootstrap.js:7:if (typeof jQuery === &#39;undefined&#39;) {</span>
+<span class="go">bootstrap.js:8:  throw new Error(&#39;Bootstrap\&#39;s JavaScript requires jQuery&#39;)</span>
+<span class="go">bootstrap.js:15:    throw new Error(&#39;Bootstrap\&#39;s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4&#39;)</span>
+<span class="gp">bootstrap.js:17:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:77:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:172:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:298:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:536:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:749:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:915:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:1255:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="go">bootstrap.js:1260: * Inspired by the original jQuery.tipsy by Jason Frame</span>
+<span class="go">bootstrap.js:1624:    // Avoid using $.offset() on SVGs since it gives incorrect results in jQuery 3.</span>
+<span class="gp">bootstrap.js:1776:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:1885:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:2058:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="go">bootstrap.js:2076:    // jscs:disable requireDollarBeforejQueryAssignment</span>
+<span class="go">bootstrap.js:2078:    // jscs:enable requireDollarBeforejQueryAssignment</span>
+<span class="gp">bootstrap.js:2214:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+<span class="gp">bootstrap.js:2377:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
+
+<span class="gp">#</span> If all went according to plan, delete the backup
+<span class="gp">$</span> rm bootstrap.js.bak
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-bootswatch">
+<h3>Update Bootswatch<a class="headerlink" href="#update-bootswatch" title="Permalink to this headline">¶</a></h3>
+<p>In this example we will walk through how to create the necessary structure using version
+3.3.7 of Bootswatch.  When updating in the future, replace <code class="docutils literal"><span class="pre">3.3.7</span></code> in the below with
+the version of Bootswatch you are upgrading to.  <strong>Make sure</strong> that you are upgrading
+to the <strong>same</strong> version as Bootstrap!</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Go to a familiar working location, we choose ~/Desktop for this example</span>
+$ <span class="nb">cd</span> ~/Desktop
+
+<span class="c1"># Download the source code for bootswatch</span>
+$ git clone https://github.com/thomaspark/bootswatch.git
+$ <span class="nb">cd</span> bootswatch
+
+<span class="c1"># Checkout the tagged release (use `git tag -l` to see all options)</span>
+$ git checkout v3.3.7
+
+<span class="c1"># We need to package every &quot;theme/bootstrap.min.css&quot;, as well as the</span>
+<span class="c1"># fonts directory.  In the below, we are using a clever hack to include</span>
+<span class="c1"># the fonts directory by echoing it first so `tar` at the end will know</span>
+<span class="c1"># to copy it.  We then want to find all bootstrap.min.css files, but</span>
+<span class="c1"># need to ignore three directories: &quot;2&quot;, &quot;custom&quot;, and &quot;bower_components&quot;.</span>
+<span class="c1">#</span>
+<span class="c1"># NOTE: the `echo` and `find` commands **MUST** be (in the same parentheses)</span>
+<span class="c1">#</span>
+<span class="c1"># You should be able to copy-paste this _without_ the leading $</span>
+$ <span class="o">(</span><span class="nb">echo</span> <span class="s2">&quot;./fonts&quot;</span> <span class="o">&amp;&amp;</span>                            <span class="se">\</span>
+          find . -name <span class="s2">&quot;bootstrap.min.css&quot;</span>      <span class="se">\</span>
+              -not -path <span class="s2">&quot;./2/*&quot;</span>                <span class="se">\</span>
+              -not -path <span class="s2">&quot;./bower_components/*&quot;</span> <span class="se">\</span>
+              -not -path <span class="s2">&quot;./custom/*&quot;</span><span class="o">)</span>          <span class="p">|</span> <span class="se">\</span>
+      xargs tar -cf ~/Desktop/bootswatch-flat-3.3.7.tar
+
+<span class="c1"># Now that we&#39;ve extracted the relevant files, add them to the</span>
+<span class="c1"># sphinx_bootstrap_theme repo</span>
+$ <span class="nb">cd</span> /path/to/sphinx-bootstrap-theme/sphinx_bootstrap_theme/bootstrap/static
+
+<span class="c1"># Make the directory relevant to your bootswatch version and enter it;</span>
+<span class="c1"># the archive we made is not self-contained</span>
+$ mkdir bootswatch-3.3.7
+$ <span class="nb">cd</span> bootswatch-3.3.7
+
+<span class="c1"># Extract the archive we just created here</span>
+$ cat ~/Desktop/bootswatch-flat-3.3.7.tar <span class="p">|</span> tar -x
+
+<span class="c1"># Make sure the themes you were expecting, **AND** the fonts directory are here</span>
+$ ls
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -280,7 +436,7 @@ $ find . -name <span class="s2">&quot;bootstrap.min.css&quot;</span> <span class
     </p>
     <p>
         &copy; Copyright 2011-2016, Ryan Roemer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>

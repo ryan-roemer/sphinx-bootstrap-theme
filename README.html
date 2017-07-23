@@ -3,16 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Sphinx Bootstrap Theme &#8212; Demo 0.5.3 documentation</title>
-    
+    <title>Sphinx Bootstrap Theme &#8212; Demo 0.6.0 documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.5.3',
+        VERSION:     '0.6.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -24,7 +21,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -64,7 +61,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.5.3</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -211,7 +208,7 @@
               
                 
   <li>
-    <a href="index.html" title="Previous Chapter: Bootstrap Theme Demo"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Bootstrap The...</span>
+    <a href="index.html" title="Previous Chapter: Bootstrap Theme Demo"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Bootstrap Theme Demo</span>
     </a>
   </li>
   <li>
@@ -369,7 +366,7 @@ your “conf.py” file:</p>
     <span class="c1"># Bootswatch (http://bootswatch.com/) theme.</span>
     <span class="c1">#</span>
     <span class="c1"># Options are nothing (default) or the name of a valid theme</span>
-    <span class="c1"># such as &quot;amelia&quot; or &quot;cosmo&quot;.</span>
+    <span class="c1"># such as &quot;cosmo&quot; or &quot;sandstone&quot;.</span>
     <span class="s1">&#39;bootswatch_theme&#39;</span><span class="p">:</span> <span class="s2">&quot;united&quot;</span><span class="p">,</span>
 
     <span class="c1"># Choose Bootstrap version.</span>
@@ -385,7 +382,7 @@ both contain version strings, which the navigation bar treats differently.</p>
 </div>
 <div class="section" id="bootstrap-versions">
 <h3>Bootstrap Versions<a class="headerlink" href="#bootstrap-versions" title="Permalink to this headline">¶</a></h3>
-<p>The theme supports Bootstrap <code class="docutils literal"><span class="pre">v2.3.2</span></code> and <code class="docutils literal"><span class="pre">v3.3.4</span></code> via the
+<p>The theme supports Bootstrap <code class="docutils literal"><span class="pre">v2.3.2</span></code> and <code class="docutils literal"><span class="pre">v3.3.7</span></code> via the
 <code class="docutils literal"><span class="pre">bootstrap_version</span></code> theme option (of <code class="docutils literal"><span class="pre">&quot;2&quot;</span></code> or <code class="docutils literal"><span class="pre">&quot;3&quot;</span></code>). Some notes
 regarding version differences:</p>
 <ul class="simple">
@@ -393,6 +390,8 @@ regarding version differences:</p>
 theme, they will not show up in site or page menus.</li>
 <li>Internally, “navbar.html” is the Sphinx template used for Bootstrap v3 and
 “navbar-2.html” is the template used for v2.</li>
+<li>If you are unsure what to choose, choose Bootstrap <strong>3</strong>.  If you experience some
+form of compatibility issues, then try and use Bootstrap 2.</li>
 </ul>
 </div>
 <div class="section" id="extending-layout-html">
@@ -456,14 +455,25 @@ configured as above, but with the following code:</p>
 <span class="p">{</span><span class="o">%</span> <span class="nb">set</span> <span class="n">css_files</span> <span class="o">=</span> <span class="n">css_files</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;_static/my-styles.css&#39;</span><span class="p">]</span> <span class="o">%</span><span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Sphinx &gt;= 1.6</strong></p>
-<p>Add a <cite>setup</cite> function in “conf.py” with stylesheet paths added relative to the
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">See <a class="reference external" href="https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/159">Issue #159</a>
+for more information.</p>
+</div>
+<p><strong>Sphinx &gt;= 1.6.1</strong></p>
+<p>Add a <code class="docutils literal"><span class="pre">setup</span></code> function in “conf.py” with stylesheet paths added relative to the
 static path:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
     <span class="n">app</span><span class="o">.</span><span class="n">add_stylesheet</span><span class="p">(</span><span class="s2">&quot;my-styles.css&quot;</span><span class="p">)</span> <span class="c1"># also can be a full URL</span>
     <span class="c1"># app.add_stylesheet(&quot;ANOTHER.css&quot;)</span>
     <span class="c1"># app.add_stylesheet(&quot;AND_ANOTHER.css&quot;)</span>
 </pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Sphinx automatically calls your <code class="docutils literal"><span class="pre">setup</span></code> function defined in “conf.py” during
+the build process for you.  There is no need to, nor should you, call this
+function directly in your code.</p>
 </div>
 </div>
 </div>
@@ -533,7 +543,7 @@ rough Makefile in its place. Try:</p>
     </p>
     <p>
         &copy; Copyright 2011-2016, Ryan Roemer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.<br/>
     </p>
   </div>
 </footer>
