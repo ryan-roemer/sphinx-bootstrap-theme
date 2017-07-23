@@ -12,5 +12,10 @@ clean:
 demo:
 	cd demo && make html
 
-demo_server:
-	cd demo/build/html && python -m http.server 8000
+# PORT allows you to specify a different port if say
+# port 8000 is currently in use
+#
+# make demo_server PORT=8080
+PORT ?= 8000
+demo_server: demo
+	cd demo/build/html && python3 -m http.server $(PORT)
