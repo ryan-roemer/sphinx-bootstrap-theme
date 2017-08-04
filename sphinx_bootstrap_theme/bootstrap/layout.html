@@ -1,4 +1,50 @@
-{% extends "basic/layout.html" %}
+{#
+    This file is a modification of the basic layout:
+
+    https://github.com/sphinx-doc/sphinx/blob/master/sphinx/themes/basic/layout.html
+
+    However, the core javascript libraries should be loaded last which cannot be
+    changed by inheriting from basic/layout.html direclty.
+
+    basic/layout.html
+    ~~~~~~~~~~~~~~~~~
+
+    Master layout template for Sphinx themes.
+
+    :copyright: Copyright 2007-2017 by the Sphinx team, see AUTHORS.
+    :license: BSD, see LICENSE for details.
+#}
+{%- block doctype -%}
+<!DOCTYPE html>
+{%- endblock %}
+
+{%- macro script() %}
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '{{ url_root }}',
+        VERSION:     '{{ release|e }}',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '{{ '' if no_search_suffix else file_suffix }}',
+        HAS_SOURCE:  {{ has_source|lower }},
+        SOURCELINK_SUFFIX: '{{ sourcelink_suffix }}'
+      };
+    </script>
+    {%- for scriptfile in script_files %}
+    <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+    {%- endfor %}
+{%- endmacro %}
+
+{%- macro css() %}
+    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+    {%- for css in css_files %}
+      {%- if css|attr("rel") %}
+    <link rel="{{ css.rel }}" href="{{ pathto(css.filename, 1) }}" type="text/css"{% if css.title is not none %} title="{{ css.title }}"{% endif %} />
+      {%- else %}
+    <link rel="stylesheet" href="{{ pathto(css, 1) }}" type="text/css" />
+      {%- endif %}
+    {%- endfor %}
+{%- endmacro %}
 
 {% if theme_bootstrap_version == "3" %}
   {% set bootstrap_version, navbar_version = "3.3.7", "" %}
@@ -12,7 +58,7 @@
     '_static/js/jquery-1.11.0.min.js',
     '_static/js/jquery-fix.js',
     '_static/bootstrap-' + bootstrap_version + '/js/bootstrap.min.js',
-    '_static/bootstrap-sphinx.js'
+    '_static/bootstrap-sphinx.js',
   ]
 %}
 
@@ -20,9 +66,14 @@
 
 {%- set bs_content_width = render_sidebar and "9" or "12"%}
 
-{%- block doctype -%}
-<!DOCTYPE html>
-{%- endblock %}
+{%- set url_root = pathto('', 1) %}
+{# XXX necessary? #}
+{%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
+{%- if not embedded and docstitle %}
+  {%- set titlesuffix = " &#8212; "|safe + docstitle|e %}
+{%- else %}
+  {%- set titlesuffix = "" %}
+{%- endif %}
 
 {# Sidebar: Rework into our Bootstrap nav section. #}
 {% macro navBar() %}
@@ -54,58 +105,108 @@
       {%- endif %}
   {%- endmacro %}
 {% endif %}
-
+{%- if html_tag %}
+{{ html_tag }}
+{%- else %}
+<html xmlns="http://www.w3.org/1999/xhtml"{% if language is not none %} lang="{{ language }}"{% endif %}>
+{%- endif %}
+  <head>
+  {%- if use_meta_charset or html5_doctype %}
+    <meta charset="{{ encoding }}" />
+  {%- else %}
+    <meta http-equiv="Content-Type" content="text/html; charset={{ encoding }}" />
+  {%- endif %}
+  {{- metatags }}
+  {%- block htmltitle %}
+    <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+  {%- endblock %}
+  {%- block csss %}
+  {{- css() }}
+  {%- endblock %}
+  {%- if favicon %}
+    <link rel="shortcut icon" href="{{ pathto('_static/' + favicon, 1) }}"/>
+  {%- endif %}
+{%- block linktags %}
+    {%- if hasdoc('about') %}
+    <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
+    {%- endif %}
+    {%- if hasdoc('genindex') %}
+    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+    {%- endif %}
+    {%- if hasdoc('search') %}
+    <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+    {%- endif %}
+    {%- if hasdoc('copyright') %}
+    <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
+    {%- endif %}
+    {%- if next %}
+    <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+    {%- endif %}
+    {%- if prev %}
+    <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+    {%- endif %}
+{%- endblock %}
 {%- block extrahead %}
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- <meta charset='utf-8'> -->
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1' />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 {% endblock %}
-
+  </head>
+  <body role="document">
 {# Silence the sidebar's, relbar's #}
-{% block header %}{% endblock %}
-{% block relbar1 %}{% endblock %}
-{% block relbar2 %}{% endblock %}
-{% block sidebarsourcelink %}{% endblock %}
-
-{%- block content %}
-{{ navBar() }}
-<div class="container">
-  <div class="row">
-    {%- block sidebar1 %}{{ bsidebar() }}{% endblock %}
-    <div class="{{ bs_span_prefix }}{{ bs_content_width }} content">
-      {% block body %}{% endblock %}
-    </div>
-    {% block sidebar2 %} {# possible location for sidebar #} {% endblock %}
-  </div>
-</div>
-{%- endblock %}
-
-{%- block footer %}
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
+{%- block header %}{% endblock %}
+{%- block relbar1 %}{% endblock %}
+{%- block relbar2 %}{% endblock %}
+{%- block sidebarsourcelink %}{% endblock %}
+  {%- block document %}
+    <div class="container" role="main">
+    {%- block content %}
+      {{ navBar() | indent(6, False) }}
+      <div class="container">
+        <div class="row">
+        {%- block sidebar1 %}{{ bsidebar() | indent(8, False) }}{% endblock %}
+          <div class="{{ bs_span_prefix }}{{ bs_content_width }} content">
+        {%- block body %}{% endblock %}
+          </div>
+        </div><!-- /row -->
+      </div><!-- container -->
+    {%- endblock %}{# content #}
+    {%- block sidebar2 %} {# possible location for sidebar #} {% endblock %}
+    </div><!-- /container role=main -->
+  {%- endblock %}{# document #}
+  {%- block footer %}
+  <footer class="footer">
+    <div class="container">
+      <p class="pull-right">
+        <a href="#">Back to top</a>
       {% if theme_source_link_position == "footer" %}
-        <br/>
-        {% include "sourcelink.html" %}
+          <br/>
+          {% include "sourcelink.html" %}
       {% endif %}
-    </p>
-    <p>
-    {%- if show_copyright %}
-      {%- if hasdoc('copyright') %}
-        {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
-      {%- else %}
-        {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
+      </p>
+      <p>
+      {%- if show_copyright %}
+        {%- if hasdoc('copyright') %}
+          {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}<br/>
+        {%- else %}
+          {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}<br/>
+        {%- endif %}
       {%- endif %}
-    {%- endif %}
-    {%- if last_updated %}
-      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
-    {%- endif %}
-    {%- if show_sphinx %}
-      {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
-    {%- endif %}
-    </p>
-  </div>
-</footer>
-{%- endblock %}
+      {%- if last_updated %}
+        {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}<br/>
+      {%- endif %}
+      {%- if show_sphinx %}
+        {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}<br/>
+      {%- endif %}
+      </p>
+    </div>
+  </footer>
+{%- endblock %}{# footer #}
+{%- if not embedded %}
+  {%- block scripts %}
+  {{- script() | indent(2, False) }}
+  {%- endblock %}
+{%- endif %}
+  </body>
+</html>
