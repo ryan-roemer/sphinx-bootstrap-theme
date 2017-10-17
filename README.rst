@@ -69,7 +69,7 @@ Installation from PyPI_ is fairly straightforward:
 
 Customization
 =============
-The can be customized in varying ways (some a little more work than others).
+The theme can be customized in varying ways (some a little more work than others).
 
 Theme Options
 -------------
