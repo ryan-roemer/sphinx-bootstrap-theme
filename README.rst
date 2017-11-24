@@ -139,6 +139,10 @@ your "conf.py" file::
         #
         # Options are nothing (default) or the name of a valid theme
         # such as "cosmo" or "sandstone".
+        #
+        # The set of valid themes are listed for the version of Bootstrap
+        # that you choose to use. To see a list, open:
+        # https://bootswatch.com/VERSION_NUMBER/
         'bootswatch_theme': "united",
 
         # Choose Bootstrap version.
