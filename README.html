@@ -3,13 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Sphinx Bootstrap Theme &#8212; Demo 0.6.0 documentation</title>
+    <title>Sphinx Bootstrap Theme &#8212; Demo 0.6.1 documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.6.0',
+        VERSION:     '0.6.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -61,7 +61,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.6.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.6.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -108,6 +108,8 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-6-1">v0.6.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-6-0">v0.6.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-5-3">v0.5.3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-5-2">v0.5.2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="HISTORY.html#v0-5-1">v0.5.1</a></li>
@@ -299,7 +301,7 @@ look at the <a class="reference external" href="http://ryan-roemer.github.com/sp
 </div>
 <div class="section" id="customization">
 <h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
-<p>The can be customized in varying ways (some a little more work than others).</p>
+<p>The theme can be customized in varying ways (some a little more work than others).</p>
 <div class="section" id="theme-options">
 <h3>Theme Options<a class="headerlink" href="#theme-options" title="Permalink to this headline">¶</a></h3>
 <p>The theme provides many built-in options that can be configured by editing
@@ -367,6 +369,13 @@ your “conf.py” file:</p>
     <span class="c1">#</span>
     <span class="c1"># Options are nothing (default) or the name of a valid theme</span>
     <span class="c1"># such as &quot;cosmo&quot; or &quot;sandstone&quot;.</span>
+    <span class="c1">#</span>
+    <span class="c1"># The set of valid themes depend on the version of Bootstrap</span>
+    <span class="c1"># that&#39;s used (the next config option).</span>
+    <span class="c1">#</span>
+    <span class="c1"># Currently, the supported themes are:</span>
+    <span class="c1"># - Bootstrap 2: https://bootswatch.com/2</span>
+    <span class="c1"># - Bootstrap 3: https://bootswatch.com/3</span>
     <span class="s1">&#39;bootswatch_theme&#39;</span><span class="p">:</span> <span class="s2">&quot;united&quot;</span><span class="p">,</span>
 
     <span class="c1"># Choose Bootstrap version.</span>

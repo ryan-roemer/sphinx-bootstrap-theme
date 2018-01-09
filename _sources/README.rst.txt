@@ -69,7 +69,7 @@ Installation from PyPI_ is fairly straightforward:
 
 Customization
 =============
-The can be customized in varying ways (some a little more work than others).
+The theme can be customized in varying ways (some a little more work than others).
 
 Theme Options
 -------------
@@ -139,6 +139,13 @@ your "conf.py" file::
         #
         # Options are nothing (default) or the name of a valid theme
         # such as "cosmo" or "sandstone".
+        #
+        # The set of valid themes depend on the version of Bootstrap
+        # that's used (the next config option).
+        #
+        # Currently, the supported themes are:
+        # - Bootstrap 2: https://bootswatch.com/2
+        # - Bootstrap 3: https://bootswatch.com/3
         'bootswatch_theme': "united",
 
         # Choose Bootstrap version.

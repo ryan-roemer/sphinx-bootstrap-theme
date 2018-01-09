@@ -2,6 +2,11 @@
  History
 =========
 
+v0.6.1
+======
+* Fix headerlink margin. (`@timhoffm`_)
+  `#170 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/170>`_.
+
 v0.6.0
 ======
 * Upgrade to Bootstrap / Bootswatch v3.3.7. (`@svenevs`_)
@@ -318,6 +323,7 @@ v0.0.1
 .. _@shiumachi: https://github.com/shiumachi
 .. _@svenevs: https://github.com/svenevs
 .. _@thedrow: https://github.com/thedrow
+.. _@timhoffm: https://github.com/timhoffm
 .. _@torbjoernk: https://github.com/torbjoernk
 .. _@tristanlins: https://github.com/tristanlins
 .. _@vkoby: https://github.com/vkoby
