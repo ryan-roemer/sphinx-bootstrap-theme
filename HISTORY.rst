@@ -2,6 +2,11 @@
  History
 =========
 
+v0.6.2
+======
+* Add theme ``setup()`` function. (`@karelv`_)
+  `#172 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/172>`_.
+
 v0.6.1
 ======
 * Fix headerlink margin. (`@timhoffm`_)
@@ -305,6 +310,7 @@ v0.0.1
 .. _@gkthiruvathukal: https://github.com/gkthiruvathukal
 .. _@grncdr: https://github.com/grncdr
 .. _@inducer: https://github.com/inducer
+.. _@karelv: https://github.com/karelv
 .. _@kaycebasques: https://github.com/kaycebasques
 .. _@kosiakk: https://github.com/kosiakk
 .. _@masklinn: https://github.com/masklinn

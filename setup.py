@@ -60,7 +60,11 @@ setup(
     install_requires=[
         "setuptools",
     ],
-
+    entry_points = {
+        'sphinx.html_themes': [
+            'bootstrap = sphinx_bootstrap_theme',
+        ]
+    },
     packages=PKGS,
     include_package_data=True,
 )
