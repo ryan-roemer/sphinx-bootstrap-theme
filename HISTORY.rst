@@ -2,6 +2,11 @@
  History
 =========
 
+v0.6.4
+======
+* Fix ``setup()`` function. (`@karelv`_)
+  `#176 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/176>`_.
+
 v0.6.3
 ======
 * Declare supported Python versions. (`@troeger`_)
