@@ -2,6 +2,23 @@
  History
 =========
 
+======
+v0.6.5
+======
+* Fix ``html_sidebars`` in ``Sphinx>=1.7.0``. (`@svenevs`_)
+  `#179 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/179>`_.
+
+======
+v0.6.4
+======
+* Fix ``setup()`` function. (`@karelv`_)
+  `#176 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/176>`_.
+
+v0.6.3
+======
+* Declare supported Python versions. (`@troeger`_)
+  `#175 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/175>`_.
+
 v0.6.2
 ======
 * Add theme ``setup()`` function. (`@karelv`_)
@@ -332,5 +349,6 @@ v0.0.1
 .. _@timhoffm: https://github.com/timhoffm
 .. _@torbjoernk: https://github.com/torbjoernk
 .. _@tristanlins: https://github.com/tristanlins
+.. _@troeger: https://github.com/troeger
 .. _@vkoby: https://github.com/vkoby
 .. _@zyga: https://github.com/zyga
