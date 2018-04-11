@@ -2,6 +2,13 @@
  History
 =========
 
+======
+v0.6.5
+======
+* Fix ``html_sidebars`` in ``Sphinx>=1.7.0``. (`@svenevs`_)
+  `#179 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/179>`_.
+
+======
 v0.6.4
 ======
 * Fix ``setup()`` function. (`@karelv`_)
