@@ -8,14 +8,6 @@
   {% set bs_span_prefix = "span" %}
 {% endif %}
 
-{% set script_files = script_files + [
-    '_static/js/jquery-1.11.0.min.js',
-    '_static/js/jquery-fix.js',
-    '_static/bootstrap-' + bootstrap_version + '/js/bootstrap.min.js',
-    '_static/bootstrap-sphinx.js'
-  ]
-%}
-
 {%- set render_sidebar = (not embedded) and (not theme_nosidebar|tobool) and sidebars %}
 
 {%- set bs_content_width = render_sidebar and "9" or "12"%}
