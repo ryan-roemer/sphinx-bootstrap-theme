@@ -3,6 +3,12 @@
 =========
 
 ======
+v0.7.1
+======
+* Fix search JavaScript loading.
+  `#194 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/194>`_.
+
+======
 v0.7.0
 ======
 * Update for ``Sphinx>=2.0.0`` compatibility. (`@larsoner`_)
