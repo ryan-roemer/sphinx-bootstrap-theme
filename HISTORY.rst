@@ -3,7 +3,7 @@
 =========
 
 ======
-UNRELEASED
+v0.7.0
 ======
 * Update for ``Sphinx>=2.0.0`` compatibility. (`@larsoner`_)
   `#193 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/193>`_.
