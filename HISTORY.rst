@@ -7,6 +7,7 @@ UNRELEASED
 ==========
 * Upgrade Bootstrap and Bootswatch to v3.4.1. (`@vedranmiletic`_)
   `#190 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/190>`_.
+* Upgrade jQuery to v1.12.4. (`@vedranmiletic`_)
 
 ======
 v0.7.1
