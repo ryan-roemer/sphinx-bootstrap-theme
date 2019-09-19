@@ -286,7 +286,17 @@ Sphinx "_static" directory.
 Contributing
 ============
 Contributions to this project are most welcome. Please make sure that the demo
-site builds cleanly, and looks like what you want. First build the demo::
+site builds cleanly, and looks like what you want. We suggest using ``pipenv``
+to build this project::
+
+    $ cd sphinx-bootstrap-theme
+    $ pipenv install --dev
+
+Before working in this project directory, do::
+
+    $ pipenv shell
+
+Next, build the demo::
 
     $ fab clean && fab demo
 

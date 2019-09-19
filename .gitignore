@@ -8,4 +8,5 @@ demo/build/*
 node_modules
 __pycache__
 .vscode
+Pipfile*
 
