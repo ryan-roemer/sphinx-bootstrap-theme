@@ -1,13 +1,10 @@
 """Fabric file."""
 
-import base64
 import os
-import json
-import urllib2
 
 from contextlib import contextmanager
 
-from fabric.api import local, lcd, abort
+from fabric import local, lcd, abort
 from fabric.decorators import task
 
 from sphinx_bootstrap_theme import __version__
