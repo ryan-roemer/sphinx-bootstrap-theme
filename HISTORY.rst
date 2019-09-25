@@ -2,9 +2,9 @@
  History
 =========
 
-==========
-UNRELEASED
-==========
+======
+v0.8.0
+======
 * Upgrade Bootstrap and Bootswatch to v3.4.1. (`@vedranmiletic`_)
   `#190 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/issues/190>`_.
 * Upgrade jQuery to v1.12.4. (`@vedranmiletic`_)
