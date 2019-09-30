@@ -57,6 +57,20 @@
   height: 100%;
 }
 
+{% if theme_admonition_use_panel|tobool %}
+
+.panel-body {
+  padding: 0px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.panel-heading {
+  font-weight: bold;
+}
+
+{% endif %}
+
 .page-top {
   top: 0px;
 }
