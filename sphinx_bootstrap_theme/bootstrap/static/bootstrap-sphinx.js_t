@@ -153,11 +153,9 @@
     // Add Note, Warning styles. (BS v2,3 compatible).
     {% if theme_admonition_use_panel|tobool and theme_bootstrap_version == "3" %}
     $(".admonition-title")
-        .removeClass("admonition-title")
         .addClass("panel-heading").end();
     $(".admonition")
       .addClass("panel panel-info")
-      .removeClass("admonition")
       .filter(".warning, .caution")
         .removeClass("panel-info")
         .addClass("panel-warning").end()

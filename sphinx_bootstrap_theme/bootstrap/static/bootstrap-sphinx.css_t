@@ -59,10 +59,17 @@
 
 {% if theme_admonition_use_panel|tobool %}
 
-.panel-body {
+p.admonition-title {
+  margin: 0px;
+}
+
+div.admonition {
   padding: 0px;
-  padding-right: 15px;
-  padding-left: 15px;
+}
+
+.panel-body {
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 
 .panel-heading {
