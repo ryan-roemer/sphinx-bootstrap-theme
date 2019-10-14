@@ -26,9 +26,11 @@
       {%- if render_sidebar %}
       <div class="{{ bs_span_prefix }}3">
         <div id="sidebar" class="bs-sidenav" role="complementary">
-          {%- for sidebartemplate in sidebars %}
-            {%- include sidebartemplate %}
-          {%- endfor %}
+            <ul>
+              {%- for sidebartemplate in sidebars %}
+                {%- include sidebartemplate %}
+              {%- endfor %}
+            </ul>
         </div>
       </div>
       {%- endif %}
