@@ -4,6 +4,10 @@ Subdirectory Page
 
 This page is in a subdirectory.
 
+.. toctree::
+
+   relbar_example
+
 Headings
 ========
 This is a first level heading (``h1``).
