@@ -151,6 +151,10 @@ your "conf.py" file::
         # Choose Bootstrap version.
         # Values: "3" (default) or "2" (in quotes)
         'bootstrap_version': "3",
+
+        # Use Bootstrap3 panels instead of alerts for admonitions
+        # Values: "true" or "false" (default)
+        admonition_use_panel: false,
     }
 
 Note for the navigation bar title that if you don't specify a theme option of
