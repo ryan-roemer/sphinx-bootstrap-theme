@@ -151,13 +151,33 @@
     patchTables();
 
     // Add Note, Warning styles. (BS v2,3 compatible).
-    $(".admonition").addClass("alert alert-info")
+    {% if theme_admonition_use_panel|tobool and theme_bootstrap_version == "3" %}
+    $(".admonition-title")
+        .addClass("panel-heading").end();
+    $(".admonition")
+      .addClass("panel panel-info")
+      .filter(".warning, .caution")
+        .removeClass("panel-info")
+        .addClass("panel-warning").end()
+      .filter(".error, .danger")
+        .removeClass("panel-info")
+        .addClass("panel-danger").end()
+      .each(function() {
+        $(this)
+          .children()
+            .not(".panel-heading")
+            .wrapAll("<div class='panel-body'></div>").end();
+      });
+    {% else %}
+    $(".admonition")
+      .addClass("alert alert-info")
       .filter(".warning, .caution")
         .removeClass("alert-info")
         .addClass("alert-warning").end()
       .filter(".error, .danger")
         .removeClass("alert-info")
         .addClass("alert-danger alert-error").end();
+    {% endif %}
 
     // Inline code styles to Bootstrap style.
     $("tt.docutils.literal").not(".xref").each(function (i, e) {
