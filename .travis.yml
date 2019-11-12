@@ -23,6 +23,7 @@ before_deploy:
 
 deploy:
   provider: script
+  script: twine upload dist/*
   skip_cleanup: true
   on:
     python: 3.7
