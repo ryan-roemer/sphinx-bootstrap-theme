@@ -1,0 +1,30 @@
+dist: xenial
+language: python
+cache: pip
+
+matrix:
+  include:
+    - python: 2.7
+    - python: 3.6
+    - python: 3.7
+
+before_install:
+  - pip install -U pip twine setuptools wheel sphinx
+
+install:
+  - pip install .
+
+script:
+  - make -C demo html
+
+before_deploy:
+  - python setup.py sdist bdist_wheel
+  - twine check dist/*
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  on:
+    python: 3.7
+    tags: true
+    repo: ryan-roemer/sphinx-bootstrap-theme
