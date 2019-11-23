@@ -7,6 +7,7 @@ matrix:
     - python: 2.7
     - python: 3.6
     - python: 3.7
+    - python: 3.8
 
 before_install:
   - pip install -U pip twine setuptools wheel sphinx
