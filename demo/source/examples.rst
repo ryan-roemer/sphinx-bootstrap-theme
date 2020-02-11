@@ -195,12 +195,12 @@ An example Python function.
    :param value: exception value
    :param tb: traceback object
    :param limit: maximum number of stack frames to show
-   :type limit: integer or None
-   :rtype: list of strings
+   :type limit: int or None
+   :rtype: list[str]
 
-An example JavaScript function.
+An example C++ function.
 
-.. js:class:: MyAnimal(name[, age])
+.. cpp:function:: int foo(bool use_random = false)
 
-   :param string name: The name of the animal
-   :param number age: an optional age for the animal
+   :param use_random: Whether or not to return a random number.
+   :return: ``42`` if ``use_random == false``, a random number otherwise.
