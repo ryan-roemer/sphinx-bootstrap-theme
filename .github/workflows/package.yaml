@@ -33,8 +33,6 @@ jobs:
           curl https://api.github.com/repos/${{ github.repository }}/commits/$ref > commit.json
           msg="$(python -c 'import json; print(json.load(open("commit.json"))["commit"]["message"])')"
           echo "::set-env name=COMMIT_MESSAGE::$msg"
-      - name: DeBuG
-        run: echo ${{ github.event.head_commit.message }}
       # If the commit message contains [testpypi] then we will want to configure
       # a "unique" dev version to package and later upload to Test PyPI, since
       # we cannot upload the same __version__ more than once.  In the
@@ -59,5 +57,7 @@ jobs:
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
-          password: pypi-${{ secrets.test_pypi_password }}
+          password: ${{ secrets.test_pypi_password }}
           repository_url: https://test.pypi.org/legacy/
+      # TODO: add startsWith(github.event.ref, 'refs/tags/v')
+      #       regular pypi upload (AKA: release tags)
