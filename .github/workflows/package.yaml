@@ -38,12 +38,22 @@ jobs:
         # if: contains(env.COMMIT_MESSAGE, '[testpypi]')
         run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
       - name: DEBUG
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
+          echo "$GITHUB_CONTEXT"
           printenv
           echo COMMIT_MESSAGE
-          echo $COMMIT_MESSAGE
+          echo "$COMMIT_MESSAGE"
           echo SPHINX_BOOTSTRAP_THEME_DEV_VERSION
-          echo $SPHINX_BOOTSTRAP_THEME_DEV_VERSION
+          echo "$SPHINX_BOOTSTRAP_THEME_DEV_VERSION"
+          echo "git log -1"
+          git log -1
+          echo "git rev-parse HEAD"
+          git rev-parse HEAD
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "github.sha = ${{ github.sha }}"
+          echo "github.ref = ${{ github.ref }}"
       # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
       # variable may or may not be set.  If not, just use __version__ unchanged.
       - name: Package
@@ -53,5 +63,5 @@ jobs:
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
-          password: ${{ secrets.test_pypi_password }}
+          password: pypi-${{ secrets.test_pypi_password }}
           repository_url: https://test.pypi.org/legacy/
