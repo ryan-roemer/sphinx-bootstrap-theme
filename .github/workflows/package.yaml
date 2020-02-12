@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+    # Release tags are v*, e.g., v0.8.0 or v1.0.0
+    tags:
+      - v*
   pull_request:
     branches:
       - master
@@ -21,7 +24,8 @@ jobs:
         run: pip install tox
       - name: Extract Commit Message
         # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
-        run: echo "::set-env name=COMMIT_MESSAGE::$(git log -1 --pretty=%B)"
+        #      https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions
+        run: echo "::set-env name=COMMIT_MESSAGE::$(git log -1 --pretty=%B ${{ github.event.after }})"
       # If the commit message contains [testpypi] then we will want to configure
       # a "unique" dev version to package and later upload to Test PyPI, since
       # we cannot upload the same __version__ more than once.  In the
@@ -34,32 +38,14 @@ jobs:
       # number of seconds since the Unix epoch.  While other options exist, this
       # is a simple way to create an increasing numerical "dev" version number.
       - name: Configure Test PyPI Version
-        # TODO: we need to condition if NOT a tag
-        # if: contains(env.COMMIT_MESSAGE, '[testpypi]')
+        if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
         run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
-      - name: DEBUG
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
-          printenv
-          echo COMMIT_MESSAGE
-          echo "$COMMIT_MESSAGE"
-          echo SPHINX_BOOTSTRAP_THEME_DEV_VERSION
-          echo "$SPHINX_BOOTSTRAP_THEME_DEV_VERSION"
-          echo "git log -1"
-          git log -1
-          echo "git rev-parse HEAD"
-          git rev-parse HEAD
-          echo "GITHUB_SHA=$GITHUB_SHA"
-          echo "github.sha = ${{ github.sha }}"
-          echo "github.ref = ${{ github.ref }}"
       # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
       # variable may or may not be set.  If not, just use __version__ unchanged.
       - name: Package
         run: tox -e dist
       - name: Upload to Test PyPI
-        # if: contains(env.COMMIT_MESSAGE, '[testpypi]')
+        if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
