@@ -6,6 +6,14 @@ VERSION = (0, 8, 0)
 __version__ = ".".join(str(v) for v in VERSION)
 __version_full__ = __version__
 
+# NOTE: SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment variable is for internal
+# usage only.  It is used to create a dev release to deploy to TestPyPI, see
+# .github/workflows/package.yaml for more information.
+dev = os.getenv("SPHINX_BOOTSTRAP_THEME_DEV_VERSION", None)
+if dev:
+    __version__ += ".dev" + dev
+    __version_full__ = __version__
+
 
 def get_html_theme_path():
     """Return list of HTML theme paths."""

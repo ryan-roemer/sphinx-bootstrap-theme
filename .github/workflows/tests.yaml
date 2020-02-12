@@ -1,5 +1,5 @@
 name: Tests
-on: [push]
+on: [push, pull_request]
 jobs:
   lint:
     name: Lint
@@ -14,19 +14,6 @@ jobs:
         run: pip install tox
       - name: Lint
         run: tox -e lint
-  dist:
-    name: Distribution Packaging
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.x
-      - name: Install Tox
-        run: pip install tox
-      - name: Distribution Check
-        run: tox -e dist
   docs:
     name: Docs
     runs-on: ubuntu-latest

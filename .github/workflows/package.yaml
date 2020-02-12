@@ -1,0 +1,40 @@
+name: Package
+on: [push, pull_request]
+jobs:
+  dist:
+    name: Distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+      - name: Install Tox
+        run: pip install tox
+      # If the commit message contains [testpypi] then we will want to configure
+      # a "unique" dev version to package and later upload to Test PyPI, since
+      # we cannot upload the same __version__ more than once.  In the
+      # sphinx_bootstrap_theme/__init__.py we allow the environment variable
+      # SPHINX_BOOTSTRAP_THEME_DEV_VERSION to be appended to the current version
+      #
+      #     __version__ += "dev" + $SPHINX_BOOTSTRAP_THEME_DEV_VERSION
+      #
+      # To make this version unique, we simply use `date +%s` which gives the
+      # number of seconds since the Unix epoch.  While other options exist, this
+      # is a simple way to create an increasing numerical "dev" version number.
+      - name: Configure Test PyPI Version
+        if: "contains(github.event.head_commit.message, '[testpypi]')"
+        # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
+        run: echo "::set-env SPHINX_BOOTSTRAP_THEME_DEV_VERSION=$(date +%s)"
+      # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
+      # variable may or may not be set.  If not, just use __version__ unchanged.
+      - name: Package
+        run: tox -e dist
+      - name: Upload to Test PyPI
+        if: "contains(github.event.head_commit.message, '[testpypi]')"
+        uses: pypa/gh-action-pypi-publish@master
+        with:
+          user: __token__
+          password: ${{ secrets.test_pypi_password }}
+          repository_url: https://test.pypi.org/legacy/
