@@ -13,7 +13,7 @@ jobs:
       - name: Install Tox
         run: pip install tox
       - name: Lint
-        run: tox -e flake8
+        run: tox -e lint
   dist:
     name: Distribution Packaging
     runs-on: ubuntu-latest
