@@ -23,11 +23,15 @@ jobs:
       - name: Install Tox
         run: pip install tox
       - name: Extract Commit Message
-        # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
-        #      https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions
-        run: echo "::set-env name=COMMIT_MESSAGE::$(git log -1 --pretty=%B ${{ github.event.after }})"
+        run: |
+          # TODO: this can't really be the only way to get the commit message.
+          # NOTE: ${{ github.event.after }} -- can this be used instead?  Will
+          # it also work for PRs from forks (not from branch)?
+          curl https://api.github.com/repos/${{ github.repository }}/commits/${{ github.ref }}/head > commit.json
+          msg="$(python -c 'import json; print(json.load(open("commit.json"))["commit"]["message"])')"
+          echo "::set-env name=COMMIT_MESSAGE::$msg"
       - name: DeBuG
-        run: git --no-pager log -10
+        run: echo ${{ github.event.head_commit.message }}
       # If the commit message contains [testpypi] then we will want to configure
       # a "unique" dev version to package and later upload to Test PyPI, since
       # we cannot upload the same __version__ more than once.  In the
@@ -41,6 +45,7 @@ jobs:
       # is a simple way to create an increasing numerical "dev" version number.
       - name: Configure Test PyPI Version
         if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
+        # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
         run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
       # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
       # variable may or may not be set.  If not, just use __version__ unchanged.
