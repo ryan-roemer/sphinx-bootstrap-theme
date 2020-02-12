@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - master
+# TODO: add tag here
 jobs:
   dist:
     name: Distribution
@@ -18,6 +19,9 @@ jobs:
           python-version: 3.x
       - name: Install Tox
         run: pip install tox
+      - name: Extract Commit Message
+        # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
+        run: echo "::set-env name=COMMIT_MESSAGE::$(git log -1 --pretty=%B)"
       # If the commit message contains [testpypi] then we will want to configure
       # a "unique" dev version to package and later upload to Test PyPI, since
       # we cannot upload the same __version__ more than once.  In the
@@ -30,15 +34,15 @@ jobs:
       # number of seconds since the Unix epoch.  While other options exist, this
       # is a simple way to create an increasing numerical "dev" version number.
       - name: Configure Test PyPI Version
-        if: "contains(github.event.head_commit.message, '[testpypi]')"
-        # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
-        run: echo "::set-env SPHINX_BOOTSTRAP_THEME_DEV_VERSION=$(date +%s)"
+        # TODO: we need to condition if NOT a tag
+        if: contains(env.COMMIT_MESSAGE, '[testpypi]')
+        run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
       # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
       # variable may or may not be set.  If not, just use __version__ unchanged.
       - name: Package
         run: tox -e dist
       - name: Upload to Test PyPI
-        if: "contains(github.event.head_commit.message, '[testpypi]')"
+        if: contains(env.COMMIT_MESSAGE, '[testpypi]')
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
