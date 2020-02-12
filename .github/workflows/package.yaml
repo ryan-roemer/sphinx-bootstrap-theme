@@ -34,7 +34,7 @@ jobs:
       # number of seconds since the Unix epoch.  While other options exist, this
       # is a simple way to create an increasing numerical "dev" version number.
       - name: Configure Test PyPI Version
-        if: !startsWith(github.event.ref, 'refs/tags/v') && contains(github.event.commits[0].message, '[testpypi]')
+        if: contains(github.event.commits[0].message, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
         # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
         run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
       # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
@@ -42,7 +42,7 @@ jobs:
       - name: Package
         run: tox -e dist
       - name: Upload to Test PyPI
-        if: !startsWith(github.event.ref, 'refs/tags/v') && contains(github.event.commits[0].message, '[testpypi]')
+        if: contains(github.event.commits[0].message, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
