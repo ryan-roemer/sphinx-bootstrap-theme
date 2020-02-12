@@ -27,7 +27,10 @@ jobs:
           # TODO: this can't really be the only way to get the commit message.
           # NOTE: ${{ github.event.after }} -- can this be used instead?  Will
           # it also work for PRs from forks (not from branch)?
-          curl https://api.github.com/repos/${{ github.repository }}/commits/${{ github.ref }}/head > commit.json
+          # For pull requests, github.ref will be e.g., refs/pull/XYZ/merge.  We
+          # want to query the /head commit, so replace /merge with /head.
+          ref="$(echo '${{ github.ref }}' | sed 's@^\(refs/pull.*\)/merge$@\1/head@g')"
+          curl https://api.github.com/repos/${{ github.repository }}/commits/$ref/head > commit.json
           msg="$(python -c 'import json; print(json.load(open("commit.json"))["commit"]["message"])')"
           echo "::set-env name=COMMIT_MESSAGE::$msg"
       - name: DeBuG
