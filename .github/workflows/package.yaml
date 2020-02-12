@@ -35,14 +35,21 @@ jobs:
       # is a simple way to create an increasing numerical "dev" version number.
       - name: Configure Test PyPI Version
         # TODO: we need to condition if NOT a tag
-        if: contains(env.COMMIT_MESSAGE, '[testpypi]')
+        # if: contains(env.COMMIT_MESSAGE, '[testpypi]')
         run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
+      - name: DEBUG
+        run: |
+          printenv
+          echo COMMIT_MESSAGE
+          echo $COMMIT_MESSAGE
+          echo SPHINX_BOOTSTRAP_THEME_DEV_VERSION
+          echo $SPHINX_BOOTSTRAP_THEME_DEV_VERSION
       # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
       # variable may or may not be set.  If not, just use __version__ unchanged.
       - name: Package
         run: tox -e dist
       - name: Upload to Test PyPI
-        if: contains(env.COMMIT_MESSAGE, '[testpypi]')
+        # if: contains(env.COMMIT_MESSAGE, '[testpypi]')
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
