@@ -31,8 +31,10 @@ jobs:
           # want to query the /head commit, so replace /merge with /head.
           ref="$(echo '${{ github.ref }}' | sed 's@^\(refs/pull.*\)/merge$@\1/head@g')"
           curl https://api.github.com/repos/${{ github.repository }}/commits/$ref > commit.json
-          msg="$(python -c 'import json; print(json.load(open("commit.json"))["commit"]["message"])')"
-          echo "::set-env name=COMMIT_MESSAGE::$msg"
+          # msg="$(python -c 'import json; print(json.load(open("commit.json"))["commit"]["message"])')"
+          # echo "::set-env name=COMMIT_MESSAGE::$msg"
+          true_or_false="$(python -c 'import json; print(str("[testpypi]" in json.load(open("commit.json"))["commit"]["message"]).lower())')"
+          echo "::set-env name=TEST_PYPI::$true_or_false"
       # If the commit message contains [testpypi] then we will want to configure
       # a "unique" dev version to package and later upload to Test PyPI, since
       # we cannot upload the same __version__ more than once.  In the
@@ -45,7 +47,8 @@ jobs:
       # number of seconds since the Unix epoch.  While other options exist, this
       # is a simple way to create an increasing numerical "dev" version number.
       - name: Configure Test PyPI Version
-        if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
+        # if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
+        if: contains(env.TEST_PYPI, 'true') && !startsWith(github.event.ref, 'refs/tags/v')
         # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
         run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
       # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
@@ -53,7 +56,8 @@ jobs:
       - name: Package
         run: tox -e dist
       - name: Upload to Test PyPI
-        if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
+        # if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
+        if: contains(env.TEST_PYPI, 'true') && !startsWith(github.event.ref, 'refs/tags/v')
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
