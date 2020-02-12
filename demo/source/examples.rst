@@ -122,11 +122,13 @@ translates to a neat star:
 Tables
 ======
 Here are some examples of Sphinx
-`tables <http://sphinx-doc.org/rest.html#rst-tables>`_. The Sphinx Bootstrap
+`tables <rst_tables_>`_. The Sphinx Bootstrap
 Theme removes all Sphinx ``docutils`` classes and replaces them with the
 default Bootstrap ``table`` class.  You can add additional table classes
 using the Sphinx ``cssclass::`` directive, as demonstrated in the following
 tables.
+
+.. _rst_tables: https://www.sphinx-doc.org/en/latest/usage/restructuredtext/basics.html#tables
 
 Grid
 ----
