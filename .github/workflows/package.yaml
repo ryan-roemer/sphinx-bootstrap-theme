@@ -25,11 +25,27 @@ jobs:
       - name: Extract Commit Message (Pull Request)
         if: github.event_name == 'pull_request'
         run: |
-          echo "::set-env name=COMMIT_MESSAGE::$(git log --format=%B -n 1 ${{ github.event.after }})"
+          # For pull requests, github.ref will be e.g., refs/pull/XYZ/merge.  We
+          # want to query the /head commit, so replace /merge with /head.
+          ref="$(echo '${{ github.ref }}' | sed 's@^\(refs/pull.*\)/merge$@\1/head@g')"
+          curl https://api.github.com/repos/${{ github.repository }}/commits/$ref > commit.json
+          msg="$(python -c 'import json; print(json.load(open("commit.json"))["commit"]["message"])')"
+          # ::set-env and friends choke on multiline values, replace newlines.
+          # https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/m-p/37870
+          msg="${msg//'%'/'%25'}"
+          msg="${msg//$'\n'/'%0A'}"
+          msg="${msg//$'\r'/'%0D'}"
+          echo "::set-env name=COMMIT_MESSAGE::$msg"
       - name: Extract Commit Message (Push)
         if: github.event_name == 'push'
         run: |
-          echo "::set-env name=COMMIT_MESSAGE::${{ github.event.head_commit.message }}"
+          # ::set-env and friends choke on multiline values, replace newlines.
+          # https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/m-p/37870
+          msg="${{ github.event.head_commit.message }}"
+          msg="${msg//'%'/'%25'}"
+          msg="${msg//$'\n'/'%0A'}"
+          msg="${msg//$'\r'/'%0D'}"
+          echo "::set-env name=COMMIT_MESSAGE::$msg"
       - name: DEBUG COMMIT MESSAGE
         run: |
           echo "Commit Message"
