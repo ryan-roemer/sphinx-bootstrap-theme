@@ -23,11 +23,11 @@ jobs:
       - name: Install Tox
         run: pip install tox
       - name: Extract Commit Message (Pull Request)
-        if: github.event_name == "pull_request"
+        if: github.event_name == 'pull_request'
         run: |
           echo "::set-env name=COMMIT_MESSAGE::$(git log --format=%B -n 1 ${{ github.event.after }})"
       - name: Extract Commit Message (Push)
-        if: github.event_name == "push"
+        if: github.event_name == 'push'
         run: |
           echo "::set-env name=COMMIT_MESSAGE::${{ github.event.head_commit.message }}"
       - name: DEBUG COMMIT MESSAGE
