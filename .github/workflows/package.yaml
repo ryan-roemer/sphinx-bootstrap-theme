@@ -1,15 +1,14 @@
 name: Package
-on: [push, pull_request]
-  # push:
-  #   branches:
-  #     - master
-  #   # Release tags are v*, e.g., v0.8.0 or v1.0.0
-  #   tags:
-  #     - v*
-  # pull_request:
-  #   branches:
-  #     - master
-# TODO: add tag here
+on:
+  push:
+    branches:
+      - master
+    # Release tags are v*, e.g., v0.8.0 or v1.0.0
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
 jobs:
   dist:
     name: Distribution
