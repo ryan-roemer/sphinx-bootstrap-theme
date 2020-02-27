@@ -122,11 +122,13 @@ translates to a neat star:
 Tables
 ======
 Here are some examples of Sphinx
-`tables <http://sphinx-doc.org/rest.html#rst-tables>`_. The Sphinx Bootstrap
+`tables <rst_tables_>`_. The Sphinx Bootstrap
 Theme removes all Sphinx ``docutils`` classes and replaces them with the
 default Bootstrap ``table`` class.  You can add additional table classes
 using the Sphinx ``cssclass::`` directive, as demonstrated in the following
 tables.
+
+.. _rst_tables: https://www.sphinx-doc.org/en/latest/usage/restructuredtext/basics.html#tables
 
 Grid
 ----
@@ -195,12 +197,12 @@ An example Python function.
    :param value: exception value
    :param tb: traceback object
    :param limit: maximum number of stack frames to show
-   :type limit: integer or None
-   :rtype: list of strings
+   :type limit: int or None
+   :rtype: list[str]
 
-An example JavaScript function.
+An example C++ function.
 
-.. js:class:: MyAnimal(name[, age])
+.. cpp:function:: int foo(bool use_random = false)
 
-   :param string name: The name of the animal
-   :param number age: an optional age for the animal
+   :param use_random: Whether or not to return a random number.
+   :return: ``42`` if ``use_random == false``, a random number otherwise.

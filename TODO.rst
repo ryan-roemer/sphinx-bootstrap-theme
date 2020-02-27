@@ -62,7 +62,7 @@ Updating Bootstrap
 
 1. Get new ``bootstrap-VERSION`` and drop in ``bootstrap/static``.
 
-   - New versions should be available `here <http://getbootstrap.com/getting-started/#download>`_.
+   - New versions should be available `here <https://getbootstrap.com/>`_.
    - Choose "Bootstrap":
 
      ..

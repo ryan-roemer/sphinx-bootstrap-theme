@@ -1,0 +1,50 @@
+name: GitHub Pages
+on:
+  push:
+    # Release tags are v*, e.g., v0.8.0 or v1.0.0
+    tags:
+      - v*
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+      - name: Install Tox
+        run: pip install tox
+      - name: Build and Deploy Website
+        run: |
+          set -exo
+
+          # Gather current version number for comit message later.
+          version="$(python -c 'import sys; sys.path.insert(0, "."); from sphinx_bootstrap_theme import __version__; print(__version__)')"
+
+          # Be explicit about --workdir so we know exactly where it is.
+          tox --workdir ./.tox -e docs
+          mv .tox/docs/tmp/html/ ..
+          tox -e clean  # remove e.g., __pycache__ and friends
+          rm -rf .tox
+          git reset --hard  # not necessary but not a problem either
+
+          # Get the gh-pages branch with all the previous versions.
+          git remote -v
+          git fetch origin gh-pages
+          git checkout gh-pages
+
+          # Delete everything and then re-add it.
+          git rm -r .
+          mv ../html/* .
+          touch .nojekyll
+          git add -Af .
+          git --no-pager status
+          git --no-pager diff --color=always
+
+          # Configure and push.
+          git config --local user.name github-actions
+          git config --local user.email "notanemail@notanemail.org"
+          git commit -m "Version $version"
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
