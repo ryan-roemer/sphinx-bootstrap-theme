@@ -1,18 +1,14 @@
 name: Package
 on:
   push:
-    branches:
-      - master
     # Release tags are v*, e.g., v0.8.0 or v1.0.0
     tags:
       - v*
-  pull_request:
-    branches:
-      - master
 jobs:
   dist:
     name: Distribution
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python
@@ -21,59 +17,10 @@ jobs:
           python-version: 3.x
       - name: Install Tox
         run: pip install tox
-      - name: Extract Commit Message (Pull Request)
-        if: github.event_name == 'pull_request'
-        run: |
-          # For pull requests, github.ref will be e.g., refs/pull/XYZ/merge.  We
-          # want to query the /head commit, so replace /merge with /head.
-          ref="$(echo '${{ github.ref }}' | sed 's@^\(refs/pull.*\)/merge$@\1/head@g')"
-          curl https://api.github.com/repos/${{ github.repository }}/commits/$ref > commit.json
-          msg="$(python -c 'import json; print(json.load(open("commit.json"))["commit"]["message"])')"
-          # ::set-env and friends choke on multiline values, replace newlines.
-          # https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/m-p/37870
-          msg="${msg//'%'/'%25'}"
-          msg="${msg//$'\n'/'%0A'}"
-          msg="${msg//$'\r'/'%0D'}"
-          echo "::set-env name=COMMIT_MESSAGE::$msg"
-      - name: Extract Commit Message (Push)
-        if: github.event_name == 'push'
-        run: |
-          # ::set-env and friends choke on multiline values, replace newlines.
-          # https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/m-p/37870
-          msg="${{ github.event.head_commit.message }}"
-          msg="${msg//'%'/'%25'}"
-          msg="${msg//$'\n'/'%0A'}"
-          msg="${msg//$'\r'/'%0D'}"
-          echo "::set-env name=COMMIT_MESSAGE::$msg"
-      - name: DEBUG COMMIT MESSAGE
-        run: |
-          echo "Commit Message"
-          echo "$COMMIT_MESSAGE"
-      # If the commit message contains [testpypi] then we will want to configure
-      # a "unique" dev version to package and later upload to Test PyPI, since
-      # we cannot upload the same __version__ more than once.  In the
-      # sphinx_bootstrap_theme/__init__.py we allow the environment variable
-      # SPHINX_BOOTSTRAP_THEME_DEV_VERSION to be appended to the current version
-      #
-      #     __version__ += "dev" + $SPHINX_BOOTSTRAP_THEME_DEV_VERSION
-      #
-      # To make this version unique, we simply use `date +%s` which gives the
-      # number of seconds since the Unix epoch.  While other options exist, this
-      # is a simple way to create an increasing numerical "dev" version number.
-      - name: Configure Test PyPI Version
-        if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
-        # See: https://help.github.com/en/actions/reference/development-tools-for-github-actions#set-an-environment-variable-set-env
-        run: echo "::set-env name=SPHINX_BOOTSTRAP_THEME_DEV_VERSION::$(date +%s)"
-      # Run package test, SPHINX_BOOTSTRAP_THEME_DEV_VERSION environment
-      # variable may or may not be set.  If not, just use __version__ unchanged.
       - name: Package
         run: tox -e dist
-      - name: Upload to Test PyPI
-        if: contains(env.COMMIT_MESSAGE, '[testpypi]') && !startsWith(github.event.ref, 'refs/tags/v')
+      - name: Upload to PyPI
         uses: pypa/gh-action-pypi-publish@master
         with:
           user: __token__
-          password: ${{ secrets.test_pypi_password }}
-          repository_url: https://test.pypi.org/legacy/
-      # TODO: add startsWith(github.event.ref, 'refs/tags/v')
-      #       regular pypi upload (AKA: release tags)
+          password: ${{ secrets.pypi_password }}
