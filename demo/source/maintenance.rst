@@ -70,3 +70,19 @@ available environments are as follows:
 +---------------+--------------------------------------------------------------+
 
 .. _sphinx-autobuild: https://github.com/GaretJax/sphinx-autobuild
+
+Versioning and Packaging
+------------------------
+
+The Sphinx Bootstrap Theme uses semantic versioning.  The ``__version__``
+attribute defined in ``__init__.py`` is the current version of the theme.  We
+use the versioning tactics `described here`__, example scenario:
+
+1. Current version on ``master`` is ``0.8.0.dev``, it is time to release.
+2. A commit sets the version to be ``0.8.0``, a pull request is opened to run
+   the test suite one last time.  The PR is (rebase-)merged.
+3. The merged commit is tagged as ``v0.8.0`` and the tag is pushed.  This will
+   trigger the CI to deploy to PyPI.
+4. After deployment, a new commit sets the version to be ``0.8.1.dev``.
+
+__ https://snarky.ca/how-i-manage-package-version-numbers/
