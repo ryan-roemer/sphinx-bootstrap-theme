@@ -37,7 +37,6 @@ def read_file(name):
 setup(
     name="sphinx-bootstrap-theme",
     version=__version__,
-    use_2to3=True,
     description="Sphinx Bootstrap Theme.",
     long_description=read_file("README"),
     url="http://ryan-roemer.github.com/sphinx-bootstrap-theme/README.html",
