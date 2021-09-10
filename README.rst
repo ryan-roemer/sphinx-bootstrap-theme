@@ -316,6 +316,63 @@ demo website, and using the development server will automate this process.
 4. When finished, make sure to end the server from your terminal you ran
    ``tox -e server`` with by issuing ``ctrl+c``.
 
+Packaging
+=========
+
+When a tag is pushed of the form ``vX.Y.Z`` (with the starting ``v``), it will
+build the distribution using ``tox -e dist`` and uploaded to PyPI automatically.
+Before pushing a tag, using Test PyPI should be done.  In addition to ``tox``,
+install `twine <https://twine.readthedocs.io/en/latest/>`_
+(``pip install twine``).
+
+.. code-block:: console
+
+    # Build the distribution locally.
+    $ tox -e dist
+
+    # Attempt uploading to Test PyPI
+    $ twine upload -r testpypi dist/*
+
+.. note::
+
+    The file ``sphinx_bootstrap_theme/__init__.py`` has the version number that
+    will be created.  **Make sure it matches the tag you are creating**, once
+    an upload goes up it cannot be overwritten.  If in preparing a release you
+    find an error and need to rebuild, simply increase the ``dev`` version
+    in ``__init__.py`` and then rebuild and reupload.  For example:
+
+    .. code-block:: diff
+
+        --- a/sphinx_bootstrap_theme/__init__.py
+        +++ b/sphinx_bootstrap_theme/__init__.py
+        @@ -1,7 +1,7 @@
+         """Sphinx bootstrap theme."""
+         import os
+
+        -__version__ = "0.8.0.dev0"
+        +__version__ = "0.8.0.dev1"
+
+After verifying that everything appears as desired on Test PyPI at the project
+URL, one can also test the installation if desired: ``pip install
+--index-url https://test.pypi.org/simple/ sphinx-bootstrap-theme``
+
+Now that everything is validated, we are ready for release.
+
+1. Set the version number in ``sphinx_bootstrap_theme/__init__.py`` correctly.
+   E.g., for release ``0.8.0``, set ``__version__ = "0.8.0"`` without the
+   trailing ``dev`` qualifier.
+
+2. If desired, rebuild and upload to Test PyPI.  Commit and push the changed
+   version number.  Tag this commit ``git tag v0.8.0`` (note the leading ``v``
+   is required for the CI/CD), and ``git push --tags``.  This should initiate
+   the official release and upload it to PyPI (see the files
+   ``.github/workflows/{package,github_pages}.yaml`` for more).
+
+3. Now that the release is out, update the version number so that any users
+   installing from source do not believe they have an official release.  E.g.,
+   set ``__version__ = "0.8.1.dev0"``, commit and push this "dev version bump"
+   online.
+
 
 Licenses
 ========
