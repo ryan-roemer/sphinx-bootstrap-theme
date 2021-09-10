@@ -57,6 +57,27 @@
   height: 100%;
 }
 
+{% if theme_admonition_use_panel|tobool %}
+
+p.admonition-title {
+  margin: 0px;
+}
+
+div.admonition {
+  padding: 0px;
+}
+
+.panel-body {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.panel-heading {
+  font-weight: bold;
+}
+
+{% endif %}
+
 .page-top {
   top: 0px;
 }
