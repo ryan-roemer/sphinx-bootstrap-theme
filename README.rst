@@ -286,35 +286,35 @@ Sphinx "_static" directory.
 Contributing
 ============
 Contributions to this project are most welcome. Please make sure that the demo
-site builds cleanly, and looks like what you want. We suggest using ``pipenv``
-to build this project::
+site builds cleanly, and looks like what you want. This project uses `tox
+<https://tox.readthedocs.io/en/latest/>`_ for development, once you have ``tox``
+installed (e.g., ``pip install tox``), change directories to the
+``sphinx-bootstrap-theme`` top-level directory.
 
-    $ cd sphinx-bootstrap-theme
-    $ pipenv install --dev
+- Building documentation: ``tox -e docs``
+- Validate html links in documentation: ``tox -e linkcheck``
+- Validate the code style: ``tox -e lint``
 
-Before working in this project directory, do::
+The encouraged way to develop with this package is to use a development server.
+Changes made to files local in the repository will require rebuilding the
+demo website, and using the development server will automate this process.
 
-    $ pipenv shell
+1. In your terminal, execute ``tox -e server`` from the top level directory.
+   By default, this runs on port ``8000``.  If this port is in use, a
+   pass-through argument to the underlying `sphinx-autobuild
+   <https://github.com/executablebooks/sphinx-autobuild>`_ tool is required
+   such as ``tox -e server -- -p 8080``.  The ``--`` between ``server`` and
+   ``-p`` are required, that signals the end of the arguments to ``tox`` and
+   everything after gets fed to ``sphinx-autobuild``.
 
-Next, build the demo::
+2. Open your browser of choice and visit `http://127.0.0.1:8000/
+   <http://127.0.0.1:8000/>`_ to see the server.
 
-    $ fab clean && fab demo
+3. Make any intended edits to the files in this repository.  After the server
+   finishes rebuilding you can refresh your browser to see the updates.
 
-Then, view the site in the development server::
-
-    $ fab demo_server
-
-Also, if you are adding a new type of styling or Sphinx or Bootstrap construct,
-please add a usage example to the "Examples" page.
-
-**Note**: If you are in Python 3, Fabric isn't available, so we have a very
-rough Makefile in its place. Try::
-
-    $ make clean && make demo
-
-Then, view the site in the development server::
-
-    $ make demo_server
+4. When finished, make sure to end the server from your terminal you ran
+   ``tox -e server`` with by issuing ``ctrl+c``.
 
 
 Licenses
