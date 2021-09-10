@@ -352,7 +352,8 @@ install `twine <https://twine.readthedocs.io/en/latest/>`_
         -__version__ = "0.8.0.dev0"
         +__version__ = "0.8.0.dev1"
 
-After verifying that everything appears as desired on Test PyPI at the project
+After verifying that `everything appears as desired on Test PyPI
+<https://test.pypi.org/project/sphinx-bootstrap-theme/>`_ at the project
 URL, one can also test the installation if desired: ``pip install
 --index-url https://test.pypi.org/simple/ sphinx-bootstrap-theme``
 
