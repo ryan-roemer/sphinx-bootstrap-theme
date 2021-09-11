@@ -30,7 +30,6 @@ Development history and feature wish lists.
 
    HISTORY
    TODO
-   maintenance
 
 .. Disabled.
 ..    downloads

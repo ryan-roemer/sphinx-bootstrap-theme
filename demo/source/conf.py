@@ -26,6 +26,11 @@ extensions = [
 
 intersphinx_mapping = {'python': ('http://docs.python.org/', None)}
 
+linkcheck_ignore = [
+    '/_sources/examples.rst.txt',  # from examples.rst
+    'http://127.0.0.1:8000/'       # from README.rst
+]
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 

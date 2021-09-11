@@ -3,7 +3,7 @@
 ==========
 
 Various examples of Bootstrap styling applied to Sphinx constructs. You can
-view the `source <./_sources/examples.txt>`_ of this page to see the specific
+view the `source </_sources/examples.rst.txt>`_ of this page to see the specific
 reStructuredText used to create these examples.
 
 Headings
@@ -128,7 +128,7 @@ default Bootstrap ``table`` class.  You can add additional table classes
 using the Sphinx ``cssclass::`` directive, as demonstrated in the following
 tables.
 
-.. _rst_tables: https://www.sphinx-doc.org/en/latest/usage/restructuredtext/basics.html#tables
+.. _rst_tables: https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#tables
 
 Grid
 ----

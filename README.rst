@@ -40,10 +40,10 @@ look at the `examples source`_ for the underlying reStructuredText).
 .. _United: http://bootswatch.com/united
 .. _Flatly: http://bootswatch.com/flatly
 .. _Sandstone: http://bootswatch.com/sandstone
-.. _Sphinx Bootstrap Theme: http://ryan-roemer.github.com/sphinx-bootstrap-theme
-.. _examples page: http://ryan-roemer.github.com/sphinx-bootstrap-theme/examples.html
-.. _examples source: http://ryan-roemer.github.com/sphinx-bootstrap-theme/_sources/examples.rst.txt
-.. _Django Cloud Browser: http://ryan-roemer.github.com/django-cloud-browser
+.. _Sphinx Bootstrap Theme: https://ryan-roemer.github.io/sphinx-bootstrap-theme
+.. _examples page: https://ryan-roemer.github.io/sphinx-bootstrap-theme/examples.html
+.. _examples source: https://ryan-roemer.github.io/sphinx-bootstrap-theme/_sources/examples.rst.txt
+.. _Django Cloud Browser: https://ryan-roemer.github.io/django-cloud-browser
 .. _seaborn: http://seaborn.pydata.org
 
 
@@ -320,7 +320,7 @@ Packaging
 =========
 
 When a tag is pushed of the form ``vX.Y.Z`` (with the starting ``v``), it will
-build the distribution using ``tox -e dist`` and uploaded to PyPI automatically.
+build the distribution using ``tox -e dist`` and upload to PyPI automatically.
 Before pushing a tag, using Test PyPI should be done.  In addition to ``tox``,
 install `twine <https://twine.readthedocs.io/en/latest/>`_
 (``pip install twine``).
