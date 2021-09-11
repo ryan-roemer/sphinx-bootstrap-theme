@@ -33,6 +33,19 @@ jobs:
         run: pip install tox
       - name: Build Docs
         run: tox -e docs
+  dist:
+    name: Dist
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.x
+      - name: Install Tox
+        run: pip install tox
+      - name: Build Dist
+        run: tox -e dist
   linkcheck:
     name: Linkcheck
     runs-on: ubuntu-latest
