@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Future Work &#8212; Demo 0.7.1 documentation</title>
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Future Work &#8212; Demo 0.8.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="History" href="HISTORY.html" />
@@ -18,9 +19,9 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<script type="text/javascript" src="_static/js/jquery-1.11.0.min.js "></script>
+<script type="text/javascript" src="_static/js/jquery-1.12.4.min.js "></script>
 <script type="text/javascript" src="_static/js/jquery-fix.js "></script>
-<script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js "></script>
+<script type="text/javascript" src="_static/bootstrap-3.4.1/js/bootstrap.min.js "></script>
 <script type="text/javascript" src="_static/bootstrap-sphinx.js "></script>
 
   </head><body>
@@ -51,7 +52,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           Demo</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.7.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.8.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +74,7 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#customization">Customization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#theme-notes">Theme Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#packaging">Packaging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#licenses">Licenses</a></li>
 </ul>
 </li>
@@ -98,6 +100,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html">History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HISTORY.html#v0-8-0">v0.8.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html#v0-7-1">v0.7.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html#v0-7-0">v0.7.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HISTORY.html#v0-6-5">v0.6.5</a></li>
@@ -231,9 +234,9 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="future-work">
+  <section id="future-work">
 <h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="css-layout">
+<section id="css-layout">
 <h2>CSS / Layout<a class="headerlink" href="#css-layout" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Search Bar: Is aligned right inconsistently in BS2 vs. BS3.</p></li>
@@ -241,26 +244,26 @@
 <li><p>Optionally move the <code class="docutils literal notranslate"><span class="pre">localtoc</span></code> from the top navigation bar into it’s own
 navbar below the page title.</p></li>
 </ul>
-</div>
-<div class="section" id="infrastructure">
+</section>
+<section id="infrastructure">
 <h2>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Re-enable the downloads.</p></li>
 </ul>
-</div>
-<div class="section" id="upgrade-notes">
+</section>
+<section id="upgrade-notes">
 <h2>Upgrade Notes<a class="headerlink" href="#upgrade-notes" title="Permalink to this headline">¶</a></h2>
 <p>When upgrading, you must upgrade <strong>both</strong> Bootstrap and Bootswatch — Bootswatch
 releases are custom tailored to the a specific version of Bootstrap.  The version of
 jQuery (1.11) should be OK to leave as is unless a specific issue arises.</p>
 <p>In the below examples we are upgrading to bootstrap 3.3.7; Bootstrap 2 versions should
 not have a need to be changed.</p>
-<div class="section" id="updating-bootstrap">
+<section id="updating-bootstrap">
 <h3>Updating Bootstrap<a class="headerlink" href="#updating-bootstrap" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Get new <code class="docutils literal notranslate"><span class="pre">bootstrap-VERSION</span></code> and drop in <code class="docutils literal notranslate"><span class="pre">bootstrap/static</span></code>.</p>
 <ul>
-<li><p>New versions should be available <a class="reference external" href="http://getbootstrap.com/getting-started/#download">here</a>.</p></li>
+<li><p>New versions should be available <a class="reference external" href="https://getbootstrap.com/">here</a>.</p></li>
 <li><p>Choose “Bootstrap”:</p>
 <blockquote>
 <div><p>Compiled and minified CSS, JavaScript, and fonts.  No docs or original
@@ -296,8 +299,8 @@ source files are included.</p>
 <p>Choose your favorite text replacement tool for step 2, we will use <code class="docutils literal notranslate"><span class="pre">grep</span></code> and <code class="docutils literal notranslate"><span class="pre">sed</span></code>.
 The example here will be with the file <code class="docutils literal notranslate"><span class="pre">bootstrap.js</span></code> for understandability (since it
 is not minified).</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> First, locate the all of the calls to jQuery
-<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(jQuery)&#39;</span> bootstrap.js
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>First, locate the all of the calls to jQuery
+<span class="gp">$ </span>grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(jQuery)&#39;</span> bootstrap.js
 <span class="go">bootstrap.js:17:}(jQuery);</span>
 <span class="go">bootstrap.js:77:}(jQuery);</span>
 <span class="go">bootstrap.js:172:}(jQuery);</span>
@@ -312,14 +315,14 @@ is not minified).</p>
 <span class="go">bootstrap.js:2214:}(jQuery);</span>
 <span class="go">bootstrap.js:2377:}(jQuery);</span>
 
-<span class="gp">#</span> Make the replacement in-place <span class="k">while</span> creating
-<span class="gp">#</span> a bootstrap.js.bak file <span class="o">(</span>backup of the original<span class="o">)</span>
-<span class="gp">$</span> sed -i.bak <span class="s1">&#39;s/(jQuery)/(window.$jqTheme || window.jQuery)/g&#39;</span> bootstrap.js
+<span class="gp"># </span>Make the replacement <span class="k">in</span>-place <span class="k">while</span> creating
+<span class="gp"># </span>a bootstrap.js.bak file <span class="o">(</span>backup of the original<span class="o">)</span>
+<span class="gp">$ </span>sed -i.bak <span class="s1">&#39;s/(jQuery)/(window.$jqTheme || window.jQuery)/g&#39;</span> bootstrap.js
 
-<span class="gp">#</span> Verify there are no more <span class="o">(</span>jQuery<span class="o">)</span> left, and search our replacement
-<span class="gp">#</span> <span class="k">for</span> sanity checking <span class="o">(</span>all the line numbers should match up<span class="o">)</span>
-<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(jQuery)&#39;</span> bootstrap.js
-<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(window.$jqTheme || window.jQuery)&#39;</span> bootstrap.js
+<span class="gp"># </span>Verify there are no more <span class="o">(</span>jQuery<span class="o">)</span> left, and search our replacement
+<span class="gp"># </span><span class="k">for</span> sanity checking <span class="o">(</span>all the line numbers should match up<span class="o">)</span>
+<span class="gp">$ </span>grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(jQuery)&#39;</span> bootstrap.js
+<span class="gp">$ </span>grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;(window.$jqTheme || window.jQuery)&#39;</span> bootstrap.js
 <span class="gp">bootstrap.js:17:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
 <span class="gp">bootstrap.js:77:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
 <span class="gp">bootstrap.js:172:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
@@ -334,14 +337,14 @@ is not minified).</p>
 <span class="gp">bootstrap.js:2214:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
 <span class="gp">bootstrap.js:2377:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
 
-<span class="gp">#</span> IMPORTANT! Check your work!  Most of these were all in either
-<span class="gp">#</span> comments or error strings <span class="o">(</span>that we want to leave as is<span class="o">)</span>,
-<span class="gp">#</span> but line <span class="m">7</span> below needs to be updated!
+<span class="gp"># </span>IMPORTANT! Check your work!  Most of these were all <span class="k">in</span> either
+<span class="gp"># </span>comments or error strings <span class="o">(</span>that we want to leave as is<span class="o">)</span>,
+<span class="gp"># </span>but line <span class="m">7</span> below needs to be updated!
 <span class="gp">#</span>
-<span class="gp">#</span> So line <span class="m">7</span> should be changed <span class="o">(</span>by you<span class="o">)</span> to be
+<span class="gp"># </span>So line <span class="m">7</span> should be changed <span class="o">(</span>by you<span class="o">)</span> to be
 <span class="gp">#</span>
-<span class="gp">#</span>     <span class="k">if</span> <span class="o">(</span>typeof <span class="o">(</span>window.<span class="nv">$jqTheme</span> <span class="o">||</span> window.jQuery<span class="o">)</span> <span class="o">===</span> <span class="s1">&#39;undefined&#39;</span><span class="o">)</span> <span class="o">{</span>
-<span class="gp">$</span> grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;jQuery&#39;</span> bootstrap.js
+<span class="gp">#     </span><span class="k">if</span> <span class="o">(</span>typeof <span class="o">(</span>window.<span class="nv">$jqTheme</span> <span class="o">||</span> window.jQuery<span class="o">)</span> <span class="o">===</span> <span class="s1">&#39;undefined&#39;</span><span class="o">)</span> <span class="o">{</span>
+<span class="gp">$ </span>grep -Hn --color<span class="o">=</span>auto <span class="s1">&#39;jQuery&#39;</span> bootstrap.js
 <span class="go">bootstrap.js:7:if (typeof jQuery === &#39;undefined&#39;) {</span>
 <span class="go">bootstrap.js:8:  throw new Error(&#39;Bootstrap\&#39;s JavaScript requires jQuery&#39;)</span>
 <span class="go">bootstrap.js:15:    throw new Error(&#39;Bootstrap\&#39;s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4&#39;)</span>
@@ -363,12 +366,12 @@ is not minified).</p>
 <span class="gp">bootstrap.js:2214:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
 <span class="gp">bootstrap.js:2377:}(window.$</span>jqTheme <span class="o">||</span> window.jQuery<span class="o">)</span><span class="p">;</span>
 
-<span class="gp">#</span> If all went according to plan, delete the backup
-<span class="gp">$</span> rm bootstrap.js.bak
+<span class="gp"># </span>If all went according to plan, delete the backup
+<span class="gp">$ </span>rm bootstrap.js.bak
 </pre></div>
 </div>
-</div>
-<div class="section" id="update-bootswatch">
+</section>
+<section id="update-bootswatch">
 <h3>Update Bootswatch<a class="headerlink" href="#update-bootswatch" title="Permalink to this headline">¶</a></h3>
 <p>In this example we will walk through how to create the necessary structure using version
 3.3.7 of Bootswatch.  When updating in the future, replace <code class="docutils literal notranslate"><span class="pre">3.3.7</span></code> in the below with
@@ -416,9 +419,9 @@ $ cat ~/Desktop/bootswatch-flat-3.3.7.tar <span class="p">|</span> tar -x
 $ ls
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
     </div>
@@ -433,7 +436,7 @@ $ ls
     </p>
     <p>
         &copy; Copyright 2011-2016, Ryan Roemer.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.1.2.<br/>
     </p>
   </div>
 </footer>
