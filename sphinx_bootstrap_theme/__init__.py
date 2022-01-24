@@ -1,15 +1,14 @@
 """Sphinx bootstrap theme."""
 import os
 
-VERSION = (0, 8, 0)
+__version__ = "0.8.1.dev0"
 
-__version__ = ".".join(str(v) for v in VERSION)
-__version_full__ = __version__
 
 def get_html_theme_path():
     """Return list of HTML theme paths."""
     theme_path = os.path.abspath(os.path.dirname(__file__))
     return [theme_path]
+
 
 def setup(app):
     """Setup."""
