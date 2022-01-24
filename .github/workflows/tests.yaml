@@ -63,7 +63,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        python-version: [2.7, 3.5, 3.6, 3.7, 3.8]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
     name: Py ${{ matrix.python-version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
@@ -74,15 +74,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install Tox
         run: pip install tox
-      - name: Test Sphinx 1.8.5
+      - name: Test Sphinx 1.x
         env:
           SPHINX_VERSION: ==1.8.5
         run: tox -e py
-      - name: Test Sphinx 2.0
+      - name: Test Sphinx 2.x
         env:
-          SPHINX_VERSION: ==2.0
+          SPHINX_VERSION: ==2.4.5
         run: tox -e py
-        if: matrix.python-version >= 3.5
       - name: Test Sphinx Latest
         run: tox -e py
-        if: matrix.python-version >= 3.5
