@@ -3,6 +3,12 @@
 =========
 
 ======
+v0.8.1
+======
+* Fix client-side search in Sphinx 3.4+. (`@larsoner`_)
+  `#213 <https://github.com/ryan-roemer/sphinx-bootstrap-theme/pull/213>`_.
+
+======
 v0.8.0
 ======
 * Upgrade Bootstrap and Bootswatch to v3.4.1. (`@vedranmiletic`_)
