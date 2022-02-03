@@ -1,7 +1,7 @@
 """Sphinx bootstrap theme."""
 import os
 
-__version__ = "0.8.1.dev1"
+__version__ = "0.8.1"
 
 
 def get_html_theme_path():
