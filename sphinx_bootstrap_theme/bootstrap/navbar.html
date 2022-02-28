@@ -21,8 +21,8 @@
             {% if theme_navbar_links %}
               {%- for link in theme_navbar_links %}
                 {% if link[0] == "_menu" %}
-                  <li class="dropdown open">
-                    <a role="button" id="{{ link[1] }}Toc" data-toggle="dropdown" data-target="#" href="#" aria-expanded="true">{{ link[1] }} <b class="caret"></b></a>
+                  <li class="dropdown">
+                    <a role="button" id="{{ link[1] }}Toc" data-toggle="dropdown" data-target="#" href="#" aria-expanded="false">{{ link[1] }} <b class="caret"></b></a>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="{{ link[1] }}Toc">
                       {%- for sublink in link[2] %}
                         {% if sublink[0] == "_divider" %}
