@@ -96,9 +96,22 @@ your "conf.py" file::
         #    (name, "http://example.com", True) # arbitrary absolute url
         # Note the "1" or "True" value above as the third argument to indicate
         # an arbitrary url.
+        # You can create a menu of links by making the name '_menu' and
+        # providing a list of links or '_divider' to add a divider.
+        #    ("_menu", name, [
+        #        ("Examples", "examples"),
+        #        ("_divider", ),
+        #        ("Link", "http://example.com", True),
+        #    ])
+
         'navbar_links': [
             ("Examples", "examples"),
             ("Link", "http://example.com", True),
+            ("_menu", "Example Menu", [
+                ("Examples", "examples"),
+                ("_divider", ),
+                ("Link", "http://example.com", True),
+            ]),
         ],
 
         # Render the next and previous page links in navbar. (Default: true)
