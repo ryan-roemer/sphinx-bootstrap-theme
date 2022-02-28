@@ -20,7 +20,22 @@
           <ul class="nav navbar-nav">
             {% if theme_navbar_links %}
               {%- for link in theme_navbar_links %}
-                <li><a href="{{ pathto(*link[1:]) }}">{{ link[0] }}</a></li>
+                {% if link[0] == "_menu" %}
+                  <li class="dropdown">
+                    <a role="button" id="{{ link[1] }}Toc" data-toggle="dropdown" data-target="#" href="#" aria-expanded="false">{{ link[1] }} <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="{{ link[1] }}Toc">
+                      {%- for sublink in link[2] %}
+                        {% if sublink[0] == "_divider" %}
+                          <li class="divider"></li>
+                        {% else %}
+                          <li><a href="{{ pathto(*sublink[1:]) }}">{{ sublink[0] }}</a></li>
+                        {% endif %}
+                      {%- endfor %}
+                      </ul>
+                  </li>
+                {% else %}
+                  <li><a href="{{ pathto(*link[1:]) }}">{{ link[0] }}</a></li>
+                {% endif %}
               {%- endfor %}
             {% endif %}
             {% block navbartoc %}
