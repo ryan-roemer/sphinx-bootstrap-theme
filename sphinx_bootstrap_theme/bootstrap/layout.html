@@ -58,10 +58,36 @@
 <script type="text/javascript" src="{{ pathto('_static/bootstrap-sphinx.js', 1) }}"></script>
 {% endblock %}
 
-{# Silence the sidebar's, relbar's #}
+{# Silence the sidebar's #}
 {% block header %}{% endblock %}
-{% block relbar1 %}{% endblock %}
-{% block relbar2 %}{% endblock %}
+
+{%- block relbar1 %}
+  {%- if theme_relbar_enable == "true" %}
+    {{ relbar_bootstrap() }}
+  {%- endif %}
+{% endblock %}
+
+{%- block relbar2 %}
+  {%- if theme_relbar_enable == "true" %}
+    {{ relbar_bootstrap() }}
+  {%- endif %}
+{% endblock %}
+
+{%- macro relbar_bootstrap() %}
+  <div class="container" role="navigation" aria-label="related navigation">
+    <ol class="breadcrumb">
+      {%- block rootrellink %}
+        <li><a href="{{ pathto(master_doc) }}">{{ shorttitle|e }}</a></li>
+      {%- endblock %}
+      {%- for parent in parents %}
+        <li><a href="{{ parent.link|e }}" {% if loop.last %}{{ accesskey("U") }}{% endif %}>{{ parent.title }}</a></li>
+      {%- endfor %}
+      <li class="active">{{ title }}</li>
+      {%- block relbaritems %} {% endblock %}
+    </ol>
+  </div>
+{%- endmacro %}
+
 {% block sidebarsourcelink %}{% endblock %}
 
 {%- block content %}
